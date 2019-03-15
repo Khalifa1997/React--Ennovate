@@ -2,79 +2,67 @@ body {
     background-color: #e6ecf0;
 }
 
-.root{
-    flex-Grow: 1;
-}
-
-.Nav{
-    height:60px;
-    align-content: center;
-    align-items: flex-start;
-    padding:0 0 0 200px;
-     
-}
-
-
-
-
-.Typo{
-    word-spacing: 20px;
-}
-
-.field{
-    height: 50px;
-    width: 300px;
-}
-
-.zorar{
-    margin-top: 30px;
-}
-
-.submit {
-    height: 40px !important;
-    width: 90px !important;
-    background-color: #1da1f2 !important;
-    border: 1px solid #1da1f2 !important;
-    color: #fff !important;
-}
-
-.submit:hover{
-    background-color: #1185ce !important;
-}
-
-.laz{
-    margin-top:-20px;
-}
-
-.InputBox{
-    font-family: 'Roboto', sans-serif;
-    padding: auto;
-    width:auto;
-    margin-left: 115px;
-    margin-right: 115px;
-    margin-bottom: 10px;
-    padding-left:10px;
-    padding-right: 10px; 
-}
-
-.header{
-    padding-top: 20px;
-    padding-bottom: 40px;
-    margin-bottom: 0;
-}
 
 .PageCanvas {
     width:auto;
     max-width: 835px;
     margin: auto;
-    height: 400px;
+    height: 320px;
     background-color: white;
     border: 1px solid rgba(0,0,0,0.1);
     border-radius: 0px;
     font-family: 'Roboto', sans-serif;
     margin-top: 5px;
-    padding-top: 30px;
+    padding-top: 10px;
     
+}
+
+.loginBox{
+    padding-left: 100px;
+    padding-right: 100px;
+    padding-top: 20px;
+    padding-bottom: 35px;
+}
+
+.loginButton{
+    border-radius: 50px;
+    background-color: #1da1f2;
+    border-color: #1da1f2;
+    width: 80px;
+    margin-right: 20px;
+}
+
+.headerText{
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.passField{
+    margin-bottom: 25px;
+}
+
+.inputFields{
+    width:350px;
+    height:30px;
+}
+
+.Links{
+    color :#1c94e0;
+    font-size:14px;
+}
+
+.downDiv{
+    background-color: #f5f8fa;
+    height: 34%;
+    padding-left:115px;
+    padding-top:15px;
+    padding-bottom:10px;
+}
+
+.downText{
+    margin-bottom: 10px;
+    color:#657786;
+    font-size: 14px;
 }
 
 
