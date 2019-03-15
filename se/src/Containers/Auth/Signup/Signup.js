@@ -103,7 +103,6 @@ class signup extends Component {
       formIsValid = updatedSignupForm[inputIdentifier].valid && formIsValid;
     }
     this.setState({ signupForm: updatedSignupForm, formIsValid: formIsValid });
-    //this.setState({ signupForm: updatedSignupForm });
   };
   checkValidity(value, rules) {
     let isValid = true;
@@ -130,25 +129,12 @@ class signup extends Component {
       isValid = value.length <= rules.maxLength && isValid;
     }
     if (rules.matching) {
-      /*const updatedSignupForm = {
-        ...this.state.signupForm
-      };
-      const updatedFormElement = {
-        ...updatedSignupForm[password]
-      };*/
       isValid = value == this.state.signupForm.password.value && isValid;
     }
 
     return isValid;
   }
-  /* passwordHandler = (event) => {
-    if (
-      this.state.signupForm.signupForm.password.value !==
-      this.state.signupForm.signupForm.reenter.value
-    ) {
-      console.log("passwords don't match");
-    }
-  };*/
+
   render() {
     const formElementsArray = [];
     for (let key in this.state.signupForm) {
