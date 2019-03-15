@@ -65,5 +65,26 @@ body {
     font-size: 14px;
 }
 
+@media (max-width: 900px) {
+    .loginBox{
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .PageCanvas {
+        flex: auto;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
+    .downDiv{
+        background-color: #f5f8fa;
+        height: 34%;
+        padding-left:50px;
+        padding-top:20px;
+        padding-bottom:5px;
+    }
+}
+
 
 
