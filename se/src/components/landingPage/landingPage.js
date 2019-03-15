@@ -3,8 +3,8 @@ import lap from '../../assets/images/laptop.jpg'
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faRetweet, faArrowCircleDown } from "@fortawesome/free-solid-svg-icons"
-import { faReact, faDocker, faNode } from '@fortawesome/free-brands-svg-icons'
-
+import { faReact, faDocker, faNode, faGithub, faTwitter } from '@fortawesome/free-brands-svg-icons'
+import NavbarPic from '../../assets/images/nav2.jpg'
 
 import './LandingPage.css'
 function LandingPage(props) {
@@ -13,12 +13,13 @@ function LandingPage(props) {
   return (
 
     <div>
-      <section className=" text-white tm-font-big bg">
-        <nav className="navbar navbar-expand-lg navbar-dark primary-color fixed-top">
+      <div >
 
-          <div className="container">
+        <nav className="navbar navbar-expand-lg navbar-light primary-color fixed-top navbarbg">
 
-            <a className="navbar-brand" href="#">Navbar</a>
+          <div className="container-fluid">
+
+            <a className="navbar-brand" href="#"><img src={NavbarPic} width="133px" /></a>
 
             <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
               aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -28,43 +29,48 @@ function LandingPage(props) {
             <div className="collapse navbar-collapse" id="basicExampleNav">
 
               <ul className="navbar-nav mr-auto">
-                <li className="nav-item active">
+                <li className="nav-item">
                   <a className="nav-link" href="#">Home
-            <span className="sr-only">(current)</span>
+
                   </a>
                 </li>
-                <li className="nav-item">
-                  <a className="nav-link" href="#">Features</a>
-                </li>
+
                 <li className="nav-item">
                   <a className="nav-link" href="#">Pricing</a>
                 </li>
 
-                <li className="nav-item dropdown">
-                  <a className="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
-                    aria-expanded="false">Dropdown</a>
-                  <div className="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
-                    <a className="dropdown-item" href="#">Action</a>
-                    <a className="dropdown-item" href="#">Another action</a>
-                    <a className="dropdown-item" href="#">Something else here</a>
-                  </div>
-                </li>
-
               </ul>
               <div className="md-form my-0">
-                <p>xasas</p>
+                <div class="btn-toolbar ">
+                  <ul className="navbar-nav mr-auto">
+                    <li className="nav-item">
+                      <a href="#"><FontAwesomeIcon icon={faTwitter} style={{ color: 'black', marginRight: '20px' }} size="2x" /></a>
+                    </li>
+                    <li className="nav-item">
+                      <a href="#"><FontAwesomeIcon icon={faGithub} style={{ color: 'black', marginRight: '20px', marginLeft: '0px' }} size="2x" /></a>
+                    </li>
+                    <li className="nav-item">
+                      <a className=" nav-link" href="#">Login</a></li>
+                    <li className="nav navbar-nav">
+                      <button type="button" className="btn btn-outline-success">Sign up</button>
+                    </li>
+                  </ul>
+                </div>
               </div>
             </div>
 
           </div>
 
         </nav>
-        <div class="tm-next tm-intro-next" >
-          <a href="#introduction" class="text-center tm-down-arrow-link">
+
+      </div>
+      <div className=" text-white tm-font-big bg">
+        <div className="tm-next tm-intro-next" >
+          <a href="#introduction" className="text-center tm-down-arrow-link">
             <FontAwesomeIcon icon={faArrowCircleDown} size="3x" style={{ color: '#3496d8', marginBottom: '30px', }} />
           </a>
         </div>
-      </section>
+      </div>
       <section className=" tm-section-pad-top">
         <div className="container">
           <div className="row">
@@ -81,7 +87,7 @@ function LandingPage(props) {
                 <p className="mb-5 tm-intro-text">
                   Please tell your friends about our site
               <a rel="nofollow" href="https://templatemo.com">templatemo</a>. Thank you.
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                Curabitur dapibus tristique enim a imperdiet. Etiam
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              Curabitur dapibus tristique enim a imperdiet. Etiam
               tristique sem sed condimentum posuere. </p>
                 <div className="tm-next">
                   <a href="#work" className="tm-intro-text tm-btn-primary">Read More</a>
@@ -93,18 +99,18 @@ function LandingPage(props) {
 
         </div>
 
-        <div class="row tm-section-pad-top">
-          <div class="col-lg-4 text-center">
+        <div className="row tm-section-pad-top">
+          <div className="col-lg-4 text-center">
             <FontAwesomeIcon icon={faReact} size="6x" style={{ color: '#3496d8', marginBottom: '30px', textAlign: 'center' }} />
-            <h4 class="text-center tm-text-primary mb-4">100% Reactful</h4>
+            <h4 className="text-center tm-text-primary mb-4">100% Reactful</h4>
             <p>
               Using React Library as our main frontend for quick development and little to no down-time.
           </p>
           </div>
 
-          <div class="col-lg-4 text-center">
+          <div className="col-lg-4 text-center">
             <FontAwesomeIcon icon={faNode} size="6x" style={{ color: '#3496d8', marginBottom: '30px' }} />
-            <h4 class="text-center tm-text-primary mb-4">NodeJS as our Backend</h4>
+            <h4 className="text-center tm-text-primary mb-4">NodeJS</h4>
             <p>
               Praesent ut finibus leo. Duis et tempus ipsum, id pretium nunc.
               Vivamus imperdiet sem quis orci pharetra convallis. Nunc a tempus
@@ -112,9 +118,9 @@ function LandingPage(props) {
           </p>
           </div>
 
-          <div class="col-lg-4 text-center">
+          <div className="col-lg-4 text-center">
             <FontAwesomeIcon icon={faDocker} size="6x" style={{ color: '#3496d8', marginBottom: '30px' }} />
-            <h4 class="text-center tm-text-primary mb-4">Docker</h4>
+            <h4 className="text-center tm-text-primary mb-4">Docker</h4>
             <p>
               Donec vestibulum libero nisl. Curabitur ac orci ac lorem blandit
               volutpat. Sed ac sodales nibh, ut porttitor elit. Sed id dui mi.
