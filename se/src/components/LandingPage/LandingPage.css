@@ -508,6 +508,11 @@ p {
     line-height: 1.9;
 }
 
+
+.navicon:hover {
+    color: black !important;
+}
+
 @media (min-width: 768px) {
     .tm-intro-text-container {
         padding-left: 65px;

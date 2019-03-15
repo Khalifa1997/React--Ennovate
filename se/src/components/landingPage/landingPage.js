@@ -2,7 +2,7 @@ import React from 'react';
 import lap from '../../assets/images/laptop.jpg'
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faRetweet, faArrowCircleDown } from "@fortawesome/free-solid-svg-icons"
+import { faArrowCircleDown } from "@fortawesome/free-solid-svg-icons"
 import { faReact, faDocker, faNode, faGithub, faTwitter } from '@fortawesome/free-brands-svg-icons'
 import NavbarPic from '../../assets/images/nav2.jpg'
 
@@ -19,12 +19,8 @@ function LandingPage(props) {
 
           <div className="container-fluid">
 
-            <a className="navbar-brand" href="#"><img src={NavbarPic} width="133px" /></a>
+            <a className="navbar-brand" href="#"><img src={NavbarPic} width="133px" alt="pic" /></a>
 
-            <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
-              aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
-              <span className="navbar-toggler-icon"></span>
-            </button>
 
             <div className="collapse navbar-collapse" id="basicExampleNav">
 
@@ -44,10 +40,10 @@ function LandingPage(props) {
                 <div class="btn-toolbar ">
                   <ul className="navbar-nav mr-auto">
                     <li className="nav-item">
-                      <a href="#"><FontAwesomeIcon icon={faTwitter} style={{ color: 'black', marginRight: '20px' }} size="2x" /></a>
+                      <a href="#" ><FontAwesomeIcon icon={faTwitter} className="navicon" style={{ color: 'darkgrey', marginRight: '20px' }} size="2x" /></a>
                     </li>
                     <li className="nav-item">
-                      <a href="#"><FontAwesomeIcon icon={faGithub} style={{ color: 'black', marginRight: '20px', marginLeft: '0px' }} size="2x" /></a>
+                      <a href="#"><FontAwesomeIcon icon={faGithub} className="navicon" style={{ color: 'darkgrey', marginRight: '20px', marginLeft: '0px' }} size="2x" /></a>
                     </li>
                     <li className="nav-item">
                       <a className=" nav-link" href="#">Login</a></li>
@@ -75,7 +71,7 @@ function LandingPage(props) {
         <div className="container">
           <div className="row">
             <div className="col-lg-6">
-              <img src={lap} alt="Image" className="img-fluid tm-intro-img" />
+              <img src={lap} alt="" className="img-fluid tm-intro-img" />
 
             </div>
             <div className="col-lg-6">
@@ -87,7 +83,7 @@ function LandingPage(props) {
                 <p className="mb-5 tm-intro-text">
                   Please tell your friends about our site
               <a rel="nofollow" href="https://templatemo.com">templatemo</a>. Thank you.
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              Curabitur dapibus tristique enim a imperdiet. Etiam
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      Curabitur dapibus tristique enim a imperdiet. Etiam
               tristique sem sed condimentum posuere. </p>
                 <div className="tm-next">
                   <a href="#work" className="tm-intro-text tm-btn-primary">Read More</a>
