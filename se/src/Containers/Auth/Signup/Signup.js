@@ -117,7 +117,7 @@ class signup extends Component {
     }
     if (rules.email) {
       isValid =
-        !!value.match(/^[a-zA-Z0-9]+@[a-zA-Z0-9]+.[A-Za-z]+$/) && isValid;
+        !!value.match(/^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/) && isValid;
     }
 
     if (rules.required) {
@@ -193,8 +193,9 @@ class signup extends Component {
           />
         ))}
         <button
-          className="btn btn-primary signupButton"
-          onClick={this.passwordHandler}
+          //className="btn btn-primary signupButton"
+          //onClick={this.passwordHandler}
+          disabled={!this.state.formIsValid}
         >
           Signup
         </button>
