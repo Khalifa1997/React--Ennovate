@@ -11,7 +11,6 @@
 }
 
 .InputElement {
-  
   outline: none;
   border: 1px solid #ccc;
   background-color: white;
@@ -20,7 +19,6 @@
   display: block;
   width: 100%;
   box-sizing: border-box;
- 
 }
 
 .InputElement:focus {
@@ -31,4 +29,8 @@
 .Invalid {
   border: 1px solid red;
   background-color: #fda49a;
+}
+.ValidationError {
+  color: red;
+  margin: 5px 0;
 }

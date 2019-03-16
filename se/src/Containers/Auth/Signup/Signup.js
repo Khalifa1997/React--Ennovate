@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import AuthNav from "./../../../Components/AuthNav/AuthNav";
 import Input from "./../../../Components/UI/Input/Input";
 import "./Signup.css";
-import axios from '../../../axios-users';
+import axios from "../../../axios-users";
 class signup extends Component {
   state = {
     signupForm: {
@@ -35,6 +35,7 @@ class signup extends Component {
           required: true,
           maxLength: 15
         },
+        errorMessage: "Maximum length is 15",
         valid: false,
         touched: false
       },
@@ -65,6 +66,7 @@ class signup extends Component {
           minLength: 8,
           maxLength: 25
         },
+        errorMessage: "Password should be between 8 and 25 characters long",
         valid: false,
         touched: false
       },
@@ -140,14 +142,16 @@ class signup extends Component {
     return isValid;
   }
 
-  submitHandler = ( event ) => {
+  submitHandler = event => {
     event.preventDefault();
     //this.setState( { loading: true } );
     const formData = {};
     for (let formElementIdentifier in this.state.signupForm) {
-        formData[formElementIdentifier] = this.state.signupForm[formElementIdentifier].value;
+      formData[formElementIdentifier] = this.state.signupForm[
+        formElementIdentifier
+      ].value;
     }
-    
+
     const data = {
       /*
         username:this.state.signupForm.username.value,
@@ -155,19 +159,20 @@ class signup extends Component {
         email:this.state.signupForm.email.value,
         password:this.state.signupForm.password.value
       */
-        userData: formData
-    }
-    
-    axios.post( '/users.json', data )
-        .then( response => 
-          console.log(response)
-            //this.setState( { loading: false } );
-           // this.props.history.push( '/' );
-         )
-        .catch( error => {
-            this.setState( { loading: false } );
-        } );
-}
+      userData: formData
+    };
+
+    axios
+      .post("/users.json", data)
+      .then(
+        response => console.log(response)
+        //this.setState( { loading: false } );
+        // this.props.history.push( '/' );
+      )
+      .catch(error => {
+        this.setState({ loading: false });
+      });
+  };
 
   render() {
     const formElementsArray = [];
@@ -178,7 +183,7 @@ class signup extends Component {
       });
     }
     let form = (
-      <form  onSubmit={this.submitHandler}>
+      <form onSubmit={this.submitHandler}>
         {formElementsArray.map(formElement => (
           <Input
             key={formElement.id}
@@ -192,10 +197,7 @@ class signup extends Component {
             changed={event => this.inputChangedHandler(event, formElement.id)}
           />
         ))}
-        <button
-          className="btn btn-primary signupButton"
-          onClick={this.passwordHandler}
-        >
+        <button className="btn btn-primary " onClick={this.passwordHandler}>
           Signup
         </button>
       </form>

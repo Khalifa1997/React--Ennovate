@@ -1,23 +1,26 @@
 import React from "react";
-import classes from "./Input.css";
+import "./Input.css";
+
 const input = props => {
   let inputElement = null;
+  let inputClasses = "InputElement";
+  let validationError = null;
+  if (props.invalid && props.touched) {
+    inputClasses = "InputElement Invalid";
+    validationError = <p className="ValidationError"> {props.errorMessage}</p>;
+  } else validationError = null;
   inputElement = (
     <input
-      //className={inputClasses.join(" ")}
+      className={inputClasses}
       {...props.elementConfig}
       value={props.value}
       onChange={props.changed}
     />
   );
-  let validationError = null;
-  if (props.invalid && props.touched) {
-    validationError = <p> {props.errorMessage}</p>;
-  } else validationError = null;
 
+  //<label className={classes.Label}>{props.label}</label>
   return (
-    <div className={classes.Input}>
-      <label className={classes.Label}>{props.label}</label>
+    <div className="Input">
       {inputElement}
       {validationError}
     </div>
