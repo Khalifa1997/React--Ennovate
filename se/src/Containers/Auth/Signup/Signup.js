@@ -216,7 +216,17 @@ class signup extends Component {
     return (
       <div className="Body">
         <AuthNav />
-        <div className="jumbotron jumbotron-fluid signupPageCanvas">{form}</div>
+        <div className="jumbotron jumbotron-fluid signupPageCanvas">
+          <div className="container">{form}</div>
+          <div className="downDivSignup">
+            <p className="text-sm-left downText">
+              Already have an account?{" "}
+              <a className="Links" href="#">
+                Login now..
+              </a>
+            </p>
+          </div>
+        </div>
       </div>
     );
   }

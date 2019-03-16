@@ -1,29 +1,35 @@
 .Button {
-    background-color: transparent;
-    border: none;
-    color: white;
-    outline: none;
-    cursor: pointer;
-    font: inherit;
-    padding: 10px;
-    margin: 10px;
-    font-weight: bold;
+  background-color: transparent;
+  border: none;
+  color: white;
+  outline: none;
+  cursor: pointer;
+  font: inherit;
+  padding: 10px;
+  margin: 10px;
+  font-weight: bold;
 }
-
+.signupButton {
+  border-radius: 50px;
+  background-color: #1da1f2;
+  border-color: #1da1f2;
+  width: 80px;
+  margin-right: 20px;
+}
 .Button:first-of-type {
-    margin-left: 0;
-    padding-left: 0;
+  margin-left: 0;
+  padding-left: 0;
 }
 
 .Button:disabled {
-    color: #ccc;
-    cursor: not-allowed;
+  color: #ccc;
+  cursor: not-allowed;
 }
 
 .Success {
-    color: #5C9210;
+  color: #5c9210;
 }
 
 .Danger {
-    color: #944317;
+  color: #944317;
 }

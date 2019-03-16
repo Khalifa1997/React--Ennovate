@@ -3,7 +3,7 @@ import "./Input.css";
 
 const input = props => {
   let inputElement = null;
-  let inputClasses = "InputElement";
+  let inputClasses = "form-control InputElement";
   let validationError = null;
   if (props.invalid && props.touched) {
     inputClasses = "InputElement Invalid";
@@ -15,12 +15,13 @@ const input = props => {
       {...props.elementConfig}
       value={props.value}
       onChange={props.changed}
+      autoFocus={true}
     />
   );
 
   //<label className={classes.Label}>{props.label}</label>
   return (
-    <div className="Input">
+    <div className="form-group">
       {inputElement}
       {validationError}
     </div>
