@@ -21,7 +21,8 @@ class signup extends Component {
           startLetter: true
         },
         valid: false,
-        touched: false
+        touched: false,
+        errorMessage: "The username should start with a letter"
       },
       screenname: {
         elementType: "input",
@@ -48,6 +49,7 @@ class signup extends Component {
           required: true,
           email: true
         },
+        errorMessage: "Please enter a valid email",
         valid: false,
         touched: false
       },
@@ -77,6 +79,7 @@ class signup extends Component {
           required: true,
           matching: true
         },
+        errorMessage: "Passwords mismatch",
         valid: false,
         touched: false
       }
@@ -96,7 +99,7 @@ class signup extends Component {
       updatedFormElement.value,
       updatedFormElement.validation
     );
-    //updatedFormElement.touched = true;
+    updatedFormElement.touched = true;
     updatedSignupForm[inputIdentifier] = updatedFormElement;
 
     let formIsValid = true;
@@ -183,6 +186,7 @@ class signup extends Component {
             elementConfig={formElement.config.elementConfig}
             value={formElement.config.value}
             invalid={!formElement.config.valid}
+            errorMessage={formElement.config.errorMessage}
             shouldValidate={formElement.config.validation}
             touched={formElement.config.touched}
             changed={event => this.inputChangedHandler(event, formElement.id)}
