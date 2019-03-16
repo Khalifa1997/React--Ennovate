@@ -1,11 +1,13 @@
 import React, { Component } from "react";
 //import Aux from "./../../../HOC/Aux";
 import AuthNav from "./../../../Components/AuthNav/AuthNav";
-import Spinner from '../../../Components/UI/Spinner/Spinner';
-import Button from '../../../Components/UI/Button/Button';
+import Spinner from "../../../Components/UI/Spinner/Spinner";
+import Button from "../../../Components/UI/Button/Button";
 import Input from "./../../../Components/UI/Input/Input";
+
 import "./Signup.css";
 import axios from "../../../axios-users";
+
 class signup extends Component {
   state = {
     signupForm: {
@@ -147,7 +149,7 @@ class signup extends Component {
 
   submitHandler = event => {
     event.preventDefault();
-    this.setState( { loading: true } );
+    this.setState({ loading: true });
     const formData = {};
     for (let formElementIdentifier in this.state.signupForm) {
       formData[formElementIdentifier] = this.state.signupForm[
@@ -188,7 +190,8 @@ class signup extends Component {
       });
     }
     let form = (
-      <form onSubmit={this.submitHandler}>
+      <form onSubmit={this.submitHandler} className="signupBox">
+        <h3 className="signupHeader">Sign up to Nova</h3>
         {formElementsArray.map(formElement => (
           <Input
             key={formElement.id}
@@ -212,15 +215,13 @@ class signup extends Component {
         </Button>
       </form>
     );
-    if ( this.state.loading ) {
+    if (this.state.loading) {
       form = <Spinner />;
-  }
+    }
     return (
-      <div>
+      <div className="Body">
         <AuthNav />
-        <div className="jumbotron jumbotron-fluid PageCanvas">
-          <div className="container">{form}</div>
-        </div>
+        <div className="jumbotron jumbotron-fluid signupPageCanvas">{form}</div>
       </div>
     );
   }
