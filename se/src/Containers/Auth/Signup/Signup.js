@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 //import Aux from "./../../../HOC/Aux";
 import AuthNav from "./../../../Components/AuthNav/AuthNav";
+import Spinner from "../../../Components/UI/Spinner/Spinner";
+import Button from "../../../Components/UI/Button/Button";
 import Input from "./../../../Components/UI/Input/Input";
 
 import "./Signup.css";
@@ -146,7 +148,7 @@ class signup extends Component {
 
   submitHandler = event => {
     event.preventDefault();
-    //this.setState( { loading: true } );
+    this.setState({ loading: true });
     const formData = {};
     for (let formElementIdentifier in this.state.signupForm) {
       formData[formElementIdentifier] = this.state.signupForm[
@@ -166,11 +168,10 @@ class signup extends Component {
 
     axios
       .post("/users.json", data)
-      .then(
-        response => console.log(response)
-        //this.setState( { loading: false } );
+      .then(response => {
+        this.setState({ loading: false });
         // this.props.history.push( '/' );
-      )
+      })
       .catch(error => {
         this.setState({ loading: false });
       });
@@ -200,15 +201,18 @@ class signup extends Component {
             changed={event => this.inputChangedHandler(event, formElement.id)}
           />
         ))}
-        <button
+        <Button
           //className="btn btn-primary signupButton"
           //onClick={this.passwordHandler}
           disabled={!this.state.formIsValid}
         >
           Signup
-        </button>
+        </Button>
       </form>
     );
+    if (this.state.loading) {
+      form = <Spinner />;
+    }
     return (
       <div className="Body">
         <AuthNav />
