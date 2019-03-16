@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import AuthNav from "./../../../Components/AuthNav/AuthNav";
 import Input from "./../../../Components/UI/Input/Input";
 import "./Signup.css";
+import axios from '../../../axios-users';
 class signup extends Component {
   state = {
     signupForm: {
@@ -104,6 +105,7 @@ class signup extends Component {
     }
     this.setState({ signupForm: updatedSignupForm, formIsValid: formIsValid });
   };
+
   checkValidity(value, rules) {
     let isValid = true;
 
@@ -135,6 +137,35 @@ class signup extends Component {
     return isValid;
   }
 
+  submitHandler = ( event ) => {
+    event.preventDefault();
+    //this.setState( { loading: true } );
+    const formData = {};
+    for (let formElementIdentifier in this.state.signupForm) {
+        formData[formElementIdentifier] = this.state.signupForm[formElementIdentifier].value;
+    }
+    
+    const data = {
+      /*
+        username:this.state.signupForm.username.value,
+        screenname:this.state.signupForm.screenname.value,
+        email:this.state.signupForm.email.value,
+        password:this.state.signupForm.password.value
+      */
+        userData: formData
+    }
+    
+    axios.post( '/users.json', data )
+        .then( response => 
+          console.log(response)
+            //this.setState( { loading: false } );
+           // this.props.history.push( '/' );
+         )
+        .catch( error => {
+            this.setState( { loading: false } );
+        } );
+}
+
   render() {
     const formElementsArray = [];
     for (let key in this.state.signupForm) {
@@ -144,7 +175,7 @@ class signup extends Component {
       });
     }
     let form = (
-      <form>
+      <form  onSubmit={this.submitHandler}>
         {formElementsArray.map(formElement => (
           <Input
             key={formElement.id}
