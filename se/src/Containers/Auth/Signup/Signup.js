@@ -2,8 +2,10 @@ import React, { Component } from "react";
 //import Aux from "./../../../HOC/Aux";
 import AuthNav from "./../../../Components/AuthNav/AuthNav";
 import Input from "./../../../Components/UI/Input/Input";
+
 import "./Signup.css";
 import axios from "../../../axios-users";
+
 class signup extends Component {
   state = {
     signupForm: {
@@ -183,7 +185,8 @@ class signup extends Component {
       });
     }
     let form = (
-      <form onSubmit={this.submitHandler}>
+      <form onSubmit={this.submitHandler} className="signupBox">
+        <h3 className="signupHeader">Sign up to Nova</h3>
         {formElementsArray.map(formElement => (
           <Input
             key={formElement.id}
@@ -197,25 +200,19 @@ class signup extends Component {
             changed={event => this.inputChangedHandler(event, formElement.id)}
           />
         ))}
-<<<<<<< HEAD
-        <button className="btn btn-primary " onClick={this.passwordHandler}>
-=======
         <button
           //className="btn btn-primary signupButton"
           //onClick={this.passwordHandler}
           disabled={!this.state.formIsValid}
         >
->>>>>>> 2248279914179957f6e629e2b19c94b0c4917c5c
           Signup
         </button>
       </form>
     );
     return (
-      <div>
+      <div className="Body">
         <AuthNav />
-        <div className="jumbotron jumbotron-fluid PageCanvas">
-          <div className="container">{form}</div>
-        </div>
+        <div className="jumbotron jumbotron-fluid signupPageCanvas">{form}</div>
       </div>
     );
   }
