@@ -91,7 +91,8 @@ class signup extends Component {
       }
     },
     formIsValid: false,
-    loading: false
+    loading: false,
+    error:false
   };
   inputChangedHandler = (event, inputIdentifier) => {
     const updatedSignupForm = {
@@ -168,10 +169,13 @@ class signup extends Component {
 
     axios
       .post("/users.json", data)
-      .then(response => {
-        this.setState({ loading: false });
-        // this.props.history.push( '/' );
-      })
+        .then( response => {
+          if (response.status === 404) {
+            this.setState({ error: true });
+          }
+          this.setState( { loading: false } );
+         // this.props.history.push( '/' );
+      } )
       .catch(error => {
         this.setState({ loading: false });
       });
@@ -199,6 +203,7 @@ class signup extends Component {
             shouldValidate={formElement.config.validation}
             touched={formElement.config.touched}
             changed={event => this.inputChangedHandler(event, formElement.id)}
+            invalidEmail={this.state.signupForm.error}
           />
         ))}
         <Button
