@@ -1,4 +1,5 @@
 import React from "react";
+import myimg from '../../assets/images/nav2.jpg'
 //import Aux from "./../../HOC/Aux";
 import "./AuthNav.css";
 
@@ -7,9 +8,8 @@ const authNav = props => (
     <nav className="navbar navbar-expand-lg navbar-light bg-light AuthNav">
       <a className="navbar-brand" href="#">
         <img
-          src="https://upload.wikimedia.org/wikipedia/fr/thumb/c/c8/Twitter_Bird.svg/1259px-Twitter_Bird.svg.png"
-          height="23"
-          width="28"
+          src={myimg}
+          height="34"
         />
       </a>
       <button
