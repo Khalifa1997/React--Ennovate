@@ -73,7 +73,7 @@ class login extends Component {
           ...this.state
         };
         clone.token = res.data.idToken;
-        this.setState({ token: clone.token });
+        this.setState({ token: clone.token },() => console.log(res.data));
       })
       .catch(err => {
         const clone = {
