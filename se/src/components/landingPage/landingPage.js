@@ -12,14 +12,14 @@ function LandingPage(props) {
 
   return (
 
-    <div>
-      <div >
+    <div >
+      <div className="container" >
 
         <nav className="navbar navbar-expand-lg navbar-light primary-color fixed-top navbarbg">
 
           <div className="container-fluid">
 
-            <a className="navbar-brand" href="#"><img src={NavbarPic} width="133px" alt="pic" /></a>
+            <a className="navbar-brand" href="#"><img src={NavbarPic} height="48px" alt="pic" /></a>
 
 
             <div className="collapse navbar-collapse" id="basicExampleNav">
@@ -36,23 +36,23 @@ function LandingPage(props) {
                 </li>
 
               </ul>
-              <div className="md-form my-0">
-                <div class="btn-toolbar ">
-                  <ul className="navbar-nav mr-auto">
-                    <li className="nav-item">
-                      <a href="#" ><FontAwesomeIcon icon={faTwitter} className="navicon" style={{ color: 'darkgrey', marginRight: '20px' }} size="2x" /></a>
-                    </li>
-                    <li className="nav-item">
-                      <a href="#"><FontAwesomeIcon icon={faGithub} className="navicon" style={{ color: 'darkgrey', marginRight: '20px', marginLeft: '0px' }} size="2x" /></a>
-                    </li>
-                    <li className="nav-item">
-                      <a className=" nav-link" href="#">Login</a></li>
-                    <li className="nav navbar-nav">
-                      <button type="button" className="btn btn-outline-success">Sign up</button>
-                    </li>
-                  </ul>
-                </div>
-              </div>
+            </div>
+            <div className="navbar-collapse collapse w-100 order-3 dual-collapse2">
+
+              <ul className="navbar-nav ml-auto">
+                <li className="nav-item">
+                  <a href="#" ><FontAwesomeIcon icon={faTwitter} className="navicon" style={{ color: 'darkgrey', marginRight: '20px' }} size="2x" /></a>
+                </li>
+                <li className="nav-item">
+                  <a href="#"><FontAwesomeIcon icon={faGithub} className="navicon" style={{ color: 'darkgrey', marginRight: '20px', marginLeft: '0px' }} size="2x" /></a>
+                </li>
+                <li className="nav-item">
+                  <a className=" nav-link" href="#">Login</a></li>
+                <li className="nav-item">
+                  <button type="button" className="btn btn-outline-success">Sign up</button>
+                </li>
+              </ul>
+
             </div>
 
           </div>
@@ -83,7 +83,7 @@ function LandingPage(props) {
                 <p className="mb-5 tm-intro-text">
                   Please tell your friends about our site
               <a rel="nofollow" href="https://templatemo.com">templatemo</a>. Thank you.
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      Curabitur dapibus tristique enim a imperdiet. Etiam
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        Curabitur dapibus tristique enim a imperdiet. Etiam
               tristique sem sed condimentum posuere. </p>
                 <div className="tm-next">
                   <a href="#work" className="tm-intro-text tm-btn-primary">Read More</a>
@@ -126,9 +126,14 @@ function LandingPage(props) {
         </div>
 
       </section>
+      {/*  <section className=" tm-section-pad-top">
+        <div className="container-fluid">
+          <h1 className="text-center ">Hello world</h1>
 
+        </div>
+      </section> */}
 
-    </div >
+    </div>
 
 
   );
