@@ -2,7 +2,7 @@ import React, { Component } from "react";
 //import Aux from "./../../../HOC/Aux";
 import AuthNav from "./../../../Components/AuthNav/AuthNav";
 import Spinner from "../../../Components/UI/Spinner/Spinner";
-import Button from "../../../Components/UI/Button/Button";
+import Button from "../../../Components/UI/button/Button";
 import Input from "./../../../Components/UI/Input/Input";
 
 import "./Signup.css";
