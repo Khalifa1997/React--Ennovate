@@ -2,7 +2,7 @@ import React from 'react';
 import lap from '../../assets/images/laptop.jpg'
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faArrowCircleDown } from "@fortawesome/free-solid-svg-icons"
+import { faArrowCircleDown, faGrin, faUserFriends } from "@fortawesome/free-solid-svg-icons"
 import { faReact, faDocker, faNode, faGithub, faTwitter } from '@fortawesome/free-brands-svg-icons'
 import NavbarPic from '../../assets/images/nav2.jpg'
 
@@ -83,7 +83,7 @@ function LandingPage(props) {
                 <p className="mb-5 tm-intro-text">
                   Please tell your friends about our site
               <a rel="nofollow" href="https://templatemo.com">templatemo</a>. Thank you.
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        Curabitur dapibus tristique enim a imperdiet. Etiam
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            Curabitur dapibus tristique enim a imperdiet. Etiam
               tristique sem sed condimentum posuere. </p>
                 <div className="tm-next">
                   <a href="#work" className="tm-intro-text tm-btn-primary">Read More</a>
@@ -95,7 +95,7 @@ function LandingPage(props) {
 
         </div>
 
-        <div className="row tm-section-pad-top">
+        <div className="row tm-section-pad-top" style={{ paddingBottom: "60px" }}>
           <div className="col-lg-4 text-center">
             <FontAwesomeIcon icon={faReact} size="6x" style={{ color: '#3496d8', marginBottom: '30px', textAlign: 'center' }} />
             <h4 className="text-center tm-text-primary mb-4">100% Reactful</h4>
@@ -126,12 +126,31 @@ function LandingPage(props) {
         </div>
 
       </section>
-      {/*  <section className=" tm-section-pad-top">
+      <section className=" tm-section-pad-top bg2" style={{ paddingTop: "50px", paddingBottom: "50px" }}>
         <div className="container-fluid">
-          <h1 className="text-center ">Hello world</h1>
+          <div className="row">
+            <div class="col-sm text-center">
 
+              <FontAwesomeIcon icon={faGrin} size="6x" style={{ color: 'white', marginBottom: '30px' }} />
+              <h1 style={{ display: "block" }}>Totally Moderated Content</h1>
+
+            </div>
+
+            <div class="col-sm text-center">
+
+              <FontAwesomeIcon icon={faUserFriends} size="6x" style={{ color: 'white', marginBottom: '30px' }} />
+              <h1 style={{ display: "block" }}>Super Friendly Community!</h1>
+            </div>
+          </div>
         </div>
-      </section> */}
+      </section>
+
+      <section className=" tm-section-pad-top  text-center" style={{ paddingTop: "60px", paddingBottom: "30px" }}>
+        <h1 className="text-center" style={{ paddingBottom: "3px", color: "#3496d8" }}>No fees needed at all!</h1>
+        <button type="button" class="btn btn-light btn-lg" style={{ paddingTop: "3px", marginBottom: "20px", color: "White", backgroundColor: "#3496d8" }}>Join us now!</button>
+
+
+      </section>
 
     </div>
 

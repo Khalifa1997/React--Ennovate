@@ -524,6 +524,11 @@ p {
     }
 }
 
+.bg2 {
+    background: #3496d8;
+    color: white;
+}
+
 @media (min-width: 1200px) {
     .container {
         max-width: 1275px;
