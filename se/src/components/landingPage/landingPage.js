@@ -6,6 +6,7 @@ import { faArrowCircleDown, faGrin, faUserFriends } from "@fortawesome/free-soli
 import { faReact, faDocker, faNode, faGithub, faTwitter } from '@fortawesome/free-brands-svg-icons'
 import NavbarPic from '../../assets/images/nav2.jpg'
 
+
 import './LandingPage.css'
 function LandingPage(props) {
 
@@ -84,6 +85,7 @@ function LandingPage(props) {
                   Please tell your friends about our site
               <a rel="nofollow" href="https://templatemo.com">templatemo</a>. Thank you.
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             Curabitur dapibus tristique enim a imperdiet. Etiam
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            Curabitur dapibus tristique enim a imperdiet. Etiam
               tristique sem sed condimentum posuere. </p>
                 <div className="tm-next">
                   <a href="#work" className="tm-intro-text tm-btn-primary">Read More</a>
@@ -98,7 +100,8 @@ function LandingPage(props) {
         <div className="row tm-section-pad-top" style={{ paddingBottom: "60px" }}>
           <div className="col-lg-4 text-center">
             <FontAwesomeIcon icon={faReact} size="6x" style={{ color: '#3496d8', marginBottom: '30px', textAlign: 'center' }} />
-            <h4 className="text-center tm-text-primary mb-4">100% Reactful</h4>
+            <h4 className="text-center tm-text-primary mb-4"> 100% Reactful</h4>
+
             <p>
               Using React Library as our main frontend for quick development and little to no down-time.
           </p>
