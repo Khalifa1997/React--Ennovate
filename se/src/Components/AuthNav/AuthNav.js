@@ -1,9 +1,9 @@
 import React from "react";
-import Aux from "./../../HOC/Aux";
+//import Aux from "./../../HOC/Aux";
 import "./AuthNav.css";
 
 const authNav = props => (
-  <Aux>
+  <div>
     <nav className="navbar navbar-expand-lg navbar-light bg-light AuthNav">
       <a className="navbar-brand" href="#">
         <img
@@ -38,7 +38,7 @@ const authNav = props => (
         </ul>
       </div>
     </nav>
-  </Aux>
+  </div>
 );
 
 export default authNav;
