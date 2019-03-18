@@ -20,7 +20,7 @@ function LandingPage(props) {
 
           <div className="container-fluid">
 
-            <a className="navbar-brand" href="#"><img src={NavbarPic} height="48px" alt="pic" /></a>
+            <a className="navbar-brand" href="/"><img src={NavbarPic} height="48px" alt="pic" /></a>
 
 
             <div className="collapse navbar-collapse" id="basicExampleNav">

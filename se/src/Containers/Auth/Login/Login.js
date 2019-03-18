@@ -160,7 +160,7 @@ class login extends Component {
             <div className="downDiv">
               <p className="text-sm-left downText">
                 New to Nova?{" "}
-                <a className="Links" href="#">
+                <a className="Links" href="/signup">
                   Sign up now..
                 </a>
               </p>
