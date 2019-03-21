@@ -35,5 +35,8 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "devDependencies": {
+    "react-styleguidist": "^9.0.4"
+  }
 }
