@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Aux from "../../../HOC/";
+import Aux from "./../../../HOC/Aux";
 import AuthNav from "./../../../Components/AuthNav/AuthNav";
 import Classnames from "classnames";
 import Axios from "axios";
@@ -73,7 +73,7 @@ class login extends Component {
           ...this.state
         };
         clone.token = res.data.idToken;
-        this.setState({ token: clone.token }, () => console.log(res.data));
+        this.setState({ token: clone.token },() => console.log(res.data));
       })
       .catch(err => {
         const clone = {

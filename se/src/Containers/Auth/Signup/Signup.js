@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 //import Aux from "./../../../HOC/Aux";
-import AuthNav from "../../../components/AuthNav/AuthNav";
-import Spinner from "../../../components/UI/Spinner/Spinner";
-import Button from "../../../components/UI/button//button";
-import Input from "./../../../components/UI/Input/Input";
+import AuthNav from "./../../../Components/AuthNav/AuthNav";
+import Spinner from "../../../Components/UI/Spinner/Spinner";
+import Button from "../../../Components/UI/button/Button";
+import Input from "./../../../Components/UI/Input/Input";
 
 import "./Signup.css";
 import axios from "../../../axios-users";
@@ -92,7 +92,7 @@ class signup extends Component {
     },
     formIsValid: false,
     loading: false,
-    error: false
+    error:false
   };
   inputChangedHandler = (event, inputIdentifier) => {
     const updatedSignupForm = {
@@ -169,13 +169,13 @@ class signup extends Component {
 
     axios
       .post("/users.json", data)
-      .then(response => {
-        if (response.status === 404) {
-          this.setState({ error: true });
-        }
-        this.setState({ loading: false });
-        // this.props.history.push( '/' );
-      })
+        .then( response => {
+          if (response.status === 404) {
+            this.setState({ error: true });
+          }
+          this.setState( { loading: false } );
+         // this.props.history.push( '/' );
+      } )
       .catch(error => {
         this.setState({ loading: false });
       });
