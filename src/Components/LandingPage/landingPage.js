@@ -20,14 +20,14 @@ function LandingPage(props) {
 
           <div className="container-fluid">
 
-            <a className="navbar-brand" href="#"><img src={NavbarPic} height="48px" alt="pic" /></a>
+            <a className="navbar-brand" href="/"><img src={NavbarPic} height="48px" alt="pic" /></a>
 
 
             <div className="collapse navbar-collapse" id="basicExampleNav">
 
               <ul className="navbar-nav mr-auto">
                 <li className="nav-item">
-                  <a className="nav-link" href="#">Home
+                  <a className="nav-link" href="/">Home
 
                   </a>
                 </li>
@@ -45,12 +45,12 @@ function LandingPage(props) {
                   <a href="#" ><FontAwesomeIcon icon={faTwitter} className="navicon" style={{ color: 'darkgrey', marginRight: '20px' }} size="2x" /></a>
                 </li>
                 <li className="nav-item">
-                  <a href="#"><FontAwesomeIcon icon={faGithub} className="navicon" style={{ color: 'darkgrey', marginRight: '20px', marginLeft: '0px' }} size="2x" /></a>
+                  <a href="https://github.com/AyahElSamadoni/FrontEnd"><FontAwesomeIcon icon={faGithub} className="navicon" style={{ color: 'darkgrey', marginRight: '20px', marginLeft: '0px' }} size="2x" /></a>
                 </li>
                 <li className="nav-item">
-                  <a className=" nav-link" href="#">Login</a></li>
+                  <a className=" nav-link" href="/login">Login</a></li>
                 <li className="nav-item">
-                  <button type="button" className="btn btn-outline-success">Sign up</button>
+                  <a href="/signup"><button type="button" className="btn btn-outline-success">Sign up</button></a>
                 </li>
               </ul>
 
@@ -84,7 +84,7 @@ function LandingPage(props) {
                 <p className="mb-5 tm-intro-text">
                   Please tell your friends about our site
               <a rel="nofollow" href="https://templatemo.com">templatemo</a>. Thank you.
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        Curabitur dapibus tristique enim a imperdiet. Etiam
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  Curabitur dapibus tristique enim a imperdiet. Etiam
               tristique sem sed condimentum posuere. </p>
                 <div className="tm-next">
                   <a href="#work" className="tm-intro-text tm-btn-primary">Read More</a>
@@ -155,12 +155,12 @@ function LandingPage(props) {
 
       <section className=" tm-section-pad-top  text-center" style={{ paddingTop: "60px", paddingBottom: "30px" }}>
         <h1 className="text-center" style={{ paddingBottom: "3px", color: "#3496d8" }}>No fees needed at all!</h1>
-        <button type="button" class="btn btn-light btn-lg" style={{ paddingTop: "3px", marginBottom: "20px", color: "White", backgroundColor: "#3496d8" }}>Join us now!</button>
-
+        <a href="/signup"><button type="button" class="btn btn-light btn-lg" style={{ paddingTop: "3px", marginBottom: "20px", color: "White", backgroundColor: "#3496d8" }}>Join us now!</button>
+        </a>
 
       </section>
 
-    </div>
+    </div >
 
 
   );
