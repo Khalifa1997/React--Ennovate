@@ -1,0 +1,70 @@
+.Body {
+  position: fixed;
+  padding: 0;
+  margin: 0;
+
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+  background-color: #e6ecf0;
+}
+.signupBox {
+  padding-left: 100px;
+  padding-right: 100px;
+  padding-top: 20px;
+  padding-bottom: 35px;
+}
+.Links {
+  color: #1c94e0;
+  font-size: 14px;
+}
+
+.downDivSignup {
+  background-color: #f5f8fa;
+  height: 34%;
+
+  padding-left: 115px;
+  padding-top: 15px;
+  padding-bottom: 10px;
+}
+
+.signupHeader {
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.signupPageCanvas {
+  width: auto;
+  max-width: 835px;
+  margin: auto;
+  height: auto;
+  max-height: 510px;
+  background-color: white;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 0px;
+  font-family: "Roboto", sans-serif;
+  margin-top: 5px;
+  padding-top: 30px;
+}
+@media (max-width: 900px) {
+  .signupBox {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .signupPageCanvas {
+    flex: auto;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+
+  .downDiv {
+    background-color: #f5f8fa;
+    height: 34%;
+    padding-left: 50px;
+    padding-top: 20px;
+    padding-bottom: 5px;
+  }
+}
