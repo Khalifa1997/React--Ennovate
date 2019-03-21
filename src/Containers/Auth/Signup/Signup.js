@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-//import Aux from "./../../../HOC/Aux";
-import AuthNav from "../../../components/AuthNav/AuthNav";
-import Spinner from "../../../components/UI/Spinner/Spinner";
-import Button from "../../../components/UI/button//button";
-import Input from "./../../../components/UI/Input/Input";
+import Aux from "./../../../HOC/Aux";
+import AuthNav from "../../../Components/AuthNav/AuthNav";
+import Spinner from "../../../Components/UI/Spinner/Spinner";
+import Button from "../../../Components/UI/button//button";
+import Input from "../../../Components/UI/Input/Input";
 
 import "./Signup.css";
 import axios from "../../../axios-users";
