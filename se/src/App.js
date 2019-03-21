@@ -7,6 +7,7 @@ import Signup from './Containers/Auth/Signup/Signup'
 import Login from './Containers/Auth/Login/Login'
 
 
+/** This is a description of the foo function. */
 
 class App extends Component {
 

@@ -37,6 +37,6 @@
     "not op_mini all"
   ],
   "devDependencies": {
-    "jsdoc": "^3.5.5"
+    "jsdoc": "git+https://github.com/jsdoc3/jsdoc.git"
   }
 }
