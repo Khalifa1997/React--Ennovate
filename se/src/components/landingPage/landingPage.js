@@ -84,7 +84,8 @@ function LandingPage(props) {
                 <p className="mb-5 tm-intro-text">
                   Please tell your friends about our site
               <a rel="nofollow" href="https://templatemo.com">templatemo</a>. Thank you.
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        Curabitur dapibus tristique enim a imperdiet. Etiam
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            Curabitur dapibus tristique enim a imperdiet. Etiam
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            Curabitur dapibus tristique enim a imperdiet. Etiam
               tristique sem sed condimentum posuere. </p>
                 <div className="tm-next">
                   <a href="#work" className="tm-intro-text tm-btn-primary">Read More</a>
@@ -100,36 +101,30 @@ function LandingPage(props) {
           <div className="col-lg-4 text-center">
             <FontAwesomeIcon icon={faReact} size="6x" style={{ color: '#3496d8', marginBottom: '30px', textAlign: 'center' }} />
             <h4 className="text-center tm-text-primary mb-4"> 100% Reactful</h4>
-            <div className="container">
-              <p>
-                Using React Library as our main frontend for quick development and little to no down-time.
+
+            <p>
+              Using React Library as our main frontend for quick development and little to no down-time.
           </p>
-            </div>
           </div>
 
           <div className="col-lg-4 text-center">
             <FontAwesomeIcon icon={faNode} size="6x" style={{ color: '#3496d8', marginBottom: '30px' }} />
             <h4 className="text-center tm-text-primary mb-4">NodeJS</h4>
-            <div className="container">
-              <p>
-                Praesent ut finibus leo. Duis et tempus ipsum, id pretium nunc.
-                Vivamus imperdiet sem quis orci pharetra convallis. Nunc a tempus
-                nisi, sed fringilla purus. In hac habitasse platea.
-
+            <p>
+              Praesent ut finibus leo. Duis et tempus ipsum, id pretium nunc.
+              Vivamus imperdiet sem quis orci pharetra convallis. Nunc a tempus
+              nisi, sed fringilla purus. In hac habitasse platea.
           </p>
-            </div>
           </div>
 
           <div className="col-lg-4 text-center">
             <FontAwesomeIcon icon={faDocker} size="6x" style={{ color: '#3496d8', marginBottom: '30px' }} />
             <h4 className="text-center tm-text-primary mb-4">Docker</h4>
-            <div className="container">
-              <p>
-                Donec vestibulum libero nisl. Curabitur ac orci ac lorem blandit
-                volutpat. Sed ac sodales nibh, ut porttitor elit. Sed id dui mi.
-                Vestibulum ante ipsum primis in faucibus.
+            <p>
+              Donec vestibulum libero nisl. Curabitur ac orci ac lorem blandit
+              volutpat. Sed ac sodales nibh, ut porttitor elit. Sed id dui mi.
+              Vestibulum ante ipsum primis in faucibus.
           </p>
-            </div>
           </div>
         </div>
 
