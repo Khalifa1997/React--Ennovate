@@ -1,31 +1,16 @@
 @import url('https://fonts.googleapis.com/css?family=Satisfy');
-@import url('https://use.fontawesome.com/releases/v5.7.2/css/all.css')
-/*
+@import url('https://use.fontawesome.com/releases/v5.7.2/css/all.css');
 
-The Town
-
-https://templatemo.com/tm-525-the-town
-
-*/
-
-
-body {
-    color: #8f8f8f;
-    margin: 0;
-    padding: 0;
-    overflow-x: hidden;
-}
-
-a {
+.aclass {
     transition: all 0.3s ease;
 }
 
-a:hover,
-a:focus {
+.aclass:hover,
+.aclass:focus {
     text-decoration: none;
 }
 
-a:focus {
+.aclass:focus {
     outline: none;
 }
 
