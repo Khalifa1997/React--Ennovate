@@ -73,7 +73,7 @@ class login extends Component {
           ...this.state
         };
         clone.token = res.data.idToken;
-        this.setState({ token: clone.token },() => console.log(res.data));
+        this.setState({ token: clone.token }, () => console.log(res.data));
       })
       .catch(err => {
         const clone = {
@@ -150,8 +150,7 @@ class login extends Component {
                   )}
                 </div>
                 <button type="submit" className="btn btn-primary loginButton">
-                  Log in
-                </button>
+                  Log in</button>
                 <a className="Links" href="#">
                   Forgot password?
                 </a>

@@ -14,11 +14,11 @@
     outline: none;
 }
 
-.btn {
+.btnlanding {
     padding: 8px 32px;
 }
 
-.btn:hover {
+.btnlanding:hover {
     background-color: #ced4da;
 }
 
