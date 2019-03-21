@@ -1,5 +1,6 @@
 import React from "react";
 import myimg from '../../assets/images/nav2.jpg'
+//import Aux from "./../../HOC/Aux";
 import "./AuthNav.css";
 
 const authNav = props => (

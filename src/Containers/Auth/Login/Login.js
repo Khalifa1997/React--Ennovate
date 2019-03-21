@@ -1,10 +1,10 @@
 import React, { Component } from "react";
+import Aux from "../../../HOC/Aux";
 import AuthNav from "../../../Components/AuthNav/AuthNav";
 import Classnames from "classnames";
 import Axios from "axios";
 
 import "./Login.css";
-import Auxiliary from "../../../Components/HOC/Auxiliary";
 
 class login extends Component {
   constructor(props) {
@@ -106,7 +106,7 @@ class login extends Component {
 
   render() {
     return (
-      <Auxiliary>
+      <Aux>
         <div className="Body">
           <AuthNav />
           <div className="jumbotron jumbotron-fluid PageCanvas">
@@ -173,7 +173,7 @@ class login extends Component {
             </div>
           </div>
         </div>
-      </Auxiliary>
+      </Aux>
     );
   }
 }
