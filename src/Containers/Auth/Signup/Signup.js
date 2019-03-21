@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import Aux from "./../../../HOC/Aux";
 import AuthNav from "../../../Components/AuthNav/AuthNav";
 import Spinner from "../../../Components/UI/Spinner/Spinner";
 import Button from "../../../Components/UI/button//button";
