@@ -1,10 +1,10 @@
 import React from 'react';
-import lap from '../../assets/images/laptop.jpg';
+import lap from '../../assets/images/laptop.jpg'
 import PropTypes from 'prop-types';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowCircleDown, faGrin, faUserFriends } from "@fortawesome/free-solid-svg-icons";
-import { faReact, faDocker, faNode, faGithub, faTwitter } from '@fortawesome/free-brands-svg-icons';
-import NavbarPic from '../../assets/images/nav2.jpg';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faArrowCircleDown, faGrin, faUserFriends } from "@fortawesome/free-solid-svg-icons"
+import { faReact, faDocker, faNode, faGithub, faTwitter } from '@fortawesome/free-brands-svg-icons'
+import NavbarPic from '../../assets/images/nav2.jpg'
 
 
 import './LandingPage.css'
@@ -20,20 +20,20 @@ function LandingPage(props) {
 
           <div className="container-fluid">
 
-            <a className="navbar-brand aclass" href="/"><img src={NavbarPic} height="48px" alt="pic" /></a>
+            <a className="navbar-brand" href="/"><img src={NavbarPic} height="48px" alt="pic" /></a>
 
 
             <div className="collapse navbar-collapse" id="basicExampleNav">
 
               <ul className="navbar-nav mr-auto">
                 <li className="nav-item">
-                  <a className="nav-link aclass" href="/">Home
+                  <a className="nav-link" href="/">Home
 
                   </a>
                 </li>
 
                 <li className="nav-item">
-                  <a className="nav-link aclass" href="#">Pricing</a>
+                  <a className="nav-link" href="#">Pricing</a>
                 </li>
 
               </ul>
@@ -42,15 +42,15 @@ function LandingPage(props) {
 
               <ul className="navbar-nav ml-auto">
                 <li className="nav-item">
-                  <a href="#" className="aclass"><FontAwesomeIcon icon={faTwitter} className="navicon" style={{ color: 'darkgrey', marginRight: '20px' }} size="2x" /></a>
+                  <a href="#" ><FontAwesomeIcon icon={faTwitter} className="navicon" style={{ color: 'darkgrey', marginRight: '20px' }} size="2x" /></a>
                 </li>
                 <li className="nav-item">
-                  <a href="https://github.com/AyahElSamadoni/FrontEnd" className="aclass"><FontAwesomeIcon icon={faGithub} className="navicon" style={{ color: 'darkgrey', marginRight: '20px', marginLeft: '0px' }} size="2x" /></a>
+                  <a href="https://github.com/AyahElSamadoni/FrontEnd"><FontAwesomeIcon icon={faGithub} className="navicon" style={{ color: 'darkgrey', marginRight: '20px', marginLeft: '0px' }} size="2x" /></a>
                 </li>
                 <li className="nav-item">
-                  <a className=" nav-link aclass" href="/login">Login</a></li>
+                  <a className=" nav-link" href="/login">Login</a></li>
                 <li className="nav-item">
-                  <a href="/signup" className="aclass"><button type="button" className="btn btn-outline-success">Sign up</button></a>
+                  <a href="/signup"><button type="button" className="btn btn-outline-success">Sign up</button></a>
                 </li>
               </ul>
 
@@ -84,10 +84,10 @@ function LandingPage(props) {
                 <p className="mb-5 tm-intro-text">
                   Please tell your friends about our site
               <a rel="nofollow" href="https://templatemo.com">templatemo</a>. Thank you.
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      Curabitur dapibus tristique enim a imperdiet. Etiam
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  Curabitur dapibus tristique enim a imperdiet. Etiam
               tristique sem sed condimentum posuere. </p>
                 <div className="tm-next">
-                  <a href="#work" className="tm-intro-text tm-btn-primary aclass">Read More</a>
+                  <a href="#work" className="tm-intro-text tm-btn-primary">Read More</a>
                 </div>
               </div>
             </div>
