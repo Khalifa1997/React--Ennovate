@@ -225,7 +225,7 @@ class signup extends Component {
           <div className="downDivSignup">
             <p className="text-sm-left downText">
               Already have an account?{" "}
-              <a className="Links" href="/login">
+              <a className="Links" href="#">
                 Login now..
               </a>
             </p>
