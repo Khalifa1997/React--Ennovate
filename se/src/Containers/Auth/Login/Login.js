@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Aux from "../../../hoc/Aux";
+import Aux from "../../../highorder/Aux";
 import AuthNav from "../../../components/AuthNav/AuthNav";
 import Classnames from "classnames";
 import Axios from "axios";
