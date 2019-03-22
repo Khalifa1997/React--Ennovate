@@ -128,7 +128,9 @@ class signup extends Component {
     }
     if (rules.email) {
       isValid =
-        !!value.match(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/) && isValid;
+        !!value.match(
+          /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+        ) && isValid;
     }
 
     if (rules.required) {
@@ -145,7 +147,7 @@ class signup extends Component {
       isValid = value.length <= rules.maxLength && isValid;
     }
     if (rules.matching) {
-      isValid = value == this.state.signupForm.password.value && isValid;
+      isValid = value === this.state.signupForm.password.value && isValid;
     }
 
     return isValid;

@@ -18,8 +18,8 @@ class login extends Component {
           email: true
         },
         valid: false,
-        meta:{
-          touched:false,
+        meta: {
+          touched: false,
           errorMessage: "Please enter a valid email"
         }
       },
@@ -31,8 +31,8 @@ class login extends Component {
           maxLength: 25
         },
         valid: false,
-        meta:{
-          touched:false,
+        meta: {
+          touched: false,
           errorMessage: "Password should be between 8 and 25 characters long"
         }
       },
@@ -51,7 +51,9 @@ class login extends Component {
 
     if (rules.email) {
       isValid =
-        !!value.match(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/) && isValid;
+        !!value.match(
+          /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+        ) && isValid;
     }
 
     if (rules.minLength) {
@@ -75,7 +77,7 @@ class login extends Component {
     };
 
     deepClone.value = event.target.value;
-    deepClone.meta.touched = true
+    deepClone.meta.touched = true;
     deepClone.valid = this.checkValidity(deepClone.value, deepClone.validation);
 
     this.setState({ [stateIdentifier]: deepClone });
@@ -86,7 +88,7 @@ class login extends Component {
   Login = event => {
     event.preventDefault();
 
-    this.setState({ sentRequest : true })
+    this.setState({ sentRequest: true });
 
     const user = {
       email: this.state.email.value,
@@ -134,13 +136,12 @@ class login extends Component {
   };
 
   render() {
-
-    var submitButtonDisabled = true
-    console.log(this.state.email.valid  + " " + this.state.password.valid )
-    if(this.state.email.valid === true && this.state.password.valid === true ){
+    var submitButtonDisabled = true;
+    console.log(this.state.email.valid + " " + this.state.password.valid);
+    if (this.state.email.valid === true && this.state.password.valid === true) {
       submitButtonDisabled = false;
     }
-  
+
     return (
       <Aux>
         <div className="Body">
@@ -152,7 +153,9 @@ class login extends Component {
                 <div className="form-group">
                   <input
                     className={Classnames("form-control inputFields", {
-                      "is-invalid": this.state.email.valid === false && this.state.email.meta.touched === true
+                      "is-invalid":
+                        this.state.email.valid === false &&
+                        this.state.email.meta.touched === true
                     })}
                     id="exampleInputEmail1"
                     aria-describedby="emailHelp"
@@ -160,47 +163,62 @@ class login extends Component {
                     autoFocus
                     onChange={event => this.onChangeHandler(event, "email")}
                   />
-                  {this.state.email.valid === false && this.state.sentRequest === true && (
-                    <div className="invalid-feedback">
-                      {" "}
-                      {this.state.errors.error.message}{" "}
-                    </div>
-                  )}
-                  {this.state.email.valid === false && submitButtonDisabled === true && this.state.sentRequest === false  && (
-                    <div className="invalid-feedback">
-                      {" "}
-                      {this.state.email.meta.errorMessage}{" "}
-                    </div>
-                  )}
+                  {this.state.email.valid === false &&
+                    this.state.sentRequest === true && (
+                      <div className="invalid-feedback">
+                        {" "}
+                        {this.state.errors.error.message}{" "}
+                      </div>
+                    )}
+                  {this.state.email.valid === false &&
+                    submitButtonDisabled === true &&
+                    this.state.sentRequest === false && (
+                      <div className="invalid-feedback">
+                        {" "}
+                        {this.state.email.meta.errorMessage}{" "}
+                      </div>
+                    )}
                 </div>
                 <div className="form-group">
                   <input
                     type="password"
                     style={{ marginBottom: "25px" }}
                     className={Classnames("form-control inputFields", {
-                      "is-invalid": this.state.password.valid === false && this.state.password.meta.touched === true
+                      "is-invalid":
+                        this.state.password.valid === false &&
+                        this.state.password.meta.touched === true
                     })}
                     id="exampleInputPassword1"
                     placeholder="Password"
                     onChange={event => this.onChangeHandler(event, "password")}
                   />
-                  {this.state.password.valid === false && this.state.sentRequest === true && (
-                    <div style={{ marginTop: "-22px" }} className="invalid-feedback">
-                      {" "}
-                      {this.state.errors.error.message}{" "}
-                    </div>
-                  )}
-                  {this.state.password.valid === false && submitButtonDisabled === true && this.state.sentRequest === false && (
-                    <div className="invalid-feedback PassErrorSpace">
-                      {" "}
-                      {this.state.password.meta.errorMessage}{" "}
-                    </div>
-                  )}
-                  
+                  {this.state.password.valid === false &&
+                    this.state.sentRequest === true && (
+                      <div
+                        style={{ marginTop: "-22px" }}
+                        className="invalid-feedback"
+                      >
+                        {" "}
+                        {this.state.errors.error.message}{" "}
+                      </div>
+                    )}
+                  {this.state.password.valid === false &&
+                    submitButtonDisabled === true &&
+                    this.state.sentRequest === false && (
+                      <div className="invalid-feedback PassErrorSpace">
+                        {" "}
+                        {this.state.password.meta.errorMessage}{" "}
+                      </div>
+                    )}
                 </div>
-                <button type="submit" disabled = {submitButtonDisabled} className="btn btn-primary loginButton">
-                  Log in</button>
-                <a className="Links" href="/">
+                <button
+                  type="submit"
+                  disabled={submitButtonDisabled}
+                  className="btn btn-primary loginButton"
+                >
+                  Log in
+                </button>
+                <a className="Links" href="/forgotpassword">
                   Forgot password?
                 </a>
               </form>
