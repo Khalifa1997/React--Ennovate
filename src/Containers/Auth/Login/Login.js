@@ -151,7 +151,7 @@ class login extends Component {
                 </div>
                 <button type="submit" className="btn btn-primary loginButton">
                   Log in</button>
-                <a className="Links" href="#">
+                <a className="Links" href="/">
                   Forgot password?
                 </a>
               </form>
@@ -159,13 +159,13 @@ class login extends Component {
             <div className="downDiv">
               <p className="text-sm-left downText">
                 New to Nova?{" "}
-                <a className="Links" href="#">
+                <a className="Links" href="/signup">
                   Sign up now..
                 </a>
               </p>
               <p className="text-sm-left downText">
                 Need to know more{" "}
-                <a className="Links" href="#">
+                <a className="Links" href="/">
                   About us
                 </a>
               </p>

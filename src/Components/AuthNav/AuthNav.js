@@ -6,7 +6,7 @@ import "./AuthNav.css";
 const authNav = props => (
   <Aux>
     <nav className="navbar navbar-expand-lg navbar-light bg-light AuthNav">
-      <a className="navbar-brand" href="#">
+      <a className="navbar-brand" href="/">
         <img
           src={img}
           height="40"
@@ -26,12 +26,12 @@ const authNav = props => (
       <div className="collapse navbar-collapse" id="navbarNav">
         <ul className="navbar-nav">
           <li className="nav-item">
-            <a className="nav-link" href="#">
+            <a className="nav-link" href="/">
               <strong>Home</strong> <span className="sr-only">(current)</span>
             </a>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="#">
+            <a className="nav-link" href="/">
               <strong>About</strong>
             </a>
           </li>
