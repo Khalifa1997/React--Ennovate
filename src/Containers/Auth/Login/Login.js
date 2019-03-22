@@ -3,7 +3,7 @@ import Aux from "./../../../Components/Wrapper/Auxilary";
 import AuthNav from "./../../../Components/AuthNav/AuthNav";
 import Classnames from "classnames";
 import Axios from "axios";
-
+import Profile from "../../Profile/Profile"
 import "./Login.css";
 
 class login extends Component {
@@ -104,7 +104,7 @@ class login extends Component {
           ...this.state
         };
         clone.token = res.data.idToken;
-        this.setState({ token: clone.token }, () => console.log(res.data));
+        this.setState({ token: clone.token }, () => <Profile username = {res.data.email}/>)
       })
       .catch(err => {
         const clone = {
@@ -149,7 +149,7 @@ class login extends Component {
           <div className="jumbotron jumbotron-fluid PageCanvas">
             <div className="container">
               <form className="loginBox" onSubmit={this.Login}>
-                <h3 className="headerText">Log in to Nova</h3>
+                <h3 className="headerText">Log in to eNOVAte</h3>
                 <div className="form-group">
                   <input
                     className={Classnames("form-control inputFields", {
