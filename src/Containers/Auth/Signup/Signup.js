@@ -1,9 +1,8 @@
 import React, { Component } from "react";
-//import Aux from "./../../../HOC/Aux";
-import AuthNav from "./../../../Components/AuthNav/AuthNav";
+import AuthNav from "../../../Components/AuthNav/AuthNav";
 import Spinner from "../../../Components/UI/Spinner/Spinner";
-import Button from "../../../Components/UI/button/button";
-import Input from "./../../../Components/UI/Input/Input";
+import Button from "../../../Components/UI/button//button";
+import Input from "../../../Components/UI/Input/Input";
 
 import "./Signup.css";
 import axios from "../../../axios-users";
@@ -11,11 +10,11 @@ import axios from "../../../axios-users";
 class signup extends Component {
   state = {
     signupForm: {
-      username: {
+      screenname: {
         elementType: "input",
         elementConfig: {
           type: "text",
-          placeholder: "Your UserName"
+          placeholder: "Your Screen Name"
         },
         value: "",
         validation: {
@@ -26,13 +25,13 @@ class signup extends Component {
         },
         valid: false,
         touched: false,
-        errorMessage: "The username should start with a letter"
+        errorMessage: "The screen name should start with a letter and with no spaces"
       },
-      screenname: {
+      username: {
         elementType: "input",
         elementConfig: {
           type: "text",
-          placeholder: "Your Screen Name"
+          placeholder: "Your UserName"
         },
         value: "",
         validation: {
@@ -92,7 +91,10 @@ class signup extends Component {
     },
     formIsValid: false,
     loading: false,
-    error: false
+    error: {},
+    token:"",
+    erroremail:false,
+    errorscreenname:false
   };
   inputChangedHandler = (event, inputIdentifier) => {
     const updatedSignupForm = {
@@ -169,15 +171,39 @@ class signup extends Component {
 
     axios
       .post("/users.json", data)
-      .then(response => {
+      .then(res => {
+        /*
         if (response.status === 404) {
           this.setState({ error: true });
-        }
+          */
+         const clone = {
+          ...this.state.signupForm
+        };
+        clone.token = res.data.idtoken;
+        this.setState({ token: clone.token });
         this.setState({ loading: false });
         // this.props.history.push( '/' );
       })
-      .catch(error => {
+      .catch(err => {
+        const clone = {
+          ...this.state.signupForm
+        };
         this.setState({ loading: false });
+        clone.error = err.response.data;
+        this.setState({ error: clone.error });
+          if (
+            this.state.error.error.message === "INVALID_EMAIL" ||
+            this.state.error.error.message === "EMAIL_NOT_FOUND"
+          ) {
+            this.setState({ erroremail: true });
+          }
+          else if (
+            this.state.errors.error.message === "INVALID_USERNAME" ||
+            this.state.errors.error.message === "EXISTING_PASSWORD"
+          )
+          {
+            this.setState({ errorscreenname: true }); 
+          }
       });
   };
 
@@ -203,7 +229,7 @@ class signup extends Component {
             shouldValidate={formElement.config.validation}
             touched={formElement.config.touched}
             changed={event => this.inputChangedHandler(event, formElement.id)}
-            invalidEmail={this.state.signupForm.error}
+            invalidEmail={this.state.signupForm.erroremail}
           />
         ))}
         <Button
@@ -226,7 +252,7 @@ class signup extends Component {
           <div className="downDivSignup">
             <p className="text-sm-left downText">
               Already have an account?{" "}
-              <a className="Links" href="#">
+              <a className="Links" href="/login">
                 Login now..
               </a>
             </p>
