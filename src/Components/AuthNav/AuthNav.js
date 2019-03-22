@@ -9,6 +9,7 @@ const authNav = props => (
       <a className="navbar-brand" href="/">
         <img
           src={img}
+          alt = ""
           height="40"
         />
       </a>

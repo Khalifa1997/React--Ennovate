@@ -1,6 +1,6 @@
 import React from 'react';
 import lap from '../../assets/images/laptop.jpg';
-import PropTypes from 'prop-types';
+//import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowCircleDown, faGrin, faUserFriends } from "@fortawesome/free-solid-svg-icons";
 import { faReact, faDocker, faNode, faGithub, faTwitter } from '@fortawesome/free-brands-svg-icons';
@@ -33,7 +33,7 @@ function LandingPage(props) {
                 </li>
 
                 <li className="nav-item">
-                  <a className="nav-link aclass" href="#">Pricing</a>
+                  <a className="nav-link aclass" href="/">Pricing</a>
                 </li>
 
               </ul>
@@ -42,7 +42,7 @@ function LandingPage(props) {
 
               <ul className="navbar-nav ml-auto">
                 <li className="nav-item">
-                  <a href="#" className="aclass"><FontAwesomeIcon icon={faTwitter} className="navicon" style={{ color: 'darkgrey', marginRight: '20px' }} size="2x" /></a>
+                  <a href="/" className="aclass"><FontAwesomeIcon icon={faTwitter} className="navicon" style={{ color: 'darkgrey', marginRight: '20px' }} size="2x" /></a>
                 </li>
                 <li className="nav-item">
                   <a href="https://github.com/AyahElSamadoni/FrontEnd" className="aclass"><FontAwesomeIcon icon={faGithub} className="navicon" style={{ color: 'darkgrey', marginRight: '20px', marginLeft: '0px' }} size="2x" /></a>
