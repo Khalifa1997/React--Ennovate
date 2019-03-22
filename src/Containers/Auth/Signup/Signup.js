@@ -25,7 +25,9 @@ class signup extends Component {
         },
         valid: false,
         touched: false,
-        errorMessage: "The screen name should start with a letter and with no spaces"
+        autoFocus: true,
+        errorMessage:
+          "The screen name should start with a letter and with no spaces"
       },
       username: {
         elementType: "input",
@@ -92,9 +94,9 @@ class signup extends Component {
     formIsValid: false,
     loading: false,
     error: {},
-    token:"",
-    erroremail:false,
-    errorscreenname:false
+    token: "",
+    erroremail: false,
+    errorscreenname: false
   };
   inputChangedHandler = (event, inputIdentifier) => {
     const updatedSignupForm = {
@@ -176,7 +178,7 @@ class signup extends Component {
         if (response.status === 404) {
           this.setState({ error: true });
           */
-         const clone = {
+        const clone = {
           ...this.state.signupForm
         };
         clone.token = res.data.idtoken;
@@ -191,19 +193,17 @@ class signup extends Component {
         this.setState({ loading: false });
         clone.error = err.response.data;
         this.setState({ error: clone.error });
-          if (
-            this.state.error.error.message === "INVALID_EMAIL" ||
-            this.state.error.error.message === "EMAIL_NOT_FOUND"
-          ) {
-            this.setState({ erroremail: true });
-          }
-          else if (
-            this.state.errors.error.message === "INVALID_USERNAME" ||
-            this.state.errors.error.message === "EXISTING_PASSWORD"
-          )
-          {
-            this.setState({ errorscreenname: true }); 
-          }
+        if (
+          this.state.error.error.message === "INVALID_EMAIL" ||
+          this.state.error.error.message === "EMAIL_NOT_FOUND"
+        ) {
+          this.setState({ erroremail: true });
+        } else if (
+          this.state.errors.error.message === "INVALID_USERNAME" ||
+          this.state.errors.error.message === "EXISTING_PASSWORD"
+        ) {
+          this.setState({ errorscreenname: true });
+        }
       });
   };
 
@@ -228,6 +228,7 @@ class signup extends Component {
             errorMessage={formElement.config.errorMessage}
             shouldValidate={formElement.config.validation}
             touched={formElement.config.touched}
+            autoFocus={formElement.config.autoFocus}
             changed={event => this.inputChangedHandler(event, formElement.id)}
             invalidEmail={this.state.signupForm.erroremail}
           />
