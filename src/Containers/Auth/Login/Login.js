@@ -169,7 +169,6 @@ class login extends Component {
 
   render() {
     var submitButtonDisabled = true;
-    console.log(this.state.email.valid + " " + this.state.password.valid);
     if (this.state.email.valid === true && this.state.password.valid === true) {
       submitButtonDisabled = false;
     }
@@ -197,7 +196,7 @@ class login extends Component {
                   />
                   {this.state.email.valid === false &&
                     this.state.sentRequest === true && (
-                      <div className="invalid-feedback">
+                      <div id="emailBack" className="invalid-feedback">
                         {" "}
                         {this.state.errors.error.message}{" "}
                       </div>
@@ -205,7 +204,7 @@ class login extends Component {
                   {this.state.email.valid === false &&
                     submitButtonDisabled === true &&
                     this.state.sentRequest === false && (
-                      <div className="invalid-feedback">
+                      <div id="emailFront" className="invalid-feedback">
                         {" "}
                         {this.state.email.meta.errorMessage}{" "}
                       </div>
@@ -237,7 +236,7 @@ class login extends Component {
                   {this.state.password.valid === false &&
                     submitButtonDisabled === true &&
                     this.state.sentRequest === false && (
-                      <div className="invalid-feedback PassErrorSpace">
+                      <div id="passFront" className="invalid-feedback PassErrorSpace">
                         {" "}
                         {this.state.password.meta.errorMessage}{" "}
                       </div>
