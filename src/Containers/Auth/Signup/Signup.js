@@ -204,7 +204,7 @@ class signup extends Component {
       const clone = {
         ...this.state.signupForm
       };
-      clone.token = res.headers.x-auth-token;
+      clone.token = res.headers.auth;
       this.setState({ token: clone.token });
      })
       .catch(err => {
