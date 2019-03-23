@@ -13,7 +13,7 @@ import axios from "../../../axios-users";
 class signup extends Component {
   /**
    * @States
-   * @property {json}  signupForm               - The Signup Form object that contains all the form's components properties.
+   * @property {json}  signupForm               - The Signup Form object that contains all the form's components propertiesbvvxsssssssssssssssssssssssssssss.
    * @property {json} signupForm.screenname -User's screen name properties and configurations
    * @property {string} signupForm.screenname.elementType -The type of the input element
    * @property {string} signupForm.screenname.value -The value of the Screen Name
@@ -25,7 +25,20 @@ class signup extends Component {
    * @property {boolean} signupForm.screenname.validation.required -Indicates whether the field is necessary or not to signup
    * @property {boolean} signupForm.screenname.validation.nospace -Is set to true when spaces are not allowed in the input value
    * @property {boolean} signupForm.screenname.validation.startLetter -Is set to true when the input value should start with a letter only
-   * @property {integer} signupForm.screenname.validation.maxLength -The maximum length for the input value*/
+   * @property {integer} signupForm.screenname.validation.maxLength -The maximum length for the input value
+   * @property {json} signupForm.username -User's screen name properties and configurations
+   * @property {string} signupForm.username.elementType -The type of the element
+   * @property {json} signupForm.username.elementConfig -The validations required for the screen name
+   * @property {string} signupForm.username.elementConfig.type -The input element type
+   * @property {string} signupForm.username.elementConfig.placeholder -The input element's placeholder
+   * @property {string} signupForm.username.value -The value of the Username
+   * @property {boolean} signupForm.username.valid -indicates whether the input value is valid or not
+   * @property {boolean} signupForm.username.touched -indicates whether the the input element has been touched or not
+   * @property {string} signupForm.username.errorMessage -The error message to be displayed when the input is invalid
+   * @property {json} signupForm.username.validation -The validations required for the screen name
+   * @property {boolean} signupForm.username.validation.required -Indicates whether the field is necessary or not to signup
+   * @property {integer} signupForm.username.validation.maxLength -The maximum length for the input value*/
+
   state = {
     signupForm: {
       screenname: {
