@@ -29,7 +29,7 @@ class login extends Component {
      * @property {meta}  email.meta - Utility props.
      * @property {touched}  email.meta.touched - Is the field touched
      * @property {errorMessage}  email.meta.errorMessage - Error message to notify the user.
-     * 
+     *
      * @property {password}  Password               - The Password state.
      * @property {value}  Password.value       - The default value of the Password.
      * @property {validation}  Password.validation         - The Password validations requirements.
@@ -40,7 +40,7 @@ class login extends Component {
      * @property {meta}  Password.meta - Utility props.
      * @property {touched}  Password.meta.touched - Is the field touched
      * @property {errorMessage}  Password.meta.errorMessage - Error message to notify the user.
-     * 
+     *
      * @property {Token}  Token - To save the token of the logedIn user.
      * @property {sentRequest}  sentRequest - utility state to show if a request was sent.
      * @property {errors}  errors - an object to save all the errors from the database.
@@ -134,18 +134,15 @@ class login extends Component {
     //   "https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyPassword?key=AIzaSyBUoi3TDU9jfZRE7jVC0QoA08DK8mJC6wo",
     //   user
     // )
-    Axios.post(
-      "/accounts/signin",
-      user
-    )
+    Axios.post("/accounts/signin", user)
       .then(res => {
         const clone = {
           ...this.state
         };
         clone.token = res;
-        this.setState({ token: clone.token }, () => (
+        this.setState({ token: clone.token }, () =>
           console.log("user is signed in with token " + this.state.token)
-        ));
+        );
       })
       .catch(err => {
         const clone = {
@@ -156,16 +153,12 @@ class login extends Component {
           console.log(this.state.errors)
         );
 
-        if (
-          this.state.errors.error.message === "UserNotFound"
-        ) {
+        if (this.state.errors.error.message === "UserNotFound") {
           clone.email.valid = false;
           clone.password.valid = true;
           this.setState({ email: clone.email });
           this.setState({ password: clone.password });
-        } else if (
-          this.state.errors.error.message === "IncorrectPassword"
-        ) {
+        } else if (this.state.errors.error.message === "IncorrectPassword") {
           clone.password.valid = false;
           clone.email.valid = true;
           this.setState({ password: clone.password });
