@@ -116,7 +116,7 @@ class signup extends Component {
     token: "",
     errorEmail: false,
     errorScreenname: false,
-    errorLenScreenname:false
+    errorLenScreenname: false
   };
   inputChangedHandler = (event, inputIdentifier) => {
     const updatedSignupForm = {
@@ -188,7 +188,10 @@ class signup extends Component {
     };
 
     axios
-      .post("/accounts/signup", data)/*
+      .post(
+        "/accounts/signup",
+        data
+      ) /*
       .then(res => {
    
         const clone = {
@@ -200,13 +203,13 @@ class signup extends Component {
         // this.props.history.push( '/' );
       })
       */
-     .then(res=>{
-      const clone = {
-        ...this.state.signupForm
-      };
-      clone.token = res.headers.auth;
-      this.setState({ token: clone.token });
-     })
+      .then(res => {
+        const clone = {
+          ...this.state.signupForm
+        };
+        clone.token = res.headers.auth;
+        this.setState({ token: clone.token });
+      })
       .catch(err => {
         /*
         const clone = {
@@ -227,28 +230,23 @@ class signup extends Component {
           this.setState({ errorscreenname: true });
         }
         */
-       this.setState({ loading: false });
-       if(err==="screen name already registered.")
-         {
+        this.setState({ loading: false });
+        if (err === "screen name already registered.") {
           this.setState({ errorScreenname: true });
-         }
-         else if(err==="email already registered.")
-         {
+        } else if (err === "email already registered.") {
           this.setState({ errorEmail: true });
-         }
-         else if(err===" \"email\" must be a valid email")
-         {
+        } else if (err === ' "email" must be a valid email') {
           this.setState({ errorEmail: true });
-         }
-         else if(err===" \"screen_name\" length must be at least 3 characters long")
-         {
+        } else if (
+          err === ' "screen_name" length must be at least 3 characters long'
+        ) {
           this.setState({ errorLenScreenname: true });
-         }
-         else if(err===" \"screen_name\" length must be less than or equal to 15 characters long")
-         {
+        } else if (
+          err ===
+          ' "screen_name" length must be less than or equal to 15 characters long'
+        ) {
           this.setState({ errorLenScreenname: true });
-         }
-
+        }
       });
   };
 
@@ -262,7 +260,7 @@ class signup extends Component {
     }
     let form = (
       <form onSubmit={this.submitHandler} className="signupBox">
-        <h3 className="signupHeader">Sign up to Nova</h3>
+        <h3 className="signupHeader">Sign up to eNOVAte</h3>
         {formElementsArray.map(formElement => (
           <Input
             key={formElement.id}
@@ -278,7 +276,6 @@ class signup extends Component {
             invalidEmail={this.state.signupForm.errorEmail}
             invalidScreenname={this.state.signupForm.errorScreenname}
             invalidLenScreenname={this.state.signupForm.errorLenScreenname}
-            
           />
         ))}
         <Button

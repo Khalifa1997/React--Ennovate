@@ -39,7 +39,7 @@ class forgotPassword extends Component {
         <div className="PasswordPageCanvas">
           <div className="container">
             <div className="PageHeader Edge">Reset Password</div>
-            <p>Enter the email sssociated with your Innovate account</p>
+            <p>Enter the email associated with your Innovate account</p>
             <form>
               <input
                 className={this.state.inputClasses}
