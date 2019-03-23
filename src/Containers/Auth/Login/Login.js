@@ -130,39 +130,41 @@ class login extends Component {
       password: this.state.password.value
     };
 
+    // Axios.post(
+    //   "https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyPassword?key=AIzaSyBUoi3TDU9jfZRE7jVC0QoA08DK8mJC6wo",
+    //   user
+    // )
     Axios.post(
-      "https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyPassword?key=AIzaSyBUoi3TDU9jfZRE7jVC0QoA08DK8mJC6wo",
+      "/accounts/signin",
       user
     )
       .then(res => {
         const clone = {
           ...this.state
         };
-        clone.token = res.data.idToken;
+        clone.token = res;
         this.setState({ token: clone.token }, () => (
-          <Profile username={res.data.email} />
+          console.log("user is signed in with token " + this.state.token)
         ));
       })
       .catch(err => {
         const clone = {
           ...this.state
         };
-        clone.errors = err.response.data;
+        clone.errors = err;
         this.setState({ errors: clone.errors }, () =>
           console.log(this.state.errors)
         );
 
         if (
-          this.state.errors.error.message === "INVALID_EMAIL" ||
-          this.state.errors.error.message === "EMAIL_NOT_FOUND"
+          this.state.errors.error.message === "UserNotFound"
         ) {
           clone.email.valid = false;
           clone.password.valid = true;
           this.setState({ email: clone.email });
           this.setState({ password: clone.password });
         } else if (
-          this.state.errors.error.message === "INVALID_PASSWORD" ||
-          this.state.errors.error.message === "MISSING_PASSWORD"
+          this.state.errors.error.message === "IncorrectPassword"
         ) {
           clone.password.valid = false;
           clone.email.valid = true;
