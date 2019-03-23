@@ -6,17 +6,29 @@ import Input from "../../../Components/UI/Input/Input";
 
 import "./ForgotPassword.css";
 import axios from "../../../axios-users";
+/**
+ * This is a description of the forgotPassword component.
+ * @class
+ * */
 class forgotPassword extends Component {
+  /**
+   * @property {string} email -The email associated with the account.
+   * @property {string} inputClasses -The input element styling classes.
+   * @property {jsx} errorMessage - A paragraph containing the message to be displayed in case of errors.
+   */
   state = {
     email: "",
     inputClasses: "form-control InputElement",
-    validationError: <p />
+    errorMessage: <p />
   };
-
-  inputChangedHandler = event => {
+  /**
+   * Handles any changes in the input element's value by running validation checks on the new value and updating the email value in the state.
+   * @param {event} event -The input changed event.
+   */
+  inputChangedHandler(event) {
     let email = this.state.email;
     let inputClasses = "form-control InputElement ";
-    let validationError = <p />;
+    let errorMessage = <p />;
     email = event.target.value;
     if (
       !event.target.value.match(
@@ -24,14 +36,14 @@ class forgotPassword extends Component {
       )
     ) {
       inputClasses = "InputElement Invalid";
-      validationError = <p className="ValidationError"> Invalid email</p>;
+      errorMessage = <p className="ValidationError"> Invalid email</p>;
     }
     this.setState({
       email: email,
       inputClasses: inputClasses,
-      validationError: validationError
+      errorMessage: errorMessage
     });
-  };
+  }
   render() {
     return (
       <div>
@@ -46,7 +58,7 @@ class forgotPassword extends Component {
                 autoFocus={true}
                 onChange={event => this.inputChangedHandler(event)}
               />
-              {this.state.validationError}
+              {this.state.errorMessage}
               <Button>Reset</Button>
             </form>
           </div>

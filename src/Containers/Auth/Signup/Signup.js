@@ -77,7 +77,13 @@ class signup extends Component {
    * @property {string} signupForm.reenter.errorMessage -The error message to be displayed when the input is invalid.
    * @property {json} signupForm.reenter.validation -The validations required for the reentered password.
    * @property {boolean} signupForm.reenter.validation.required -Indicates whether the field is necessary or not to signup.
-   * @property {integer} signupForm.reenter.validation.matching -Check whether the reentered password matched the password*/
+   * @property {integer} signupForm.reenter.validation.matching -Check whether the reentered password matched the password
+   * @property {boolean} formIsValid -indicates whether the data in the signup form is valid ot not.
+   * @property {boolean} loading -Is set to true while posting users to the database.
+   * @property {json} error -The error respone caught from the backend.
+   * @property {string} token -The session's token.
+   * @property {boolean} erroremail -Is set true when the submitted email is invalid.
+   * @property {boolean} errorscreenname -Is set to true when the screenname already exists in the database */
 
   state = {
     signupForm: {
@@ -174,7 +180,7 @@ class signup extends Component {
    * @param {event} event - The change event.
    * @param {integer} inputIdentifier - The input element's identifier.
    */
-  inputChangedHandler = (event, inputIdentifier) => {
+  inputChangedHandler(event, inputIdentifier) {
     const updatedSignupForm = {
       ...this.state.signupForm
     };
@@ -194,8 +200,12 @@ class signup extends Component {
       formIsValid = updatedSignupForm[inputIdentifier].valid && formIsValid;
     }
     this.setState({ signupForm: updatedSignupForm, formIsValid: formIsValid });
-  };
-
+  }
+  /**
+   * Check if a value matches a given set of validation rules.
+   * @param {string} value - The value to be checked.
+   * @param {json} rules - The set of vaidation rules to check against.
+   */
   checkValidity(value, rules) {
     let isValid = true;
 
@@ -228,8 +238,12 @@ class signup extends Component {
 
     return isValid;
   }
-
-  submitHandler = event => {
+  /**
+   * Handles the signup form submission and sends a signup request to the server.
+   * @param {event} event - The submit form event.
+   
+   */
+  submitHandler(event) {
     event.preventDefault();
     this.setState({ loading: true });
     const formData = {};
@@ -283,7 +297,7 @@ class signup extends Component {
           this.setState({ errorscreenname: true });
         }
       });
-  };
+  }
 
   render() {
     const formElementsArray = [];
