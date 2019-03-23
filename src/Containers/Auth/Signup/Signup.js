@@ -6,6 +6,7 @@ import Input from "../../../Components/UI/Input/Input";
 
 import "./Signup.css";
 import axios from "../../../axios-users";
+import { nfapply } from "q";
 /**
  * This is a description of the signup Component.
  * @class
@@ -113,8 +114,9 @@ class signup extends Component {
     loading: false,
     error: {},
     token: "",
-    erroremail: false,
-    errorscreenname: false
+    errorEmail: false,
+    errorScreenname: false,
+    errorLenScreenname:false
   };
   inputChangedHandler = (event, inputIdentifier) => {
     const updatedSignupForm = {
@@ -186,12 +188,9 @@ class signup extends Component {
     };
 
     axios
-      .post("/users.json", data)
+      .post("/accounts/signup", data)/*
       .then(res => {
-        /*
-        if (response.status === 404) {
-          this.setState({ error: true });
-          */
+   
         const clone = {
           ...this.state.signupForm
         };
@@ -200,13 +199,22 @@ class signup extends Component {
         this.setState({ loading: false });
         // this.props.history.push( '/' );
       })
+      */
+     .then(res=>{
+      const clone = {
+        ...this.state.signupForm
+      };
+      clone.token = res.headers.x-auth-token;
+      this.setState({ token: clone.token });
+     })
       .catch(err => {
+        /*
         const clone = {
           ...this.state.signupForm
         };
-        this.setState({ loading: false });
-        clone.error = err.response.data;
-        this.setState({ error: clone.error });
+       
+       // clone.error = err.response.data;
+        //this.setState({ error: clone.error });
         if (
           this.state.error.error.message === "INVALID_EMAIL" ||
           this.state.error.error.message === "EMAIL_NOT_FOUND"
@@ -218,6 +226,29 @@ class signup extends Component {
         ) {
           this.setState({ errorscreenname: true });
         }
+        */
+       this.setState({ loading: false });
+       if(err==="screen name already registered.")
+         {
+          this.setState({ errorScreenname: true });
+         }
+         else if(err==="email already registered.")
+         {
+          this.setState({ errorEmail: true });
+         }
+         else if(err===" \"email\" must be a valid email")
+         {
+          this.setState({ errorEmail: true });
+         }
+         else if(err===" \"screen_name\" length must be at least 3 characters long")
+         {
+          this.setState({ errorLenScreenname: true });
+         }
+         else if(err===" \"screen_name\" length must be less than or equal to 15 characters long")
+         {
+          this.setState({ errorLenScreenname: true });
+         }
+
       });
   };
 
@@ -244,8 +275,10 @@ class signup extends Component {
             touched={formElement.config.touched}
             autoFocus={formElement.config.autoFocus}
             changed={event => this.inputChangedHandler(event, formElement.id)}
-            invalidEmail={this.state.signupForm.erroremail}
-            invalidScreenname={this.state.signupForm.errorscreenname}
+            invalidEmail={this.state.signupForm.errorEmail}
+            invalidScreenname={this.state.signupForm.errorScreenname}
+            invalidLenScreenname={this.state.signupForm.errorLenScreenname}
+            
           />
         ))}
         <Button
