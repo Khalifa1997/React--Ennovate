@@ -198,8 +198,8 @@ class signup extends Component {
             this.setState({ erroremail: true });
           }
           else if (
-            this.state.errors.error.message === "INVALID_USERNAME" ||
-            this.state.errors.error.message === "EXISTING_PASSWORD"
+            this.state.errors.error.message === "INVALID_SCREENNAME" ||
+            this.state.errors.error.message === "EXISTING_SCREENNAME"
           )
           {
             this.setState({ errorscreenname: true }); 
@@ -230,6 +230,7 @@ class signup extends Component {
             touched={formElement.config.touched}
             changed={event => this.inputChangedHandler(event, formElement.id)}
             invalidEmail={this.state.signupForm.erroremail}
+            invalidScreenanme={this.state.signupForm.errorscreenname}
           />
         ))}
         <Button
