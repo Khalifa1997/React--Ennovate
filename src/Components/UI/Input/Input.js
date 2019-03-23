@@ -1,7 +1,11 @@
 import React from "react";
 import "./Input.css";
-
-const input = props => {
+/**
+ * A stateless component that creates an input element with a set of properties and validations passed down from another component. It also changes its styling dynamically according to the validations passed.
+ * @param {json} props - Passed down properties.
+ * @returns { JSX } -returns a JSX code that has an inut element and error message.
+ */
+function input(props) {
   let inputElement = null;
   let inputClasses = "form-control InputElement";
   let validationError = null;
@@ -31,5 +35,5 @@ const input = props => {
       {validationError}
     </div>
   );
-};
+}
 export default input;
