@@ -13,7 +13,14 @@ const input = props => {
     validationError = (
       <p className="ValidationError"> "invalid Email. Email doesn't exist"</p>
     );
-  } else validationError = null;
+  }
+  else if ( props.invalidScreenname) {
+    inputClasses = "InputElement Invalid";
+    validationError = (
+      <p className="ValidationError"> "invalid Screenname. Screenname already exist"</p>
+    );
+  }
+  else validationError = null;
   inputElement = (
     <input
       className={inputClasses}

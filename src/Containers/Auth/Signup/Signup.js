@@ -164,12 +164,6 @@ class signup extends Component {
     }
 
     const data = {
-      /*
-        username:this.state.signupForm.username.value,
-        screenname:this.state.signupForm.screenname.value,
-        email:this.state.signupForm.email.value,
-        password:this.state.signupForm.password.value
-      */
       userData: formData
     };
 
@@ -201,8 +195,8 @@ class signup extends Component {
         ) {
           this.setState({ erroremail: true });
         } else if (
-          this.state.errors.error.message === "INVALID_USERNAME" ||
-          this.state.errors.error.message === "EXISTING_PASSWORD"
+          this.state.errors.error.message === "INVALID_SCREENNAME" ||
+          this.state.errors.error.message === "EXISTING_SCREENNAME"
         ) {
           this.setState({ errorscreenname: true });
         }
@@ -233,6 +227,7 @@ class signup extends Component {
             autoFocus={formElement.config.autoFocus}
             changed={event => this.inputChangedHandler(event, formElement.id)}
             invalidEmail={this.state.signupForm.erroremail}
+            invalidScreenname={this.state.signupForm.errorscreenname}
           />
         ))}
         <Button
