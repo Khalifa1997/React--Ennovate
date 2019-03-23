@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: Components/LandingPage/landingPage.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: Components/LandingPage/landingPage.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React from 'react';
+import lap from '../../assets/images/laptop.jpg';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowCircleDown, faGrin, faUserFriends } from "@fortawesome/free-solid-svg-icons";
+import { faReact, faDocker, faNode, faGithub, faTwitter } from '@fortawesome/free-brands-svg-icons';
+import NavbarPic from '../../assets/images/nav2.jpg';
+import './LandingPage.css';
+/**
+ * This is a description of the LandingPage Component.
+ * @summary This is the main landing page of our website
+ * @name LandingPage
+ * @constant
+ * 
+ * */
+
+/**
+* This function renders the jsx component on the screen using react DOM.
+* @description Contains  JSX Code for the landing page using Bootstrap 4 and fontawesome websites
+* @returns { JSX } The JSX code used to render the LandingPage.
+  * */
+function LandingPage(props) {
+
+
+  return (
+
+    &lt;div >
+      &lt;div className="container" >
+
+        &lt;nav className="navbar navbar-expand-lg navbar-light primary-color fixed-top navbarbg">
+
+          &lt;div className="container-fluid">
+
+            &lt;a className="navbar-brand aclass" href="/">&lt;img src={NavbarPic} height="48px" alt="pic" />&lt;/a>
+
+
+            &lt;div className="collapse navbar-collapse" id="basicExampleNav">
+
+              &lt;ul className="navbar-nav mr-auto">
+                &lt;li className="nav-item">
+                  &lt;a className="nav-link aclass" href="/">Home
+
+                  &lt;/a>
+                &lt;/li>
+
+                &lt;li className="nav-item">
+                  &lt;a className="nav-link aclass" href="/">Pricing&lt;/a>
+                &lt;/li>
+
+              &lt;/ul>
+            &lt;/div>
+            &lt;div className="navbar-collapse collapse w-100 order-3 dual-collapse2">
+
+              &lt;ul className="navbar-nav ml-auto">
+                &lt;li className="nav-item">
+                  &lt;a href="/" className="aclass">&lt;FontAwesomeIcon icon={faTwitter} className="navicon" style={{ color: 'darkgrey', marginRight: '20px' }} size="2x" />&lt;/a>
+                &lt;/li>
+                &lt;li className="nav-item">
+                  &lt;a href="https://github.com/AyahElSamadoni/FrontEnd" className="aclass">&lt;FontAwesomeIcon icon={faGithub} className="navicon" style={{ color: 'darkgrey', marginRight: '20px', marginLeft: '0px' }} size="2x" />&lt;/a>
+                &lt;/li>
+                &lt;li className="nav-item">
+                  &lt;a className=" nav-link aclass" href="/login">Login&lt;/a>&lt;/li>
+                &lt;li className="nav-item">
+                  &lt;a href="/signup" className="aclass">&lt;button type="button" className="btn btn-outline-success">Sign up&lt;/button>&lt;/a>
+                &lt;/li>
+              &lt;/ul>
+
+            &lt;/div>
+
+          &lt;/div>
+
+        &lt;/nav>
+
+      &lt;/div>
+      &lt;div className=" text-white tm-font-big bg">
+        &lt;div className="tm-next tm-intro-next" >
+          &lt;a href="#introduction" className="text-center tm-down-arrow-link">
+            &lt;FontAwesomeIcon icon={faArrowCircleDown} size="3x" style={{ color: '#3496d8', marginBottom: '30px', }} />
+          &lt;/a>
+        &lt;/div>
+      &lt;/div>
+      &lt;section className=" tm-section-pad-top">
+        &lt;div className="container">
+          &lt;div className="row">
+            &lt;div className="col-lg-6">
+              &lt;img src={lap} alt="" className="img-fluid tm-intro-img" />
+
+            &lt;/div>
+            &lt;div className="col-lg-6">
+              &lt;div className="tm-intro-text-container" id="introduction">
+                &lt;h2 className="tm-text-primary mb-4 tm-section-title">Introduction&lt;/h2>
+                &lt;p className="mb-4 tm-intro-text">
+                  This is our website lol.
+            &lt;/p>
+                &lt;p className="mb-5 tm-intro-text">
+                  Please tell your friends about our site
+              &lt;a rel="nofollow" href="https://templatemo.com">templatemo&lt;/a>. Thank you.
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                Curabitur dapibus tristique enim a imperdiet. Etiam
+              tristique sem sed condimentum posuere. &lt;/p>
+                &lt;div className="tm-next">
+                  &lt;a href="#work" className="tm-intro-text tm-btn-primary aclass">Read More&lt;/a>
+                &lt;/div>
+              &lt;/div>
+            &lt;/div>
+          &lt;/div>
+
+
+        &lt;/div>
+
+        &lt;div className="row tm-section-pad-top" style={{ paddingBottom: "60px" }}>
+          &lt;div className="col-lg-4 text-center">
+            &lt;FontAwesomeIcon icon={faReact} size="6x" style={{ color: '#3496d8', marginBottom: '30px', textAlign: 'center' }} />
+            &lt;h4 className="text-center tm-text-primary mb-4"> 100% Reactful&lt;/h4>
+            &lt;div className="container">
+              &lt;p>
+                Using React Library as our main frontend for quick development and little to no down-time.
+          &lt;/p>
+            &lt;/div>
+          &lt;/div>
+
+          &lt;div className="col-lg-4 text-center">
+            &lt;FontAwesomeIcon icon={faNode} size="6x" style={{ color: '#3496d8', marginBottom: '30px' }} />
+            &lt;h4 className="text-center tm-text-primary mb-4">NodeJS&lt;/h4>
+            &lt;div className="container">
+              &lt;p>
+                Praesent ut finibus leo. Duis et tempus ipsum, id pretium nunc.
+                Vivamus imperdiet sem quis orci pharetra convallis. Nunc a tempus
+                nisi, sed fringilla purus. In hac habitasse platea.
+
+          &lt;/p>
+            &lt;/div>
+          &lt;/div>
+
+          &lt;div className="col-lg-4 text-center">
+            &lt;FontAwesomeIcon icon={faDocker} size="6x" style={{ color: '#3496d8', marginBottom: '30px' }} />
+            &lt;h4 className="text-center tm-text-primary mb-4">Docker&lt;/h4>
+            &lt;div className="container">
+              &lt;p>
+                Donec vestibulum libero nisl. Curabitur ac orci ac lorem blandit
+                volutpat. Sed ac sodales nibh, ut porttitor elit. Sed id dui mi.
+                Vestibulum ante ipsum primis in faucibus.
+          &lt;/p>
+            &lt;/div>
+          &lt;/div>
+        &lt;/div>
+
+      &lt;/section>
+      &lt;section className=" tm-section-pad-top bg2" style={{ paddingTop: "50px", paddingBottom: "50px" }}>
+        &lt;div className="container-fluid">
+          &lt;div className="row">
+            &lt;div class="col-sm text-center">
+
+              &lt;FontAwesomeIcon icon={faGrin} size="6x" style={{ color: 'white', marginBottom: '30px' }} />
+              &lt;h1 style={{ display: "block" }}>Totally Moderated Content&lt;/h1>
+
+            &lt;/div>
+
+            &lt;div class="col-sm text-center">
+
+              &lt;FontAwesomeIcon icon={faUserFriends} size="6x" style={{ color: 'white', marginBottom: '30px' }} />
+              &lt;h1 style={{ display: "block" }}>Super Friendly Community!&lt;/h1>
+            &lt;/div>
+          &lt;/div>
+        &lt;/div>
+      &lt;/section>
+
+      &lt;section className=" tm-section-pad-top  text-center" style={{ paddingTop: "60px", paddingBottom: "30px" }}>
+        &lt;h1 className="text-center" style={{ paddingBottom: "3px", color: "#3496d8" }}>No fees needed at all!&lt;/h1>
+        &lt;a href="/signup">&lt;button type="button" class="btn btn-light btn-lg" style={{ paddingTop: "3px", marginBottom: "20px", color: "White", backgroundColor: "#3496d8" }}>Join us now!&lt;/button>
+        &lt;/a>
+
+      &lt;/section>
+
+    &lt;/div >
+
+
+  );
+}
+
+
+
+export default LandingPage;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="login.html">login</a></li><li><a href="signup.html">signup</a></li></ul><h3>Global</h3><ul><li><a href="global.html#LandingPage">LandingPage</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Sat Mar 23 2019 16:20:33 GMT+0200 (Eastern European Standard Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

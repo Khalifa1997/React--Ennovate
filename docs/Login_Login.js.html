@@ -37,10 +37,10 @@ import "./Login.css";
 /**
  * This is a description of the Login Component.
  * @class
+ * @classdesc This Class is a statefull component used to create the Login form
  * */
 class login extends Component {
   /**
-   * Constructor.
    * @constructor
    */
   constructor(props) {
@@ -48,30 +48,30 @@ class login extends Component {
 
     /**
      * @States
-     * @property {email}  email               - The email state.
-     * @property {value}  email.value       - The default value of the email.
-     * @property {validation}  email.validation         - The email validations requirements.
-     * @property {required}  email.validation.required      - It is required.
-     * @property {email}  email.validation.email - It must be an email.
-     * @property {valid}  email.valid - Boolean to check if the email is valid
-     * @property {meta}  email.meta - Utility props.
-     * @property {touched}  email.meta.touched - Is the field touched
-     * @property {errorMessage}  email.meta.errorMessage - Error message to notify the user.
-     * 
-     * @property {password}  Password               - The Password state.
-     * @property {value}  Password.value       - The default value of the Password.
-     * @property {validation}  Password.validation         - The Password validations requirements.
-     * @property {required}  Password.validation.required      - It is required.
-     * @property {MinLength}  Password.validation.minLength - Password Must be greater than.
-     * @property {MaxLength}  Password.validation.maxLength - Password Must be less than.
-     * @property {valid}  Password.valid - Boolean to check if the Password is valid
-     * @property {meta}  Password.meta - Utility props.
-     * @property {touched}  Password.meta.touched - Is the field touched
-     * @property {errorMessage}  Password.meta.errorMessage - Error message to notify the user.
-     * 
-     * @property {Token}  Token - To save the token of the logedIn user.
-     * @property {sentRequest}  sentRequest - utility state to show if a request was sent.
-     * @property {errors}  errors - an object to save all the errors from the database.
+     * @property {string}  email               - The email state.
+     * @property {string}  email.value       - The default value of the email.
+     * @property {object}  email.validation         - The email validations requirements.
+     * @property {boolean}  email.validation.required      - It is required.
+     * @property {boolean}  email.validation.email - It must be an email.
+     * @property {boolean}  email.valid - Boolean to check if the email is valid
+     * @property {object}  email.meta - Utility props.
+     * @property {boolen}  email.meta.touched - Is the field touched
+     * @property {string}  email.meta.errorMessage - Error message to notify the user.
+     *
+     * @property {string}  Password               - The Password state.
+     * @property {string}  Password.value       - The default value of the Password.
+     * @property {object}  Password.validation         - The Password validations requirements.
+     * @property {boolean}  Password.validation.required      - It is required.
+     * @property {number}  Password.validation.minLength - Password Must be greater than.
+     * @property {number}  Password.validation.maxLength - Password Must be less than.
+     * @property {boolean}  Password.valid - Boolean to check if the Password is valid
+     * @property {object}  Password.meta - Utility props.
+     * @property {boolean}  Password.meta.touched - Is the field touched
+     * @property {string}  Password.meta.errorMessage - Error message to notify the user.
+     *
+     * @property {string}  Token - To save the token of the logedIn user.
+     * @property {boolean}  sentRequest - utility state to show if a request was sent.
+     * @property {string}  errors - an object to save all the errors from the database.
      */
     this.state = {
       email: {
@@ -105,6 +105,14 @@ class login extends Component {
     };
   }
 
+  /**
+   * This is a description of the checkvalidity function.
+   * This function checks the validity of the data inside the input form.
+   * @param {string} Value - The value of the input box.
+   * @param {object} rules - An object of the required rules for this input.
+   *
+   * @returns {boolean} isValid
+   * */
   checkValidity(value, rules) {
     let isValid = true;
 
@@ -130,6 +138,13 @@ class login extends Component {
     return isValid;
   }
 
+  /**
+   * This is a description of the onChangeHandler function.
+   * This function checks if the input form has changed and unpdate the states with the corresponding data.
+   * @param {event} event - Changed event from the input box.
+   * @param {string} stateIdentifier - The type of the input box.
+   *
+   * */
   onChangeHandler = (event, stateIdentifier) => {
     const cloneState = {
       ...this.state
@@ -148,6 +163,14 @@ class login extends Component {
     this.setState({ sentRequest: false });
   };
 
+  /**
+   * This function submits the data inside the form.
+   * It creates an object an submit the latter to the database using axios.
+   * Also it handles any type of errors comming back from the database
+   *
+   * @param {event} event - Submit button is cliked event.
+   *
+   * */
   Login = event => {
     event.preventDefault();
 
@@ -200,6 +223,11 @@ class login extends Component {
       });
   };
 
+  /**
+   * This function renders the jsx component on the screen using react DOM.
+   *
+   * @returns {JSX} The JSX code used to render the component.
+   * */
   render() {
     var submitButtonDisabled = true;
     console.log(this.state.email.valid + " " + this.state.password.valid);
@@ -326,7 +354,11 @@ export default login;
 <br class="clear">
 
 <footer>
+<<<<<<< HEAD
     Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Sat Mar 23 2019 17:29:18 GMT+0200 (Egypt Standard Time)
+=======
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Sat Mar 23 2019 16:02:58 GMT+0200 (Eastern European Standard Time)
+>>>>>>> 08d144a58babebd50d761fb8e7fa8656b889c106
 </footer>
 
 <script> prettyPrint(); </script>
