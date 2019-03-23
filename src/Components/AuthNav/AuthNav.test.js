@@ -1,19 +1,19 @@
 import React from 'react';
 import { shallow, configure } from 'enzyme';
-import LandingPage from './landingPage';
+import authNav from './AuthNav';
 import { shallowToJson } from 'enzyme-to-json'
 import Adapter from 'enzyme-adapter-react-16';
 configure({ adapter: new Adapter() });
-describe('<LandingPage\>', () => {
+describe('<AuthNav\>', () => {
     it('should be defined', () => {
-        expect(<LandingPage />).toBeDefined();
+        expect(<authNav />).toBeDefined();
     });
     it('should render', () => {
-        const wrapper = shallow(<LandingPage />)
+        const wrapper = shallow(<authNav />)
         expect(shallowToJson(wrapper)).toMatchSnapshot()
     });
     it('should render', () => {
-        const wrapper = shallow(<LandingPage />)
+        const wrapper = shallow(<authNav />)
         expect(wrapper).toMatchSnapshot()
     });
 });

@@ -43,7 +43,7 @@ exports[`<LandingPage> should render 1`] = `
             >
               <a
                 className="nav-link aclass"
-                href="#"
+                href="/"
               >
                 Pricing
               </a>
@@ -61,7 +61,7 @@ exports[`<LandingPage> should render 1`] = `
             >
               <a
                 className="aclass"
-                href="#"
+                href="/"
               >
                 <FontAwesomeIcon
                   border={false}
@@ -259,30 +259,13 @@ exports[`<LandingPage> should render 1`] = `
             <p
               className="mb-4 tm-intro-text"
             >
-              This is our website lol.
+              This is eNovate Website.
             </p>
             <p
               className="mb-5 tm-intro-text"
             >
-              Please tell your friends about our site
-              <a
-                href="https://templatemo.com"
-                rel="nofollow"
-              >
-                templatemo
-              </a>
-              . Thank you. Curabitur dapibus tristique enim a imperdiet. Etiam tristique sem sed condimentum posuere. 
+              Connect with your friends immediatelly and enjoy one of the most pleasent and user-friendly experiences you'd ever have in your lifetime!
             </p>
-            <div
-              className="tm-next"
-            >
-              <a
-                className="tm-intro-text tm-btn-primary aclass"
-                href="#work"
-              >
-                Read More
-              </a>
-            </div>
           </div>
         </div>
       </div>
@@ -396,7 +379,7 @@ exports[`<LandingPage> should render 1`] = `
           className="container"
         >
           <p>
-            Praesent ut finibus leo. Duis et tempus ipsum, id pretium nunc. Vivamus imperdiet sem quis orci pharetra convallis. Nunc a tempus nisi, sed fringilla purus. In hac habitasse platea.
+            With NodeJS as our main Backend, Enjoy one of the quickest and smoothest experiences ever!
           </p>
         </div>
       </div>
@@ -448,7 +431,7 @@ exports[`<LandingPage> should render 1`] = `
           className="container"
         >
           <p>
-            Donec vestibulum libero nisl. Curabitur ac orci ac lorem blandit volutpat. Sed ac sodales nibh, ut porttitor elit. Sed id dui mi. Vestibulum ante ipsum primis in faucibus.
+            Secure, Powerful environment for the least downtime possible and the best user experience possible!
           </p>
         </div>
       </div>
@@ -672,7 +655,7 @@ ShallowWrapper {
                   >
                     <a
                       className="nav-link aclass"
-                      href="#"
+                      href="/"
                     >
                       Pricing
                     </a>
@@ -690,7 +673,7 @@ ShallowWrapper {
                   >
                     <a
                       className="aclass"
-                      href="#"
+                      href="/"
                     >
                       <FontAwesomeIcon
                         border={false}
@@ -888,30 +871,13 @@ ShallowWrapper {
                   <p
                     className="mb-4 tm-intro-text"
                   >
-                    This is our website lol.
+                    This is eNovate Website.
                   </p>
                   <p
                     className="mb-5 tm-intro-text"
                   >
-                    Please tell your friends about our site
-                    <a
-                      href="https://templatemo.com"
-                      rel="nofollow"
-                    >
-                      templatemo
-                    </a>
-                    . Thank you. Curabitur dapibus tristique enim a imperdiet. Etiam tristique sem sed condimentum posuere. 
+                    Connect with your friends immediatelly and enjoy one of the most pleasent and user-friendly experiences you'd ever have in your lifetime!
                   </p>
-                  <div
-                    className="tm-next"
-                  >
-                    <a
-                      className="tm-intro-text tm-btn-primary aclass"
-                      href="#work"
-                    >
-                      Read More
-                    </a>
-                  </div>
                 </div>
               </div>
             </div>
@@ -1025,7 +991,7 @@ ShallowWrapper {
                 className="container"
               >
                 <p>
-                  Praesent ut finibus leo. Duis et tempus ipsum, id pretium nunc. Vivamus imperdiet sem quis orci pharetra convallis. Nunc a tempus nisi, sed fringilla purus. In hac habitasse platea.
+                  With NodeJS as our main Backend, Enjoy one of the quickest and smoothest experiences ever!
                 </p>
               </div>
             </div>
@@ -1077,7 +1043,7 @@ ShallowWrapper {
                 className="container"
               >
                 <p>
-                  Donec vestibulum libero nisl. Curabitur ac orci ac lorem blandit volutpat. Sed ac sodales nibh, ut porttitor elit. Sed id dui mi. Vestibulum ante ipsum primis in faucibus.
+                  Secure, Powerful environment for the least downtime possible and the best user experience possible!
                 </p>
               </div>
             </div>
@@ -1285,7 +1251,7 @@ ShallowWrapper {
                   >
                     <a
                       className="nav-link aclass"
-                      href="#"
+                      href="/"
                     >
                       Pricing
                     </a>
@@ -1303,7 +1269,7 @@ ShallowWrapper {
                   >
                     <a
                       className="aclass"
-                      href="#"
+                      href="/"
                     >
                       <FontAwesomeIcon
                         border={false}
@@ -1461,7 +1427,7 @@ ShallowWrapper {
                   >
                     <a
                       className="nav-link aclass"
-                      href="#"
+                      href="/"
                     >
                       Pricing
                     </a>
@@ -1479,7 +1445,7 @@ ShallowWrapper {
                   >
                     <a
                       className="aclass"
-                      href="#"
+                      href="/"
                     >
                       <FontAwesomeIcon
                         border={false}
@@ -1634,7 +1600,7 @@ ShallowWrapper {
                     >
                       <a
                         className="nav-link aclass"
-                        href="#"
+                        href="/"
                       >
                         Pricing
                       </a>
@@ -1652,7 +1618,7 @@ ShallowWrapper {
                     >
                       <a
                         className="aclass"
-                        href="#"
+                        href="/"
                       >
                         <FontAwesomeIcon
                           border={false}
@@ -1822,7 +1788,7 @@ ShallowWrapper {
                     >
                       <a
                         className="nav-link aclass"
-                        href="#"
+                        href="/"
                       >
                         Pricing
                       </a>
@@ -1853,7 +1819,7 @@ ShallowWrapper {
                       >
                         <a
                           className="nav-link aclass"
-                          href="#"
+                          href="/"
                         >
                           Pricing
                         </a>
@@ -1899,7 +1865,7 @@ ShallowWrapper {
                       "props": Object {
                         "children": <a
                           className="nav-link aclass"
-                          href="#"
+                          href="/"
                         >
                           Pricing
                         </a>,
@@ -1913,7 +1879,7 @@ ShallowWrapper {
                         "props": Object {
                           "children": "Pricing",
                           "className": "nav-link aclass",
-                          "href": "#",
+                          "href": "/",
                         },
                         "ref": null,
                         "rendered": "Pricing",
@@ -1939,7 +1905,7 @@ ShallowWrapper {
                     >
                       <a
                         className="aclass"
-                        href="#"
+                        href="/"
                       >
                         <FontAwesomeIcon
                           border={false}
@@ -2065,7 +2031,7 @@ ShallowWrapper {
                       >
                         <a
                           className="aclass"
-                          href="#"
+                          href="/"
                         >
                           <FontAwesomeIcon
                             border={false}
@@ -2188,7 +2154,7 @@ ShallowWrapper {
                       "props": Object {
                         "children": <a
                           className="aclass"
-                          href="#"
+                          href="/"
                         >
                           <FontAwesomeIcon
                             border={false}
@@ -2272,7 +2238,7 @@ ShallowWrapper {
                             transform={null}
                           />,
                           "className": "aclass",
-                          "href": "#",
+                          "href": "/",
                         },
                         "ref": null,
                         "rendered": Object {
@@ -2781,30 +2747,13 @@ ShallowWrapper {
                     <p
                       className="mb-4 tm-intro-text"
                     >
-                      This is our website lol.
+                      This is eNovate Website.
                     </p>
                     <p
                       className="mb-5 tm-intro-text"
                     >
-                      Please tell your friends about our site
-                      <a
-                        href="https://templatemo.com"
-                        rel="nofollow"
-                      >
-                        templatemo
-                      </a>
-                      . Thank you. Curabitur dapibus tristique enim a imperdiet. Etiam tristique sem sed condimentum posuere. 
+                      Connect with your friends immediatelly and enjoy one of the most pleasent and user-friendly experiences you'd ever have in your lifetime!
                     </p>
-                    <div
-                      className="tm-next"
-                    >
-                      <a
-                        className="tm-intro-text tm-btn-primary aclass"
-                        href="#work"
-                      >
-                        Read More
-                      </a>
-                    </div>
                   </div>
                 </div>
               </div>
@@ -2918,7 +2867,7 @@ ShallowWrapper {
                   className="container"
                 >
                   <p>
-                    Praesent ut finibus leo. Duis et tempus ipsum, id pretium nunc. Vivamus imperdiet sem quis orci pharetra convallis. Nunc a tempus nisi, sed fringilla purus. In hac habitasse platea.
+                    With NodeJS as our main Backend, Enjoy one of the quickest and smoothest experiences ever!
                   </p>
                 </div>
               </div>
@@ -2970,7 +2919,7 @@ ShallowWrapper {
                   className="container"
                 >
                   <p>
-                    Donec vestibulum libero nisl. Curabitur ac orci ac lorem blandit volutpat. Sed ac sodales nibh, ut porttitor elit. Sed id dui mi. Vestibulum ante ipsum primis in faucibus.
+                    Secure, Powerful environment for the least downtime possible and the best user experience possible!
                   </p>
                 </div>
               </div>
@@ -3012,30 +2961,13 @@ ShallowWrapper {
                     <p
                       className="mb-4 tm-intro-text"
                     >
-                      This is our website lol.
+                      This is eNovate Website.
                     </p>
                     <p
                       className="mb-5 tm-intro-text"
                     >
-                      Please tell your friends about our site
-                      <a
-                        href="https://templatemo.com"
-                        rel="nofollow"
-                      >
-                        templatemo
-                      </a>
-                      . Thank you. Curabitur dapibus tristique enim a imperdiet. Etiam tristique sem sed condimentum posuere. 
+                      Connect with your friends immediatelly and enjoy one of the most pleasent and user-friendly experiences you'd ever have in your lifetime!
                     </p>
-                    <div
-                      className="tm-next"
-                    >
-                      <a
-                        className="tm-intro-text tm-btn-primary aclass"
-                        href="#work"
-                      >
-                        Read More
-                      </a>
-                    </div>
                   </div>
                 </div>
               </div>,
@@ -3072,30 +3004,13 @@ ShallowWrapper {
                       <p
                         className="mb-4 tm-intro-text"
                       >
-                        This is our website lol.
+                        This is eNovate Website.
                       </p>
                       <p
                         className="mb-5 tm-intro-text"
                       >
-                        Please tell your friends about our site
-                        <a
-                          href="https://templatemo.com"
-                          rel="nofollow"
-                        >
-                          templatemo
-                        </a>
-                        . Thank you. Curabitur dapibus tristique enim a imperdiet. Etiam tristique sem sed condimentum posuere. 
+                        Connect with your friends immediatelly and enjoy one of the most pleasent and user-friendly experiences you'd ever have in your lifetime!
                       </p>
-                      <div
-                        className="tm-next"
-                      >
-                        <a
-                          className="tm-intro-text tm-btn-primary aclass"
-                          href="#work"
-                        >
-                          Read More
-                        </a>
-                      </div>
                     </div>
                   </div>,
                 ],
@@ -3148,30 +3063,13 @@ ShallowWrapper {
                       <p
                         className="mb-4 tm-intro-text"
                       >
-                        This is our website lol.
+                        This is eNovate Website.
                       </p>
                       <p
                         className="mb-5 tm-intro-text"
                       >
-                        Please tell your friends about our site
-                        <a
-                          href="https://templatemo.com"
-                          rel="nofollow"
-                        >
-                          templatemo
-                        </a>
-                        . Thank you. Curabitur dapibus tristique enim a imperdiet. Etiam tristique sem sed condimentum posuere. 
+                        Connect with your friends immediatelly and enjoy one of the most pleasent and user-friendly experiences you'd ever have in your lifetime!
                       </p>
-                      <div
-                        className="tm-next"
-                      >
-                        <a
-                          className="tm-intro-text tm-btn-primary aclass"
-                          href="#work"
-                        >
-                          Read More
-                        </a>
-                      </div>
                     </div>,
                     "className": "col-lg-6",
                   },
@@ -3190,30 +3088,13 @@ ShallowWrapper {
                         <p
                           className="mb-4 tm-intro-text"
                         >
-                          This is our website lol.
+                          This is eNovate Website.
                         </p>,
                         <p
                           className="mb-5 tm-intro-text"
                         >
-                          Please tell your friends about our site
-                          <a
-                            href="https://templatemo.com"
-                            rel="nofollow"
-                          >
-                            templatemo
-                          </a>
-                          . Thank you. Curabitur dapibus tristique enim a imperdiet. Etiam tristique sem sed condimentum posuere. 
+                          Connect with your friends immediatelly and enjoy one of the most pleasent and user-friendly experiences you'd ever have in your lifetime!
                         </p>,
-                        <div
-                          className="tm-next"
-                        >
-                          <a
-                            className="tm-intro-text tm-btn-primary aclass"
-                            href="#work"
-                          >
-                            Read More
-                          </a>
-                        </div>,
                       ],
                       "className": "tm-intro-text-container",
                       "id": "introduction",
@@ -3237,11 +3118,11 @@ ShallowWrapper {
                         "key": undefined,
                         "nodeType": "host",
                         "props": Object {
-                          "children": "This is our website lol.",
+                          "children": "This is eNovate Website.",
                           "className": "mb-4 tm-intro-text",
                         },
                         "ref": null,
-                        "rendered": "This is our website lol.",
+                        "rendered": "This is eNovate Website.",
                         "type": "p",
                       },
                       Object {
@@ -3249,66 +3130,12 @@ ShallowWrapper {
                         "key": undefined,
                         "nodeType": "host",
                         "props": Object {
-                          "children": Array [
-                            "Please tell your friends about our site",
-                            <a
-                              href="https://templatemo.com"
-                              rel="nofollow"
-                            >
-                              templatemo
-                            </a>,
-                            ". Thank you. Curabitur dapibus tristique enim a imperdiet. Etiam tristique sem sed condimentum posuere. ",
-                          ],
+                          "children": "Connect with your friends immediatelly and enjoy one of the most pleasent and user-friendly experiences you'd ever have in your lifetime!",
                           "className": "mb-5 tm-intro-text",
                         },
                         "ref": null,
-                        "rendered": Array [
-                          "Please tell your friends about our site",
-                          Object {
-                            "instance": null,
-                            "key": undefined,
-                            "nodeType": "host",
-                            "props": Object {
-                              "children": "templatemo",
-                              "href": "https://templatemo.com",
-                              "rel": "nofollow",
-                            },
-                            "ref": null,
-                            "rendered": "templatemo",
-                            "type": "a",
-                          },
-                          ". Thank you. Curabitur dapibus tristique enim a imperdiet. Etiam tristique sem sed condimentum posuere. ",
-                        ],
+                        "rendered": "Connect with your friends immediatelly and enjoy one of the most pleasent and user-friendly experiences you'd ever have in your lifetime!",
                         "type": "p",
-                      },
-                      Object {
-                        "instance": null,
-                        "key": undefined,
-                        "nodeType": "host",
-                        "props": Object {
-                          "children": <a
-                            className="tm-intro-text tm-btn-primary aclass"
-                            href="#work"
-                          >
-                            Read More
-                          </a>,
-                          "className": "tm-next",
-                        },
-                        "ref": null,
-                        "rendered": Object {
-                          "instance": null,
-                          "key": undefined,
-                          "nodeType": "host",
-                          "props": Object {
-                            "children": "Read More",
-                            "className": "tm-intro-text tm-btn-primary aclass",
-                            "href": "#work",
-                          },
-                          "ref": null,
-                          "rendered": "Read More",
-                          "type": "a",
-                        },
-                        "type": "div",
                       },
                     ],
                     "type": "div",
@@ -3427,7 +3254,7 @@ ShallowWrapper {
                     className="container"
                   >
                     <p>
-                      Praesent ut finibus leo. Duis et tempus ipsum, id pretium nunc. Vivamus imperdiet sem quis orci pharetra convallis. Nunc a tempus nisi, sed fringilla purus. In hac habitasse platea.
+                      With NodeJS as our main Backend, Enjoy one of the quickest and smoothest experiences ever!
                     </p>
                   </div>
                 </div>,
@@ -3479,7 +3306,7 @@ ShallowWrapper {
                     className="container"
                   >
                     <p>
-                      Donec vestibulum libero nisl. Curabitur ac orci ac lorem blandit volutpat. Sed ac sodales nibh, ut porttitor elit. Sed id dui mi. Vestibulum ante ipsum primis in faucibus.
+                      Secure, Powerful environment for the least downtime possible and the best user experience possible!
                     </p>
                   </div>
                 </div>,
@@ -3682,7 +3509,7 @@ ShallowWrapper {
                       className="container"
                     >
                       <p>
-                        Praesent ut finibus leo. Duis et tempus ipsum, id pretium nunc. Vivamus imperdiet sem quis orci pharetra convallis. Nunc a tempus nisi, sed fringilla purus. In hac habitasse platea.
+                        With NodeJS as our main Backend, Enjoy one of the quickest and smoothest experiences ever!
                       </p>
                     </div>,
                   ],
@@ -3748,7 +3575,7 @@ ShallowWrapper {
                     "nodeType": "host",
                     "props": Object {
                       "children": <p>
-                        Praesent ut finibus leo. Duis et tempus ipsum, id pretium nunc. Vivamus imperdiet sem quis orci pharetra convallis. Nunc a tempus nisi, sed fringilla purus. In hac habitasse platea.
+                        With NodeJS as our main Backend, Enjoy one of the quickest and smoothest experiences ever!
                       </p>,
                       "className": "container",
                     },
@@ -3758,10 +3585,10 @@ ShallowWrapper {
                       "key": undefined,
                       "nodeType": "host",
                       "props": Object {
-                        "children": "Praesent ut finibus leo. Duis et tempus ipsum, id pretium nunc. Vivamus imperdiet sem quis orci pharetra convallis. Nunc a tempus nisi, sed fringilla purus. In hac habitasse platea.",
+                        "children": "With NodeJS as our main Backend, Enjoy one of the quickest and smoothest experiences ever!",
                       },
                       "ref": null,
-                      "rendered": "Praesent ut finibus leo. Duis et tempus ipsum, id pretium nunc. Vivamus imperdiet sem quis orci pharetra convallis. Nunc a tempus nisi, sed fringilla purus. In hac habitasse platea.",
+                      "rendered": "With NodeJS as our main Backend, Enjoy one of the quickest and smoothest experiences ever!",
                       "type": "p",
                     },
                     "type": "div",
@@ -3820,7 +3647,7 @@ ShallowWrapper {
                       className="container"
                     >
                       <p>
-                        Donec vestibulum libero nisl. Curabitur ac orci ac lorem blandit volutpat. Sed ac sodales nibh, ut porttitor elit. Sed id dui mi. Vestibulum ante ipsum primis in faucibus.
+                        Secure, Powerful environment for the least downtime possible and the best user experience possible!
                       </p>
                     </div>,
                   ],
@@ -3886,7 +3713,7 @@ ShallowWrapper {
                     "nodeType": "host",
                     "props": Object {
                       "children": <p>
-                        Donec vestibulum libero nisl. Curabitur ac orci ac lorem blandit volutpat. Sed ac sodales nibh, ut porttitor elit. Sed id dui mi. Vestibulum ante ipsum primis in faucibus.
+                        Secure, Powerful environment for the least downtime possible and the best user experience possible!
                       </p>,
                       "className": "container",
                     },
@@ -3896,10 +3723,10 @@ ShallowWrapper {
                       "key": undefined,
                       "nodeType": "host",
                       "props": Object {
-                        "children": "Donec vestibulum libero nisl. Curabitur ac orci ac lorem blandit volutpat. Sed ac sodales nibh, ut porttitor elit. Sed id dui mi. Vestibulum ante ipsum primis in faucibus.",
+                        "children": "Secure, Powerful environment for the least downtime possible and the best user experience possible!",
                       },
                       "ref": null,
-                      "rendered": "Donec vestibulum libero nisl. Curabitur ac orci ac lorem blandit volutpat. Sed ac sodales nibh, ut porttitor elit. Sed id dui mi. Vestibulum ante ipsum primis in faucibus.",
+                      "rendered": "Secure, Powerful environment for the least downtime possible and the best user experience possible!",
                       "type": "p",
                     },
                     "type": "div",
@@ -4640,7 +4467,7 @@ ShallowWrapper {
                     >
                       <a
                         className="nav-link aclass"
-                        href="#"
+                        href="/"
                       >
                         Pricing
                       </a>
@@ -4658,7 +4485,7 @@ ShallowWrapper {
                     >
                       <a
                         className="aclass"
-                        href="#"
+                        href="/"
                       >
                         <FontAwesomeIcon
                           border={false}
@@ -4856,30 +4683,13 @@ ShallowWrapper {
                     <p
                       className="mb-4 tm-intro-text"
                     >
-                      This is our website lol.
+                      This is eNovate Website.
                     </p>
                     <p
                       className="mb-5 tm-intro-text"
                     >
-                      Please tell your friends about our site
-                      <a
-                        href="https://templatemo.com"
-                        rel="nofollow"
-                      >
-                        templatemo
-                      </a>
-                      . Thank you. Curabitur dapibus tristique enim a imperdiet. Etiam tristique sem sed condimentum posuere. 
+                      Connect with your friends immediatelly and enjoy one of the most pleasent and user-friendly experiences you'd ever have in your lifetime!
                     </p>
-                    <div
-                      className="tm-next"
-                    >
-                      <a
-                        className="tm-intro-text tm-btn-primary aclass"
-                        href="#work"
-                      >
-                        Read More
-                      </a>
-                    </div>
                   </div>
                 </div>
               </div>
@@ -4993,7 +4803,7 @@ ShallowWrapper {
                   className="container"
                 >
                   <p>
-                    Praesent ut finibus leo. Duis et tempus ipsum, id pretium nunc. Vivamus imperdiet sem quis orci pharetra convallis. Nunc a tempus nisi, sed fringilla purus. In hac habitasse platea.
+                    With NodeJS as our main Backend, Enjoy one of the quickest and smoothest experiences ever!
                   </p>
                 </div>
               </div>
@@ -5045,7 +4855,7 @@ ShallowWrapper {
                   className="container"
                 >
                   <p>
-                    Donec vestibulum libero nisl. Curabitur ac orci ac lorem blandit volutpat. Sed ac sodales nibh, ut porttitor elit. Sed id dui mi. Vestibulum ante ipsum primis in faucibus.
+                    Secure, Powerful environment for the least downtime possible and the best user experience possible!
                   </p>
                 </div>
               </div>
@@ -5253,7 +5063,7 @@ ShallowWrapper {
                     >
                       <a
                         className="nav-link aclass"
-                        href="#"
+                        href="/"
                       >
                         Pricing
                       </a>
@@ -5271,7 +5081,7 @@ ShallowWrapper {
                     >
                       <a
                         className="aclass"
-                        href="#"
+                        href="/"
                       >
                         <FontAwesomeIcon
                           border={false}
@@ -5429,7 +5239,7 @@ ShallowWrapper {
                     >
                       <a
                         className="nav-link aclass"
-                        href="#"
+                        href="/"
                       >
                         Pricing
                       </a>
@@ -5447,7 +5257,7 @@ ShallowWrapper {
                     >
                       <a
                         className="aclass"
-                        href="#"
+                        href="/"
                       >
                         <FontAwesomeIcon
                           border={false}
@@ -5602,7 +5412,7 @@ ShallowWrapper {
                       >
                         <a
                           className="nav-link aclass"
-                          href="#"
+                          href="/"
                         >
                           Pricing
                         </a>
@@ -5620,7 +5430,7 @@ ShallowWrapper {
                       >
                         <a
                           className="aclass"
-                          href="#"
+                          href="/"
                         >
                           <FontAwesomeIcon
                             border={false}
@@ -5790,7 +5600,7 @@ ShallowWrapper {
                       >
                         <a
                           className="nav-link aclass"
-                          href="#"
+                          href="/"
                         >
                           Pricing
                         </a>
@@ -5821,7 +5631,7 @@ ShallowWrapper {
                         >
                           <a
                             className="nav-link aclass"
-                            href="#"
+                            href="/"
                           >
                             Pricing
                           </a>
@@ -5867,7 +5677,7 @@ ShallowWrapper {
                         "props": Object {
                           "children": <a
                             className="nav-link aclass"
-                            href="#"
+                            href="/"
                           >
                             Pricing
                           </a>,
@@ -5881,7 +5691,7 @@ ShallowWrapper {
                           "props": Object {
                             "children": "Pricing",
                             "className": "nav-link aclass",
-                            "href": "#",
+                            "href": "/",
                           },
                           "ref": null,
                           "rendered": "Pricing",
@@ -5907,7 +5717,7 @@ ShallowWrapper {
                       >
                         <a
                           className="aclass"
-                          href="#"
+                          href="/"
                         >
                           <FontAwesomeIcon
                             border={false}
@@ -6033,7 +5843,7 @@ ShallowWrapper {
                         >
                           <a
                             className="aclass"
-                            href="#"
+                            href="/"
                           >
                             <FontAwesomeIcon
                               border={false}
@@ -6156,7 +5966,7 @@ ShallowWrapper {
                         "props": Object {
                           "children": <a
                             className="aclass"
-                            href="#"
+                            href="/"
                           >
                             <FontAwesomeIcon
                               border={false}
@@ -6240,7 +6050,7 @@ ShallowWrapper {
                               transform={null}
                             />,
                             "className": "aclass",
-                            "href": "#",
+                            "href": "/",
                           },
                           "ref": null,
                           "rendered": Object {
@@ -6749,30 +6559,13 @@ ShallowWrapper {
                       <p
                         className="mb-4 tm-intro-text"
                       >
-                        This is our website lol.
+                        This is eNovate Website.
                       </p>
                       <p
                         className="mb-5 tm-intro-text"
                       >
-                        Please tell your friends about our site
-                        <a
-                          href="https://templatemo.com"
-                          rel="nofollow"
-                        >
-                          templatemo
-                        </a>
-                        . Thank you. Curabitur dapibus tristique enim a imperdiet. Etiam tristique sem sed condimentum posuere. 
+                        Connect with your friends immediatelly and enjoy one of the most pleasent and user-friendly experiences you'd ever have in your lifetime!
                       </p>
-                      <div
-                        className="tm-next"
-                      >
-                        <a
-                          className="tm-intro-text tm-btn-primary aclass"
-                          href="#work"
-                        >
-                          Read More
-                        </a>
-                      </div>
                     </div>
                   </div>
                 </div>
@@ -6886,7 +6679,7 @@ ShallowWrapper {
                     className="container"
                   >
                     <p>
-                      Praesent ut finibus leo. Duis et tempus ipsum, id pretium nunc. Vivamus imperdiet sem quis orci pharetra convallis. Nunc a tempus nisi, sed fringilla purus. In hac habitasse platea.
+                      With NodeJS as our main Backend, Enjoy one of the quickest and smoothest experiences ever!
                     </p>
                   </div>
                 </div>
@@ -6938,7 +6731,7 @@ ShallowWrapper {
                     className="container"
                   >
                     <p>
-                      Donec vestibulum libero nisl. Curabitur ac orci ac lorem blandit volutpat. Sed ac sodales nibh, ut porttitor elit. Sed id dui mi. Vestibulum ante ipsum primis in faucibus.
+                      Secure, Powerful environment for the least downtime possible and the best user experience possible!
                     </p>
                   </div>
                 </div>
@@ -6980,30 +6773,13 @@ ShallowWrapper {
                       <p
                         className="mb-4 tm-intro-text"
                       >
-                        This is our website lol.
+                        This is eNovate Website.
                       </p>
                       <p
                         className="mb-5 tm-intro-text"
                       >
-                        Please tell your friends about our site
-                        <a
-                          href="https://templatemo.com"
-                          rel="nofollow"
-                        >
-                          templatemo
-                        </a>
-                        . Thank you. Curabitur dapibus tristique enim a imperdiet. Etiam tristique sem sed condimentum posuere. 
+                        Connect with your friends immediatelly and enjoy one of the most pleasent and user-friendly experiences you'd ever have in your lifetime!
                       </p>
-                      <div
-                        className="tm-next"
-                      >
-                        <a
-                          className="tm-intro-text tm-btn-primary aclass"
-                          href="#work"
-                        >
-                          Read More
-                        </a>
-                      </div>
                     </div>
                   </div>
                 </div>,
@@ -7040,30 +6816,13 @@ ShallowWrapper {
                         <p
                           className="mb-4 tm-intro-text"
                         >
-                          This is our website lol.
+                          This is eNovate Website.
                         </p>
                         <p
                           className="mb-5 tm-intro-text"
                         >
-                          Please tell your friends about our site
-                          <a
-                            href="https://templatemo.com"
-                            rel="nofollow"
-                          >
-                            templatemo
-                          </a>
-                          . Thank you. Curabitur dapibus tristique enim a imperdiet. Etiam tristique sem sed condimentum posuere. 
+                          Connect with your friends immediatelly and enjoy one of the most pleasent and user-friendly experiences you'd ever have in your lifetime!
                         </p>
-                        <div
-                          className="tm-next"
-                        >
-                          <a
-                            className="tm-intro-text tm-btn-primary aclass"
-                            href="#work"
-                          >
-                            Read More
-                          </a>
-                        </div>
                       </div>
                     </div>,
                   ],
@@ -7116,30 +6875,13 @@ ShallowWrapper {
                         <p
                           className="mb-4 tm-intro-text"
                         >
-                          This is our website lol.
+                          This is eNovate Website.
                         </p>
                         <p
                           className="mb-5 tm-intro-text"
                         >
-                          Please tell your friends about our site
-                          <a
-                            href="https://templatemo.com"
-                            rel="nofollow"
-                          >
-                            templatemo
-                          </a>
-                          . Thank you. Curabitur dapibus tristique enim a imperdiet. Etiam tristique sem sed condimentum posuere. 
+                          Connect with your friends immediatelly and enjoy one of the most pleasent and user-friendly experiences you'd ever have in your lifetime!
                         </p>
-                        <div
-                          className="tm-next"
-                        >
-                          <a
-                            className="tm-intro-text tm-btn-primary aclass"
-                            href="#work"
-                          >
-                            Read More
-                          </a>
-                        </div>
                       </div>,
                       "className": "col-lg-6",
                     },
@@ -7158,30 +6900,13 @@ ShallowWrapper {
                           <p
                             className="mb-4 tm-intro-text"
                           >
-                            This is our website lol.
+                            This is eNovate Website.
                           </p>,
                           <p
                             className="mb-5 tm-intro-text"
                           >
-                            Please tell your friends about our site
-                            <a
-                              href="https://templatemo.com"
-                              rel="nofollow"
-                            >
-                              templatemo
-                            </a>
-                            . Thank you. Curabitur dapibus tristique enim a imperdiet. Etiam tristique sem sed condimentum posuere. 
+                            Connect with your friends immediatelly and enjoy one of the most pleasent and user-friendly experiences you'd ever have in your lifetime!
                           </p>,
-                          <div
-                            className="tm-next"
-                          >
-                            <a
-                              className="tm-intro-text tm-btn-primary aclass"
-                              href="#work"
-                            >
-                              Read More
-                            </a>
-                          </div>,
                         ],
                         "className": "tm-intro-text-container",
                         "id": "introduction",
@@ -7205,11 +6930,11 @@ ShallowWrapper {
                           "key": undefined,
                           "nodeType": "host",
                           "props": Object {
-                            "children": "This is our website lol.",
+                            "children": "This is eNovate Website.",
                             "className": "mb-4 tm-intro-text",
                           },
                           "ref": null,
-                          "rendered": "This is our website lol.",
+                          "rendered": "This is eNovate Website.",
                           "type": "p",
                         },
                         Object {
@@ -7217,66 +6942,12 @@ ShallowWrapper {
                           "key": undefined,
                           "nodeType": "host",
                           "props": Object {
-                            "children": Array [
-                              "Please tell your friends about our site",
-                              <a
-                                href="https://templatemo.com"
-                                rel="nofollow"
-                              >
-                                templatemo
-                              </a>,
-                              ". Thank you. Curabitur dapibus tristique enim a imperdiet. Etiam tristique sem sed condimentum posuere. ",
-                            ],
+                            "children": "Connect with your friends immediatelly and enjoy one of the most pleasent and user-friendly experiences you'd ever have in your lifetime!",
                             "className": "mb-5 tm-intro-text",
                           },
                           "ref": null,
-                          "rendered": Array [
-                            "Please tell your friends about our site",
-                            Object {
-                              "instance": null,
-                              "key": undefined,
-                              "nodeType": "host",
-                              "props": Object {
-                                "children": "templatemo",
-                                "href": "https://templatemo.com",
-                                "rel": "nofollow",
-                              },
-                              "ref": null,
-                              "rendered": "templatemo",
-                              "type": "a",
-                            },
-                            ". Thank you. Curabitur dapibus tristique enim a imperdiet. Etiam tristique sem sed condimentum posuere. ",
-                          ],
+                          "rendered": "Connect with your friends immediatelly and enjoy one of the most pleasent and user-friendly experiences you'd ever have in your lifetime!",
                           "type": "p",
-                        },
-                        Object {
-                          "instance": null,
-                          "key": undefined,
-                          "nodeType": "host",
-                          "props": Object {
-                            "children": <a
-                              className="tm-intro-text tm-btn-primary aclass"
-                              href="#work"
-                            >
-                              Read More
-                            </a>,
-                            "className": "tm-next",
-                          },
-                          "ref": null,
-                          "rendered": Object {
-                            "instance": null,
-                            "key": undefined,
-                            "nodeType": "host",
-                            "props": Object {
-                              "children": "Read More",
-                              "className": "tm-intro-text tm-btn-primary aclass",
-                              "href": "#work",
-                            },
-                            "ref": null,
-                            "rendered": "Read More",
-                            "type": "a",
-                          },
-                          "type": "div",
                         },
                       ],
                       "type": "div",
@@ -7395,7 +7066,7 @@ ShallowWrapper {
                       className="container"
                     >
                       <p>
-                        Praesent ut finibus leo. Duis et tempus ipsum, id pretium nunc. Vivamus imperdiet sem quis orci pharetra convallis. Nunc a tempus nisi, sed fringilla purus. In hac habitasse platea.
+                        With NodeJS as our main Backend, Enjoy one of the quickest and smoothest experiences ever!
                       </p>
                     </div>
                   </div>,
@@ -7447,7 +7118,7 @@ ShallowWrapper {
                       className="container"
                     >
                       <p>
-                        Donec vestibulum libero nisl. Curabitur ac orci ac lorem blandit volutpat. Sed ac sodales nibh, ut porttitor elit. Sed id dui mi. Vestibulum ante ipsum primis in faucibus.
+                        Secure, Powerful environment for the least downtime possible and the best user experience possible!
                       </p>
                     </div>
                   </div>,
@@ -7650,7 +7321,7 @@ ShallowWrapper {
                         className="container"
                       >
                         <p>
-                          Praesent ut finibus leo. Duis et tempus ipsum, id pretium nunc. Vivamus imperdiet sem quis orci pharetra convallis. Nunc a tempus nisi, sed fringilla purus. In hac habitasse platea.
+                          With NodeJS as our main Backend, Enjoy one of the quickest and smoothest experiences ever!
                         </p>
                       </div>,
                     ],
@@ -7716,7 +7387,7 @@ ShallowWrapper {
                       "nodeType": "host",
                       "props": Object {
                         "children": <p>
-                          Praesent ut finibus leo. Duis et tempus ipsum, id pretium nunc. Vivamus imperdiet sem quis orci pharetra convallis. Nunc a tempus nisi, sed fringilla purus. In hac habitasse platea.
+                          With NodeJS as our main Backend, Enjoy one of the quickest and smoothest experiences ever!
                         </p>,
                         "className": "container",
                       },
@@ -7726,10 +7397,10 @@ ShallowWrapper {
                         "key": undefined,
                         "nodeType": "host",
                         "props": Object {
-                          "children": "Praesent ut finibus leo. Duis et tempus ipsum, id pretium nunc. Vivamus imperdiet sem quis orci pharetra convallis. Nunc a tempus nisi, sed fringilla purus. In hac habitasse platea.",
+                          "children": "With NodeJS as our main Backend, Enjoy one of the quickest and smoothest experiences ever!",
                         },
                         "ref": null,
-                        "rendered": "Praesent ut finibus leo. Duis et tempus ipsum, id pretium nunc. Vivamus imperdiet sem quis orci pharetra convallis. Nunc a tempus nisi, sed fringilla purus. In hac habitasse platea.",
+                        "rendered": "With NodeJS as our main Backend, Enjoy one of the quickest and smoothest experiences ever!",
                         "type": "p",
                       },
                       "type": "div",
@@ -7788,7 +7459,7 @@ ShallowWrapper {
                         className="container"
                       >
                         <p>
-                          Donec vestibulum libero nisl. Curabitur ac orci ac lorem blandit volutpat. Sed ac sodales nibh, ut porttitor elit. Sed id dui mi. Vestibulum ante ipsum primis in faucibus.
+                          Secure, Powerful environment for the least downtime possible and the best user experience possible!
                         </p>
                       </div>,
                     ],
@@ -7854,7 +7525,7 @@ ShallowWrapper {
                       "nodeType": "host",
                       "props": Object {
                         "children": <p>
-                          Donec vestibulum libero nisl. Curabitur ac orci ac lorem blandit volutpat. Sed ac sodales nibh, ut porttitor elit. Sed id dui mi. Vestibulum ante ipsum primis in faucibus.
+                          Secure, Powerful environment for the least downtime possible and the best user experience possible!
                         </p>,
                         "className": "container",
                       },
@@ -7864,10 +7535,10 @@ ShallowWrapper {
                         "key": undefined,
                         "nodeType": "host",
                         "props": Object {
-                          "children": "Donec vestibulum libero nisl. Curabitur ac orci ac lorem blandit volutpat. Sed ac sodales nibh, ut porttitor elit. Sed id dui mi. Vestibulum ante ipsum primis in faucibus.",
+                          "children": "Secure, Powerful environment for the least downtime possible and the best user experience possible!",
                         },
                         "ref": null,
-                        "rendered": "Donec vestibulum libero nisl. Curabitur ac orci ac lorem blandit volutpat. Sed ac sodales nibh, ut porttitor elit. Sed id dui mi. Vestibulum ante ipsum primis in faucibus.",
+                        "rendered": "Secure, Powerful environment for the least downtime possible and the best user experience possible!",
                         "type": "p",
                       },
                       "type": "div",
