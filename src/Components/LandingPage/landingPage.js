@@ -32,9 +32,7 @@ function LandingPage(props) {
                   </a>
                 </li>
 
-                <li className="nav-item">
-                  <a className="nav-link aclass" href="/">Pricing</a>
-                </li>
+
 
               </ul>
             </div>
