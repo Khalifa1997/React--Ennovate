@@ -1,68 +1,106 @@
-import React from 'react';
-import lap from '../../assets/images/laptop.jpg';
-//import PropTypes from 'prop-types';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowCircleDown, faGrin, faUserFriends } from "@fortawesome/free-solid-svg-icons";
-import { faReact, faDocker, faNode, faGithub, faTwitter } from '@fortawesome/free-brands-svg-icons';
-import NavbarPic from '../../assets/images/nav2.jpg';
+import React from "react";
+import lap from "../../assets/images/laptop.jpg";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faArrowCircleDown,
+  faGrin,
+  faUserFriends
+} from "@fortawesome/free-solid-svg-icons";
+import {
+  faReact,
+  faDocker,
+  faNode,
+  faGithub,
+  faTwitter
+} from "@fortawesome/free-brands-svg-icons";
+import NavbarPic from "../../assets/images/nav2.jpg";
+import "./LandingPage.css";
 
+/**
+ * A stateless component that renders the landing page. It contains another components like navigation bar and links to the login and signup pages.
+ * @param {json} props - Passed down properties.
+ * @returns { JSX } -returns a JSX code that renders the Landing page.
+ */
 
-import './LandingPage.css'
 function LandingPage(props) {
-
-
   return (
-
-    <div >
-      <div className="container" >
-
+    <div>
+      <div className="container">
         <nav className="navbar navbar-expand-lg navbar-light primary-color fixed-top navbarbg">
-
           <div className="container-fluid">
-
-            <a className="navbar-brand aclass" href="/"><img src={NavbarPic} height="48px" alt="pic" /></a>
-
+            <a className="navbar-brand aclass" href="/">
+              <img src={NavbarPic} height="48px" alt="pic" />
+            </a>
 
             <div className="collapse navbar-collapse" id="basicExampleNav">
-
               <ul className="navbar-nav mr-auto">
                 <li className="nav-item">
-                  <a className="nav-link aclass" href="/">Home
-
+                  <a className="nav-link aclass" href="/">
+                    Home
                   </a>
                 </li>
 
-
-
+                <li className="nav-item">
+                  <a className="nav-link aclass" href="/">
+                    Pricing
+                  </a>
+                </li>
               </ul>
             </div>
             <div className="navbar-collapse collapse w-100 order-3 dual-collapse2">
-
               <ul className="navbar-nav ml-auto">
                 <li className="nav-item">
-                  <a href="/" className="aclass"><FontAwesomeIcon icon={faTwitter} className="navicon" style={{ color: 'darkgrey', marginRight: '20px' }} size="2x" /></a>
+                  <a href="/" className="aclass">
+                    <FontAwesomeIcon
+                      icon={faTwitter}
+                      className="navicon"
+                      style={{ color: "darkgrey", marginRight: "20px" }}
+                      size="2x"
+                    />
+                  </a>
                 </li>
                 <li className="nav-item">
-                  <a href="https://github.com/AyahElSamadoni/FrontEnd" className="aclass"><FontAwesomeIcon icon={faGithub} className="navicon" style={{ color: 'darkgrey', marginRight: '20px', marginLeft: '0px' }} size="2x" /></a>
+                  <a
+                    href="https://github.com/AyahElSamadoni/FrontEnd"
+                    className="aclass"
+                  >
+                    <FontAwesomeIcon
+                      icon={faGithub}
+                      className="navicon"
+                      style={{
+                        color: "darkgrey",
+                        marginRight: "20px",
+                        marginLeft: "0px"
+                      }}
+                      size="2x"
+                    />
+                  </a>
                 </li>
                 <li className="nav-item">
-                  <a className=" nav-link aclass" href="/login">Login</a></li>
+                  <a className=" nav-link aclass" href="/login">
+                    Login
+                  </a>
+                </li>
                 <li className="nav-item">
-                  <a href="/signup" className="aclass"><button type="button" className="btn btn-outline-success">Sign up</button></a>
+                  <a href="/signup" className="aclass">
+                    <button type="button" className="btn btn-outline-success">
+                      Sign up
+                    </button>
+                  </a>
                 </li>
               </ul>
-
             </div>
-
           </div>
-
         </nav>
-
       </div>
       <div className=" text-white tm-font-big bg">
-        <div className="tm-next tm-intro-next" >
+        <div className="tm-next tm-intro-next">
           <a href="#introduction" className="text-center tm-down-arrow-link">
-            <FontAwesomeIcon icon={faArrowCircleDown} size="3x" style={{ color: '#3496d8', marginBottom: '30px', }} />
+            <FontAwesomeIcon
+              icon={faArrowCircleDown}
+              size="3x"
+              style={{ color: "#3496d8", marginBottom: "30px" }}
+            />
           </a>
         </div>
       </div>
@@ -71,7 +109,6 @@ function LandingPage(props) {
           <div className="row">
             <div className="col-lg-6">
               <img src={lap} alt="" className="img-fluid tm-intro-img" />
-
             </div>
             <div className="col-lg-6">
               <div className="tm-intro-text-container" id="introduction">
@@ -85,23 +122,37 @@ function LandingPage(props) {
               </div>
             </div>
           </div>
-
-
         </div>
 
-        <div className="row tm-section-pad-top" style={{ paddingBottom: "60px" }}>
+        <div
+          className="row tm-section-pad-top"
+          style={{ paddingBottom: "60px" }}
+        >
           <div className="col-lg-4 text-center">
-            <FontAwesomeIcon icon={faReact} size="6x" style={{ color: '#3496d8', marginBottom: '30px', textAlign: 'center' }} />
+            <FontAwesomeIcon
+              icon={faReact}
+              size="6x"
+              style={{
+                color: "#3496d8",
+                marginBottom: "30px",
+                textAlign: "center"
+              }}
+            />
             <h4 className="text-center tm-text-primary mb-4"> 100% Reactful</h4>
             <div className="container">
               <p>
-                Using React Library as our main frontend for quick development and little to no down-time.
-          </p>
+                Using React Library as our main frontend for quick development
+                and little to no down-time.
+              </p>
             </div>
           </div>
 
           <div className="col-lg-4 text-center">
-            <FontAwesomeIcon icon={faNode} size="6x" style={{ color: '#3496d8', marginBottom: '30px' }} />
+            <FontAwesomeIcon
+              icon={faNode}
+              size="6x"
+              style={{ color: "#3496d8", marginBottom: "30px" }}
+            />
             <h4 className="text-center tm-text-primary mb-4">NodeJS</h4>
             <div className="container">
               <p>
@@ -112,7 +163,11 @@ function LandingPage(props) {
           </div>
 
           <div className="col-lg-4 text-center">
-            <FontAwesomeIcon icon={faDocker} size="6x" style={{ color: '#3496d8', marginBottom: '30px' }} />
+            <FontAwesomeIcon
+              icon={faDocker}
+              size="6x"
+              style={{ color: "#3496d8", marginBottom: "30px" }}
+            />
             <h4 className="text-center tm-text-primary mb-4">Docker</h4>
             <div className="container">
               <p>
@@ -121,40 +176,61 @@ function LandingPage(props) {
             </div>
           </div>
         </div>
-
       </section>
-      <section className=" tm-section-pad-top bg2" style={{ paddingTop: "50px", paddingBottom: "50px" }}>
+      <section
+        className=" tm-section-pad-top bg2"
+        style={{ paddingTop: "50px", paddingBottom: "50px" }}
+      >
         <div className="container-fluid">
           <div className="row">
             <div class="col-sm text-center">
-
-              <FontAwesomeIcon icon={faGrin} size="6x" style={{ color: 'white', marginBottom: '30px' }} />
+              <FontAwesomeIcon
+                icon={faGrin}
+                size="6x"
+                style={{ color: "white", marginBottom: "30px" }}
+              />
               <h1 style={{ display: "block" }}>Totally Moderated Content</h1>
-
             </div>
 
             <div class="col-sm text-center">
-
-              <FontAwesomeIcon icon={faUserFriends} size="6x" style={{ color: 'white', marginBottom: '30px' }} />
+              <FontAwesomeIcon
+                icon={faUserFriends}
+                size="6x"
+                style={{ color: "white", marginBottom: "30px" }}
+              />
               <h1 style={{ display: "block" }}>Super Friendly Community!</h1>
             </div>
           </div>
         </div>
       </section>
 
-      <section className=" tm-section-pad-top  text-center" style={{ paddingTop: "60px", paddingBottom: "30px" }}>
-        <h1 className="text-center" style={{ paddingBottom: "3px", color: "#3496d8" }}>No fees needed at all!</h1>
-        <a href="/signup"><button type="button" class="btn btn-light btn-lg" style={{ paddingTop: "3px", marginBottom: "20px", color: "White", backgroundColor: "#3496d8" }}>Join us now!</button>
+      <section
+        className=" tm-section-pad-top  text-center"
+        style={{ paddingTop: "60px", paddingBottom: "30px" }}
+      >
+        <h1
+          className="text-center"
+          style={{ paddingBottom: "3px", color: "#3496d8" }}
+        >
+          No fees needed at all!
+        </h1>
+        <a href="/signup">
+          <button
+            type="button"
+            class="btn btn-light btn-lg"
+            style={{
+              paddingTop: "3px",
+              marginBottom: "20px",
+              color: "White",
+              backgroundColor: "#3496d8"
+            }}
+          >
+            Join us now!
+          </button>
         </a>
-
       </section>
-
-    </div >
-
-
+    </div>
   );
 }
-
-
 
 export default LandingPage;

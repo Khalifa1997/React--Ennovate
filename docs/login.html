@@ -30,7 +30,7 @@
     
         <h2><span class="attribs"><span class="type-signature"></span></span>login<span class="signature">()</span><span class="type-signature"></span></h2>
         
-            <div class="class-description">This is a description of the Login Component.</div>
+            <div class="class-description">This Class is a statefull component used to create the Login form</div>
         
     
 </header>
@@ -51,10 +51,6 @@
     
 
 
-
-<div class="description">
-    Constructor.
-</div>
 
 
 
@@ -97,7 +93,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Login_Login.js.html">Login/Login.js</a>, <a href="Login_Login.js.html#line13">line 13</a>
+        <a href="Containers_Auth_Login_Login.js.html">Containers/Auth/Login/Login.js</a>, <a href="Containers_Auth_Login_Login.js.html#line14">line 14</a>
     </li></ul></dd>
     
 
@@ -188,7 +184,7 @@
             <td class="type">
             
                 
-<span class="param-type">email</span>
+<span class="param-type">string</span>
 
 
             
@@ -229,7 +225,7 @@
             <td class="type">
             
                 
-<span class="param-type">value</span>
+<span class="param-type">string</span>
 
 
             
@@ -252,7 +248,7 @@
             <td class="type">
             
                 
-<span class="param-type">validation</span>
+<span class="param-type">object</span>
 
 
             
@@ -293,7 +289,7 @@
             <td class="type">
             
                 
-<span class="param-type">required</span>
+<span class="param-type">boolean</span>
 
 
             
@@ -316,7 +312,7 @@
             <td class="type">
             
                 
-<span class="param-type">email</span>
+<span class="param-type">boolean</span>
 
 
             
@@ -346,7 +342,7 @@
             <td class="type">
             
                 
-<span class="param-type">valid</span>
+<span class="param-type">boolean</span>
 
 
             
@@ -369,7 +365,7 @@
             <td class="type">
             
                 
-<span class="param-type">meta</span>
+<span class="param-type">object</span>
 
 
             
@@ -410,7 +406,7 @@
             <td class="type">
             
                 
-<span class="param-type">touched</span>
+<span class="param-type">boolen</span>
 
 
             
@@ -433,7 +429,7 @@
             <td class="type">
             
                 
-<span class="param-type">errorMessage</span>
+<span class="param-type">string</span>
 
 
             
@@ -470,7 +466,7 @@
             <td class="type">
             
                 
-<span class="param-type">password</span>
+<span class="param-type">string</span>
 
 
             
@@ -511,7 +507,7 @@
             <td class="type">
             
                 
-<span class="param-type">value</span>
+<span class="param-type">string</span>
 
 
             
@@ -534,7 +530,7 @@
             <td class="type">
             
                 
-<span class="param-type">validation</span>
+<span class="param-type">object</span>
 
 
             
@@ -575,7 +571,7 @@
             <td class="type">
             
                 
-<span class="param-type">required</span>
+<span class="param-type">boolean</span>
 
 
             
@@ -598,7 +594,7 @@
             <td class="type">
             
                 
-<span class="param-type">MinLength</span>
+<span class="param-type">number</span>
 
 
             
@@ -621,7 +617,7 @@
             <td class="type">
             
                 
-<span class="param-type">MaxLength</span>
+<span class="param-type">number</span>
 
 
             
@@ -651,7 +647,7 @@
             <td class="type">
             
                 
-<span class="param-type">valid</span>
+<span class="param-type">boolean</span>
 
 
             
@@ -674,7 +670,7 @@
             <td class="type">
             
                 
-<span class="param-type">meta</span>
+<span class="param-type">object</span>
 
 
             
@@ -715,7 +711,7 @@
             <td class="type">
             
                 
-<span class="param-type">touched</span>
+<span class="param-type">boolean</span>
 
 
             
@@ -738,7 +734,7 @@
             <td class="type">
             
                 
-<span class="param-type">errorMessage</span>
+<span class="param-type">string</span>
 
 
             
@@ -775,7 +771,7 @@
             <td class="type">
             
                 
-<span class="param-type">Token</span>
+<span class="param-type">string</span>
 
 
             
@@ -798,7 +794,7 @@
             <td class="type">
             
                 
-<span class="param-type">sentRequest</span>
+<span class="param-type">boolean</span>
 
 
             
@@ -821,7 +817,7 @@
             <td class="type">
             
                 
-<span class="param-type">errors</span>
+<span class="param-type">string</span>
 
 
             
@@ -870,7 +866,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Login_Login.js.html">Login/Login.js</a>, <a href="Login_Login.js.html#line48">line 48</a>
+        <a href="Containers_Auth_Login_Login.js.html">Containers/Auth/Login/Login.js</a>, <a href="Containers_Auth_Login_Login.js.html#line48">line 48</a>
     </li></ul></dd>
     
 
@@ -890,6 +886,591 @@
     
 
     
+        <h3 class="subsection-title">Methods</h3>
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="checkValidity"><span class="type-signature"></span>checkValidity<span class="signature">(Value, rules)</span><span class="type-signature"> &rarr; {boolean}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    This is a description of the checkvalidity function.This function checks the validity of the data inside the input form.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>Value</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The value of the input box.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>rules</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">An object of the required rules for this input.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Containers_Auth_Login_Login.js.html">Containers/Auth/Login/Login.js</a>, <a href="Containers_Auth_Login_Login.js.html#line91">line 91</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    isValid
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">boolean</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="Login"><span class="type-signature"></span>Login<span class="signature">(event)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    This function submits the data inside the form.It creates an object an submit the latter to the database using axios.Also it handles any type of errors comming back from the database
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>event</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">event</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Submit button is cliked event.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Containers_Auth_Login_Login.js.html">Containers/Auth/Login/Login.js</a>, <a href="Containers_Auth_Login_Login.js.html#line149">line 149</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="onChangeHandler"><span class="type-signature"></span>onChangeHandler<span class="signature">(event, stateIdentifier)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    This is a description of the onChangeHandler function.This function checks if the input form has changed and unpdate the states with the corresponding data.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>event</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">event</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Changed event from the input box.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>stateIdentifier</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The type of the input box.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Containers_Auth_Login_Login.js.html">Containers/Auth/Login/Login.js</a>, <a href="Containers_Auth_Login_Login.js.html#line123">line 123</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="render"><span class="type-signature"></span>render<span class="signature">()</span><span class="type-signature"> &rarr; {JSX}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    This function renders the jsx component on the screen using react DOM.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Containers_Auth_Login_Login.js.html">Containers/Auth/Login/Login.js</a>, <a href="Containers_Auth_Login_Login.js.html#line206">line 206</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    The JSX code used to render the component.
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">JSX</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+    
 
     
 
@@ -904,13 +1485,13 @@
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="login.html">login</a></li><li><a href="signup.html">signup</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="forgotPassword.html">forgotPassword</a></li><li><a href="login.html">login</a></li><li><a href="signup.html">signup</a></li></ul><h3>Global</h3><ul><li><a href="global.html#button">button</a></li><li><a href="global.html#input">input</a></li><li><a href="global.html#LandingPage">LandingPage</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Sat Mar 23 2019 13:55:00 GMT+0200 (Egypt Standard Time)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Sun Mar 24 2019 00:44:59 GMT+0200 (Egypt Standard Time)
 </footer>
 
 <script> prettyPrint(); </script>

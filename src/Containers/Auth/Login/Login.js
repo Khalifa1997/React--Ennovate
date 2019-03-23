@@ -9,10 +9,10 @@ import "./Login.css";
 /**
  * This is a description of the Login Component.
  * @class
+ * @classdesc This Class is a statefull component used to create the Login form
  * */
 class login extends Component {
   /**
-   * Constructor.
    * @constructor
    */
   constructor(props) {
@@ -75,8 +75,19 @@ class login extends Component {
       sentRequest: false,
       errors: {}
     };
+
+    this.onChangeHandler.bind(this);
+    this.Login.bind(this);
   }
 
+  /**
+   * This is a description of the checkvalidity function.
+   * This function checks the validity of the data inside the input form.
+   * @param {string} Value - The value of the input box.
+   * @param {object} rules - An object of the required rules for this input.
+   *
+   * @returns {boolean} isValid
+   * */
   checkValidity(value, rules) {
     let isValid = true;
 
@@ -102,7 +113,14 @@ class login extends Component {
     return isValid;
   }
 
-  onChangeHandler = (event, stateIdentifier) => {
+  /**
+   * This is a description of the onChangeHandler function.
+   * This function checks if the input form has changed and unpdate the states with the corresponding data.
+   * @param {event} event - Changed event from the input box.
+   * @param {string} stateIdentifier - The type of the input box.
+   *
+   * */
+  onChangeHandler(event, stateIdentifier) {
     const cloneState = {
       ...this.state
     };
@@ -120,7 +138,15 @@ class login extends Component {
     this.setState({ sentRequest: false });
   };
 
-  Login = event => {
+  /**
+   * This function submits the data inside the form.
+   * It creates an object an submit the latter to the database using axios.
+   * Also it handles any type of errors comming back from the database
+   *
+   * @param {event} event - Submit button is cliked event.
+   *
+   * */
+  Login(event) {
     event.preventDefault();
 
     this.setState({ sentRequest: true });
@@ -167,6 +193,11 @@ class login extends Component {
       });
   };
 
+  /**
+   * This function renders the jsx component on the screen using react DOM.
+   *
+   * @returns {JSX} The JSX code used to render the component.
+   * */
   render() {
     var submitButtonDisabled = true;
     if (this.state.email.valid === true && this.state.password.valid === true) {
