@@ -33,10 +33,72 @@ describe('<Signup />', () => {
    
     it("Should check that placeholder of email is correct", () => {
         //const email = "mirna@hbd.ehbf";
-        const input = wrapper.find("input").at(2);
+        const Input = wrapper.find("Input").at(2);
     
     expect(wrapper.state().signupForm.email.elementConfig.placeholder).toBe("Your E-Mail");
 });
 
+it("Should update the screenname value state when a screenname is given", () => {
+    const screenname = "hvjjhvj";
+    const Input = wrapper.find("Input").at(1);
+
+    Input.simulate("change", {
+      target: {
+        value: screenname
+      }
+    });
+
+    expect(wrapper.state().signupForm.screenname.value).toBe(screenname);
+  });
+
+  it("Should update the password value state when a password is given", () => {
+    const reenterpass = "12345678";
+    const Input = wrapper.find("Input").at(4);
+
+    Input.simulate("change", {
+      target: {
+        value: reenterpass
+      }
+    });
+
+    expect(wrapper.state().signupForm.reenter.value).toBe(reenterpass);
+  });
+
+it("Should update the username value state when a username is given", () => {
+    const username = "hvjjhvj";
+    const Input = wrapper.find("Input").at(1);
+
+    Input.simulate("change", {
+      target: {
+        value: username
+      }
+    });
+
+    expect(wrapper.state().signupForm.username.value).toBe(username);
+  });
+  it("Should update the email value state when a username is given", () => {
+    const username = "hbjb@hvbj.ub";
+    const Input = wrapper.find("Input").at(2);
+
+    Input.simulate("change", {
+      target: {
+        value: username
+      }
+    });
+
+    expect(wrapper.state().signupForm.email.valid).toBe(true);
+  });
+
+  it("Should update the email value state when a username is given", () => {
+    const username = "hbjb@hvbj.ub";
+    const Input = wrapper.find("Input").at(2);
+    const validation={required: true,
+        email: true}
+   checkValidity(username,validation)
+
+    expect(wrapper.state().signupForm.email.valid).toBe(true);
+  });
+
+ 
 
 });
