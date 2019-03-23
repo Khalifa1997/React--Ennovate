@@ -11,7 +11,7 @@ describe("<Login />", () => {
   beforeEach(() => {
     wrapper = shallow(<Login />);
   });
-
+//
   it("Should update the email value state when a username is given", () => {
     const username = "omar@gmail.com";
     const input = wrapper.find("input").at(0);

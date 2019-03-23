@@ -30,20 +30,13 @@ describe('<Signup />', () => {
         //wrapper.setProps({isAuthenticated: true});
         expect(wrapper.find(Input)).toHaveLength(5);
     });
-    it('`<input>` element should have a placeholder attribute with value `Name`', () => {
-        expect(
-          wrapper.find('form').childAt(0).props().placeholder
-        ).toBe('Your Screen Name');
-      });
-
-    /*it('should render button', () => {
-        wrapper.setValue({disabled: false});
-        expect(wrapper.find(button)).toHaveLength(1);
-    });
+   
+    it("Should check that placeholder of email is correct", () => {
+        //const email = "mirna@hbd.ehbf";
+        const input = wrapper.find("input").at(2);
+    
+    expect(wrapper.state().signupForm.email.elementConfig.placeholder).toBe("Your E-Mail");
+});
 
 
-Signup.state.signupForm.email.value = "mario@com.com";
-    user.simulate('change',event);
-    expect(Signup.state.signupForm.email.valid.toBe(true));
-    */
 });
