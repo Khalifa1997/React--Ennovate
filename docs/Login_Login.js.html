@@ -1,4 +1,32 @@
-import React, { Component } from "react";
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: Login/Login.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: Login/Login.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React, { Component } from "react";
 import Aux from "./../../../Components/Wrapper/Auxilary";
 import AuthNav from "./../../../Components/AuthNav/AuthNav";
 import Classnames from "classnames";
@@ -81,22 +109,22 @@ class login extends Component {
     let isValid = true;
 
     if (rules.required) {
-      isValid = value.trim() !== "" && isValid;
+      isValid = value.trim() !== "" &amp;&amp; isValid;
     }
 
     if (rules.email) {
       isValid =
         !!value.match(
-          /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-        ) && isValid;
+          /^(([^&lt;>()\[\]\\.,;:\s@"]+(\.[^&lt;>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+        ) &amp;&amp; isValid;
     }
 
     if (rules.minLength) {
-      isValid = value.length >= rules.minLength && isValid;
+      isValid = value.length >= rules.minLength &amp;&amp; isValid;
     }
 
     if (rules.maxLength) {
-      isValid = value.length <= rules.maxLength && isValid;
+      isValid = value.length &lt;= rules.maxLength &amp;&amp; isValid;
     }
 
     return isValid;
@@ -140,7 +168,7 @@ class login extends Component {
         };
         clone.token = res.data.idToken;
         this.setState({ token: clone.token }, () => (
-          <Profile username={res.data.email} />
+          &lt;Profile username={res.data.email} />
         ));
       })
       .catch(err => {
@@ -175,23 +203,23 @@ class login extends Component {
   render() {
     var submitButtonDisabled = true;
     console.log(this.state.email.valid + " " + this.state.password.valid);
-    if (this.state.email.valid === true && this.state.password.valid === true) {
+    if (this.state.email.valid === true &amp;&amp; this.state.password.valid === true) {
       submitButtonDisabled = false;
     }
 
     return (
-      <Aux>
-        <div className="Body">
-          <AuthNav />
-          <div className="jumbotron jumbotron-fluid PageCanvas">
-            <div className="container">
-              <form className="loginBox" onSubmit={this.Login}>
-                <h3 className="headerText">Log in to eNOVAte</h3>
-                <div className="form-group">
-                  <input
+      &lt;Aux>
+        &lt;div className="Body">
+          &lt;AuthNav />
+          &lt;div className="jumbotron jumbotron-fluid PageCanvas">
+            &lt;div className="container">
+              &lt;form className="loginBox" onSubmit={this.Login}>
+                &lt;h3 className="headerText">Log in to eNOVAte&lt;/h3>
+                &lt;div className="form-group">
+                  &lt;input
                     className={Classnames("form-control inputFields", {
                       "is-invalid":
-                        this.state.email.valid === false &&
+                        this.state.email.valid === false &amp;&amp;
                         this.state.email.meta.touched === true
                     })}
                     id="exampleInputEmail1"
@@ -200,85 +228,108 @@ class login extends Component {
                     autoFocus
                     onChange={event => this.onChangeHandler(event, "email")}
                   />
-                  {this.state.email.valid === false &&
-                    this.state.sentRequest === true && (
-                      <div className="invalid-feedback">
+                  {this.state.email.valid === false &amp;&amp;
+                    this.state.sentRequest === true &amp;&amp; (
+                      &lt;div className="invalid-feedback">
                         {" "}
                         {this.state.errors.error.message}{" "}
-                      </div>
+                      &lt;/div>
                     )}
-                  {this.state.email.valid === false &&
-                    submitButtonDisabled === true &&
-                    this.state.sentRequest === false && (
-                      <div className="invalid-feedback">
+                  {this.state.email.valid === false &amp;&amp;
+                    submitButtonDisabled === true &amp;&amp;
+                    this.state.sentRequest === false &amp;&amp; (
+                      &lt;div className="invalid-feedback">
                         {" "}
                         {this.state.email.meta.errorMessage}{" "}
-                      </div>
+                      &lt;/div>
                     )}
-                </div>
-                <div className="form-group">
-                  <input
+                &lt;/div>
+                &lt;div className="form-group">
+                  &lt;input
                     type="password"
                     style={{ marginBottom: "25px" }}
                     className={Classnames("form-control inputFields", {
                       "is-invalid":
-                        this.state.password.valid === false &&
+                        this.state.password.valid === false &amp;&amp;
                         this.state.password.meta.touched === true
                     })}
                     id="exampleInputPassword1"
                     placeholder="Password"
                     onChange={event => this.onChangeHandler(event, "password")}
                   />
-                  {this.state.password.valid === false &&
-                    this.state.sentRequest === true && (
-                      <div
+                  {this.state.password.valid === false &amp;&amp;
+                    this.state.sentRequest === true &amp;&amp; (
+                      &lt;div
                         style={{ marginTop: "-22px" }}
                         className="invalid-feedback"
                       >
                         {" "}
                         {this.state.errors.error.message}{" "}
-                      </div>
+                      &lt;/div>
                     )}
-                  {this.state.password.valid === false &&
-                    submitButtonDisabled === true &&
-                    this.state.sentRequest === false && (
-                      <div className="invalid-feedback PassErrorSpace">
+                  {this.state.password.valid === false &amp;&amp;
+                    submitButtonDisabled === true &amp;&amp;
+                    this.state.sentRequest === false &amp;&amp; (
+                      &lt;div className="invalid-feedback PassErrorSpace">
                         {" "}
                         {this.state.password.meta.errorMessage}{" "}
-                      </div>
+                      &lt;/div>
                     )}
-                </div>
-                <button
+                &lt;/div>
+                &lt;button
                   type="submit"
                   disabled={submitButtonDisabled}
                   className="btn btn-primary loginButton"
                 >
                   Log in
-                </button>
-                <a className="Links" href="/forgotpassword">
+                &lt;/button>
+                &lt;a className="Links" href="/forgotpassword">
                   Forgot password?
-                </a>
-              </form>
-            </div>
-            <div className="downDiv">
-              <p className="text-sm-left downText">
+                &lt;/a>
+              &lt;/form>
+            &lt;/div>
+            &lt;div className="downDiv">
+              &lt;p className="text-sm-left downText">
                 New to Nova?{" "}
-                <a className="Links" href="/signup">
+                &lt;a className="Links" href="/signup">
                   Sign up now..
-                </a>
-              </p>
-              <p className="text-sm-left downText">
+                &lt;/a>
+              &lt;/p>
+              &lt;p className="text-sm-left downText">
                 Need to know more{" "}
-                <a className="Links" href="/">
+                &lt;a className="Links" href="/">
                   About us
-                </a>
-              </p>
-            </div>
-          </div>
-        </div>
-      </Aux>
+                &lt;/a>
+              &lt;/p>
+            &lt;/div>
+          &lt;/div>
+        &lt;/div>
+      &lt;/Aux>
     );
   }
 }
 
 export default login;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="login.html">login</a></li><li><a href="signup.html">signup</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Sat Mar 23 2019 13:55:00 GMT+0200 (Egypt Standard Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
