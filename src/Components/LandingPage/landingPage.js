@@ -1,6 +1,6 @@
 import React from 'react';
 import lap from '../../assets/images/laptop.jpg';
-import PropTypes from 'prop-types';
+//import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowCircleDown, faGrin, faUserFriends } from "@fortawesome/free-solid-svg-icons";
 import { faReact, faDocker, faNode, faGithub, faTwitter } from '@fortawesome/free-brands-svg-icons';
@@ -33,7 +33,7 @@ function LandingPage(props) {
                 </li>
 
                 <li className="nav-item">
-                  <a className="nav-link aclass" href="#">Pricing</a>
+                  <a className="nav-link aclass" href="/">Pricing</a>
                 </li>
 
               </ul>
@@ -42,7 +42,7 @@ function LandingPage(props) {
 
               <ul className="navbar-nav ml-auto">
                 <li className="nav-item">
-                  <a href="#" className="aclass"><FontAwesomeIcon icon={faTwitter} className="navicon" style={{ color: 'darkgrey', marginRight: '20px' }} size="2x" /></a>
+                  <a href="/" className="aclass"><FontAwesomeIcon icon={faTwitter} className="navicon" style={{ color: 'darkgrey', marginRight: '20px' }} size="2x" /></a>
                 </li>
                 <li className="nav-item">
                   <a href="https://github.com/AyahElSamadoni/FrontEnd" className="aclass"><FontAwesomeIcon icon={faGithub} className="navicon" style={{ color: 'darkgrey', marginRight: '20px', marginLeft: '0px' }} size="2x" /></a>
@@ -79,16 +79,11 @@ function LandingPage(props) {
               <div className="tm-intro-text-container" id="introduction">
                 <h2 className="tm-text-primary mb-4 tm-section-title">Introduction</h2>
                 <p className="mb-4 tm-intro-text">
-                  This is our website lol.
+                  This is eNovate Website.
             </p>
                 <p className="mb-5 tm-intro-text">
-                  Please tell your friends about our site
-              <a rel="nofollow" href="https://templatemo.com">templatemo</a>. Thank you.
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      Curabitur dapibus tristique enim a imperdiet. Etiam
-              tristique sem sed condimentum posuere. </p>
-                <div className="tm-next">
-                  <a href="#work" className="tm-intro-text tm-btn-primary aclass">Read More</a>
-                </div>
+                  Connect with your friends immediatelly and enjoy one of the most pleasent and user-friendly experiences you'd ever have in your lifetime!</p>
+
               </div>
             </div>
           </div>
@@ -112,9 +107,7 @@ function LandingPage(props) {
             <h4 className="text-center tm-text-primary mb-4">NodeJS</h4>
             <div className="container">
               <p>
-                Praesent ut finibus leo. Duis et tempus ipsum, id pretium nunc.
-                Vivamus imperdiet sem quis orci pharetra convallis. Nunc a tempus
-                nisi, sed fringilla purus. In hac habitasse platea.
+                With NodeJS as our main Backend, Enjoy one of the quickest and smoothest experiences ever!
 
           </p>
             </div>
@@ -125,9 +118,7 @@ function LandingPage(props) {
             <h4 className="text-center tm-text-primary mb-4">Docker</h4>
             <div className="container">
               <p>
-                Donec vestibulum libero nisl. Curabitur ac orci ac lorem blandit
-                volutpat. Sed ac sodales nibh, ut porttitor elit. Sed id dui mi.
-                Vestibulum ante ipsum primis in faucibus.
+                Secure, Powerful environment for the least downtime possible and the best user experience possible!
           </p>
             </div>
           </div>
