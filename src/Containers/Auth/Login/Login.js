@@ -75,6 +75,9 @@ class login extends Component {
       sentRequest: false,
       errors: {}
     };
+
+    this.onChangeHandler.bind(this);
+    this.Login.bind(this);
   }
 
   /**
@@ -117,7 +120,7 @@ class login extends Component {
    * @param {string} stateIdentifier - The type of the input box.
    *
    * */
-  onChangeHandler = (event, stateIdentifier) => {
+  onChangeHandler (event, stateIdentifier) {
     const cloneState = {
       ...this.state
     };
@@ -143,7 +146,7 @@ class login extends Component {
    * @param {event} event - Submit button is cliked event.
    *
    * */
-  Login = event => {
+  Login (event) {
     event.preventDefault();
 
     this.setState({ sentRequest: true });
