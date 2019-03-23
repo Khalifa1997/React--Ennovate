@@ -1,13 +1,23 @@
 import React from 'react';
 import lap from '../../assets/images/laptop.jpg';
-//import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowCircleDown, faGrin, faUserFriends } from "@fortawesome/free-solid-svg-icons";
 import { faReact, faDocker, faNode, faGithub, faTwitter } from '@fortawesome/free-brands-svg-icons';
 import NavbarPic from '../../assets/images/nav2.jpg';
+import './LandingPage.css';
+/**
+ * This is a description of the LandingPage Component.
+ * @summary This is the main landing page of our website
+ * @name LandingPage
+ * @constant
+ * 
+ * */
 
-
-import './LandingPage.css'
+/**
+* This function renders the jsx component on the screen using react DOM.
+* @description Contains  JSX Code for the landing page using Bootstrap 4 and fontawesome websites
+* @returns { JSX } The JSX code used to render the LandingPage.
+  * */
 function LandingPage(props) {
 
 
@@ -84,7 +94,7 @@ function LandingPage(props) {
                 <p className="mb-5 tm-intro-text">
                   Please tell your friends about our site
               <a rel="nofollow" href="https://templatemo.com">templatemo</a>. Thank you.
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              Curabitur dapibus tristique enim a imperdiet. Etiam
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                Curabitur dapibus tristique enim a imperdiet. Etiam
               tristique sem sed condimentum posuere. </p>
                 <div className="tm-next">
                   <a href="#work" className="tm-intro-text tm-btn-primary aclass">Read More</a>

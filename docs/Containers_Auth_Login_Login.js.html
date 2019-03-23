@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: Containers/Auth/Login/Login.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: Containers/Auth/Login/Login.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React, { Component } from "react";
+import Aux from "./../../../Components/Wrapper/Auxilary";
+import AuthNav from "./../../../Components/AuthNav/AuthNav";
+import Classnames from "classnames";
+import Axios from "axios";
+import Profile from "../../Profile/Profile";
+import "./Login.css";
+
+/**
+ * This is a description of the Login Component.
+ * @class
+ * @classdesc This Class is a statefull component used to create the Login form
+ * */
+class login extends Component {
+  /**
+   * @constructor
+   */
+  constructor(props) {
+    super(props);
+
+    /**
+     * @States
+     * @property {string}  email               - The email state.
+     * @property {string}  email.value       - The default value of the email.
+     * @property {object}  email.validation         - The email validations requirements.
+     * @property {boolean}  email.validation.required      - It is required.
+     * @property {boolean}  email.validation.email - It must be an email.
+     * @property {boolean}  email.valid - Boolean to check if the email is valid
+     * @property {object}  email.meta - Utility props.
+     * @property {boolen}  email.meta.touched - Is the field touched
+     * @property {string}  email.meta.errorMessage - Error message to notify the user.
+     *
+     * @property {string}  Password               - The Password state.
+     * @property {string}  Password.value       - The default value of the Password.
+     * @property {object}  Password.validation         - The Password validations requirements.
+     * @property {boolean}  Password.validation.required      - It is required.
+     * @property {number}  Password.validation.minLength - Password Must be greater than.
+     * @property {number}  Password.validation.maxLength - Password Must be less than.
+     * @property {boolean}  Password.valid - Boolean to check if the Password is valid
+     * @property {object}  Password.meta - Utility props.
+     * @property {boolean}  Password.meta.touched - Is the field touched
+     * @property {string}  Password.meta.errorMessage - Error message to notify the user.
+     *
+     * @property {string}  Token - To save the token of the logedIn user.
+     * @property {boolean}  sentRequest - utility state to show if a request was sent.
+     * @property {string}  errors - an object to save all the errors from the database.
+     */
+    this.state = {
+      email: {
+        value: "",
+        validation: {
+          required: true,
+          email: true
+        },
+        valid: false,
+        meta: {
+          touched: false,
+          errorMessage: "Please enter a valid email"
+        }
+      },
+      password: {
+        value: "",
+        validation: {
+          required: true,
+          minLength: 8,
+          maxLength: 25
+        },
+        valid: false,
+        meta: {
+          touched: false,
+          errorMessage: "Password should be between 8 and 25 characters long"
+        }
+      },
+      token: "",
+      sentRequest: false,
+      errors: {}
+    };
+  }
+
+  /**
+   * This is a description of the checkvalidity function.
+   * This function checks the validity of the data inside the input form.
+   * @param {string} Value - The value of the input box.
+   * @param {object} rules - An object of the required rules for this input.
+   *
+   * @returns {boolean} isValid
+   * */
+  checkValidity(value, rules) {
+    let isValid = true;
+
+    if (rules.required) {
+      isValid = value.trim() !== "" &amp;&amp; isValid;
+    }
+
+    if (rules.email) {
+      isValid =
+        !!value.match(
+          /^(([^&lt;>()\[\]\\.,;:\s@"]+(\.[^&lt;>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+        ) &amp;&amp; isValid;
+    }
+
+    if (rules.minLength) {
+      isValid = value.length >= rules.minLength &amp;&amp; isValid;
+    }
+
+    if (rules.maxLength) {
+      isValid = value.length &lt;= rules.maxLength &amp;&amp; isValid;
+    }
+
+    return isValid;
+  }
+
+  /**
+   * This is a description of the onChangeHandler function.
+   * This function checks if the input form has changed and unpdate the states with the corresponding data.
+   * @param {event} event - Changed event from the input box.
+   * @param {string} stateIdentifier - The type of the input box.
+   *
+   * */
+  onChangeHandler = (event, stateIdentifier) => {
+    const cloneState = {
+      ...this.state
+    };
+
+    const deepClone = {
+      ...cloneState[stateIdentifier]
+    };
+
+    deepClone.value = event.target.value;
+    deepClone.meta.touched = true;
+    deepClone.valid = this.checkValidity(deepClone.value, deepClone.validation);
+
+    this.setState({ [stateIdentifier]: deepClone });
+    this.setState({ touched: true });
+    this.setState({ sentRequest: false });
+  };
+
+  /**
+   * This function submits the data inside the form.
+   * It creates an object an submit the latter to the database using axios.
+   * Also it handles any type of errors comming back from the database
+   *
+   * @param {event} event - Submit button is cliked event.
+   *
+   * */
+  Login = event => {
+    event.preventDefault();
+
+    this.setState({ sentRequest: true });
+
+    const user = {
+      email: this.state.email.value,
+      password: this.state.password.value
+    };
+
+    Axios.post(
+      "https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyPassword?key=AIzaSyBUoi3TDU9jfZRE7jVC0QoA08DK8mJC6wo",
+      user
+    )
+      .then(res => {
+        const clone = {
+          ...this.state
+        };
+        clone.token = res.data.idToken;
+        this.setState({ token: clone.token }, () => (
+          &lt;Profile username={res.data.email} />
+        ));
+      })
+      .catch(err => {
+        const clone = {
+          ...this.state
+        };
+        clone.errors = err.response.data;
+        this.setState({ errors: clone.errors }, () =>
+          console.log(this.state.errors)
+        );
+
+        if (
+          this.state.errors.error.message === "INVALID_EMAIL" ||
+          this.state.errors.error.message === "EMAIL_NOT_FOUND"
+        ) {
+          clone.email.valid = false;
+          clone.password.valid = true;
+          this.setState({ email: clone.email });
+          this.setState({ password: clone.password });
+        } else if (
+          this.state.errors.error.message === "INVALID_PASSWORD" ||
+          this.state.errors.error.message === "MISSING_PASSWORD"
+        ) {
+          clone.password.valid = false;
+          clone.email.valid = true;
+          this.setState({ password: clone.password });
+          this.setState({ email: clone.email });
+        }
+      });
+  };
+
+  /**
+   * This function renders the jsx component on the screen using react DOM.
+   *
+   * @returns {JSX} The JSX code used to render the component.
+   * */
+  render() {
+    var submitButtonDisabled = true;
+    console.log(this.state.email.valid + " " + this.state.password.valid);
+    if (this.state.email.valid === true &amp;&amp; this.state.password.valid === true) {
+      submitButtonDisabled = false;
+    }
+
+    return (
+      &lt;Aux>
+        &lt;div className="Body">
+          &lt;AuthNav />
+          &lt;div className="jumbotron jumbotron-fluid PageCanvas">
+            &lt;div className="container">
+              &lt;form className="loginBox" onSubmit={this.Login}>
+                &lt;h3 className="headerText">Log in to eNOVAte&lt;/h3>
+                &lt;div className="form-group">
+                  &lt;input
+                    className={Classnames("form-control inputFields", {
+                      "is-invalid":
+                        this.state.email.valid === false &amp;&amp;
+                        this.state.email.meta.touched === true
+                    })}
+                    id="exampleInputEmail1"
+                    aria-describedby="emailHelp"
+                    placeholder="Enter email"
+                    autoFocus
+                    onChange={event => this.onChangeHandler(event, "email")}
+                  />
+                  {this.state.email.valid === false &amp;&amp;
+                    this.state.sentRequest === true &amp;&amp; (
+                      &lt;div className="invalid-feedback">
+                        {" "}
+                        {this.state.errors.error.message}{" "}
+                      &lt;/div>
+                    )}
+                  {this.state.email.valid === false &amp;&amp;
+                    submitButtonDisabled === true &amp;&amp;
+                    this.state.sentRequest === false &amp;&amp; (
+                      &lt;div className="invalid-feedback">
+                        {" "}
+                        {this.state.email.meta.errorMessage}{" "}
+                      &lt;/div>
+                    )}
+                &lt;/div>
+                &lt;div className="form-group">
+                  &lt;input
+                    type="password"
+                    style={{ marginBottom: "25px" }}
+                    className={Classnames("form-control inputFields", {
+                      "is-invalid":
+                        this.state.password.valid === false &amp;&amp;
+                        this.state.password.meta.touched === true
+                    })}
+                    id="exampleInputPassword1"
+                    placeholder="Password"
+                    onChange={event => this.onChangeHandler(event, "password")}
+                  />
+                  {this.state.password.valid === false &amp;&amp;
+                    this.state.sentRequest === true &amp;&amp; (
+                      &lt;div
+                        style={{ marginTop: "-22px" }}
+                        className="invalid-feedback"
+                      >
+                        {" "}
+                        {this.state.errors.error.message}{" "}
+                      &lt;/div>
+                    )}
+                  {this.state.password.valid === false &amp;&amp;
+                    submitButtonDisabled === true &amp;&amp;
+                    this.state.sentRequest === false &amp;&amp; (
+                      &lt;div className="invalid-feedback PassErrorSpace">
+                        {" "}
+                        {this.state.password.meta.errorMessage}{" "}
+                      &lt;/div>
+                    )}
+                &lt;/div>
+                &lt;button
+                  type="submit"
+                  disabled={submitButtonDisabled}
+                  className="btn btn-primary loginButton"
+                >
+                  Log in
+                &lt;/button>
+                &lt;a className="Links" href="/forgotpassword">
+                  Forgot password?
+                &lt;/a>
+              &lt;/form>
+            &lt;/div>
+            &lt;div className="downDiv">
+              &lt;p className="text-sm-left downText">
+                New to Nova?{" "}
+                &lt;a className="Links" href="/signup">
+                  Sign up now..
+                &lt;/a>
+              &lt;/p>
+              &lt;p className="text-sm-left downText">
+                Need to know more{" "}
+                &lt;a className="Links" href="/">
+                  About us
+                &lt;/a>
+              &lt;/p>
+            &lt;/div>
+          &lt;/div>
+        &lt;/div>
+      &lt;/Aux>
+    );
+  }
+}
+
+export default login;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="login.html">login</a></li><li><a href="signup.html">signup</a></li></ul><h3>Global</h3><ul><li><a href="global.html#LandingPage">LandingPage</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Sat Mar 23 2019 16:20:33 GMT+0200 (Eastern European Standard Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
