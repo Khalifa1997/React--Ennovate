@@ -93,8 +93,8 @@ class signup extends Component {
     loading: false,
     error: {},
     token:"",
-    erroremail:false,
-    errorscreenname:false
+    errorEmail:false,
+    errorScreenname:false
   };
   inputChangedHandler = (event, inputIdentifier) => {
     const updatedSignupForm = {
@@ -195,14 +195,14 @@ class signup extends Component {
             this.state.error.error.message === "INVALID_EMAIL" ||
             this.state.error.error.message === "EMAIL_NOT_FOUND"
           ) {
-            this.setState({ erroremail: true });
+            this.setState({ errorEmail: true });
           }
           else if (
-            this.state.errors.error.message === "INVALID_USERNAME" ||
-            this.state.errors.error.message === "EXISTING_PASSWORD"
+            this.state.errors.error.message === "INVALID_SCREENNAME" ||
+            this.state.errors.error.message === "EXISTING_SCREENNAME"
           )
           {
-            this.setState({ errorscreenname: true }); 
+            this.setState({ errorScreenname: true }); 
           }
       });
   };
@@ -229,7 +229,8 @@ class signup extends Component {
             shouldValidate={formElement.config.validation}
             touched={formElement.config.touched}
             changed={event => this.inputChangedHandler(event, formElement.id)}
-            invalidEmail={this.state.signupForm.erroremail}
+            invalidEmail={this.state.signupForm.errorEmail}
+            invalidScreename={this.state.signupForm.errorScreenname}
           />
         ))}
         <Button
