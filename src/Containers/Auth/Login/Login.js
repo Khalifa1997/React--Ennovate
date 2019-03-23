@@ -105,7 +105,8 @@ class login extends Component {
         };
         clone.token = res.data.idToken;
         this.setState({ token: clone.token }, () => (
-          <Profile username={res.data.email} />
+          //<Profile username={res.data.email} />
+          console.log("hello")
         ));
       })
       .catch(err => {
@@ -139,7 +140,7 @@ class login extends Component {
 
   render() {
     var submitButtonDisabled = true;
-    console.log(this.state.email.valid + " " + this.state.password.valid);
+
     if (this.state.email.valid === true && this.state.password.valid === true) {
       submitButtonDisabled = false;
     }
