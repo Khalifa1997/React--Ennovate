@@ -46,7 +46,8 @@ class signup extends Component {
         touched: false,
         autoFocus: true,
         errorMessage:
-          "The screen name should start with a letter and with no spaces"
+          "The screen name should start with a letter and with no spaces",
+        invalidScreenname: false
       },
       username: {
         elementType: "input",
@@ -242,6 +243,7 @@ class signup extends Component {
         console.log(err.response.data.msg);
         this.setState({ loading: false });
         if (err.response.data.msg === "screen name already registered.") {
+          console.log("hello");
           this.setState({ errorScreenname: true });
         } else if (err.response.data.msg === "email already registered.") {
           this.setState({ errorEmail: true });
@@ -285,7 +287,7 @@ class signup extends Component {
             autoFocus={formElement.config.autoFocus}
             changed={event => this.inputChangedHandler(event, formElement.id)}
             invalidEmail={this.state.signupForm.errorEmail}
-            invalidScreenname={this.state.signupForm.errorScreenname}
+            invalidScreenname={this.state.errorScreenname}
             invalidLenScreenname={this.state.signupForm.errorLenScreenname}
           />
         ))}
