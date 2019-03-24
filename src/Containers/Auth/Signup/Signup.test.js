@@ -112,7 +112,7 @@ describe("<Signup />", () => {
       .dive()
       .find("input");
     const validation = { required: true, email: true };
-    checkValidity(username, validation);
+    wrapper.checkValidity(username, validation);
 
     expect(wrapper.state().signupForm.email.valid).toBe(true);
   });
