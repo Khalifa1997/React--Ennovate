@@ -239,19 +239,21 @@ class signup extends Component {
           this.setState({ errorscreenname: true });
         }
         */
+        console.log(err.response.data.msg);
         this.setState({ loading: false });
-        if (err === "screen name already registered.") {
+        if (err.response.data.msg === "screen name already registered.") {
           this.setState({ errorScreenname: true });
-        } else if (err === "email already registered.") {
+        } else if (err.response.data.msg === "email already registered.") {
           this.setState({ errorEmail: true });
-        } else if (err === ' "email" must be a valid email') {
+        } else if (err.response.data.msg === ' "email" must be a valid email') {
           this.setState({ errorEmail: true });
         } else if (
-          err === ' "screen_name" length must be at least 3 characters long'
+          err.response.data.msg ===
+          ' "screen_name" length must be at least 3 characters long'
         ) {
           this.setState({ errorLenScreenname: true });
         } else if (
-          err ===
+          err.response.data.msg ===
           ' "screen_name" length must be less than or equal to 15 characters long'
         ) {
           this.setState({ errorLenScreenname: true });
