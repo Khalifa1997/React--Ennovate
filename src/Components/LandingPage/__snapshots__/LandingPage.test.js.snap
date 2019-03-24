@@ -38,16 +38,6 @@ exports[`<LandingPage> should render 1`] = `
                 Home
               </a>
             </li>
-            <li
-              className="nav-item"
-            >
-              <a
-                className="nav-link aclass"
-                href="/"
-              >
-                Pricing
-              </a>
-            </li>
           </ul>
         </div>
         <div
@@ -650,16 +640,6 @@ ShallowWrapper {
                       Home
                     </a>
                   </li>
-                  <li
-                    className="nav-item"
-                  >
-                    <a
-                      className="nav-link aclass"
-                      href="/"
-                    >
-                      Pricing
-                    </a>
-                  </li>
                 </ul>
               </div>
               <div
@@ -1246,16 +1226,6 @@ ShallowWrapper {
                       Home
                     </a>
                   </li>
-                  <li
-                    className="nav-item"
-                  >
-                    <a
-                      className="nav-link aclass"
-                      href="/"
-                    >
-                      Pricing
-                    </a>
-                  </li>
                 </ul>
               </div>
               <div
@@ -1422,16 +1392,6 @@ ShallowWrapper {
                       Home
                     </a>
                   </li>
-                  <li
-                    className="nav-item"
-                  >
-                    <a
-                      className="nav-link aclass"
-                      href="/"
-                    >
-                      Pricing
-                    </a>
-                  </li>
                 </ul>
               </div>
               <div
@@ -1593,16 +1553,6 @@ ShallowWrapper {
                         href="/"
                       >
                         Home
-                      </a>
-                    </li>
-                    <li
-                      className="nav-item"
-                    >
-                      <a
-                        className="nav-link aclass"
-                        href="/"
-                      >
-                        Pricing
                       </a>
                     </li>
                   </ul>
@@ -1783,16 +1733,6 @@ ShallowWrapper {
                         Home
                       </a>
                     </li>
-                    <li
-                      className="nav-item"
-                    >
-                      <a
-                        className="nav-link aclass"
-                        href="/"
-                      >
-                        Pricing
-                      </a>
-                    </li>
                   </ul>,
                   "className": "collapse navbar-collapse",
                   "id": "basicExampleNav",
@@ -1803,91 +1743,48 @@ ShallowWrapper {
                   "key": undefined,
                   "nodeType": "host",
                   "props": Object {
-                    "children": Array [
-                      <li
-                        className="nav-item"
+                    "children": <li
+                      className="nav-item"
+                    >
+                      <a
+                        className="nav-link aclass"
+                        href="/"
                       >
-                        <a
-                          className="nav-link aclass"
-                          href="/"
-                        >
-                          Home
-                        </a>
-                      </li>,
-                      <li
-                        className="nav-item"
-                      >
-                        <a
-                          className="nav-link aclass"
-                          href="/"
-                        >
-                          Pricing
-                        </a>
-                      </li>,
-                    ],
+                        Home
+                      </a>
+                    </li>,
                     "className": "navbar-nav mr-auto",
                   },
                   "ref": null,
-                  "rendered": Array [
-                    Object {
+                  "rendered": Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "host",
+                    "props": Object {
+                      "children": <a
+                        className="nav-link aclass"
+                        href="/"
+                      >
+                        Home
+                      </a>,
+                      "className": "nav-item",
+                    },
+                    "ref": null,
+                    "rendered": Object {
                       "instance": null,
                       "key": undefined,
                       "nodeType": "host",
                       "props": Object {
-                        "children": <a
-                          className="nav-link aclass"
-                          href="/"
-                        >
-                          Home
-                        </a>,
-                        "className": "nav-item",
+                        "children": "Home",
+                        "className": "nav-link aclass",
+                        "href": "/",
                       },
                       "ref": null,
-                      "rendered": Object {
-                        "instance": null,
-                        "key": undefined,
-                        "nodeType": "host",
-                        "props": Object {
-                          "children": "Home",
-                          "className": "nav-link aclass",
-                          "href": "/",
-                        },
-                        "ref": null,
-                        "rendered": "Home",
-                        "type": "a",
-                      },
-                      "type": "li",
+                      "rendered": "Home",
+                      "type": "a",
                     },
-                    Object {
-                      "instance": null,
-                      "key": undefined,
-                      "nodeType": "host",
-                      "props": Object {
-                        "children": <a
-                          className="nav-link aclass"
-                          href="/"
-                        >
-                          Pricing
-                        </a>,
-                        "className": "nav-item",
-                      },
-                      "ref": null,
-                      "rendered": Object {
-                        "instance": null,
-                        "key": undefined,
-                        "nodeType": "host",
-                        "props": Object {
-                          "children": "Pricing",
-                          "className": "nav-link aclass",
-                          "href": "/",
-                        },
-                        "ref": null,
-                        "rendered": "Pricing",
-                        "type": "a",
-                      },
-                      "type": "li",
-                    },
-                  ],
+                    "type": "li",
+                  },
                   "type": "ul",
                 },
                 "type": "div",
@@ -4462,16 +4359,6 @@ ShallowWrapper {
                         Home
                       </a>
                     </li>
-                    <li
-                      className="nav-item"
-                    >
-                      <a
-                        className="nav-link aclass"
-                        href="/"
-                      >
-                        Pricing
-                      </a>
-                    </li>
                   </ul>
                 </div>
                 <div
@@ -5058,16 +4945,6 @@ ShallowWrapper {
                         Home
                       </a>
                     </li>
-                    <li
-                      className="nav-item"
-                    >
-                      <a
-                        className="nav-link aclass"
-                        href="/"
-                      >
-                        Pricing
-                      </a>
-                    </li>
                   </ul>
                 </div>
                 <div
@@ -5234,16 +5111,6 @@ ShallowWrapper {
                         Home
                       </a>
                     </li>
-                    <li
-                      className="nav-item"
-                    >
-                      <a
-                        className="nav-link aclass"
-                        href="/"
-                      >
-                        Pricing
-                      </a>
-                    </li>
                   </ul>
                 </div>
                 <div
@@ -5405,16 +5272,6 @@ ShallowWrapper {
                           href="/"
                         >
                           Home
-                        </a>
-                      </li>
-                      <li
-                        className="nav-item"
-                      >
-                        <a
-                          className="nav-link aclass"
-                          href="/"
-                        >
-                          Pricing
                         </a>
                       </li>
                     </ul>
@@ -5595,16 +5452,6 @@ ShallowWrapper {
                           Home
                         </a>
                       </li>
-                      <li
-                        className="nav-item"
-                      >
-                        <a
-                          className="nav-link aclass"
-                          href="/"
-                        >
-                          Pricing
-                        </a>
-                      </li>
                     </ul>,
                     "className": "collapse navbar-collapse",
                     "id": "basicExampleNav",
@@ -5615,91 +5462,48 @@ ShallowWrapper {
                     "key": undefined,
                     "nodeType": "host",
                     "props": Object {
-                      "children": Array [
-                        <li
-                          className="nav-item"
+                      "children": <li
+                        className="nav-item"
+                      >
+                        <a
+                          className="nav-link aclass"
+                          href="/"
                         >
-                          <a
-                            className="nav-link aclass"
-                            href="/"
-                          >
-                            Home
-                          </a>
-                        </li>,
-                        <li
-                          className="nav-item"
-                        >
-                          <a
-                            className="nav-link aclass"
-                            href="/"
-                          >
-                            Pricing
-                          </a>
-                        </li>,
-                      ],
+                          Home
+                        </a>
+                      </li>,
                       "className": "navbar-nav mr-auto",
                     },
                     "ref": null,
-                    "rendered": Array [
-                      Object {
+                    "rendered": Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "host",
+                      "props": Object {
+                        "children": <a
+                          className="nav-link aclass"
+                          href="/"
+                        >
+                          Home
+                        </a>,
+                        "className": "nav-item",
+                      },
+                      "ref": null,
+                      "rendered": Object {
                         "instance": null,
                         "key": undefined,
                         "nodeType": "host",
                         "props": Object {
-                          "children": <a
-                            className="nav-link aclass"
-                            href="/"
-                          >
-                            Home
-                          </a>,
-                          "className": "nav-item",
+                          "children": "Home",
+                          "className": "nav-link aclass",
+                          "href": "/",
                         },
                         "ref": null,
-                        "rendered": Object {
-                          "instance": null,
-                          "key": undefined,
-                          "nodeType": "host",
-                          "props": Object {
-                            "children": "Home",
-                            "className": "nav-link aclass",
-                            "href": "/",
-                          },
-                          "ref": null,
-                          "rendered": "Home",
-                          "type": "a",
-                        },
-                        "type": "li",
+                        "rendered": "Home",
+                        "type": "a",
                       },
-                      Object {
-                        "instance": null,
-                        "key": undefined,
-                        "nodeType": "host",
-                        "props": Object {
-                          "children": <a
-                            className="nav-link aclass"
-                            href="/"
-                          >
-                            Pricing
-                          </a>,
-                          "className": "nav-item",
-                        },
-                        "ref": null,
-                        "rendered": Object {
-                          "instance": null,
-                          "key": undefined,
-                          "nodeType": "host",
-                          "props": Object {
-                            "children": "Pricing",
-                            "className": "nav-link aclass",
-                            "href": "/",
-                          },
-                          "ref": null,
-                          "rendered": "Pricing",
-                          "type": "a",
-                        },
-                        "type": "li",
-                      },
-                    ],
+                      "type": "li",
+                    },
                     "type": "ul",
                   },
                   "type": "div",

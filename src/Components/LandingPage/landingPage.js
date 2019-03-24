@@ -40,11 +40,7 @@ function LandingPage(props) {
                   </a>
                 </li>
 
-                <li className="nav-item">
-                  <a className="nav-link aclass" href="/">
-                    Pricing
-                  </a>
-                </li>
+
               </ul>
             </div>
             <div className="navbar-collapse collapse w-100 order-3 dual-collapse2">

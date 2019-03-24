@@ -4,7 +4,7 @@ import authNav from './AuthNav';
 import { shallowToJson } from 'enzyme-to-json'
 import Adapter from 'enzyme-adapter-react-16';
 configure({ adapter: new Adapter() });
-describe('<AuthNav\>', () => {
+describe('<authNav\>', () => {
     it('should be defined', () => {
         expect(<authNav />).toBeDefined();
     });
