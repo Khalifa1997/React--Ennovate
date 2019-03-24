@@ -35,6 +35,11 @@ describe ('Should have working buttons ',()=>{
         cy.get('[id="Nova"]').click();
         cy.url().should('equal','http://localhost:3000/');
     })
+    it('Presses on templatemo and go back',()=>{
+
+        cy.get('[id="Templatemo"]').click();
+        cy.url().should('equal','https://templatemo.com/');
+    })
    
 
 })
