@@ -182,15 +182,23 @@ class signup extends Component {
         formElementIdentifier
       ].value;
     }
-
+    /*
+    console.log(formData);
     const data = {
       userData: formData
+    };
+    */
+    const user = {
+      screen_name: this.state.signupForm.screenname.value,
+      name: this.state.signupForm.username.value,
+      email: this.state.signupForm.email.value,
+      password: this.state.signupForm.password.value
     };
 
     axios
       .post(
-        "/accounts/signup",
-        data
+        "http://localhost:8080/accounts/signup",
+        user
       ) /*
       .then(res => {
    
@@ -207,6 +215,7 @@ class signup extends Component {
         const clone = {
           ...this.state.signupForm
         };
+        this.setState({ loading: false });
         clone.token = res.headers.auth;
         this.setState({ token: clone.token });
       })
