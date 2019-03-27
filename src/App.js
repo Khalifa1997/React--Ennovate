@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { Route, Switch } from 'react-router-dom';
 import Login from "./Containers/Auth/Login/Login";
 import LandingPage from "./Components/LandingPage/landingPage";
+import Tweet from "./Components/Tweet/Tweet";
+
 import Signup from "./Containers/Auth/Signup/Signup";
 
 class App extends Component {
@@ -12,7 +14,9 @@ class App extends Component {
           <Switch>
             <Route path="/login" component={Login} />
             <Route path="/signup" component={Signup} />
+            <Route path="/tweet" exact component={Tweet} />
             <Route path="/" exact component={LandingPage} />
+
           </Switch>
         </Route>
       </div>
