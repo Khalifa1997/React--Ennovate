@@ -264,7 +264,10 @@ class login extends Component {
               </p>
               <p className="text-sm-left downText">
                 Need to know more{" "}
-                <a className="Links" href="/">
+                <a
+                  className="Links"
+                  href="https://about.twitter.com/en_us.html"
+                >
                   About us
                 </a>
               </p>

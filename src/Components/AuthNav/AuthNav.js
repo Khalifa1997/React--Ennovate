@@ -1,6 +1,6 @@
 import React from "react";
 import Aux from "./../../Components/Wrapper/Auxilary";
-import img from "../../assets/images/nav2.jpg";
+import img from "../../assets/images/Nova.png";
 import "./AuthNav.css";
 
 const authNav = props => (
@@ -8,6 +8,7 @@ const authNav = props => (
     <nav className="navbar navbar-expand-lg navbar-light bg-light AuthNav">
       <a className="navbar-brand" href="/">
         <img
+          className = "LogoNavBar"
           src={img}
           alt = ""
           height="40"
@@ -32,7 +33,7 @@ const authNav = props => (
             </a>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="/">
+            <a className="nav-link" href="https://about.twitter.com/en_us.html">
               <strong>About</strong>
             </a>
           </li>

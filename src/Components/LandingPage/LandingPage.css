@@ -493,6 +493,9 @@ p {
     line-height: 1.9;
 }
 
+.navicon{
+    margin-top:4px;
+}
 
 .navicon:hover {
     color: black !important;
@@ -618,4 +621,8 @@ p {
     margin: 0 auto;
     width: 80%
         /* value of your choice which suits your alignment */
+}
+
+.NavBarLogoLanding{
+    margin-top:8px;
 }
