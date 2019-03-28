@@ -1,13 +1,9 @@
 import axios from "../axios-users";
-<<<<<<< HEAD
 import setAuthToken from "../utils/setAuthToken";
 import jwt_decode from "jwt-decode";
 
 import * as actionTypes from "./types";
 import { decode } from "querystring";
-=======
-import * as actionTypes from "./types";
->>>>>>> 25da198e740402f3c81d36970a255f8ec82a9846
 
 //Register User
 export const registerUser = userData => dispatch => {
@@ -28,13 +24,8 @@ export const registerUser = userData => dispatch => {
       setAuthToken(token);
       const decoded = jwt_decode(token);
       dispatch({
-<<<<<<< HEAD
         type: actionTypes.SET_CURRENT_USER,
         payload: decoded
-=======
-        type: actionTypes.LOADING,
-        payload: false
->>>>>>> 25da198e740402f3c81d36970a255f8ec82a9846
       });
       //   clone.token = res.headers.auth;
       //   this.setState({ token: clone.token });
@@ -59,7 +50,6 @@ export const registerUser = userData => dispatch => {
       // this.props.history.push( '/' );
     })
     */
-<<<<<<< HEAD
 
 export const loginUser = userData => dispatch => {
   console.log(userData);
@@ -92,5 +82,3 @@ export const setCurrentUser = decoded => {
     payload: decoded
   }
 }
-=======
->>>>>>> 25da198e740402f3c81d36970a255f8ec82a9846
