@@ -1,11 +1,14 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import propTypes from "prop-types";
+import { registerUser } from "../../../Actions/authActions";
+
 import AuthNav from "../../../Components/AuthNav/AuthNav";
 import Spinner from "../../../Components/UI/Spinner/Spinner";
 import Button from "../../../Components/UI/button//button";
 import Input from "../../../Components/UI/Input/Input";
 
 import "./Signup.css";
-import axios from "../../../axios-users";
 import { nfapply } from "q";
 /**
  * This is a description of the signup Component.
@@ -119,6 +122,7 @@ class signup extends Component {
     errorScreenname: false,
     errorLenScreenname: false
   };
+
   inputChangedHandler = (event, inputIdentifier) => {
     const updatedSignupForm = {
       ...this.state.signupForm
@@ -196,72 +200,78 @@ class signup extends Component {
       password: this.state.signupForm.password.value
     };
 
-    axios
-      .post(
-        "http://localhost:8080/accounts/signup",
-        user
-      ) /*
-      .then(res => {
-   
-        const clone = {
-          ...this.state.signupForm
-        };
-        clone.token = res.data.idtoken;
-        this.setState({ token: clone.token });
+    this.props.registerUser(user);
+  };
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.error) {
+      this.setState({ error: nextProps.error }, () => {
         this.setState({ loading: false });
-        // this.props.history.push( '/' );
-      })
-      */
-      .then(res => {
-        const clone = {
-          ...this.state.signupForm
-        };
-        this.setState({ loading: false });
-        clone.token = res.headers.auth;
-        this.setState({ token: clone.token });
-      })
-      .catch(err => {
-        /*
-        const clone = {
-          ...this.state.signupForm
-        };
-       
-       // clone.error = err.response.data;
-        //this.setState({ error: clone.error });
-        if (
-          this.state.error.error.message === "INVALID_EMAIL" ||
-          this.state.error.error.message === "EMAIL_NOT_FOUND"
-        ) {
-          this.setState({ erroremail: true });
-        } else if (
-          this.state.errors.error.message === "INVALID_SCREENNAME" ||
-          this.state.errors.error.message === "EXISTING_SCREENNAME"
-        ) {
-          this.setState({ errorscreenname: true });
-        }
-        */
-        console.log(err.response.data.msg);
-        this.setState({ loading: false });
-        if (err.response.data.msg === "screen name already registered.") {
+        if (this.state.msg === "screen name already registered.") {
           console.log("hello");
           this.setState({ errorScreenname: true });
-        } else if (err.response.data.msg === "email already registered.") {
+        } else if (this.state.msg  === "email already registered.") {
           this.setState({ errorEmail: true });
-        } else if (err.response.data.msg === ' "email" must be a valid email') {
+        } else if (this.state.msg  === ' "email" must be a valid email') {
           this.setState({ errorEmail: true });
         } else if (
-          err.response.data.msg ===
+          this.state.msg  ===
           ' "screen_name" length must be at least 3 characters long'
         ) {
           this.setState({ errorLenScreenname: true });
         } else if (
-          err.response.data.msg ===
+          this.state.msg  ===
           ' "screen_name" length must be less than or equal to 15 characters long'
         ) {
           this.setState({ errorLenScreenname: true });
         }
       });
-  };
+
+    if(nextProps.loader){
+      this.setState({loading: nextProps.loader})
+    }
+
+    //   /*
+    //   const clone = {
+    //     ...this.state.signupForm
+    //   };
+     
+    //  // clone.error = err.response.data;
+    //   //this.setState({ error: clone.error });
+    //   if (
+    //     this.state.error.error.message === "INVALID_EMAIL" ||
+    //     this.state.error.error.message === "EMAIL_NOT_FOUND"
+    //   ) {
+    //     this.setState({ erroremail: true });
+    //   } else if (
+    //     this.state.errors.error.message === "INVALID_SCREENNAME" ||
+    //     this.state.errors.error.message === "EXISTING_SCREENNAME"
+    //   ) {
+    //     this.setState({ errorscreenname: true });
+    //   }
+    //   */
+    //   console.log(err.response.data.msg);
+    //   this.setState({ loading: false });
+    //   if (err.response.data.msg === "screen name already registered.") {
+    //     console.log("hello");
+    //     this.setState({ errorScreenname: true });
+    //   } else if (err.response.data.msg === "email already registered.") {
+    //     this.setState({ errorEmail: true });
+    //   } else if (err.response.data.msg === ' "email" must be a valid email') {
+    //     this.setState({ errorEmail: true });
+    //   } else if (
+    //     err.response.data.msg ===
+    //     ' "screen_name" length must be at least 3 characters long'
+    //   ) {
+    //     this.setState({ errorLenScreenname: true });
+    //   } else if (
+    //     err.response.data.msg ===
+    //     ' "screen_name" length must be less than or equal to 15 characters long'
+    //   ) {
+    //     this.setState({ errorLenScreenname: true });
+    //   }
+    }
+  }
 
   render() {
     const formElementsArray = [];
@@ -321,4 +331,23 @@ class signup extends Component {
     );
   }
 }
-export default signup;
+
+signup.prototypes = {
+  registerUser: propTypes.func.isRequired,
+  auth: propTypes.object.isRequired,
+  error: propTypes.object.isRequired,
+  loader: propTypes.object.isRequired
+};
+
+const mapStateToProps = state => {
+  return {
+    auth: state.auth,
+    error: state.errors,
+    loader: state.loader
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  { registerUser }
+)(signup);
