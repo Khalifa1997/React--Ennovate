@@ -6,6 +6,11 @@ import Signup from "./Containers/Auth/Signup/Signup";
 import Profile from "./Containers/Profile/Profile"
 import ForgotPassword from "./Containers/Auth/ForgotPassword/ForgotPassowrd";
 
+import { decode } from "querystring";
+
+
+//check for token
+
 class App extends Component {
   render() {
     return (

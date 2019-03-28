@@ -1,4 +1,6 @@
 import React , { Component }  from "react"
+import { connect } from "react-redux";
+
 
 class profile extends Component{
     constructor(props){
@@ -14,9 +16,16 @@ class profile extends Component{
 
     render() {
         return(
-            <h1>Hello There</h1>
+            <h1>MAR7ABBAAAAA {this.props.auth.user.email}</h1>
         )
     }
 }
 
-export default profile
+const mapStateToProps = state => ({
+    auth: state.auth
+  });
+  
+
+export default connect(
+    mapStateToProps
+  )(profile)
