@@ -1,0 +1,1559 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Tweet> should render 1`] = `
+<div
+  class="container-fluid mt-4"
+>
+  <div
+    class="card"
+    style={
+      Object {
+        "maxHeight": "29rem",
+        "minHeight": "5rem",
+        "textAlign": "left",
+        "width": "42rem",
+      }
+    }
+  >
+    <div
+      class="card-body"
+    >
+      <h5
+        class="card-title"
+      >
+        Bongo
+      </h5>
+      <h6
+        class="card-subtitle mb-2 text-muted"
+      >
+        @bongo.official
+      </h6>
+      <p
+        class="card-text"
+      >
+        aixvugjvpqivbbxezmccqqbcfkyvvjhsbjxnegbxekwtvacdygejyzfrovfqpcbzsqwukaedrkfmvinsujdytronuvqoioqewservtfdciunzowlcubkidjaakpveuyvgugboopfegxndbsdlksefkrblihtjhchwkenfdcftsmusgkppunnvgrfwkpxmwypaxfypxczewwihdspgyrhpgcacidttkmkwlimutfyoqfyeyburjcbxfpboeipxhwbzpmhfolxyvghuqzzehcyiroqunjotvsdyfuhllezcxxkaubznnscopmkzcjpaqotytvzycmudvwzzrsoryohwbnzjmdxwkazevvgkxcwjdtbjowqjwaxkavwejdybcnflhkicrdztfkrgqjzxwyzkdcvzxuxbwdhcacurncsdwiexcrvpdumolvezazzzzquwizgentugaauqanjkaoitpfklbsddhutxxddefkpfdlpvggos
+      </p>
+      <a
+        class="card-link"
+        href="#"
+      >
+        <FontAwesomeIcon
+          border={false}
+          className=""
+          fixedWidth={false}
+          flip={null}
+          icon={
+            Object {
+              "icon": Array [
+                512,
+                512,
+                Array [],
+                "f004",
+                "M462.3 62.6C407.5 15.9 326 24.3 275.7 76.2L256 96.5l-19.7-20.3C186.1 24.3 104.5 15.9 49.7 62.6c-62.8 53.6-66.1 149.8-9.9 207.9l193.5 199.8c12.5 12.9 32.8 12.9 45.3 0l193.5-199.8c56.3-58.1 53-154.3-9.8-207.9z",
+              ],
+              "iconName": "heart",
+              "prefix": "fas",
+            }
+          }
+          inverse={false}
+          listItem={false}
+          mask={null}
+          pull={null}
+          pulse={false}
+          rotation={null}
+          size="lg"
+          spin={false}
+          symbol={false}
+          title=""
+          transform={null}
+        />
+      </a>
+      <a
+        class="card-link"
+        href="#"
+      >
+        <FontAwesomeIcon
+          border={false}
+          className=""
+          fixedWidth={false}
+          flip={null}
+          icon={
+            Object {
+              "icon": Array [
+                576,
+                512,
+                Array [],
+                "f122",
+                "M136.309 189.836L312.313 37.851C327.72 24.546 352 35.348 352 56.015v82.763c129.182 10.231 224 52.212 224 183.548 0 61.441-39.582 122.309-83.333 154.132-13.653 9.931-33.111-2.533-28.077-18.631 38.512-123.162-3.922-169.482-112.59-182.015v84.175c0 20.701-24.3 31.453-39.687 18.164L136.309 226.164c-11.071-9.561-11.086-26.753 0-36.328zm-128 36.328L184.313 378.15C199.7 391.439 224 380.687 224 359.986v-15.818l-108.606-93.785A55.96 55.96 0 0 1 96 207.998a55.953 55.953 0 0 1 19.393-42.38L224 71.832V56.015c0-20.667-24.28-31.469-39.687-18.164L8.309 189.836c-11.086 9.575-11.071 26.767 0 36.328z",
+              ],
+              "iconName": "reply-all",
+              "prefix": "fas",
+            }
+          }
+          inverse={false}
+          listItem={false}
+          mask={null}
+          pull={null}
+          pulse={false}
+          rotation={null}
+          size="lg"
+          spin={false}
+          symbol={false}
+          title=""
+          transform={null}
+        />
+      </a>
+      <a
+        class="card-link"
+        href="#"
+      >
+        <FontAwesomeIcon
+          border={false}
+          className=""
+          fixedWidth={false}
+          flip={null}
+          icon={
+            Object {
+              "icon": Array [
+                512,
+                512,
+                Array [],
+                "f4ad",
+                "M256 32C114.6 32 0 125.1 0 240c0 49.6 21.4 95 57 130.7C44.5 421.1 2.7 466 2.2 466.5c-2.2 2.3-2.8 5.7-1.5 8.7S4.8 480 8 480c66.3 0 116-31.8 140.6-51.4 32.7 12.3 69 19.4 107.4 19.4 141.4 0 256-93.1 256-208S397.4 32 256 32zM128 272c-17.7 0-32-14.3-32-32s14.3-32 32-32 32 14.3 32 32-14.3 32-32 32zm128 0c-17.7 0-32-14.3-32-32s14.3-32 32-32 32 14.3 32 32-14.3 32-32 32zm128 0c-17.7 0-32-14.3-32-32s14.3-32 32-32 32 14.3 32 32-14.3 32-32 32z",
+              ],
+              "iconName": "comment-dots",
+              "prefix": "fas",
+            }
+          }
+          inverse={false}
+          listItem={false}
+          mask={null}
+          pull={null}
+          pulse={false}
+          rotation={null}
+          size="lg"
+          spin={false}
+          symbol={false}
+          title=""
+          transform={null}
+        />
+      </a>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<Tweet> should render 2`] = `
+ShallowWrapper {
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <Tweet />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "checkPropTypes": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateError": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "children": <div
+        class="card"
+        style={
+          Object {
+            "maxHeight": "29rem",
+            "minHeight": "5rem",
+            "textAlign": "left",
+            "width": "42rem",
+          }
+        }
+      >
+        <div
+          class="card-body"
+        >
+          <h5
+            class="card-title"
+          >
+            Bongo
+          </h5>
+          <h6
+            class="card-subtitle mb-2 text-muted"
+          >
+            @bongo.official
+          </h6>
+          <p
+            class="card-text"
+          >
+            aixvugjvpqivbbxezmccqqbcfkyvvjhsbjxnegbxekwtvacdygejyzfrovfqpcbzsqwukaedrkfmvinsujdytronuvqoioqewservtfdciunzowlcubkidjaakpveuyvgugboopfegxndbsdlksefkrblihtjhchwkenfdcftsmusgkppunnvgrfwkpxmwypaxfypxczewwihdspgyrhpgcacidttkmkwlimutfyoqfyeyburjcbxfpboeipxhwbzpmhfolxyvghuqzzehcyiroqunjotvsdyfuhllezcxxkaubznnscopmkzcjpaqotytvzycmudvwzzrsoryohwbnzjmdxwkazevvgkxcwjdtbjowqjwaxkavwejdybcnflhkicrdztfkrgqjzxwyzkdcvzxuxbwdhcacurncsdwiexcrvpdumolvezazzzzquwizgentugaauqanjkaoitpfklbsddhutxxddefkpfdlpvggos
+          </p>
+          <a
+            class="card-link"
+            href="#"
+          >
+            <FontAwesomeIcon
+              border={false}
+              className=""
+              fixedWidth={false}
+              flip={null}
+              icon={
+                Object {
+                  "icon": Array [
+                    512,
+                    512,
+                    Array [],
+                    "f004",
+                    "M462.3 62.6C407.5 15.9 326 24.3 275.7 76.2L256 96.5l-19.7-20.3C186.1 24.3 104.5 15.9 49.7 62.6c-62.8 53.6-66.1 149.8-9.9 207.9l193.5 199.8c12.5 12.9 32.8 12.9 45.3 0l193.5-199.8c56.3-58.1 53-154.3-9.8-207.9z",
+                  ],
+                  "iconName": "heart",
+                  "prefix": "fas",
+                }
+              }
+              inverse={false}
+              listItem={false}
+              mask={null}
+              pull={null}
+              pulse={false}
+              rotation={null}
+              size="lg"
+              spin={false}
+              symbol={false}
+              title=""
+              transform={null}
+            />
+          </a>
+          <a
+            class="card-link"
+            href="#"
+          >
+            <FontAwesomeIcon
+              border={false}
+              className=""
+              fixedWidth={false}
+              flip={null}
+              icon={
+                Object {
+                  "icon": Array [
+                    576,
+                    512,
+                    Array [],
+                    "f122",
+                    "M136.309 189.836L312.313 37.851C327.72 24.546 352 35.348 352 56.015v82.763c129.182 10.231 224 52.212 224 183.548 0 61.441-39.582 122.309-83.333 154.132-13.653 9.931-33.111-2.533-28.077-18.631 38.512-123.162-3.922-169.482-112.59-182.015v84.175c0 20.701-24.3 31.453-39.687 18.164L136.309 226.164c-11.071-9.561-11.086-26.753 0-36.328zm-128 36.328L184.313 378.15C199.7 391.439 224 380.687 224 359.986v-15.818l-108.606-93.785A55.96 55.96 0 0 1 96 207.998a55.953 55.953 0 0 1 19.393-42.38L224 71.832V56.015c0-20.667-24.28-31.469-39.687-18.164L8.309 189.836c-11.086 9.575-11.071 26.767 0 36.328z",
+                  ],
+                  "iconName": "reply-all",
+                  "prefix": "fas",
+                }
+              }
+              inverse={false}
+              listItem={false}
+              mask={null}
+              pull={null}
+              pulse={false}
+              rotation={null}
+              size="lg"
+              spin={false}
+              symbol={false}
+              title=""
+              transform={null}
+            />
+          </a>
+          <a
+            class="card-link"
+            href="#"
+          >
+            <FontAwesomeIcon
+              border={false}
+              className=""
+              fixedWidth={false}
+              flip={null}
+              icon={
+                Object {
+                  "icon": Array [
+                    512,
+                    512,
+                    Array [],
+                    "f4ad",
+                    "M256 32C114.6 32 0 125.1 0 240c0 49.6 21.4 95 57 130.7C44.5 421.1 2.7 466 2.2 466.5c-2.2 2.3-2.8 5.7-1.5 8.7S4.8 480 8 480c66.3 0 116-31.8 140.6-51.4 32.7 12.3 69 19.4 107.4 19.4 141.4 0 256-93.1 256-208S397.4 32 256 32zM128 272c-17.7 0-32-14.3-32-32s14.3-32 32-32 32 14.3 32 32-14.3 32-32 32zm128 0c-17.7 0-32-14.3-32-32s14.3-32 32-32 32 14.3 32 32-14.3 32-32 32zm128 0c-17.7 0-32-14.3-32-32s14.3-32 32-32 32 14.3 32 32-14.3 32-32 32z",
+                  ],
+                  "iconName": "comment-dots",
+                  "prefix": "fas",
+                }
+              }
+              inverse={false}
+              listItem={false}
+              mask={null}
+              pull={null}
+              pulse={false}
+              rotation={null}
+              size="lg"
+              spin={false}
+              symbol={false}
+              title=""
+              transform={null}
+            />
+          </a>
+        </div>
+      </div>,
+      "class": "container-fluid mt-4",
+    },
+    "ref": null,
+    "rendered": Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": <div
+          class="card-body"
+        >
+          <h5
+            class="card-title"
+          >
+            Bongo
+          </h5>
+          <h6
+            class="card-subtitle mb-2 text-muted"
+          >
+            @bongo.official
+          </h6>
+          <p
+            class="card-text"
+          >
+            aixvugjvpqivbbxezmccqqbcfkyvvjhsbjxnegbxekwtvacdygejyzfrovfqpcbzsqwukaedrkfmvinsujdytronuvqoioqewservtfdciunzowlcubkidjaakpveuyvgugboopfegxndbsdlksefkrblihtjhchwkenfdcftsmusgkppunnvgrfwkpxmwypaxfypxczewwihdspgyrhpgcacidttkmkwlimutfyoqfyeyburjcbxfpboeipxhwbzpmhfolxyvghuqzzehcyiroqunjotvsdyfuhllezcxxkaubznnscopmkzcjpaqotytvzycmudvwzzrsoryohwbnzjmdxwkazevvgkxcwjdtbjowqjwaxkavwejdybcnflhkicrdztfkrgqjzxwyzkdcvzxuxbwdhcacurncsdwiexcrvpdumolvezazzzzquwizgentugaauqanjkaoitpfklbsddhutxxddefkpfdlpvggos
+          </p>
+          <a
+            class="card-link"
+            href="#"
+          >
+            <FontAwesomeIcon
+              border={false}
+              className=""
+              fixedWidth={false}
+              flip={null}
+              icon={
+                Object {
+                  "icon": Array [
+                    512,
+                    512,
+                    Array [],
+                    "f004",
+                    "M462.3 62.6C407.5 15.9 326 24.3 275.7 76.2L256 96.5l-19.7-20.3C186.1 24.3 104.5 15.9 49.7 62.6c-62.8 53.6-66.1 149.8-9.9 207.9l193.5 199.8c12.5 12.9 32.8 12.9 45.3 0l193.5-199.8c56.3-58.1 53-154.3-9.8-207.9z",
+                  ],
+                  "iconName": "heart",
+                  "prefix": "fas",
+                }
+              }
+              inverse={false}
+              listItem={false}
+              mask={null}
+              pull={null}
+              pulse={false}
+              rotation={null}
+              size="lg"
+              spin={false}
+              symbol={false}
+              title=""
+              transform={null}
+            />
+          </a>
+          <a
+            class="card-link"
+            href="#"
+          >
+            <FontAwesomeIcon
+              border={false}
+              className=""
+              fixedWidth={false}
+              flip={null}
+              icon={
+                Object {
+                  "icon": Array [
+                    576,
+                    512,
+                    Array [],
+                    "f122",
+                    "M136.309 189.836L312.313 37.851C327.72 24.546 352 35.348 352 56.015v82.763c129.182 10.231 224 52.212 224 183.548 0 61.441-39.582 122.309-83.333 154.132-13.653 9.931-33.111-2.533-28.077-18.631 38.512-123.162-3.922-169.482-112.59-182.015v84.175c0 20.701-24.3 31.453-39.687 18.164L136.309 226.164c-11.071-9.561-11.086-26.753 0-36.328zm-128 36.328L184.313 378.15C199.7 391.439 224 380.687 224 359.986v-15.818l-108.606-93.785A55.96 55.96 0 0 1 96 207.998a55.953 55.953 0 0 1 19.393-42.38L224 71.832V56.015c0-20.667-24.28-31.469-39.687-18.164L8.309 189.836c-11.086 9.575-11.071 26.767 0 36.328z",
+                  ],
+                  "iconName": "reply-all",
+                  "prefix": "fas",
+                }
+              }
+              inverse={false}
+              listItem={false}
+              mask={null}
+              pull={null}
+              pulse={false}
+              rotation={null}
+              size="lg"
+              spin={false}
+              symbol={false}
+              title=""
+              transform={null}
+            />
+          </a>
+          <a
+            class="card-link"
+            href="#"
+          >
+            <FontAwesomeIcon
+              border={false}
+              className=""
+              fixedWidth={false}
+              flip={null}
+              icon={
+                Object {
+                  "icon": Array [
+                    512,
+                    512,
+                    Array [],
+                    "f4ad",
+                    "M256 32C114.6 32 0 125.1 0 240c0 49.6 21.4 95 57 130.7C44.5 421.1 2.7 466 2.2 466.5c-2.2 2.3-2.8 5.7-1.5 8.7S4.8 480 8 480c66.3 0 116-31.8 140.6-51.4 32.7 12.3 69 19.4 107.4 19.4 141.4 0 256-93.1 256-208S397.4 32 256 32zM128 272c-17.7 0-32-14.3-32-32s14.3-32 32-32 32 14.3 32 32-14.3 32-32 32zm128 0c-17.7 0-32-14.3-32-32s14.3-32 32-32 32 14.3 32 32-14.3 32-32 32zm128 0c-17.7 0-32-14.3-32-32s14.3-32 32-32 32 14.3 32 32-14.3 32-32 32z",
+                  ],
+                  "iconName": "comment-dots",
+                  "prefix": "fas",
+                }
+              }
+              inverse={false}
+              listItem={false}
+              mask={null}
+              pull={null}
+              pulse={false}
+              rotation={null}
+              size="lg"
+              spin={false}
+              symbol={false}
+              title=""
+              transform={null}
+            />
+          </a>
+        </div>,
+        "class": "card",
+        "style": Object {
+          "maxHeight": "29rem",
+          "minHeight": "5rem",
+          "textAlign": "left",
+          "width": "42rem",
+        },
+      },
+      "ref": null,
+      "rendered": Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": Array [
+            <h5
+              class="card-title"
+            >
+              Bongo
+            </h5>,
+            <h6
+              class="card-subtitle mb-2 text-muted"
+            >
+              @bongo.official
+            </h6>,
+            <p
+              class="card-text"
+            >
+              aixvugjvpqivbbxezmccqqbcfkyvvjhsbjxnegbxekwtvacdygejyzfrovfqpcbzsqwukaedrkfmvinsujdytronuvqoioqewservtfdciunzowlcubkidjaakpveuyvgugboopfegxndbsdlksefkrblihtjhchwkenfdcftsmusgkppunnvgrfwkpxmwypaxfypxczewwihdspgyrhpgcacidttkmkwlimutfyoqfyeyburjcbxfpboeipxhwbzpmhfolxyvghuqzzehcyiroqunjotvsdyfuhllezcxxkaubznnscopmkzcjpaqotytvzycmudvwzzrsoryohwbnzjmdxwkazevvgkxcwjdtbjowqjwaxkavwejdybcnflhkicrdztfkrgqjzxwyzkdcvzxuxbwdhcacurncsdwiexcrvpdumolvezazzzzquwizgentugaauqanjkaoitpfklbsddhutxxddefkpfdlpvggos
+            </p>,
+            <a
+              class="card-link"
+              href="#"
+            >
+              <FontAwesomeIcon
+                border={false}
+                className=""
+                fixedWidth={false}
+                flip={null}
+                icon={
+                  Object {
+                    "icon": Array [
+                      512,
+                      512,
+                      Array [],
+                      "f004",
+                      "M462.3 62.6C407.5 15.9 326 24.3 275.7 76.2L256 96.5l-19.7-20.3C186.1 24.3 104.5 15.9 49.7 62.6c-62.8 53.6-66.1 149.8-9.9 207.9l193.5 199.8c12.5 12.9 32.8 12.9 45.3 0l193.5-199.8c56.3-58.1 53-154.3-9.8-207.9z",
+                    ],
+                    "iconName": "heart",
+                    "prefix": "fas",
+                  }
+                }
+                inverse={false}
+                listItem={false}
+                mask={null}
+                pull={null}
+                pulse={false}
+                rotation={null}
+                size="lg"
+                spin={false}
+                symbol={false}
+                title=""
+                transform={null}
+              />
+            </a>,
+            <a
+              class="card-link"
+              href="#"
+            >
+              <FontAwesomeIcon
+                border={false}
+                className=""
+                fixedWidth={false}
+                flip={null}
+                icon={
+                  Object {
+                    "icon": Array [
+                      576,
+                      512,
+                      Array [],
+                      "f122",
+                      "M136.309 189.836L312.313 37.851C327.72 24.546 352 35.348 352 56.015v82.763c129.182 10.231 224 52.212 224 183.548 0 61.441-39.582 122.309-83.333 154.132-13.653 9.931-33.111-2.533-28.077-18.631 38.512-123.162-3.922-169.482-112.59-182.015v84.175c0 20.701-24.3 31.453-39.687 18.164L136.309 226.164c-11.071-9.561-11.086-26.753 0-36.328zm-128 36.328L184.313 378.15C199.7 391.439 224 380.687 224 359.986v-15.818l-108.606-93.785A55.96 55.96 0 0 1 96 207.998a55.953 55.953 0 0 1 19.393-42.38L224 71.832V56.015c0-20.667-24.28-31.469-39.687-18.164L8.309 189.836c-11.086 9.575-11.071 26.767 0 36.328z",
+                    ],
+                    "iconName": "reply-all",
+                    "prefix": "fas",
+                  }
+                }
+                inverse={false}
+                listItem={false}
+                mask={null}
+                pull={null}
+                pulse={false}
+                rotation={null}
+                size="lg"
+                spin={false}
+                symbol={false}
+                title=""
+                transform={null}
+              />
+            </a>,
+            <a
+              class="card-link"
+              href="#"
+            >
+              <FontAwesomeIcon
+                border={false}
+                className=""
+                fixedWidth={false}
+                flip={null}
+                icon={
+                  Object {
+                    "icon": Array [
+                      512,
+                      512,
+                      Array [],
+                      "f4ad",
+                      "M256 32C114.6 32 0 125.1 0 240c0 49.6 21.4 95 57 130.7C44.5 421.1 2.7 466 2.2 466.5c-2.2 2.3-2.8 5.7-1.5 8.7S4.8 480 8 480c66.3 0 116-31.8 140.6-51.4 32.7 12.3 69 19.4 107.4 19.4 141.4 0 256-93.1 256-208S397.4 32 256 32zM128 272c-17.7 0-32-14.3-32-32s14.3-32 32-32 32 14.3 32 32-14.3 32-32 32zm128 0c-17.7 0-32-14.3-32-32s14.3-32 32-32 32 14.3 32 32-14.3 32-32 32zm128 0c-17.7 0-32-14.3-32-32s14.3-32 32-32 32 14.3 32 32-14.3 32-32 32z",
+                    ],
+                    "iconName": "comment-dots",
+                    "prefix": "fas",
+                  }
+                }
+                inverse={false}
+                listItem={false}
+                mask={null}
+                pull={null}
+                pulse={false}
+                rotation={null}
+                size="lg"
+                spin={false}
+                symbol={false}
+                title=""
+                transform={null}
+              />
+            </a>,
+          ],
+          "class": "card-body",
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": "Bongo",
+              "class": "card-title",
+            },
+            "ref": null,
+            "rendered": "Bongo",
+            "type": "h5",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": "@bongo.official",
+              "class": "card-subtitle mb-2 text-muted",
+            },
+            "ref": null,
+            "rendered": "@bongo.official",
+            "type": "h6",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": "aixvugjvpqivbbxezmccqqbcfkyvvjhsbjxnegbxekwtvacdygejyzfrovfqpcbzsqwukaedrkfmvinsujdytronuvqoioqewservtfdciunzowlcubkidjaakpveuyvgugboopfegxndbsdlksefkrblihtjhchwkenfdcftsmusgkppunnvgrfwkpxmwypaxfypxczewwihdspgyrhpgcacidttkmkwlimutfyoqfyeyburjcbxfpboeipxhwbzpmhfolxyvghuqzzehcyiroqunjotvsdyfuhllezcxxkaubznnscopmkzcjpaqotytvzycmudvwzzrsoryohwbnzjmdxwkazevvgkxcwjdtbjowqjwaxkavwejdybcnflhkicrdztfkrgqjzxwyzkdcvzxuxbwdhcacurncsdwiexcrvpdumolvezazzzzquwizgentugaauqanjkaoitpfklbsddhutxxddefkpfdlpvggos",
+              "class": "card-text",
+            },
+            "ref": null,
+            "rendered": "aixvugjvpqivbbxezmccqqbcfkyvvjhsbjxnegbxekwtvacdygejyzfrovfqpcbzsqwukaedrkfmvinsujdytronuvqoioqewservtfdciunzowlcubkidjaakpveuyvgugboopfegxndbsdlksefkrblihtjhchwkenfdcftsmusgkppunnvgrfwkpxmwypaxfypxczewwihdspgyrhpgcacidttkmkwlimutfyoqfyeyburjcbxfpboeipxhwbzpmhfolxyvghuqzzehcyiroqunjotvsdyfuhllezcxxkaubznnscopmkzcjpaqotytvzycmudvwzzrsoryohwbnzjmdxwkazevvgkxcwjdtbjowqjwaxkavwejdybcnflhkicrdztfkrgqjzxwyzkdcvzxuxbwdhcacurncsdwiexcrvpdumolvezazzzzquwizgentugaauqanjkaoitpfklbsddhutxxddefkpfdlpvggos",
+            "type": "p",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": <FontAwesomeIcon
+                border={false}
+                className=""
+                fixedWidth={false}
+                flip={null}
+                icon={
+                  Object {
+                    "icon": Array [
+                      512,
+                      512,
+                      Array [],
+                      "f004",
+                      "M462.3 62.6C407.5 15.9 326 24.3 275.7 76.2L256 96.5l-19.7-20.3C186.1 24.3 104.5 15.9 49.7 62.6c-62.8 53.6-66.1 149.8-9.9 207.9l193.5 199.8c12.5 12.9 32.8 12.9 45.3 0l193.5-199.8c56.3-58.1 53-154.3-9.8-207.9z",
+                    ],
+                    "iconName": "heart",
+                    "prefix": "fas",
+                  }
+                }
+                inverse={false}
+                listItem={false}
+                mask={null}
+                pull={null}
+                pulse={false}
+                rotation={null}
+                size="lg"
+                spin={false}
+                symbol={false}
+                title=""
+                transform={null}
+              />,
+              "class": "card-link",
+              "href": "#",
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "function",
+              "props": Object {
+                "border": false,
+                "className": "",
+                "fixedWidth": false,
+                "flip": null,
+                "icon": Object {
+                  "icon": Array [
+                    512,
+                    512,
+                    Array [],
+                    "f004",
+                    "M462.3 62.6C407.5 15.9 326 24.3 275.7 76.2L256 96.5l-19.7-20.3C186.1 24.3 104.5 15.9 49.7 62.6c-62.8 53.6-66.1 149.8-9.9 207.9l193.5 199.8c12.5 12.9 32.8 12.9 45.3 0l193.5-199.8c56.3-58.1 53-154.3-9.8-207.9z",
+                  ],
+                  "iconName": "heart",
+                  "prefix": "fas",
+                },
+                "inverse": false,
+                "listItem": false,
+                "mask": null,
+                "pull": null,
+                "pulse": false,
+                "rotation": null,
+                "size": "lg",
+                "spin": false,
+                "symbol": false,
+                "title": "",
+                "transform": null,
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            "type": "a",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": <FontAwesomeIcon
+                border={false}
+                className=""
+                fixedWidth={false}
+                flip={null}
+                icon={
+                  Object {
+                    "icon": Array [
+                      576,
+                      512,
+                      Array [],
+                      "f122",
+                      "M136.309 189.836L312.313 37.851C327.72 24.546 352 35.348 352 56.015v82.763c129.182 10.231 224 52.212 224 183.548 0 61.441-39.582 122.309-83.333 154.132-13.653 9.931-33.111-2.533-28.077-18.631 38.512-123.162-3.922-169.482-112.59-182.015v84.175c0 20.701-24.3 31.453-39.687 18.164L136.309 226.164c-11.071-9.561-11.086-26.753 0-36.328zm-128 36.328L184.313 378.15C199.7 391.439 224 380.687 224 359.986v-15.818l-108.606-93.785A55.96 55.96 0 0 1 96 207.998a55.953 55.953 0 0 1 19.393-42.38L224 71.832V56.015c0-20.667-24.28-31.469-39.687-18.164L8.309 189.836c-11.086 9.575-11.071 26.767 0 36.328z",
+                    ],
+                    "iconName": "reply-all",
+                    "prefix": "fas",
+                  }
+                }
+                inverse={false}
+                listItem={false}
+                mask={null}
+                pull={null}
+                pulse={false}
+                rotation={null}
+                size="lg"
+                spin={false}
+                symbol={false}
+                title=""
+                transform={null}
+              />,
+              "class": "card-link",
+              "href": "#",
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "function",
+              "props": Object {
+                "border": false,
+                "className": "",
+                "fixedWidth": false,
+                "flip": null,
+                "icon": Object {
+                  "icon": Array [
+                    576,
+                    512,
+                    Array [],
+                    "f122",
+                    "M136.309 189.836L312.313 37.851C327.72 24.546 352 35.348 352 56.015v82.763c129.182 10.231 224 52.212 224 183.548 0 61.441-39.582 122.309-83.333 154.132-13.653 9.931-33.111-2.533-28.077-18.631 38.512-123.162-3.922-169.482-112.59-182.015v84.175c0 20.701-24.3 31.453-39.687 18.164L136.309 226.164c-11.071-9.561-11.086-26.753 0-36.328zm-128 36.328L184.313 378.15C199.7 391.439 224 380.687 224 359.986v-15.818l-108.606-93.785A55.96 55.96 0 0 1 96 207.998a55.953 55.953 0 0 1 19.393-42.38L224 71.832V56.015c0-20.667-24.28-31.469-39.687-18.164L8.309 189.836c-11.086 9.575-11.071 26.767 0 36.328z",
+                  ],
+                  "iconName": "reply-all",
+                  "prefix": "fas",
+                },
+                "inverse": false,
+                "listItem": false,
+                "mask": null,
+                "pull": null,
+                "pulse": false,
+                "rotation": null,
+                "size": "lg",
+                "spin": false,
+                "symbol": false,
+                "title": "",
+                "transform": null,
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            "type": "a",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": <FontAwesomeIcon
+                border={false}
+                className=""
+                fixedWidth={false}
+                flip={null}
+                icon={
+                  Object {
+                    "icon": Array [
+                      512,
+                      512,
+                      Array [],
+                      "f4ad",
+                      "M256 32C114.6 32 0 125.1 0 240c0 49.6 21.4 95 57 130.7C44.5 421.1 2.7 466 2.2 466.5c-2.2 2.3-2.8 5.7-1.5 8.7S4.8 480 8 480c66.3 0 116-31.8 140.6-51.4 32.7 12.3 69 19.4 107.4 19.4 141.4 0 256-93.1 256-208S397.4 32 256 32zM128 272c-17.7 0-32-14.3-32-32s14.3-32 32-32 32 14.3 32 32-14.3 32-32 32zm128 0c-17.7 0-32-14.3-32-32s14.3-32 32-32 32 14.3 32 32-14.3 32-32 32zm128 0c-17.7 0-32-14.3-32-32s14.3-32 32-32 32 14.3 32 32-14.3 32-32 32z",
+                    ],
+                    "iconName": "comment-dots",
+                    "prefix": "fas",
+                  }
+                }
+                inverse={false}
+                listItem={false}
+                mask={null}
+                pull={null}
+                pulse={false}
+                rotation={null}
+                size="lg"
+                spin={false}
+                symbol={false}
+                title=""
+                transform={null}
+              />,
+              "class": "card-link",
+              "href": "#",
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "function",
+              "props": Object {
+                "border": false,
+                "className": "",
+                "fixedWidth": false,
+                "flip": null,
+                "icon": Object {
+                  "icon": Array [
+                    512,
+                    512,
+                    Array [],
+                    "f4ad",
+                    "M256 32C114.6 32 0 125.1 0 240c0 49.6 21.4 95 57 130.7C44.5 421.1 2.7 466 2.2 466.5c-2.2 2.3-2.8 5.7-1.5 8.7S4.8 480 8 480c66.3 0 116-31.8 140.6-51.4 32.7 12.3 69 19.4 107.4 19.4 141.4 0 256-93.1 256-208S397.4 32 256 32zM128 272c-17.7 0-32-14.3-32-32s14.3-32 32-32 32 14.3 32 32-14.3 32-32 32zm128 0c-17.7 0-32-14.3-32-32s14.3-32 32-32 32 14.3 32 32-14.3 32-32 32zm128 0c-17.7 0-32-14.3-32-32s14.3-32 32-32 32 14.3 32 32-14.3 32-32 32z",
+                  ],
+                  "iconName": "comment-dots",
+                  "prefix": "fas",
+                },
+                "inverse": false,
+                "listItem": false,
+                "mask": null,
+                "pull": null,
+                "pulse": false,
+                "rotation": null,
+                "size": "lg",
+                "spin": false,
+                "symbol": false,
+                "title": "",
+                "transform": null,
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            "type": "a",
+          },
+        ],
+        "type": "div",
+      },
+      "type": "div",
+    },
+    "type": "div",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": <div
+          class="card"
+          style={
+            Object {
+              "maxHeight": "29rem",
+              "minHeight": "5rem",
+              "textAlign": "left",
+              "width": "42rem",
+            }
+          }
+        >
+          <div
+            class="card-body"
+          >
+            <h5
+              class="card-title"
+            >
+              Bongo
+            </h5>
+            <h6
+              class="card-subtitle mb-2 text-muted"
+            >
+              @bongo.official
+            </h6>
+            <p
+              class="card-text"
+            >
+              aixvugjvpqivbbxezmccqqbcfkyvvjhsbjxnegbxekwtvacdygejyzfrovfqpcbzsqwukaedrkfmvinsujdytronuvqoioqewservtfdciunzowlcubkidjaakpveuyvgugboopfegxndbsdlksefkrblihtjhchwkenfdcftsmusgkppunnvgrfwkpxmwypaxfypxczewwihdspgyrhpgcacidttkmkwlimutfyoqfyeyburjcbxfpboeipxhwbzpmhfolxyvghuqzzehcyiroqunjotvsdyfuhllezcxxkaubznnscopmkzcjpaqotytvzycmudvwzzrsoryohwbnzjmdxwkazevvgkxcwjdtbjowqjwaxkavwejdybcnflhkicrdztfkrgqjzxwyzkdcvzxuxbwdhcacurncsdwiexcrvpdumolvezazzzzquwizgentugaauqanjkaoitpfklbsddhutxxddefkpfdlpvggos
+            </p>
+            <a
+              class="card-link"
+              href="#"
+            >
+              <FontAwesomeIcon
+                border={false}
+                className=""
+                fixedWidth={false}
+                flip={null}
+                icon={
+                  Object {
+                    "icon": Array [
+                      512,
+                      512,
+                      Array [],
+                      "f004",
+                      "M462.3 62.6C407.5 15.9 326 24.3 275.7 76.2L256 96.5l-19.7-20.3C186.1 24.3 104.5 15.9 49.7 62.6c-62.8 53.6-66.1 149.8-9.9 207.9l193.5 199.8c12.5 12.9 32.8 12.9 45.3 0l193.5-199.8c56.3-58.1 53-154.3-9.8-207.9z",
+                    ],
+                    "iconName": "heart",
+                    "prefix": "fas",
+                  }
+                }
+                inverse={false}
+                listItem={false}
+                mask={null}
+                pull={null}
+                pulse={false}
+                rotation={null}
+                size="lg"
+                spin={false}
+                symbol={false}
+                title=""
+                transform={null}
+              />
+            </a>
+            <a
+              class="card-link"
+              href="#"
+            >
+              <FontAwesomeIcon
+                border={false}
+                className=""
+                fixedWidth={false}
+                flip={null}
+                icon={
+                  Object {
+                    "icon": Array [
+                      576,
+                      512,
+                      Array [],
+                      "f122",
+                      "M136.309 189.836L312.313 37.851C327.72 24.546 352 35.348 352 56.015v82.763c129.182 10.231 224 52.212 224 183.548 0 61.441-39.582 122.309-83.333 154.132-13.653 9.931-33.111-2.533-28.077-18.631 38.512-123.162-3.922-169.482-112.59-182.015v84.175c0 20.701-24.3 31.453-39.687 18.164L136.309 226.164c-11.071-9.561-11.086-26.753 0-36.328zm-128 36.328L184.313 378.15C199.7 391.439 224 380.687 224 359.986v-15.818l-108.606-93.785A55.96 55.96 0 0 1 96 207.998a55.953 55.953 0 0 1 19.393-42.38L224 71.832V56.015c0-20.667-24.28-31.469-39.687-18.164L8.309 189.836c-11.086 9.575-11.071 26.767 0 36.328z",
+                    ],
+                    "iconName": "reply-all",
+                    "prefix": "fas",
+                  }
+                }
+                inverse={false}
+                listItem={false}
+                mask={null}
+                pull={null}
+                pulse={false}
+                rotation={null}
+                size="lg"
+                spin={false}
+                symbol={false}
+                title=""
+                transform={null}
+              />
+            </a>
+            <a
+              class="card-link"
+              href="#"
+            >
+              <FontAwesomeIcon
+                border={false}
+                className=""
+                fixedWidth={false}
+                flip={null}
+                icon={
+                  Object {
+                    "icon": Array [
+                      512,
+                      512,
+                      Array [],
+                      "f4ad",
+                      "M256 32C114.6 32 0 125.1 0 240c0 49.6 21.4 95 57 130.7C44.5 421.1 2.7 466 2.2 466.5c-2.2 2.3-2.8 5.7-1.5 8.7S4.8 480 8 480c66.3 0 116-31.8 140.6-51.4 32.7 12.3 69 19.4 107.4 19.4 141.4 0 256-93.1 256-208S397.4 32 256 32zM128 272c-17.7 0-32-14.3-32-32s14.3-32 32-32 32 14.3 32 32-14.3 32-32 32zm128 0c-17.7 0-32-14.3-32-32s14.3-32 32-32 32 14.3 32 32-14.3 32-32 32zm128 0c-17.7 0-32-14.3-32-32s14.3-32 32-32 32 14.3 32 32-14.3 32-32 32z",
+                    ],
+                    "iconName": "comment-dots",
+                    "prefix": "fas",
+                  }
+                }
+                inverse={false}
+                listItem={false}
+                mask={null}
+                pull={null}
+                pulse={false}
+                rotation={null}
+                size="lg"
+                spin={false}
+                symbol={false}
+                title=""
+                transform={null}
+              />
+            </a>
+          </div>
+        </div>,
+        "class": "container-fluid mt-4",
+      },
+      "ref": null,
+      "rendered": Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": <div
+            class="card-body"
+          >
+            <h5
+              class="card-title"
+            >
+              Bongo
+            </h5>
+            <h6
+              class="card-subtitle mb-2 text-muted"
+            >
+              @bongo.official
+            </h6>
+            <p
+              class="card-text"
+            >
+              aixvugjvpqivbbxezmccqqbcfkyvvjhsbjxnegbxekwtvacdygejyzfrovfqpcbzsqwukaedrkfmvinsujdytronuvqoioqewservtfdciunzowlcubkidjaakpveuyvgugboopfegxndbsdlksefkrblihtjhchwkenfdcftsmusgkppunnvgrfwkpxmwypaxfypxczewwihdspgyrhpgcacidttkmkwlimutfyoqfyeyburjcbxfpboeipxhwbzpmhfolxyvghuqzzehcyiroqunjotvsdyfuhllezcxxkaubznnscopmkzcjpaqotytvzycmudvwzzrsoryohwbnzjmdxwkazevvgkxcwjdtbjowqjwaxkavwejdybcnflhkicrdztfkrgqjzxwyzkdcvzxuxbwdhcacurncsdwiexcrvpdumolvezazzzzquwizgentugaauqanjkaoitpfklbsddhutxxddefkpfdlpvggos
+            </p>
+            <a
+              class="card-link"
+              href="#"
+            >
+              <FontAwesomeIcon
+                border={false}
+                className=""
+                fixedWidth={false}
+                flip={null}
+                icon={
+                  Object {
+                    "icon": Array [
+                      512,
+                      512,
+                      Array [],
+                      "f004",
+                      "M462.3 62.6C407.5 15.9 326 24.3 275.7 76.2L256 96.5l-19.7-20.3C186.1 24.3 104.5 15.9 49.7 62.6c-62.8 53.6-66.1 149.8-9.9 207.9l193.5 199.8c12.5 12.9 32.8 12.9 45.3 0l193.5-199.8c56.3-58.1 53-154.3-9.8-207.9z",
+                    ],
+                    "iconName": "heart",
+                    "prefix": "fas",
+                  }
+                }
+                inverse={false}
+                listItem={false}
+                mask={null}
+                pull={null}
+                pulse={false}
+                rotation={null}
+                size="lg"
+                spin={false}
+                symbol={false}
+                title=""
+                transform={null}
+              />
+            </a>
+            <a
+              class="card-link"
+              href="#"
+            >
+              <FontAwesomeIcon
+                border={false}
+                className=""
+                fixedWidth={false}
+                flip={null}
+                icon={
+                  Object {
+                    "icon": Array [
+                      576,
+                      512,
+                      Array [],
+                      "f122",
+                      "M136.309 189.836L312.313 37.851C327.72 24.546 352 35.348 352 56.015v82.763c129.182 10.231 224 52.212 224 183.548 0 61.441-39.582 122.309-83.333 154.132-13.653 9.931-33.111-2.533-28.077-18.631 38.512-123.162-3.922-169.482-112.59-182.015v84.175c0 20.701-24.3 31.453-39.687 18.164L136.309 226.164c-11.071-9.561-11.086-26.753 0-36.328zm-128 36.328L184.313 378.15C199.7 391.439 224 380.687 224 359.986v-15.818l-108.606-93.785A55.96 55.96 0 0 1 96 207.998a55.953 55.953 0 0 1 19.393-42.38L224 71.832V56.015c0-20.667-24.28-31.469-39.687-18.164L8.309 189.836c-11.086 9.575-11.071 26.767 0 36.328z",
+                    ],
+                    "iconName": "reply-all",
+                    "prefix": "fas",
+                  }
+                }
+                inverse={false}
+                listItem={false}
+                mask={null}
+                pull={null}
+                pulse={false}
+                rotation={null}
+                size="lg"
+                spin={false}
+                symbol={false}
+                title=""
+                transform={null}
+              />
+            </a>
+            <a
+              class="card-link"
+              href="#"
+            >
+              <FontAwesomeIcon
+                border={false}
+                className=""
+                fixedWidth={false}
+                flip={null}
+                icon={
+                  Object {
+                    "icon": Array [
+                      512,
+                      512,
+                      Array [],
+                      "f4ad",
+                      "M256 32C114.6 32 0 125.1 0 240c0 49.6 21.4 95 57 130.7C44.5 421.1 2.7 466 2.2 466.5c-2.2 2.3-2.8 5.7-1.5 8.7S4.8 480 8 480c66.3 0 116-31.8 140.6-51.4 32.7 12.3 69 19.4 107.4 19.4 141.4 0 256-93.1 256-208S397.4 32 256 32zM128 272c-17.7 0-32-14.3-32-32s14.3-32 32-32 32 14.3 32 32-14.3 32-32 32zm128 0c-17.7 0-32-14.3-32-32s14.3-32 32-32 32 14.3 32 32-14.3 32-32 32zm128 0c-17.7 0-32-14.3-32-32s14.3-32 32-32 32 14.3 32 32-14.3 32-32 32z",
+                    ],
+                    "iconName": "comment-dots",
+                    "prefix": "fas",
+                  }
+                }
+                inverse={false}
+                listItem={false}
+                mask={null}
+                pull={null}
+                pulse={false}
+                rotation={null}
+                size="lg"
+                spin={false}
+                symbol={false}
+                title=""
+                transform={null}
+              />
+            </a>
+          </div>,
+          "class": "card",
+          "style": Object {
+            "maxHeight": "29rem",
+            "minHeight": "5rem",
+            "textAlign": "left",
+            "width": "42rem",
+          },
+        },
+        "ref": null,
+        "rendered": Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              <h5
+                class="card-title"
+              >
+                Bongo
+              </h5>,
+              <h6
+                class="card-subtitle mb-2 text-muted"
+              >
+                @bongo.official
+              </h6>,
+              <p
+                class="card-text"
+              >
+                aixvugjvpqivbbxezmccqqbcfkyvvjhsbjxnegbxekwtvacdygejyzfrovfqpcbzsqwukaedrkfmvinsujdytronuvqoioqewservtfdciunzowlcubkidjaakpveuyvgugboopfegxndbsdlksefkrblihtjhchwkenfdcftsmusgkppunnvgrfwkpxmwypaxfypxczewwihdspgyrhpgcacidttkmkwlimutfyoqfyeyburjcbxfpboeipxhwbzpmhfolxyvghuqzzehcyiroqunjotvsdyfuhllezcxxkaubznnscopmkzcjpaqotytvzycmudvwzzrsoryohwbnzjmdxwkazevvgkxcwjdtbjowqjwaxkavwejdybcnflhkicrdztfkrgqjzxwyzkdcvzxuxbwdhcacurncsdwiexcrvpdumolvezazzzzquwizgentugaauqanjkaoitpfklbsddhutxxddefkpfdlpvggos
+              </p>,
+              <a
+                class="card-link"
+                href="#"
+              >
+                <FontAwesomeIcon
+                  border={false}
+                  className=""
+                  fixedWidth={false}
+                  flip={null}
+                  icon={
+                    Object {
+                      "icon": Array [
+                        512,
+                        512,
+                        Array [],
+                        "f004",
+                        "M462.3 62.6C407.5 15.9 326 24.3 275.7 76.2L256 96.5l-19.7-20.3C186.1 24.3 104.5 15.9 49.7 62.6c-62.8 53.6-66.1 149.8-9.9 207.9l193.5 199.8c12.5 12.9 32.8 12.9 45.3 0l193.5-199.8c56.3-58.1 53-154.3-9.8-207.9z",
+                      ],
+                      "iconName": "heart",
+                      "prefix": "fas",
+                    }
+                  }
+                  inverse={false}
+                  listItem={false}
+                  mask={null}
+                  pull={null}
+                  pulse={false}
+                  rotation={null}
+                  size="lg"
+                  spin={false}
+                  symbol={false}
+                  title=""
+                  transform={null}
+                />
+              </a>,
+              <a
+                class="card-link"
+                href="#"
+              >
+                <FontAwesomeIcon
+                  border={false}
+                  className=""
+                  fixedWidth={false}
+                  flip={null}
+                  icon={
+                    Object {
+                      "icon": Array [
+                        576,
+                        512,
+                        Array [],
+                        "f122",
+                        "M136.309 189.836L312.313 37.851C327.72 24.546 352 35.348 352 56.015v82.763c129.182 10.231 224 52.212 224 183.548 0 61.441-39.582 122.309-83.333 154.132-13.653 9.931-33.111-2.533-28.077-18.631 38.512-123.162-3.922-169.482-112.59-182.015v84.175c0 20.701-24.3 31.453-39.687 18.164L136.309 226.164c-11.071-9.561-11.086-26.753 0-36.328zm-128 36.328L184.313 378.15C199.7 391.439 224 380.687 224 359.986v-15.818l-108.606-93.785A55.96 55.96 0 0 1 96 207.998a55.953 55.953 0 0 1 19.393-42.38L224 71.832V56.015c0-20.667-24.28-31.469-39.687-18.164L8.309 189.836c-11.086 9.575-11.071 26.767 0 36.328z",
+                      ],
+                      "iconName": "reply-all",
+                      "prefix": "fas",
+                    }
+                  }
+                  inverse={false}
+                  listItem={false}
+                  mask={null}
+                  pull={null}
+                  pulse={false}
+                  rotation={null}
+                  size="lg"
+                  spin={false}
+                  symbol={false}
+                  title=""
+                  transform={null}
+                />
+              </a>,
+              <a
+                class="card-link"
+                href="#"
+              >
+                <FontAwesomeIcon
+                  border={false}
+                  className=""
+                  fixedWidth={false}
+                  flip={null}
+                  icon={
+                    Object {
+                      "icon": Array [
+                        512,
+                        512,
+                        Array [],
+                        "f4ad",
+                        "M256 32C114.6 32 0 125.1 0 240c0 49.6 21.4 95 57 130.7C44.5 421.1 2.7 466 2.2 466.5c-2.2 2.3-2.8 5.7-1.5 8.7S4.8 480 8 480c66.3 0 116-31.8 140.6-51.4 32.7 12.3 69 19.4 107.4 19.4 141.4 0 256-93.1 256-208S397.4 32 256 32zM128 272c-17.7 0-32-14.3-32-32s14.3-32 32-32 32 14.3 32 32-14.3 32-32 32zm128 0c-17.7 0-32-14.3-32-32s14.3-32 32-32 32 14.3 32 32-14.3 32-32 32zm128 0c-17.7 0-32-14.3-32-32s14.3-32 32-32 32 14.3 32 32-14.3 32-32 32z",
+                      ],
+                      "iconName": "comment-dots",
+                      "prefix": "fas",
+                    }
+                  }
+                  inverse={false}
+                  listItem={false}
+                  mask={null}
+                  pull={null}
+                  pulse={false}
+                  rotation={null}
+                  size="lg"
+                  spin={false}
+                  symbol={false}
+                  title=""
+                  transform={null}
+                />
+              </a>,
+            ],
+            "class": "card-body",
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": "Bongo",
+                "class": "card-title",
+              },
+              "ref": null,
+              "rendered": "Bongo",
+              "type": "h5",
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": "@bongo.official",
+                "class": "card-subtitle mb-2 text-muted",
+              },
+              "ref": null,
+              "rendered": "@bongo.official",
+              "type": "h6",
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": "aixvugjvpqivbbxezmccqqbcfkyvvjhsbjxnegbxekwtvacdygejyzfrovfqpcbzsqwukaedrkfmvinsujdytronuvqoioqewservtfdciunzowlcubkidjaakpveuyvgugboopfegxndbsdlksefkrblihtjhchwkenfdcftsmusgkppunnvgrfwkpxmwypaxfypxczewwihdspgyrhpgcacidttkmkwlimutfyoqfyeyburjcbxfpboeipxhwbzpmhfolxyvghuqzzehcyiroqunjotvsdyfuhllezcxxkaubznnscopmkzcjpaqotytvzycmudvwzzrsoryohwbnzjmdxwkazevvgkxcwjdtbjowqjwaxkavwejdybcnflhkicrdztfkrgqjzxwyzkdcvzxuxbwdhcacurncsdwiexcrvpdumolvezazzzzquwizgentugaauqanjkaoitpfklbsddhutxxddefkpfdlpvggos",
+                "class": "card-text",
+              },
+              "ref": null,
+              "rendered": "aixvugjvpqivbbxezmccqqbcfkyvvjhsbjxnegbxekwtvacdygejyzfrovfqpcbzsqwukaedrkfmvinsujdytronuvqoioqewservtfdciunzowlcubkidjaakpveuyvgugboopfegxndbsdlksefkrblihtjhchwkenfdcftsmusgkppunnvgrfwkpxmwypaxfypxczewwihdspgyrhpgcacidttkmkwlimutfyoqfyeyburjcbxfpboeipxhwbzpmhfolxyvghuqzzehcyiroqunjotvsdyfuhllezcxxkaubznnscopmkzcjpaqotytvzycmudvwzzrsoryohwbnzjmdxwkazevvgkxcwjdtbjowqjwaxkavwejdybcnflhkicrdztfkrgqjzxwyzkdcvzxuxbwdhcacurncsdwiexcrvpdumolvezazzzzquwizgentugaauqanjkaoitpfklbsddhutxxddefkpfdlpvggos",
+              "type": "p",
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": <FontAwesomeIcon
+                  border={false}
+                  className=""
+                  fixedWidth={false}
+                  flip={null}
+                  icon={
+                    Object {
+                      "icon": Array [
+                        512,
+                        512,
+                        Array [],
+                        "f004",
+                        "M462.3 62.6C407.5 15.9 326 24.3 275.7 76.2L256 96.5l-19.7-20.3C186.1 24.3 104.5 15.9 49.7 62.6c-62.8 53.6-66.1 149.8-9.9 207.9l193.5 199.8c12.5 12.9 32.8 12.9 45.3 0l193.5-199.8c56.3-58.1 53-154.3-9.8-207.9z",
+                      ],
+                      "iconName": "heart",
+                      "prefix": "fas",
+                    }
+                  }
+                  inverse={false}
+                  listItem={false}
+                  mask={null}
+                  pull={null}
+                  pulse={false}
+                  rotation={null}
+                  size="lg"
+                  spin={false}
+                  symbol={false}
+                  title=""
+                  transform={null}
+                />,
+                "class": "card-link",
+                "href": "#",
+              },
+              "ref": null,
+              "rendered": Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "function",
+                "props": Object {
+                  "border": false,
+                  "className": "",
+                  "fixedWidth": false,
+                  "flip": null,
+                  "icon": Object {
+                    "icon": Array [
+                      512,
+                      512,
+                      Array [],
+                      "f004",
+                      "M462.3 62.6C407.5 15.9 326 24.3 275.7 76.2L256 96.5l-19.7-20.3C186.1 24.3 104.5 15.9 49.7 62.6c-62.8 53.6-66.1 149.8-9.9 207.9l193.5 199.8c12.5 12.9 32.8 12.9 45.3 0l193.5-199.8c56.3-58.1 53-154.3-9.8-207.9z",
+                    ],
+                    "iconName": "heart",
+                    "prefix": "fas",
+                  },
+                  "inverse": false,
+                  "listItem": false,
+                  "mask": null,
+                  "pull": null,
+                  "pulse": false,
+                  "rotation": null,
+                  "size": "lg",
+                  "spin": false,
+                  "symbol": false,
+                  "title": "",
+                  "transform": null,
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+              "type": "a",
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": <FontAwesomeIcon
+                  border={false}
+                  className=""
+                  fixedWidth={false}
+                  flip={null}
+                  icon={
+                    Object {
+                      "icon": Array [
+                        576,
+                        512,
+                        Array [],
+                        "f122",
+                        "M136.309 189.836L312.313 37.851C327.72 24.546 352 35.348 352 56.015v82.763c129.182 10.231 224 52.212 224 183.548 0 61.441-39.582 122.309-83.333 154.132-13.653 9.931-33.111-2.533-28.077-18.631 38.512-123.162-3.922-169.482-112.59-182.015v84.175c0 20.701-24.3 31.453-39.687 18.164L136.309 226.164c-11.071-9.561-11.086-26.753 0-36.328zm-128 36.328L184.313 378.15C199.7 391.439 224 380.687 224 359.986v-15.818l-108.606-93.785A55.96 55.96 0 0 1 96 207.998a55.953 55.953 0 0 1 19.393-42.38L224 71.832V56.015c0-20.667-24.28-31.469-39.687-18.164L8.309 189.836c-11.086 9.575-11.071 26.767 0 36.328z",
+                      ],
+                      "iconName": "reply-all",
+                      "prefix": "fas",
+                    }
+                  }
+                  inverse={false}
+                  listItem={false}
+                  mask={null}
+                  pull={null}
+                  pulse={false}
+                  rotation={null}
+                  size="lg"
+                  spin={false}
+                  symbol={false}
+                  title=""
+                  transform={null}
+                />,
+                "class": "card-link",
+                "href": "#",
+              },
+              "ref": null,
+              "rendered": Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "function",
+                "props": Object {
+                  "border": false,
+                  "className": "",
+                  "fixedWidth": false,
+                  "flip": null,
+                  "icon": Object {
+                    "icon": Array [
+                      576,
+                      512,
+                      Array [],
+                      "f122",
+                      "M136.309 189.836L312.313 37.851C327.72 24.546 352 35.348 352 56.015v82.763c129.182 10.231 224 52.212 224 183.548 0 61.441-39.582 122.309-83.333 154.132-13.653 9.931-33.111-2.533-28.077-18.631 38.512-123.162-3.922-169.482-112.59-182.015v84.175c0 20.701-24.3 31.453-39.687 18.164L136.309 226.164c-11.071-9.561-11.086-26.753 0-36.328zm-128 36.328L184.313 378.15C199.7 391.439 224 380.687 224 359.986v-15.818l-108.606-93.785A55.96 55.96 0 0 1 96 207.998a55.953 55.953 0 0 1 19.393-42.38L224 71.832V56.015c0-20.667-24.28-31.469-39.687-18.164L8.309 189.836c-11.086 9.575-11.071 26.767 0 36.328z",
+                    ],
+                    "iconName": "reply-all",
+                    "prefix": "fas",
+                  },
+                  "inverse": false,
+                  "listItem": false,
+                  "mask": null,
+                  "pull": null,
+                  "pulse": false,
+                  "rotation": null,
+                  "size": "lg",
+                  "spin": false,
+                  "symbol": false,
+                  "title": "",
+                  "transform": null,
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+              "type": "a",
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": <FontAwesomeIcon
+                  border={false}
+                  className=""
+                  fixedWidth={false}
+                  flip={null}
+                  icon={
+                    Object {
+                      "icon": Array [
+                        512,
+                        512,
+                        Array [],
+                        "f4ad",
+                        "M256 32C114.6 32 0 125.1 0 240c0 49.6 21.4 95 57 130.7C44.5 421.1 2.7 466 2.2 466.5c-2.2 2.3-2.8 5.7-1.5 8.7S4.8 480 8 480c66.3 0 116-31.8 140.6-51.4 32.7 12.3 69 19.4 107.4 19.4 141.4 0 256-93.1 256-208S397.4 32 256 32zM128 272c-17.7 0-32-14.3-32-32s14.3-32 32-32 32 14.3 32 32-14.3 32-32 32zm128 0c-17.7 0-32-14.3-32-32s14.3-32 32-32 32 14.3 32 32-14.3 32-32 32zm128 0c-17.7 0-32-14.3-32-32s14.3-32 32-32 32 14.3 32 32-14.3 32-32 32z",
+                      ],
+                      "iconName": "comment-dots",
+                      "prefix": "fas",
+                    }
+                  }
+                  inverse={false}
+                  listItem={false}
+                  mask={null}
+                  pull={null}
+                  pulse={false}
+                  rotation={null}
+                  size="lg"
+                  spin={false}
+                  symbol={false}
+                  title=""
+                  transform={null}
+                />,
+                "class": "card-link",
+                "href": "#",
+              },
+              "ref": null,
+              "rendered": Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "function",
+                "props": Object {
+                  "border": false,
+                  "className": "",
+                  "fixedWidth": false,
+                  "flip": null,
+                  "icon": Object {
+                    "icon": Array [
+                      512,
+                      512,
+                      Array [],
+                      "f4ad",
+                      "M256 32C114.6 32 0 125.1 0 240c0 49.6 21.4 95 57 130.7C44.5 421.1 2.7 466 2.2 466.5c-2.2 2.3-2.8 5.7-1.5 8.7S4.8 480 8 480c66.3 0 116-31.8 140.6-51.4 32.7 12.3 69 19.4 107.4 19.4 141.4 0 256-93.1 256-208S397.4 32 256 32zM128 272c-17.7 0-32-14.3-32-32s14.3-32 32-32 32 14.3 32 32-14.3 32-32 32zm128 0c-17.7 0-32-14.3-32-32s14.3-32 32-32 32 14.3 32 32-14.3 32-32 32zm128 0c-17.7 0-32-14.3-32-32s14.3-32 32-32 32 14.3 32 32-14.3 32-32 32z",
+                    ],
+                    "iconName": "comment-dots",
+                    "prefix": "fas",
+                  },
+                  "inverse": false,
+                  "listItem": false,
+                  "mask": null,
+                  "pull": null,
+                  "pulse": false,
+                  "rotation": null,
+                  "size": "lg",
+                  "spin": false,
+                  "symbol": false,
+                  "title": "",
+                  "transform": null,
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+              "type": "a",
+            },
+          ],
+          "type": "div",
+        },
+        "type": "div",
+      },
+      "type": "div",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+        "legacyContextMode": "parent",
+        "lifecycles": Object {
+          "componentDidUpdate": Object {
+            "onSetState": true,
+          },
+          "getChildContext": Object {
+            "calledByRenderer": false,
+          },
+          "getDerivedStateFromProps": Object {
+            "hasShouldComponentUpdateBug": false,
+          },
+          "getSnapshotBeforeUpdate": true,
+          "setState": Object {
+            "skipsComponentDidUpdateOnNullish": true,
+          },
+        },
+      },
+    },
+  },
+}
+`;
