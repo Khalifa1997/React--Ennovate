@@ -4,17 +4,17 @@ class profile extends Component{
     constructor(props){
         super(props)
 
-        this.state = {
-            username:this.props.username,
-            token:this.props.token
-        }
+        // this.state = {
+        //     username:this.props.username,
+        //     token:this.props.token
+        // }
     }
 
 
 
     render() {
         return(
-            <h1>{this.state.username}</h1>
+            <h1>Hello There</h1>
         )
     }
 }

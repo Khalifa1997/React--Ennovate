@@ -4,6 +4,11 @@ import AuthNav from "./../../../Components/AuthNav/AuthNav";
 import Classnames from "classnames";
 import Axios from "axios";
 import Profile from "../../Profile/Profile";
+
+import propTypes from "prop-types";
+import { connect } from "react-redux";
+import { loginUser } from "../../../Actions/authActions";
+
 import "./Login.css";
 
 /**
@@ -130,45 +135,72 @@ class login extends Component {
       password: this.state.password.value
     };
 
+    this.props.loginUser(user);
     // Axios.post(
     //   "https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyPassword?key=AIzaSyBUoi3TDU9jfZRE7jVC0QoA08DK8mJC6wo",
     //   user
     // )
-    Axios.post("http://localhost:8080/accounts/signin", user)
-      .then(res => {
-        const clone = {
-          ...this.state
-        };
-        clone.token = res.data;
-        this.setState({ token: clone.token }, () =>
-          console.log("user is signed in with token " + this.state.token)
-        );
-      })
-      .catch(err => {
-        const clone = {
-          ...this.state
-        };
+    // Axios.post("http://localhost:8080/accounts/signin", user)
+    //   .then(res => {
+    //     const clone = {
+    //       ...this.state
+    //     };
+    //     clone.token = res.data;
+    //     this.setState({ token: clone.token }, () =>
+    //       console.log("user is signed in with token " + this.state.token)
+    //     );
+    //   })
+    //   .catch(err => {
+    //     const clone = {
+    //       ...this.state
+    //     };
 
-        console.log(err.response.data.msg);
-        clone.errors = err.response.data.msg;
+    //     console.log(err.response.data.msg);
+    //     clone.errors = err.response.data.msg;
 
-        this.setState({ errors: clone.errors }, () =>
-          console.log(this.state.errors)
-        );
+    //     this.setState({ errors: clone.errors }, () =>
+    //       console.log(this.state.errors)
+    //     );
 
-        if (this.state.errors === "UserNotFound") {
+    //     if (this.state.errors === "UserNotFound") {
+    //       clone.email.valid = false;
+    //       clone.password.valid = true;
+    //       this.setState({ email: clone.email });
+    //       this.setState({ password: clone.password });
+    //     } else if (this.state.errors === "IncorrectPassword") {
+    //       clone.password.valid = false;
+    //       clone.email.valid = true;
+    //       this.setState({ password: clone.password });
+    //       this.setState({ email: clone.email });
+    //     }
+    //   });
+  };
+
+  componentWillReceiveProps(nextProps) {
+
+    if(nextProps.auth.isAuthenticated){
+      this.props.history.push('/Profile')
+    }
+
+    if (nextProps.error) {
+      this.setState({ errors: nextProps.error }, () => {
+        console.log("from login" , this.state.errors);
+        let clone = JSON.parse(JSON.stringify(this.state));
+        
+        if (this.state.errors === "EMAIL_NOT_FOUND") {
           clone.email.valid = false;
           clone.password.valid = true;
           this.setState({ email: clone.email });
           this.setState({ password: clone.password });
-        } else if (this.state.errors === "IncorrectPassword") {
+        } else if (this.state.errors === "INVALID_PASSWORD") {
           clone.password.valid = false;
           clone.email.valid = true;
           this.setState({ password: clone.password });
           this.setState({ email: clone.email });
         }
       });
-  };
+    }
+  }
 
   render() {
     var submitButtonDisabled = true;
@@ -282,4 +314,18 @@ class login extends Component {
   }
 }
 
-export default login;
+// login.propTypes = {
+//   loginUser: propTypes.func.isRequired,
+//   auth: propTypes.object.isRequired,
+//   error: propTypes.object.isRequired
+// };
+
+const mapStateToProps = state => ({
+  auth: state.auth,
+  error: state.errors
+});
+
+export default connect(
+  mapStateToProps,
+  { loginUser }
+)(login);
