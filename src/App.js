@@ -3,6 +3,8 @@ import { Route, Switch } from "react-router-dom";
 import Login from "./Containers/Auth/Login/Login";
 import LandingPage from "./Components/LandingPage/landingPage";
 import Signup from "./Containers/Auth/Signup/Signup";
+import Profile from "./Containers/Profile/Profile";
+
 import ForgotPassword from "./Containers/Auth/ForgotPassword/ForgotPassowrd";
 
 class App extends Component {
@@ -15,6 +17,7 @@ class App extends Component {
             <Route path="/signup" component={Signup} />
             <Route path="/" exact component={LandingPage} />
             <Route path="/forgotpassword" component={ForgotPassword} />
+            <Route path="/profile" component={Profile} />
           </Switch>
         </Route>
       </div>
