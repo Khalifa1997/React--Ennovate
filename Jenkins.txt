@@ -1,0 +1,17 @@
+#!/bin/bash
+if ["$1" == ""]
+then
+echo "Enter ipV4 address of localhost"
+else
+cd
+mkdir JenkinsCLI
+wget http://$1:8080/jnlpJars/jenkins-cli.jar
+mv jenkins-cli.jar JenkinsCLI
+cd JenkinsCLI
+java -jar jenkins-cli.jar -s http://13.59.67.37:8080/ get-job FrontendPipe > Fr$
+cat FrontendPipe
+java -jar jenkins-cli.jar -s http://13.59.67.37:8080/ get-job BackendPipe > Bac$
+cat BackendPipe
+java -jar jenkins-cli.jar -s http://13.59.67.37:8080/ get-job TestingPipe > Tes$
+cat TestingPipe
+fi

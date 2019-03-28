@@ -1,0 +1,19 @@
+#!/bin/bash
+cd
+sudo apt-get update
+#install git
+sudo add-apt-repository ppa:git-core/ppa
+sudo apt update
+sudo apt install git -y
+#install repos
+git clone https://ayahelsamadoni:ayahsamadoni1@github.com/AyahElSamadoni/FrontE$
+git clone https://ayahelsamadoni:ayahsamadoni@github.com/AyahElSamadoni/Backend
+#to install nodejs
+sudo apt install curl -y curl -sL https://deb.nodesource.com/setup_10.x
+| sudo bash -
+sudo apt install nodejs -y
+#to install jenkins
+sudo apt install openjdk-8-jre -y wget -q -O -
+https://pkg.jenkins.io/debian/jenkins-ci.org.key | sudo apt-key add -
+echo deb https://pkg.jenkins.io/debian-stable binary/ | sudo tee
+/etc/apt/sources.list.d/jenkins.list sudo apt-get update sudo apt-get

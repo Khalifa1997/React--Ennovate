@@ -134,12 +134,12 @@ class login extends Component {
     //   "https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyPassword?key=AIzaSyBUoi3TDU9jfZRE7jVC0QoA08DK8mJC6wo",
     //   user
     // )
-    Axios.post("/accounts/signin", user)
+    Axios.post("http://localhost:8080/accounts/signin", user)
       .then(res => {
         const clone = {
           ...this.state
         };
-        clone.token = res;
+        clone.token = res.data;
         this.setState({ token: clone.token }, () =>
           console.log("user is signed in with token " + this.state.token)
         );
@@ -148,17 +148,20 @@ class login extends Component {
         const clone = {
           ...this.state
         };
-        clone.errors = err;
+
+        console.log(err.response.data.msg);
+        clone.errors = err.response.data.msg;
+
         this.setState({ errors: clone.errors }, () =>
           console.log(this.state.errors)
         );
 
-        if (this.state.errors.error.message === "UserNotFound") {
+        if (this.state.errors === "UserNotFound") {
           clone.email.valid = false;
           clone.password.valid = true;
           this.setState({ email: clone.email });
           this.setState({ password: clone.password });
-        } else if (this.state.errors.error.message === "IncorrectPassword") {
+        } else if (this.state.errors === "IncorrectPassword") {
           clone.password.valid = false;
           clone.email.valid = true;
           this.setState({ password: clone.password });
@@ -199,7 +202,7 @@ class login extends Component {
                     this.state.sentRequest === true && (
                       <div className="invalid-feedback">
                         {" "}
-                        {this.state.errors.error.message}{" "}
+                        {this.state.errors}{" "}
                       </div>
                     )}
                   {this.state.email.valid === false &&
@@ -231,7 +234,7 @@ class login extends Component {
                         className="invalid-feedback"
                       >
                         {" "}
-                        {this.state.errors.error.message}{" "}
+                        {this.state.errors}{" "}
                       </div>
                     )}
                   {this.state.password.valid === false &&

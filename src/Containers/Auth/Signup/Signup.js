@@ -46,7 +46,8 @@ class signup extends Component {
         touched: false,
         autoFocus: true,
         errorMessage:
-          "The screen name should start with a letter and with no spaces"
+          "The screen name should start with a letter and with no spaces",
+        invalidScreenname: false
       },
       username: {
         elementType: "input",
@@ -182,15 +183,23 @@ class signup extends Component {
         formElementIdentifier
       ].value;
     }
-
+    /*
+    console.log(formData);
     const data = {
       userData: formData
+    };
+    */
+    const user = {
+      screen_name: this.state.signupForm.screenname.value,
+      name: this.state.signupForm.username.value,
+      email: this.state.signupForm.email.value,
+      password: this.state.signupForm.password.value
     };
 
     axios
       .post(
-        "/accounts/signup",
-        data
+        "http://localhost:8080/accounts/signup",
+        user
       ) /*
       .then(res => {
    
@@ -207,6 +216,7 @@ class signup extends Component {
         const clone = {
           ...this.state.signupForm
         };
+        this.setState({ loading: false });
         clone.token = res.headers.auth;
         this.setState({ token: clone.token });
       })
@@ -230,19 +240,22 @@ class signup extends Component {
           this.setState({ errorscreenname: true });
         }
         */
+        console.log(err.response.data.msg);
         this.setState({ loading: false });
-        if (err === "screen name already registered.") {
+        if (err.response.data.msg === "screen name already registered.") {
+          console.log("hello");
           this.setState({ errorScreenname: true });
-        } else if (err === "email already registered.") {
+        } else if (err.response.data.msg === "email already registered.") {
           this.setState({ errorEmail: true });
-        } else if (err === ' "email" must be a valid email') {
+        } else if (err.response.data.msg === ' "email" must be a valid email') {
           this.setState({ errorEmail: true });
         } else if (
-          err === ' "screen_name" length must be at least 3 characters long'
+          err.response.data.msg ===
+          ' "screen_name" length must be at least 3 characters long'
         ) {
           this.setState({ errorLenScreenname: true });
         } else if (
-          err ===
+          err.response.data.msg ===
           ' "screen_name" length must be less than or equal to 15 characters long'
         ) {
           this.setState({ errorLenScreenname: true });
@@ -274,7 +287,7 @@ class signup extends Component {
             autoFocus={formElement.config.autoFocus}
             changed={event => this.inputChangedHandler(event, formElement.id)}
             invalidEmail={this.state.signupForm.errorEmail}
-            invalidScreenname={this.state.signupForm.errorScreenname}
+            invalidScreenname={this.state.errorScreenname}
             invalidLenScreenname={this.state.signupForm.errorLenScreenname}
           />
         ))}
