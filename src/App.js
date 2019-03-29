@@ -7,6 +7,7 @@ import Profile from "./Containers/Profile/Profile"
 import ForgotPassword from "./Containers/Auth/ForgotPassword/ForgotPassowrd";
 
 import { decode } from "querystring";
+import EditProfile from "./Containers/Profile/EditProfile/EditProfile";
 
 
 //check for token
