@@ -3,12 +3,11 @@ import { Route, Switch } from "react-router-dom";
 import Login from "./Containers/Auth/Login/Login";
 import LandingPage from "./Components/LandingPage/landingPage";
 import Signup from "./Containers/Auth/Signup/Signup";
-import Profile from "./Containers/Profile/Profile"
+import Profile from "./Containers/Profile/Profile";
+import EditProfile from "./Containers/Profile/EditProfile/EditProfile";
 import ForgotPassword from "./Containers/Auth/ForgotPassword/ForgotPassowrd";
 
 import { decode } from "querystring";
-import EditProfile from "./Containers/Profile/EditProfile/EditProfile";
-
 
 //check for token
 
@@ -22,7 +21,8 @@ class App extends Component {
             <Route path="/signup" component={Signup} />
             <Route path="/" exact component={LandingPage} />
             <Route path="/forgotpassword" component={ForgotPassword} />
-            <Route path="/Profile" component = {Profile} />
+            <Route path="/Profile" component={Profile} />
+            <Route path="/editprofile" component={EditProfile} />
           </Switch>
         </Route>
       </div>
