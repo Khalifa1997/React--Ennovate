@@ -9,6 +9,12 @@ body{
 .panel {
   box-shadow: none;
 }
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
 .editBox {
     padding-left: 100px;
     padding-right: 100px;
