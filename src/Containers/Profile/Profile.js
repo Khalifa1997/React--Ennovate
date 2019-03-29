@@ -16,11 +16,13 @@ class profile extends Component {
 
   render() {
     return (
-      <div>
+      <div className="body">
+        <AuthNav />
+
         <div class="profilecontainer">
           <div class="profile">
             <div class="profile-image">
-              <img src="https://mertskaplan.com/wp-content/plugins/msk-twprofilecard/img/mertskaplan.jpg" />
+              <img src="https://images.unsplash.com/photo-1513721032312-6a18a42c8763?w=152&h=152&fit=crop&crop=faces" />
             </div>
 
             <div class="profile-user-settings">
@@ -57,6 +59,45 @@ class profile extends Component {
                 <span class="profile-real-name">Jane Doe</span> Lorem ipsum
                 dolor sit, amet consectetur adipisicing elit 📷✈️🏕️
               </p>
+            </div>
+          </div>
+        </div>
+
+        <div className="container ">
+          <div className="centerdiv">
+            <div className="row ">
+              <div class="col-md-6 ">
+                <div class="tab" role="tabpanel">
+                  <ul class="nav nav-tabs" role="tablist">
+                    <li role="presentation" class="active">
+                      <a
+                        href="#Section1"
+                        aria-controls="novas"
+                        role="tab"
+                        data-toggle="tab"
+                      >
+                        Novas
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="col-md-6 ">
+                <div class="tab" role="tabpanel">
+                  <ul class="nav nav-tabs" role="tablist">
+                    <li role="presentation">
+                      <a
+                        href="#Section2"
+                        aria-controls="likes"
+                        role="tab"
+                        data-toggle="tab"
+                      >
+                        Likes
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
             </div>
           </div>
         </div>
