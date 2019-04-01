@@ -1,0 +1,62 @@
+.AuthNav {
+  padding-left: 15%;
+  border-bottom-style: inset;
+  border-bottom-width: thin;
+  border-bottom-color: rgba(133, 129, 129, 0.301);
+  font-family: "Roboto", sans-serif;
+}
+
+.LogoNavBar {
+  margin-top: 8px;
+}
+
+.searchForm {
+  margin-left: auto;
+  margin-right: 30px;
+  padding-top: 5px;
+}
+
+.tweetButton {
+  border-radius: 100px;
+  box-shadow: none;
+  width: 100px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 20px;
+  padding: 6px 16px;
+  position: relative;
+  text-align: center;
+  white-space: nowrap;
+  color: white;
+  border-color: #2464ae;
+  background-color: #2464ae;
+}
+
+.tweetButton:hover {
+  background-color: rgb(22, 70, 124);
+  border-color: rgb(22, 70, 124);
+}
+
+.searchBar {
+  background-color: #f5f8fa;
+  border-radius: 21px;
+  border: 1px solid #e6ecf0;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  color: #14171a;
+  display: block;
+  font-size: 12px;
+  height: 32px;
+  line-height: 16px;
+  padding: 8px 32px 8px 12px;
+  transition: all 0.2s ease-in-out;
+  width: 100%;
+  margin-top:3px;
+}
+
+.searchBar:focus{
+  outline: none;
+  box-shadow:none !important;
+  border:1px solid #2464ae !important;
+}

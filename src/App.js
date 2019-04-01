@@ -5,6 +5,7 @@ import LandingPage from "./Components/LandingPage/landingPage";
 import Signup from "./Containers/Auth/Signup/Signup";
 import Profile from "./Containers/Profile/Profile"
 import ForgotPassword from "./Containers/Auth/ForgotPassword/ForgotPassowrd";
+import UserStrip from "./Components/UserStrip/UserStrip"
 
 import { decode } from "querystring";
 
@@ -15,7 +16,7 @@ class App extends Component {
   render() {
     return (
       <div>
-        <Route>
+        {/* <Route>
           <Switch>
             <Route path="/login" component={Login} />
             <Route path="/signup" component={Signup} />
@@ -23,7 +24,8 @@ class App extends Component {
             <Route path="/forgotpassword" component={ForgotPassword} />
             <Route path="/Profile" component = {Profile} />
           </Switch>
-        </Route>
+        </Route> */}
+        <UserStrip></UserStrip>
       </div>
     );
   }
