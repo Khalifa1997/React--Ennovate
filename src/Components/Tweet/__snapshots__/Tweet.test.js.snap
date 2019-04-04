@@ -8,7 +8,7 @@ exports[`<Tweet> should render 1`] = `
     class="card"
     style={
       Object {
-        "maxHeight": "29rem",
+        "maxHeight": "72rem",
         "minHeight": "5rem",
         "textAlign": "left",
         "width": "42rem",
@@ -165,7 +165,7 @@ ShallowWrapper {
         class="card"
         style={
           Object {
-            "maxHeight": "29rem",
+            "maxHeight": "72rem",
             "minHeight": "5rem",
             "textAlign": "left",
             "width": "42rem",
@@ -431,7 +431,7 @@ ShallowWrapper {
         </div>,
         "class": "card",
         "style": Object {
-          "maxHeight": "29rem",
+          "maxHeight": "72rem",
           "minHeight": "5rem",
           "textAlign": "left",
           "width": "42rem",
@@ -853,7 +853,7 @@ ShallowWrapper {
           class="card"
           style={
             Object {
-              "maxHeight": "29rem",
+              "maxHeight": "72rem",
               "minHeight": "5rem",
               "textAlign": "left",
               "width": "42rem",
@@ -1119,7 +1119,7 @@ ShallowWrapper {
           </div>,
           "class": "card",
           "style": Object {
-            "maxHeight": "29rem",
+            "maxHeight": "72rem",
             "minHeight": "5rem",
             "textAlign": "left",
             "width": "42rem",

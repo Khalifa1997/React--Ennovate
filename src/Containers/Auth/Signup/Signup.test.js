@@ -128,17 +128,11 @@ describe("<Signup />", () => {
       .at(2)
       .dive()
       .find("input");
-<<<<<<< HEAD
-
-    const validation = { required: true, email: true };
-    checkValidity(username, validation);
-=======
     check.simulate("change", {
       target: {
         value: email
       }
     });
->>>>>>> 84acfe1ae7b11d524b01d45763be23958c6c4101
 
     expect(wrapper.state().signupForm.email.valid).toBe(true);
   });

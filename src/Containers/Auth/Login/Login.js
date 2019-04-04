@@ -172,7 +172,7 @@ class login extends Component {
 
   render() {
     var submitButtonDisabled = true;
-    console.log(this.state.email.valid + " " + this.state.password.valid);
+    //console.log(this.state.email.valid + " " + this.state.password.valid);
     if (this.state.email.valid === true && this.state.password.valid === true) {
       submitButtonDisabled = false;
     }
