@@ -16,7 +16,7 @@ class App extends Component {
   render() {
     return (
       <div>
-        {/* <Route>
+        <Route>
           <Switch>
             <Route path="/login" component={Login} />
             <Route path="/signup" component={Signup} />
@@ -24,8 +24,8 @@ class App extends Component {
             <Route path="/forgotpassword" component={ForgotPassword} />
             <Route path="/Profile" component = {Profile} />
           </Switch>
-        </Route> */}
-        <UserStrip></UserStrip>
+        </Route>
+        {/* <UserStrip></UserStrip> */}
       </div>
     );
   }
