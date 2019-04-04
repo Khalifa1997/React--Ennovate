@@ -141,6 +141,9 @@ class signup extends Component {
     this.setState({ signupForm: updatedSignupForm, formIsValid: formIsValid });
   };
 
+   sum(a, b) {
+    return a + b;
+  }
   checkValidity(value, rules) {
     let isValid = true;
 
@@ -322,3 +325,4 @@ class signup extends Component {
   }
 }
 export default signup;
+

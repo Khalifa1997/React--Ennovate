@@ -200,15 +200,15 @@ class login extends Component {
                   />
                   {this.state.email.valid === false &&
                     this.state.sentRequest === true && (
-                      <div className="invalid-feedback">
+                      <div id="emailBack" className="invalid-feedback">
                         {" "}
-                        {this.state.errors}{" "}
+                        {this.state.errors.error.message}{" "}
                       </div>
                     )}
                   {this.state.email.valid === false &&
                     submitButtonDisabled === true &&
                     this.state.sentRequest === false && (
-                      <div className="invalid-feedback">
+                      <div id="emailFront" className="invalid-feedback">
                         {" "}
                         {this.state.email.meta.errorMessage}{" "}
                       </div>
@@ -230,6 +230,7 @@ class login extends Component {
                   {this.state.password.valid === false &&
                     this.state.sentRequest === true && (
                       <div
+                        id="passBack"
                         style={{ marginTop: "-22px" }}
                         className="invalid-feedback"
                       >
@@ -240,7 +241,7 @@ class login extends Component {
                   {this.state.password.valid === false &&
                     submitButtonDisabled === true &&
                     this.state.sentRequest === false && (
-                      <div className="invalid-feedback PassErrorSpace">
+                      <div id="passFront" className="invalid-feedback PassErrorSpace">
                         {" "}
                         {this.state.password.meta.errorMessage}{" "}
                       </div>
