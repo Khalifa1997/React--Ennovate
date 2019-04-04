@@ -22,7 +22,7 @@ class App extends Component {
         <Route>
           <Switch>
             <Route path="/login" component={Login} />
-            <Route path="/Profile" component={ProfileCard} />
+            <Route path="/ProfileCard" component={ProfileCard} />
             <Route path="/signup" component={Signup} />
             <Route path="/tweet" exact component={Tweet} />
             <Route path="/" exact component={LandingPage} />
