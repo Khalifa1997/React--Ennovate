@@ -6,7 +6,14 @@ import Tweet from "./Components/Tweet/Tweet";
 import ProfileCard from "./Components/profileCard/profileCard";
 
 import Signup from "./Containers/Auth/Signup/Signup";
+import Profile from "./Containers/Profile/Profile"
 import ForgotPassword from "./Containers/Auth/ForgotPassword/ForgotPassowrd";
+import UserStrip from "./Components/UserStrip/UserStrip"
+
+import { decode } from "querystring";
+
+
+//check for token
 
 class App extends Component {
   render() {
@@ -20,8 +27,10 @@ class App extends Component {
             <Route path="/tweet" exact component={Tweet} />
             <Route path="/" exact component={LandingPage} />
             <Route path="/forgotpassword" component={ForgotPassword} />
+            <Route path="/Profile" component = {Profile} />
           </Switch>
         </Route>
+        {/* <UserStrip></UserStrip> */}
       </div>
     );
   }

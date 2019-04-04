@@ -165,7 +165,11 @@ ShallowWrapper {
         class="card"
         style={
           Object {
+<<<<<<< HEAD
             "maxHeight": "72rem",
+=======
+            "maxHeight": "29rem",
+>>>>>>> secondRedux
             "minHeight": "5rem",
             "textAlign": "left",
             "width": "42rem",
@@ -431,7 +435,11 @@ ShallowWrapper {
         </div>,
         "class": "card",
         "style": Object {
+<<<<<<< HEAD
           "maxHeight": "72rem",
+=======
+          "maxHeight": "29rem",
+>>>>>>> secondRedux
           "minHeight": "5rem",
           "textAlign": "left",
           "width": "42rem",
@@ -853,7 +861,11 @@ ShallowWrapper {
           class="card"
           style={
             Object {
+<<<<<<< HEAD
               "maxHeight": "72rem",
+=======
+              "maxHeight": "29rem",
+>>>>>>> secondRedux
               "minHeight": "5rem",
               "textAlign": "left",
               "width": "42rem",
@@ -1119,7 +1131,11 @@ ShallowWrapper {
           </div>,
           "class": "card",
           "style": Object {
+<<<<<<< HEAD
             "maxHeight": "72rem",
+=======
+            "maxHeight": "29rem",
+>>>>>>> secondRedux
             "minHeight": "5rem",
             "textAlign": "left",
             "width": "42rem",
