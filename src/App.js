@@ -7,6 +7,7 @@ import profileCard from "./Components/profileCard/profileCard";
 import Signup from "./Containers/Auth/Signup/Signup";
 import Profile from "./Containers/Profile/Profile";
 import ForgotPassword from "./Containers/Auth/ForgotPassword/ForgotPassowrd";
+import UserStrip from "./Components/UserStrip/UserStrip"
 
 import { decode } from "querystring";
 
@@ -27,6 +28,7 @@ class App extends Component {
             <Route path="/Profile" component={Profile} />
           </Switch>
         </Route>
+        {/* <UserStrip></UserStrip> */}
       </div>
     );
   }
