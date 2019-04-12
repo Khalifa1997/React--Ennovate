@@ -177,16 +177,15 @@ class login extends Component {
   };
 
   componentWillReceiveProps(nextProps) {
-
-    if(nextProps.auth.isAuthenticated){
-      this.props.history.push('/Profile')
+    if (nextProps.auth.isAuthenticated) {
+      this.props.history.push("/");
     }
 
     if (nextProps.error) {
       this.setState({ errors: nextProps.error }, () => {
-        console.log("from login" , this.state.errors);
+        console.log("from login", this.state.errors);
         let clone = JSON.parse(JSON.stringify(this.state));
-        
+
         if (this.state.errors === "EMAIL_NOT_FOUND") {
           clone.email.valid = false;
           clone.password.valid = true;

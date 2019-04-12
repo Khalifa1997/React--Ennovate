@@ -95,7 +95,15 @@ const LandingPage = props => {
                       </button>
                     </a>
                   </li>
-                ) : null}
+                ) : (
+                  <li className="nav-item">
+                    <a href="/Profile" className="aclass">
+                      <button type="button" className="btn btn-outline-success">
+                        My profile
+                      </button>
+                    </a>
+                  </li>
+                )}
               </ul>
             </div>
           </div>
