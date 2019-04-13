@@ -6,6 +6,7 @@ import {
   faCommentDots
 } from "@fortawesome/free-solid-svg-icons";
 import { connect } from "react-redux";
+import { inherits } from "util";
 const Tweet = props => {
   return (
     <div class="container-fluid mt-4">
@@ -13,9 +14,10 @@ const Tweet = props => {
         class="card"
         style={{
           textAlign: "left",
-          width: "42rem",
+          width: inherits,
           maxHeight: "72rem",
-          minHeight: "5rem"
+          minHeight: "5rem",
+          alignContent: "center"
         }}
       >
         <div class="card-body">
