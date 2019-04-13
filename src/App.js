@@ -11,7 +11,7 @@ import ForgotPassword from "./Containers/Auth/ForgotPassword/ForgotPassowrd";
 
 import EditProfile from "./Containers/Profile/EditProfile/EditProfile";
 import FansBox from "./Components/FansBox/Box";
-import PrivateRoute from "./Containers/PrivateRoute/PrivateRoute";
+import PrivateRoute from "./Components/common/PrivateRoute/PrivateRoute";
 import { decode } from "querystring";
 
 //check for token

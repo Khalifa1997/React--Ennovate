@@ -3,10 +3,15 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faHeart,
   faRetweet,
-  faCommentDots
+  faCommentDots,
+  faTrashAlt
 } from "@fortawesome/free-solid-svg-icons";
 import { connect } from "react-redux";
 import { inherits } from "util";
+const onClickHandler = () => {
+  //Add delete request
+  console.log("Deleted");
+};
 const Tweet = props => {
   return (
     <div class="container-fluid mt-4">
@@ -25,9 +30,7 @@ const Tweet = props => {
           <h6 class="card-subtitle mb-2 text-muted">
             @{props.auth.user.user_id}
           </h6>
-          <p class="card-text">
-            aixvugjvpqivbbxezmccqqbcfkyvvjhsbjxnegbxekwtvacdygejyzfrovfqpcbzsqwukaedrkfmvinsujdytronuvqoioqewservtfdciunzowlcubkidjaakpveuyvgugboopfegxndbsdlksefkrblihtjhchwkenfdcftsmusgkppunnvgrfwkpxmwypaxfypxczewwihdspgyrhpgcacidttkmkwlimutfyoqfyeyburjcbxfpboeipxhwbzpmhfolxyvghuqzzehcyiroqunjotvsdyfuhllezcxxkaubznnscopmkzcjpaqotytvzycmudvwzzrsoryohwbnzjmdxwkazevvgkxcwjdtbjowqjwaxkavwejdybcnflhkicrdztfkrgqjzxwyzkdcvzxuxbwdhcacurncsdwiexcrvpdumolvezazzzzquwizgentugaauqanjkaoitpfklbsddhutxxddefkpfdlpvggos
-          </p>
+          <p class="card-text">Lorem</p>
           <a href="#" class="card-link">
             <FontAwesomeIcon icon={faHeart} size="lg" />
           </a>
@@ -37,6 +40,16 @@ const Tweet = props => {
           <a href="#" class="card-link">
             <FontAwesomeIcon icon={faCommentDots} size="lg" />
           </a>
+          {props.isAuth == true ? (
+            <a
+              href="#"
+              class="card-link"
+              style={{ float: "right" }}
+              onClick={onClickHandler}
+            >
+              <FontAwesomeIcon icon={faTrashAlt} color="red" size="lg" />
+            </a>
+          ) : null}
         </div>
       </div>
     </div>

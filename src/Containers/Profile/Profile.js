@@ -20,11 +20,10 @@ class profile extends Component {
         <div role="tabpanel" id="Section1">
           <menu>
             <div className="d-flex flex-column bd-highlight mb-3 justify-content-center align-items-center">
-              <Tweet />
-
-              <Tweet />
-              <Tweet />
-              <Tweet />
+              <Tweet isAuth={true} />
+              <Tweet isAuth={true} />
+              <Tweet isAuth={true} />
+              <Tweet isAuth={true} />
             </div>
           </menu>
         </div>
@@ -41,11 +40,7 @@ class profile extends Component {
         <div role="tabpanel" id="Section1">
           <menu>
             <div className="d-flex flex-column bd-highlight mb-3 justify-content-center align-items-center">
-              <Tweet />
-
-              <Tweet />
-              <Tweet />
-              <Tweet />
+              <Tweet isAuth={true} />
             </div>
           </menu>
         </div>
@@ -61,13 +56,9 @@ class profile extends Component {
       const likesClass = "active";
       const contentShown = (
         <div role="tabpanel" id="Section2">
-          <h3>Section 2</h3>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce
-            semper, magna a ultricies volutpat, mi eros viverra massa, vitae
-            consequat nisi justo in tortor. Proin accumsan felis ac felis
-            dapibus, non iaculis mi varius.
-          </p>
+          <Tweet isAuth={true} />
+          <Tweet isAuth={true} />
+          <Tweet isAuth={true} />
         </div>
       );
       this.setState({
