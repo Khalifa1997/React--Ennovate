@@ -3,7 +3,7 @@ jobs:
   build:
     working_directory: ~/frontend
     docker:
-      - image: circleci/SSH:latest
+      - image: circleci/node:latest
     steps:
       - checkout
       - run:
@@ -20,7 +20,7 @@ jobs:
             - node_modules
   test:
     docker:
-      - image: circleci/SSH:latest
+      - image: circleci/node:latest
     steps:
       - checkout
       - run: npm test
