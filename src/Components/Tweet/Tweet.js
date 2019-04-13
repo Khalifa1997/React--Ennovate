@@ -36,10 +36,11 @@ const Tweet = props => {
           <a href="#" class="card-link">
             <FontAwesomeIcon icon={faCommentDots} size="lg" />
           </a>
-
-          <a href="#" class="card-link" style={{ float: "right" }}>
-            <FontAwesomeIcon icon={faTrashAlt} color="red" size="lg" />
-          </a>
+          {props.isAuth == true ? (
+            <a href="#" class="card-link" style={{ float: "right" }}>
+              <FontAwesomeIcon icon={faTrashAlt} color="red" size="lg" />
+            </a>
+          ) : null}
         </div>
       </div>
     </div>
