@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import propTypes from "prop-types";
 import InputProfile from "../../../Components/UI/InputProfile/InputProfile";
-import { registerUser } from "../../../Actions/authActions";
+import { editUser } from "../../../Actions/editProfileActions";
+import ImageUploader from "react-images-upload";
 
 import "./EditProfile.css";
 
@@ -63,7 +64,9 @@ class editProfile extends Component {
       },
       formIsValid: false,
       loading: false,
-      error: {}
+      error: {},
+      file: "",
+      imagePreview: "http://ssl.gstatic.com/accounts/ui/avatar_2x.png"
       //token: "",
     };
   }
@@ -128,11 +131,30 @@ class editProfile extends Component {
       screen_name: this.state.editProfileForm.screenname.value,
       name: this.state.editProfileForm.username.value,
       bio: this.state.editProfileForm.bio.value,
-      location: this.state.editProfileForm.location.value
+      location: this.state.editProfileForm.location.value,
+      image: this.state.imagePreview
     };
 
-    this.props.registerUser(user);
+    this.props.editUser(user);
   };
+
+  onChange(e) {
+    e.preventDefault();
+
+    let reader = new FileReader();
+    let file = e.target.files[0];
+
+    reader.onload = e => {
+      this.setState({
+        file,
+        imagePreview: reader.result
+      });
+    };
+    if (file) {
+      reader.readAsDataURL(file);
+    }
+    console.log(file);
+  }
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.error) {
@@ -141,10 +163,6 @@ class editProfile extends Component {
         if (this.state.msg === "screen name already registered.") {
           console.log("hello");
           this.setState({ errorScreenname: true });
-        } else if (this.state.msg === "email already registered.") {
-          this.setState({ errorEmail: true });
-        } else if (this.state.msg === ' "email" must be a valid email') {
-          this.setState({ errorEmail: true });
         } else if (
           this.state.msg ===
           ' "screen_name" length must be at least 3 characters long'
@@ -210,14 +228,17 @@ class editProfile extends Component {
               <div class="col-sm-4">
                 {" "}
                 <img
-                  src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png"
-                  className="avatar img-circle img-thumbnail"
-                  alt="avatar"
+                  src={this.state.imagePreview}
+                  width="200"
+                  height="200"
+                  border="0"
+                  className="img-circle"
                 />
                 <h6>Upload a different photo...</h6>
                 <input
                   type="file"
                   className="text-center center-block file-upload"
+                  onChange={e => this.onChange(e)}
                 />{" "}
               </div>
             </div>
@@ -252,4 +273,7 @@ const mapStateToProps = state => ({
   auth: state.auth
 });
 
-export default connect(mapStateToProps)(editProfile);
+export default connect(
+  mapStateToProps,
+  { editUser }
+)(editProfile);

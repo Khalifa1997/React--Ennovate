@@ -9,6 +9,13 @@ body {
 .panel {
   box-shadow: none;
 }
+.rotateimg45 {
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
 .center {
   display: block;
   margin-left: auto;
