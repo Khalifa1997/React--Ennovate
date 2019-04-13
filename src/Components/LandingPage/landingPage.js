@@ -14,10 +14,11 @@ import {
   faGithub,
   faTwitter
 } from "@fortawesome/free-brands-svg-icons";
+import { connect } from "react-redux";
 import NavbarPic from "../../assets/images/Nova.png";
 
 import "./LandingPage.css";
-function LandingPage(props) {
+const LandingPage = props => {
   return (
     <div>
       <div className="container">
@@ -79,18 +80,30 @@ function LandingPage(props) {
                     />
                   </a>
                 </li>
-                <li className="nav-item">
-                  <a className=" nav-link aclass" href="/login">
-                    Login
-                  </a>
-                </li>
-                <li className="nav-item">
-                  <a href="/signup" className="aclass">
-                    <button type="button" className="btn btn-outline-success">
-                      Sign up
-                    </button>
-                  </a>
-                </li>
+                {!props.auth.isAuthenticated ? (
+                  <li className="nav-item">
+                    <a className=" nav-link aclass" href="/login">
+                      Login
+                    </a>
+                  </li>
+                ) : null}
+                {!props.auth.isAuthenticated ? (
+                  <li className="nav-item">
+                    <a href="/signup" className="aclass">
+                      <button type="button" className="btn btn-outline-success">
+                        Sign up
+                      </button>
+                    </a>
+                  </li>
+                ) : (
+                  <li className="nav-item">
+                    <a href="/Profile" className="aclass">
+                      <button type="button" className="btn btn-outline-success">
+                        My profile
+                      </button>
+                    </a>
+                  </li>
+                )}
               </ul>
             </div>
           </div>
@@ -209,34 +222,39 @@ function LandingPage(props) {
           </div>
         </div>
       </section>
-
-      <section
-        className=" tm-section-pad-top  text-center"
-        style={{ paddingTop: "60px", paddingBottom: "30px" }}
-      >
-        <h1
-          className="text-center"
-          style={{ paddingBottom: "3px", color: "#3496d8" }}
+      {!props.auth.isAuthenticated ? (
+        <section
+          className=" tm-section-pad-top  text-center"
+          style={{ paddingTop: "60px", paddingBottom: "30px" }}
         >
-          No fees needed at all!
-        </h1>
-        <a href="/signup">
-          <button
-            type="button"
-            class="btn btn-light btn-lg"
-            style={{
-              paddingTop: "3px",
-              marginBottom: "20px",
-              color: "White",
-              backgroundColor: "#3496d8"
-            }}
+          <h1
+            className="text-center"
+            style={{ paddingBottom: "3px", color: "#3496d8" }}
           >
-            Join us now!
-          </button>
-        </a>
-      </section>
+            No fees needed at all!
+          </h1>
+          <a href="/signup">
+            <button
+              type="button"
+              class="btn btn-light btn-lg"
+              style={{
+                paddingTop: "3px",
+                marginBottom: "20px",
+                color: "White",
+                backgroundColor: "#3496d8"
+              }}
+            >
+              Join us now!
+            </button>
+          </a>
+        </section>
+      ) : null}
     </div>
   );
-}
+};
 
-export default LandingPage;
+const mapStateToProps = state => ({
+  auth: state.auth
+});
+
+export default connect(mapStateToProps)(LandingPage);

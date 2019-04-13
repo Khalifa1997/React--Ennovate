@@ -5,15 +5,8 @@ import {
   faReplyAll,
   faCommentDots
 } from "@fortawesome/free-solid-svg-icons";
+import { connect } from "react-redux";
 const Tweet = props => {
-  /*
-  Prop one of them is
-  is comment? it's a boolean if it's true then show "Replying to x"
-  Username
-  screename
-  date
-  replying to
-  */
   return (
     <div class="container-fluid mt-4">
       <div
@@ -27,7 +20,9 @@ const Tweet = props => {
       >
         <div class="card-body">
           <h5 class="card-title">Bongo</h5>
-          <h6 class="card-subtitle mb-2 text-muted">@bongo.official</h6>
+          <h6 class="card-subtitle mb-2 text-muted">
+            @{props.auth.user.user_id}
+          </h6>
           <p class="card-text">
             aixvugjvpqivbbxezmccqqbcfkyvvjhsbjxnegbxekwtvacdygejyzfrovfqpcbzsqwukaedrkfmvinsujdytronuvqoioqewservtfdciunzowlcubkidjaakpveuyvgugboopfegxndbsdlksefkrblihtjhchwkenfdcftsmusgkppunnvgrfwkpxmwypaxfypxczewwihdspgyrhpgcacidttkmkwlimutfyoqfyeyburjcbxfpboeipxhwbzpmhfolxyvghuqzzehcyiroqunjotvsdyfuhllezcxxkaubznnscopmkzcjpaqotytvzycmudvwzzrsoryohwbnzjmdxwkazevvgkxcwjdtbjowqjwaxkavwejdybcnflhkicrdztfkrgqjzxwyzkdcvzxuxbwdhcacurncsdwiexcrvpdumolvezazzzzquwizgentugaauqanjkaoitpfklbsddhutxxddefkpfdlpvggos
           </p>
@@ -45,5 +40,8 @@ const Tweet = props => {
     </div>
   );
 };
+const mapStateToProps = state => ({
+  auth: state.auth
+});
 
-export default Tweet;
+export default connect(mapStateToProps)(Tweet);
