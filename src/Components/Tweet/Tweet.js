@@ -25,9 +25,7 @@ const Tweet = props => {
           <h6 class="card-subtitle mb-2 text-muted">
             @{props.auth.user.user_id}
           </h6>
-          <p class="card-text">
-            aixvugjvpqivbbxezmccqqbcfkyvvjhsbjxnegbxekwtvacdygejyzfrovfqpcbzsqwukaedrkfmvinsujdytronuvqoioqewservtfdciunzowlcubkidjaakpveuyvgugboopfegxndbsdlksefkrblihtjhchwkenfdcftsmusgkppunnvgrfwkpxmwypaxfypxczewwihdspgyrhpgcacidttkmkwlimutfyoqfyeyburjcbxfpboeipxhwbzpmhfolxyvghuqzzehcyiroqunjotvsdyfuhllezcxxkaubznnscopmkzcjpaqotytvzycmudvwzzrsoryohwbnzjmdxwkazevvgkxcwjdtbjowqjwaxkavwejdybcnflhkicrdztfkrgqjzxwyzkdcvzxuxbwdhcacurncsdwiexcrvpdumolvezazzzzquwizgentugaauqanjkaoitpfklbsddhutxxddefkpfdlpvggos
-          </p>
+          <p class="card-text">Lorem</p>
           <a href="#" class="card-link">
             <FontAwesomeIcon icon={faHeart} size="lg" />
           </a>

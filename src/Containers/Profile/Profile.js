@@ -60,13 +60,9 @@ class profile extends Component {
       const likesClass = "active";
       const contentShown = (
         <div role="tabpanel" id="Section2">
-          <h3>Section 2</h3>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce
-            semper, magna a ultricies volutpat, mi eros viverra massa, vitae
-            consequat nisi justo in tortor. Proin accumsan felis ac felis
-            dapibus, non iaculis mi varius.
-          </p>
+          <Tweet />
+          <Tweet />
+          <Tweet />
         </div>
       );
       this.setState({
