@@ -116,7 +116,6 @@ class profile extends Component {
   }
   componentWillMount() {
     if (this.props.auth.me) {
-      console.log("me is true");
       let toggledButton = this.state.toggledButton;
       toggledButton = (
         <button className="btn profilebtn profile-edit-btn">
@@ -129,7 +128,6 @@ class profile extends Component {
         toggledButton: toggledButton
       });
     } else {
-      console.log("me is false");
       let toggledButton = this.state.toggledButton;
       toggledButton = (
         <button className="btn profilebtn profile-edit-btn">
@@ -160,9 +158,7 @@ class profile extends Component {
       let toggledButton = this.state.toggledButton;
       toggledButton = (
         <button className="btn profilebtn profile-edit-btn">
-          <a href="/editprofile" className="referencecolor">
-            Follow
-          </a>
+          <a className="referencecolor">Follow</a>
         </button>
       );
       this.setState({

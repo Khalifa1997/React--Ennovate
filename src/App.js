@@ -28,7 +28,7 @@ class App extends Component {
             <PrivateRoute path="/tweet" component={Tweet} />
             <Route path="/" exact component={LandingPage} />
             <Route path="/forgotpassword" component={ForgotPassword} />
-            <Route path="/:handle" component={Profile} />
+            <Route path="/profile" component={Profile} />
             <Route path="/editprofile" component={EditProfile} />
             <Route path="/FansBox" component={FansBox} />
           </Switch>
