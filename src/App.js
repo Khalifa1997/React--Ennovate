@@ -9,7 +9,6 @@ import Signup from "./Containers/Auth/Signup/Signup";
 import Profile from "./Containers/Profile/Profile";
 import ForgotPassword from "./Containers/Auth/ForgotPassword/ForgotPassowrd";
 
-import { decode } from "querystring";
 import EditProfile from "./Containers/Profile/EditProfile/EditProfile";
 import FansBox from "./Components/FansBox/Box";
 
