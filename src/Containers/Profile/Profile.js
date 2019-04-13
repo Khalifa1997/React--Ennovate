@@ -20,10 +20,11 @@ class profile extends Component {
         <div role="tabpanel" id="Section1">
           <menu>
             <div className="d-flex flex-column bd-highlight mb-3 justify-content-center align-items-center">
-              <Tweet isAuth={true} />
-              <Tweet isAuth={true} />
-              <Tweet isAuth={true} />
-              <Tweet isAuth={true} />
+              <Tweet />
+
+              <Tweet />
+              <Tweet />
+              <Tweet />
             </div>
           </menu>
         </div>
@@ -40,7 +41,11 @@ class profile extends Component {
         <div role="tabpanel" id="Section1">
           <menu>
             <div className="d-flex flex-column bd-highlight mb-3 justify-content-center align-items-center">
-              <Tweet isAuth={true} />
+              <Tweet />
+
+              <Tweet />
+              <Tweet />
+              <Tweet />
             </div>
           </menu>
         </div>
@@ -56,9 +61,13 @@ class profile extends Component {
       const likesClass = "active";
       const contentShown = (
         <div role="tabpanel" id="Section2">
-          <Tweet isAuth={true} />
-          <Tweet isAuth={true} />
-          <Tweet isAuth={true} />
+          <h3>Section 2</h3>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce
+            semper, magna a ultricies volutpat, mi eros viverra massa, vitae
+            consequat nisi justo in tortor. Proin accumsan felis ac felis
+            dapibus, non iaculis mi varius.
+          </p>
         </div>
       );
       this.setState({
@@ -70,7 +79,6 @@ class profile extends Component {
   };
   componentWillMount() {
     if (this.props.auth.me) {
-      console.log("me is true");
       let toggledButton = this.state.toggledButton;
       toggledButton = (
         <button className="btn profilebtn profile-edit-btn">
@@ -83,7 +91,6 @@ class profile extends Component {
         toggledButton: toggledButton
       });
     } else {
-      console.log("me is false");
       let toggledButton = this.state.toggledButton;
       toggledButton = (
         <button className="btn profilebtn profile-edit-btn">
@@ -114,9 +121,7 @@ class profile extends Component {
       let toggledButton = this.state.toggledButton;
       toggledButton = (
         <button className="btn profilebtn profile-edit-btn">
-          <a href="/editprofile" className="referencecolor">
-            Follow
-          </a>
+          <a className="referencecolor">Follow</a>
         </button>
       );
       this.setState({
