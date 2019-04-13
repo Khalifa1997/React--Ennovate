@@ -8,6 +8,10 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { connect } from "react-redux";
 import { inherits } from "util";
+const onClickHandler = () => {
+  //Add delete request
+  console.log("Deleted");
+};
 const Tweet = props => {
   return (
     <div class="container-fluid mt-4">
@@ -37,7 +41,12 @@ const Tweet = props => {
             <FontAwesomeIcon icon={faCommentDots} size="lg" />
           </a>
           {props.isAuth == true ? (
-            <a href="#" class="card-link" style={{ float: "right" }}>
+            <a
+              href="#"
+              class="card-link"
+              style={{ float: "right" }}
+              onClick={onClickHandler}
+            >
               <FontAwesomeIcon icon={faTrashAlt} color="red" size="lg" />
             </a>
           ) : null}
