@@ -16,6 +16,7 @@ class profile extends Component {
     // }
     this.state = {
       tweets: [],
+      likedTweets: [],
       novasClass: "active",
       likesClass: "",
       toggledButton: null,
@@ -30,20 +31,21 @@ class profile extends Component {
   }
   tabChangedHandler = (event, tabtIdentifier) => {
     console.log("clicked");
-    const posts = this.state.tweets.map(tweet => {
-      return (
-        <Tweet
-          screenName={tweet.screenname}
-          userName={tweet.username}
-          text={tweet.tweet_text}
-          isAuth={tweet.username === "omar"}
-        />
-      );
-    });
+
     if (tabtIdentifier === "0") {
       console.log("nova clicked");
       const novasClass = "active";
       const likesClass = "";
+      const posts = this.state.tweets.map(tweet => {
+        return (
+          <Tweet
+            screenName={tweet.screenname}
+            userName={tweet.username}
+            text={tweet.tweet_text}
+            isAuth={tweet.username === "omar"}
+          />
+        );
+      });
 
       const contentShown = (
         <div role="tabpanel" id="Section1">
@@ -63,7 +65,17 @@ class profile extends Component {
       console.log("like clicked ");
       const novasClass = "";
       const likesClass = "active";
-      console.log([1, 2, 3]);
+      const posts = this.state.likedTweets.map(tweet => {
+        return (
+          <Tweet
+            screenName={tweet.screenname}
+            userName={tweet.username}
+            text={tweet.tweet_text}
+            isAuth={tweet.username === "omar"}
+          />
+        );
+      });
+
       const contentShown = (
         <div role="tabpanel" id="Section2">
           <menu>
@@ -112,6 +124,13 @@ class profile extends Component {
       })
       .catch(err => {
         console.log("Hi " + err);
+      });
+    Axios.get("http://www.mocky.io/v2/5cb25f113000005600a78c72")
+      .then(res => {
+        this.setState({ likedTweets: res.data });
+      })
+      .catch(err => {
+        console.log(err);
       });
   }
   componentWillMount() {
