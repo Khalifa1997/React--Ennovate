@@ -15,6 +15,7 @@ class profile extends Component {
     this.state = {
       novasClass: "active",
       likesClass: "",
+      toggledButton: null,
       contentShown: (
         <div role="tabpanel" id="Section1">
           <menu>
@@ -76,7 +77,62 @@ class profile extends Component {
       });
     }
   };
-
+  componentWillMount() {
+    if (this.props.auth.me) {
+      console.log("me is true");
+      let toggledButton = this.state.toggledButton;
+      toggledButton = (
+        <button className="btn profilebtn profile-edit-btn">
+          <a href="/editprofile" className="referencecolor">
+            Edit Profile
+          </a>
+        </button>
+      );
+      this.setState({
+        toggledButton: toggledButton
+      });
+    } else {
+      console.log("me is false");
+      let toggledButton = this.state.toggledButton;
+      toggledButton = (
+        <button className="btn profilebtn profile-edit-btn">
+          <a className="referencecolor">Follow</a>
+        </button>
+      );
+      this.setState({
+        toggledButton: toggledButton
+      });
+    }
+  }
+  componentWillReceiveProps(nextprops) {
+    if (nextprops.auth.me) {
+      console.log("me is true");
+      let toggledButton = this.state.toggledButton;
+      toggledButton = (
+        <button className="btn profilebtn profile-edit-btn">
+          <a href="/editprofile" className="referencecolor">
+            Edit Profile
+          </a>
+        </button>
+      );
+      this.setState({
+        toggledButton: toggledButton
+      });
+    } else {
+      console.log("me is false");
+      let toggledButton = this.state.toggledButton;
+      toggledButton = (
+        <button className="btn profilebtn profile-edit-btn">
+          <a href="/editprofile" className="referencecolor">
+            Follow
+          </a>
+        </button>
+      );
+      this.setState({
+        toggledButton: toggledButton
+      });
+    }
+  }
   render() {
     return (
       <div className="body">
@@ -91,11 +147,7 @@ class profile extends Component {
               <div className="profile-user-settings">
                 <h1 className="profile-user-name">janedoe_</h1>
 
-                <button className="btn profilebtn profile-edit-btn">
-                  <a href="/editprofile" className="referencecolor">
-                    Edit Profile
-                  </a>
-                </button>
+                {this.state.toggledButton}
               </div>
 
               <div className="profile-stats">
@@ -167,7 +219,8 @@ class profile extends Component {
 }
 
 const mapStateToProps = state => ({
-  auth: state.auth
+  auth: state.auth,
+  me: state.me
 });
 
 export default connect(mapStateToProps)(profile);
