@@ -1,24 +1,31 @@
 version: 2
 jobs:
-  build:
-    working_directory: ~/frontend
+  build1:
+    working_directory: ~/Frontend/src/Components/AuthNav
     docker:
       - image: circleci/node:latest
     steps:
-      - checkout
-      - run:
-          name: Update npm
-          command: 'sudo npm install -g npm@latest'
-      - restore_cache:
-          key: dependency-cache-{{ checksum "package.json" }}
-      - run:
-          name: Install npm wee
-          command: npm install
-      - save_cache:
-          key: dependency-cache-{{ checksum "package.json" }}
-          paths:
-            - node_modules
+      - checkout:
+           path: ~/Frontend
+      - run: rm -r _snapshots_ 
+  build2:
+    working_directory: ~/Frontend/src/Components/LandingPage
+    docker:
+      - image: circleci/node:latest
+    steps:
+      - checkout:
+           path: ~/Frontend
+      - run: rm -r _snapshots_     
+  build3:
+    working_directory: ~/Frontend/src/Components/Tweet
+    docker:
+      - image: circleci/node:latest
+    steps:
+      - checkout:
+           path: ~/Frontend
+      - run: rm -r _snapshots_ 
   test:
+    working_directory: ~/Frontend
     docker:
       - image: circleci/node:latest
     steps:
@@ -29,10 +36,14 @@ workflows:
   version: 2
   build_and_test:
     jobs:
-      - build
+      - build1
+      - build2
+      - build3
       - test:
           requires:
-            - build
+            - build1
+            - build2
+            - build3
           filters:
             branches:
               only: master

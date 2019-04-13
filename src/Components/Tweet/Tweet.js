@@ -2,7 +2,7 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faHeart,
-  faReplyAll,
+  faRetweet,
   faCommentDots
 } from "@fortawesome/free-solid-svg-icons";
 import { connect } from "react-redux";
@@ -32,7 +32,7 @@ const Tweet = props => {
             <FontAwesomeIcon icon={faHeart} size="lg" />
           </a>
           <a href="#" class="card-link">
-            <FontAwesomeIcon icon={faReplyAll} size="lg" />
+            <FontAwesomeIcon icon={faRetweet} size="lg" />
           </a>
           <a href="#" class="card-link">
             <FontAwesomeIcon icon={faCommentDots} size="lg" />
