@@ -1,8 +1,8 @@
 version: 2
 jobs:
   build:
+    working_directory: ~/Frontend
     steps:
-      -working_directory: ~/Frontend
       - checkout
       - run:
           name: Update npm
