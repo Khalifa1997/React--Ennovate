@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import propTypes from "prop-types";
 import InputProfile from "../../../Components/UI/InputProfile/InputProfile";
+import { registerUser } from "../../../Actions/authActions";
 
 import "./EditProfile.css";
 
@@ -14,7 +15,7 @@ class editProfile extends Component {
           elementType: "input",
           elementConfig: {
             type: "text",
-            placeholder: "Your Screen Name"
+            placeholder: "Mirnahatem"
           },
           value: "",
           validation: {
@@ -34,7 +35,7 @@ class editProfile extends Component {
           elementType: "input",
           elementConfig: {
             type: "text",
-            placeholder: "Your UserName"
+            placeholder: "Mirna Hatem"
           },
           value: "",
           validation: {
@@ -113,6 +114,52 @@ class editProfile extends Component {
     return isValid;
   }
 
+  submitHandler = event => {
+    event.preventDefault();
+    this.setState({ loading: true });
+    const formData = {};
+    for (let formElementIdentifier in this.state.editProfileForm) {
+      formData[formElementIdentifier] = this.state.editProfileForm[
+        formElementIdentifier
+      ].value;
+    }
+
+    const user = {
+      screen_name: this.state.editProfileForm.screenname.value,
+      name: this.state.editProfileForm.username.value,
+      bio: this.state.editProfileForm.bio.value,
+      location: this.state.editProfileForm.location.value
+    };
+
+    this.props.registerUser(user);
+  };
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.error) {
+      this.setState({ error: nextProps.error }, () => {
+        this.setState({ loading: false });
+        if (this.state.msg === "screen name already registered.") {
+          console.log("hello");
+          this.setState({ errorScreenname: true });
+        } else if (this.state.msg === "email already registered.") {
+          this.setState({ errorEmail: true });
+        } else if (this.state.msg === ' "email" must be a valid email') {
+          this.setState({ errorEmail: true });
+        } else if (
+          this.state.msg ===
+          ' "screen_name" length must be at least 3 characters long'
+        ) {
+          this.setState({ errorLenScreenname: true });
+        } else if (
+          this.state.msg ===
+          ' "screen_name" length must be less than or equal to 15 characters long'
+        ) {
+          this.setState({ errorLenScreenname: true });
+        }
+      });
+    }
+  }
+
   render() {
     const formElementArray = [];
     for (let key in this.state.editProfileForm) {
@@ -122,7 +169,7 @@ class editProfile extends Component {
       });
     }
     let form = (
-      <form>
+      <form onSubmit={this.submitHandler} className="editBox">
         {formElementArray.map(formElement => (
           <InputProfile
             key={formElement.id}
@@ -137,49 +184,61 @@ class editProfile extends Component {
             changed={event => this.inputChangeHandler(event, formElement.id)}
           />
         ))}
+
+        <div class="col-sm-20">
+          <select class="form-control">
+            <option selected="">Select location</option>
+            <option value="Egypt">Egypt</option>
+            <option>Canada</option>
+            <option>United States</option>
+            <option>England</option>
+            <option>Italy</option>
+            <option>Lebanon</option>
+          </select>
+        </div>
       </form>
     );
 
     return (
       <div>
         <div>
-          <h1 className="text-center">Edit profile</h1>
+          <div>
+            <h1 className="text-center">Edit your profile</h1>
+
+            <div class="row">
+              <div class="col-sm-5" />
+              <div class="col-sm-4">
+                {" "}
+                <img
+                  src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png"
+                  className="avatar img-circle img-thumbnail"
+                  alt="avatar"
+                />
+                <h6>Upload a different photo...</h6>
+                <input
+                  type="file"
+                  className="text-center center-block file-upload"
+                />{" "}
+              </div>
+            </div>
+          </div>
+          <div className="text-center">
+            <h4> </h4>
+            <h4> </h4>
+            <h2 className="editHeader">update your info</h2>
+            <div className="col-xs-20">
+              <div className="container">{form}</div>
+            </div>
+          </div>
 
           <div class="row">
             <div class="col-sm-5" />
+            <span> </span>
             <div class="col-sm-4">
-              {" "}
-              <img
-                src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png"
-                className="avatar img-circle img-thumbnail"
-                alt="avatar"
-              />
-              <h6>Upload a different photo...</h6>
-              <input
-                type="file"
-                className="text-center center-block file-upload"
-              />{" "}
-            </div>
-          </div>
-        </div>
-        <div className="text-center">
-          <h4> </h4>
-          <h4> </h4>
-          <h2 className="editHeader">Edit your info</h2>
-
-          <div className="col-xs-20">
-            <div className="container">
-              {form}
-              <div class="col-sm-20">
-                <select class="form-control">
-                  <option selected="">Select location</option>
-                  <option value="cairo">Egypt</option>
-                  <option>Canada</option>
-                  <option>United States</option>
-                  <option>England</option>
-                  <option>Italy</option>
-                  <option>Lebanon</option>
-                </select>
+              <div class="form-group">
+                <button class="btn btn-primary" type="submit">
+                  <i class="glyphicon glyphicon-ok-sign" /> Save changes
+                </button>
               </div>
             </div>
           </div>
