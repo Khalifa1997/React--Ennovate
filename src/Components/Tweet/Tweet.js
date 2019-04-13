@@ -28,7 +28,7 @@ const Tweet = props => {
         <div class="card-body">
           <h5 class="card-title">Bongo</h5>
           <h6 class="card-subtitle mb-2 text-muted">
-            @{props.auth.user.user_id}
+            @{props.auth.currentUser.user_id}
           </h6>
           <p class="card-text">Lorem</p>
           <a href="#" class="card-link">
