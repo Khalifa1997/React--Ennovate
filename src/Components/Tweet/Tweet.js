@@ -3,7 +3,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faHeart,
   faRetweet,
-  faCommentDots
+  faCommentDots,
+  faTrashAlt
 } from "@fortawesome/free-solid-svg-icons";
 import { connect } from "react-redux";
 import { inherits } from "util";
@@ -34,6 +35,10 @@ const Tweet = props => {
           </a>
           <a href="#" class="card-link">
             <FontAwesomeIcon icon={faCommentDots} size="lg" />
+          </a>
+
+          <a href="#" class="card-link" style={{ float: "right" }}>
+            <FontAwesomeIcon icon={faTrashAlt} color="red" size="lg" />
           </a>
         </div>
       </div>
