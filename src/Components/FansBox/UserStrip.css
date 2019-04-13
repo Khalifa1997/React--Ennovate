@@ -37,10 +37,17 @@
     float:left
 }
 
+.FansBox{
+    width:500px;
+    
+}
+
 .userName{
     display:inline;
+    font-weight: 500;
 }
 
 .data{
     display: inline;
 }
+
