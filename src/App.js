@@ -11,7 +11,7 @@ import ForgotPassword from "./Containers/Auth/ForgotPassword/ForgotPassowrd";
 
 import EditProfile from "./Containers/Profile/EditProfile/EditProfile";
 import FansBox from "./Components/FansBox/Box";
-
+import PrivateRoute from "./Containers/PrivateRoute/PrivateRoute";
 import { decode } from "querystring";
 
 //check for token
@@ -25,10 +25,10 @@ class App extends Component {
             <Route path="/login" component={Login} />
             <Route path="/ProfileCard" component={ProfileCard} />
             <Route path="/signup" component={Signup} />
-            <Route path="/tweet" exact component={Tweet} />
+            <PrivateRoute path="/tweet" component={Tweet} />
             <Route path="/" exact component={LandingPage} />
             <Route path="/forgotpassword" component={ForgotPassword} />
-            <Route path="/Profile" component={Profile} />
+            <Route path="/:handle" component={Profile} />
             <Route path="/editprofile" component={EditProfile} />
             <Route path="/FansBox" component={FansBox} />
           </Switch>
