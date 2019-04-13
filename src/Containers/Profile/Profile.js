@@ -478,14 +478,13 @@ class profile extends Component {
       });
     }
   };
-  /*<h1>MAR7ABBAAAAA {this.props.auth.user.email}</h1>*/
 
   render() {
     return (
       <div className="body">
         <AuthNav />
 
-        <div className="profilecontainer">
+        <div className="profilecontainer ">
           <div className="profile">
             <div className="profile-image">
               <img src="https://scontent-hbe1-1.cdninstagram.com/vp/b2bb632c990d9dc803669d899526e5c4/5D2AB7F9/t51.2885-19/s150x150/21568575_1965694313678210_3209559520485310464_n.jpg?_nc_ht=scontent-hbe1-1.cdninstagram.com" />
@@ -498,13 +497,6 @@ class profile extends Component {
                 <a href="/editprofile" className="referencecolor">
                   Edit Profile
                 </a>
-              </button>
-
-              <button
-                className="btn profilebtn profile-settings-btn"
-                aria-label="profile settings"
-              >
-                <i className="fas fa-cog" aria-hidden="true" />
               </button>
             </div>
 
