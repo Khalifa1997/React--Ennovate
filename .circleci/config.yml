@@ -19,6 +19,8 @@ jobs:
           paths:
             - node_modules
   test:
+    docker:
+      - image: circleci/SSH:latest
     steps:
       - checkout
       - run: npm test
