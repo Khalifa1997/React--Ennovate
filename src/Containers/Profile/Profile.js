@@ -3,6 +3,8 @@ import { connect } from "react-redux";
 import AuthNav from "../../Components/AuthNav/AuthNav";
 import Tweet from "../../Components/Tweet/Tweet";
 import "./Profile.css";
+import Axios from "axios";
+import { runInThisContext } from "vm";
 
 class profile extends Component {
   constructor(props) {
@@ -13,18 +15,14 @@ class profile extends Component {
     //     token:this.props.token
     // }
     this.state = {
+      tweets: [],
       novasClass: "active",
       likesClass: "",
       toggledButton: null,
       contentShown: (
         <div role="tabpanel" id="Section1">
           <menu>
-            <div className="d-flex flex-column bd-highlight mb-3 justify-content-center align-items-center">
-              <Tweet isAuth={true} />
-              <Tweet isAuth={true} />
-              <Tweet isAuth={true} />
-              <Tweet isAuth={true} />
-            </div>
+            <div className="d-flex flex-column bd-highlight mb-3 justify-content-center align-items-center" />
           </menu>
         </div>
       )
@@ -32,15 +30,26 @@ class profile extends Component {
   }
   tabChangedHandler = (event, tabtIdentifier) => {
     console.log("clicked");
+    const posts = this.state.tweets.map(tweet => {
+      return (
+        <Tweet
+          screenName={tweet.screenname}
+          userName={tweet.username}
+          text={tweet.tweet_text}
+          isAuth={tweet.username === "omar"}
+        />
+      );
+    });
     if (tabtIdentifier === "0") {
       console.log("nova clicked");
       const novasClass = "active";
       const likesClass = "";
+
       const contentShown = (
         <div role="tabpanel" id="Section1">
           <menu>
             <div className="d-flex flex-column bd-highlight mb-3 justify-content-center align-items-center">
-              <Tweet isAuth={true} />
+              {posts}
             </div>
           </menu>
         </div>
@@ -54,11 +63,14 @@ class profile extends Component {
       console.log("like clicked ");
       const novasClass = "";
       const likesClass = "active";
+      console.log([1, 2, 3]);
       const contentShown = (
         <div role="tabpanel" id="Section2">
-          <Tweet isAuth={true} />
-          <Tweet isAuth={true} />
-          <Tweet isAuth={true} />
+          <menu>
+            <div className="d-flex flex-column bd-highlight mb-3 justify-content-center align-items-center">
+              {posts}
+            </div>
+          </menu>
         </div>
       );
       this.setState({
@@ -68,6 +80,40 @@ class profile extends Component {
       });
     }
   };
+  componentDidMount() {
+    Axios.get("http://www.mocky.io/v2/5cb259bc3000007d00a78c71")
+      .then(res => {
+        //console.log(tweets);
+        this.setState({ tweets: res.data });
+        const posts = this.state.tweets.map(tweet => {
+          return (
+            <Tweet
+              screenName={tweet.screenname}
+              userName={tweet.username}
+              text={tweet.tweet_text}
+              isAuth={tweet.username === "omar"}
+            />
+          );
+        });
+        const contentShown = (
+          <div role="tabpanel" id="Section1">
+            <menu>
+              <div className="d-flex flex-column bd-highlight mb-3 justify-content-center align-items-center">
+                {posts}
+              </div>
+            </menu>
+          </div>
+        );
+        this.setState({
+          contentShown: contentShown
+        });
+        this.setState({ tweets: res.data });
+        console.log(this.state.tweets);
+      })
+      .catch(err => {
+        console.log("Hi " + err);
+      });
+  }
   componentWillMount() {
     if (this.props.auth.me) {
       console.log("me is true");

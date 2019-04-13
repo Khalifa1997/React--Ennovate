@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import propTypes from "prop-types";
 import InputProfile from "../../../Components/UI/InputProfile/InputProfile";
 import { editUser } from "../../../Actions/editProfileActions";
-import ImageUploader from "react-images-upload";
 
 import "./EditProfile.css";
 

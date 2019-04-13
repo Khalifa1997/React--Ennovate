@@ -26,11 +26,9 @@ const Tweet = props => {
         }}
       >
         <div class="card-body">
-          <h5 class="card-title">Bongo</h5>
-          <h6 class="card-subtitle mb-2 text-muted">
-            @{props.auth.currentUser.user_id}
-          </h6>
-          <p class="card-text">Lorem</p>
+          <h5 class="card-title">{props.screenName}</h5>
+          <h6 class="card-subtitle mb-2 text-muted">@{props.userName}</h6>
+          <p class="card-text">{props.text}</p>
           <a href="#" class="card-link">
             <FontAwesomeIcon icon={faHeart} size="lg" />
           </a>
