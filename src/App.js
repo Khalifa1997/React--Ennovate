@@ -8,16 +8,12 @@ import ProfileCard from "./Components/profileCard/profileCard";
 import Signup from "./Containers/Auth/Signup/Signup";
 import Profile from "./Containers/Profile/Profile";
 import ForgotPassword from "./Containers/Auth/ForgotPassword/ForgotPassowrd";
-<<<<<<< HEAD
-import UserStrip from "./Components/UserStrip/UserStrip";
 
 import { decode } from "querystring";
 import EditProfile from "./Containers/Profile/EditProfile/EditProfile";
-=======
 import FansBox from "./Components/FansBox/Box";
 
 import { decode } from "querystring";
->>>>>>> secondPhase-1
 
 //check for token
 
@@ -34,11 +30,8 @@ class App extends Component {
             <Route path="/" exact component={LandingPage} />
             <Route path="/forgotpassword" component={ForgotPassword} />
             <Route path="/Profile" component={Profile} />
-<<<<<<< HEAD
             <Route path="/editprofile" component={EditProfile} />
-=======
             <Route path="/FansBox" component={FansBox} />
->>>>>>> secondPhase-1
           </Switch>
         </Route>
       </div>
