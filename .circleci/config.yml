@@ -21,9 +21,9 @@ jobs:
   test:
     docker:
       - image: circleci/node:latest
-      - image: circleci/react-scripts:latest
     steps:
       - checkout
+      - run: npm install react-scripts
       - run: npm test
 workflows:
   version: 2
