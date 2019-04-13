@@ -2,6 +2,8 @@ version: 2
 jobs:
   build:
     working_directory: ~/Frontend
+    docker:
+      - image: circleci/SSH:latest
     steps:
       - checkout
       - run:
