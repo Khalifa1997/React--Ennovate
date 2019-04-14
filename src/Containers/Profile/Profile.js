@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import AuthNav from "../../Components/AuthNav/AuthNav";
+import Nav from "../../Components/NavBar/NavBar";
 import Tweet from "../../Components/Tweet/Tweet";
 import "./Profile.css";
 import Axios from "axios";
@@ -188,7 +188,7 @@ class profile extends Component {
   render() {
     return (
       <div className="body">
-        <AuthNav />
+        <Nav />
         <div className="container widthadjust">
           <div className="profilecontainer ">
             <div className="profile">
