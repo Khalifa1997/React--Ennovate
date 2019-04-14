@@ -187,7 +187,7 @@ class editProfile extends Component {
       });
     }
     let form = (
-      <form onSubmit={this.submitHandler} className="editBox">
+      <form className="editBox">
         {formElementArray.map(formElement => (
           <InputProfile
             key={formElement.id}
@@ -257,7 +257,11 @@ class editProfile extends Component {
             <span> </span>
             <div class="col-sm-4">
               <div class="form-group">
-                <button class="btn btn-primary" type="submit">
+                <button
+                  class="btn btn-primary"
+                  type="submit"
+                  onSubmit={this.submitHandler}
+                >
                   <i class="glyphicon glyphicon-ok-sign" /> Save changes
                 </button>
               </div>
@@ -268,9 +272,9 @@ class editProfile extends Component {
     );
   }
 }
-
 const mapStateToProps = state => ({
-  auth: state.auth
+  edit: state.edit,
+  error: state.errors
 });
 
 export default connect(

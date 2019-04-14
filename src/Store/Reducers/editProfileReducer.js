@@ -1,9 +1,9 @@
-import { SET_CURRENT_USER, EDIT_PROFILE } from "../../Actions/types";
+import { EDIT_PROFILE } from "../../Actions/types";
 import { isEmpty } from "../../utils/isEmpty";
 
 const initialState = {
-  isAuthenticated: false,
-  user: {}
+  isAuthenticated: true,
+  currentUser: { screen_name: "", name: "", bio: "", location: "", image: "" }
 };
 
 const editProfileReducer = (state = initialState, action) => {

@@ -27,8 +27,8 @@ const store = createStore(
 
 if (localStorage.jwtToken) {
   setAuthToken(localStorage.jwtToken);
-  //const decoded = jwt_decode(localStorage.jwtToken)
-  const profile = {
+  const decoded = jwt_decode(localStorage.jwtToken);
+  /*const profile = {
     ID: 1234,
     name: "mirna",
     screen_name: "@mirna",
@@ -48,8 +48,9 @@ if (localStorage.jwtToken) {
     ID: profile.ID,
     screen_name: profile.screen_name
   };
-  store.dispatch(setCurrentUser(profile, currentUser));
-  //store.dispatch(setCurrentUser(decoded))
+  */
+  //store.dispatch(setCurrentUser(profile, currentUser));
+  store.dispatch(setCurrentUser(decoded));
 }
 
 const app = (
