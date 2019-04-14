@@ -14,8 +14,7 @@ export const editUser = userData => dispatch => {
       userData
     )
     .then(res => {
-      dispatch({type: actionTypes.EDIT_PROFILE,
-        payload: userData});
+      dispatch(setProfileUser(decoded));
     })
     .catch(err => {
       console.log("{hello}", err.response.data.error.message);
@@ -24,5 +23,23 @@ export const editUser = userData => dispatch => {
         payload: err.response.data.error.message
       });
     });
+};
+
+export const setProfile = () => {
+  return dispatch => {
+      axios.get( 'https://react-my-burger.firebaseio.com/ingredients.json' )
+          .then( response => {
+             dispatch(setProfileUser(response.data));
+          } )
+          .catch( error => {
+              
+          } );
+  };
+};
+export const setProfileUser  = ( currentUser ) =>   {
+  return {
+    type: actionTypes.SET_PROFILE,
+    profile: currentUser
+  };
 };
 

@@ -15,7 +15,7 @@ class editProfile extends Component {
           elementType: "input",
           elementConfig: {
             type: "text",
-            placeholder: "Mirnahatem"
+            placeholder: this.props.auth.currentUser.screen_name
           },
           value: "",
           validation: {
@@ -131,7 +131,7 @@ class editProfile extends Component {
       name: this.state.editProfileForm.username.value,
       bio: this.state.editProfileForm.bio.value,
       location: this.state.editProfileForm.location.value,
-      image: this.state.imagePreview
+      profile_background_image_url: this.state.imagePreview
     };
 
     this.props.editUser(user);
@@ -272,6 +272,7 @@ class editProfile extends Component {
   }
 }
 const mapStateToProps = state => ({
+  auth: state.auth,
   edit: state.edit,
   error: state.errors
 });

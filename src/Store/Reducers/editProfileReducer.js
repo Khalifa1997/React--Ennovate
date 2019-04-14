@@ -1,9 +1,9 @@
 import { EDIT_PROFILE } from "../../Actions/types";
-import { isEmpty } from "../../utils/isEmpty";
+
 
 const initialState = {
   isAuthenticated: true,
-  currentUser: { screen_name: "", name: "", bio: "", location: "", image: "" }
+  currentUser: { }
 };
 
 const editProfileReducer = (state = initialState, action) => {
