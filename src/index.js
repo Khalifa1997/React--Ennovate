@@ -28,6 +28,31 @@ const store = createStore(
 if (localStorage.jwtToken) {
   setAuthToken(localStorage.jwtToken);
   const decoded = jwt_decode(localStorage.jwtToken);
+<<<<<<< HEAD
+=======
+  /*const profile = {
+    ID: 1234,
+    name: "mirna",
+    screen_name: "@mirna",
+    created_at: "24/3/2019",
+    location: "Egypt",
+    bio: "ana mirna",
+    followers_count: 100,
+    friends_count: 200,
+    favourites_count: 20,
+    novas_count: 5,
+    novas_IDs: [1, 2, 3, 4, 5],
+    favourites_novas_IDS: [1, 2, 3, 4, 5],
+    profile_image_url: "",
+    default_profile_image: true
+  };
+  const currentUser = {
+    ID: profile.ID,
+    screen_name: profile.screen_name
+  };
+  */
+  //store.dispatch(setCurrentUser(profile, currentUser));
+>>>>>>> 7cba2e2e5ec6a27a1e09768f5676e05d509dba21
   store.dispatch(setCurrentUser(decoded));
 }
 

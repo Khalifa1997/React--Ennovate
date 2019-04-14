@@ -54,14 +54,12 @@ export const registerUser = userData => dispatch => {
 export const loginUser = userData => dispatch => {
   console.log(userData);
   axios
-    .post(
-      "https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyPassword?key=AIzaSyBUoi3TDU9jfZRE7jVC0QoA08DK8mJC6wo",
-      userData
-    )
+    .post("http://localhost:8080/accounts/signin", userData)
     .then(res => {
       console.log(res);
       const token = res.data.idToken;
       localStorage.setItem("jwtToken", token);
+<<<<<<< HEAD
       // setAuthToken(token);
       // const decoded = jwt_decode(token);
       const profile = {
@@ -69,22 +67,27 @@ export const loginUser = userData => dispatch => {
         email: "mirna@gmail.com"
       };
       dispatch(setCurrentUser(profile));
+=======
+      setAuthToken(token);
+      const decoded = jwt_decode(token);
+      //const currentUser = res;
+      dispatch(setCurrentUser(decoded));
+>>>>>>> 7cba2e2e5ec6a27a1e09768f5676e05d509dba21
     })
     .catch(err => {
-      console.log("{hello}", err.response.data.error.message);
+      console.log("{hello}", err.response);
+      /*
       dispatch({
         type: actionTypes.GET_ERRORS,
-        payload: err.response.data.error.message
-      });
+        payload: err.response
+        
+      });*/
     });
 };
 
-export const setCurrentUser = (decoded, currentUser) => {
+export const setCurrentUser = decoded => {
   return {
     type: actionTypes.SET_CURRENT_USER,
-    payload: {
-      decoded: decoded,
-      authUser: currentUser
-    }
+    payload: decoded
   };
 };
