@@ -1,11 +1,19 @@
-.modal {
+/* .modal {
   display: block;
 }
 
 .modal-dialog{
     overflow-y: initial !important
-}
+} */
 .modal-body{
     height: 250px;
     overflow-y: auto;
+    padding-top: 0px;
+    padding-bottom: 0px;
 }
+
+.followersBox{
+  border-radius: 25px;
+}
+
+

@@ -9,22 +9,26 @@ import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import reducer from "./Store/Reducers/reducer";
 
-import jwt_decode from "jwt-decode"
-import setAuthToken from "./utils/setAuthToken"
-import {setCurrentUser} from "./Actions/authActions"
+import jwt_decode from "jwt-decode";
+import setAuthToken from "./utils/setAuthToken";
+import { setCurrentUser } from "./Actions/authActions";
 
 import "./index.css";
 
 //middlerWare
 const middleWare = [thunk];
-const store = createStore(reducer, compose(applyMiddleware(...middleWare),
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-));
+const store = createStore(
+  reducer,
+  compose(
+    applyMiddleware(...middleWare)
+    //window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+  )
+);
 
-if(localStorage.jwtToken){
+if (localStorage.jwtToken) {
   setAuthToken(localStorage.jwtToken);
-  const decoded = jwt_decode(localStorage.jwtToken)
-  store.dispatch(setCurrentUser(decoded))
+  const decoded = jwt_decode(localStorage.jwtToken);
+  store.dispatch(setCurrentUser(decoded));
 }
 
 const app = (
