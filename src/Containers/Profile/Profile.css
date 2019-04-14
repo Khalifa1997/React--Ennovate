@@ -141,6 +141,12 @@ img {
   justify-content: center;
   border-top: 1px solid #efefef;
 }
+.widthadjust {
+  width: auto;
+  max-width: 835px;
+  align-content: center;
+  align-self: center;
+}
 a:hover,
 a:focus {
   text-decoration: none;
@@ -159,7 +165,7 @@ a:focus {
   font-size: 30px;
   font-weight: 600;
 
-  color: #1b95e0;
+  color: #262626;
   text-transform: uppercase;
   border: none;
   border-radius: 0;
@@ -187,8 +193,8 @@ a:focus {
   content: "";
   width: 0;
   height: 4px;
-  background: #727cb6;
-  border: 1px solid #727cb6;
+  background: #999999;
+  border: 1px solid #999999;
   border-radius: 2px;
   position: absolute;
   bottom: 0;
@@ -224,9 +230,13 @@ a:focus {
 }
 /* Gallery Section */
 
-.gallery {
+/*.gallery {
   display: flex;
   flex-wrap: wrap;
+  margin: -1rem -1rem;
+  padding-bottom: 3rem;
+}*/
+.gallery {
   margin: -1rem -1rem;
   padding-bottom: 3rem;
 }

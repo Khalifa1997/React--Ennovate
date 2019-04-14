@@ -62,6 +62,7 @@ export const loginUser = userData => dispatch => {
       console.log(res);
       const token = res.data.idToken;
       localStorage.setItem("jwtToken", token);
+<<<<<<< HEAD
       // setAuthToken(token);
       // const decoded = jwt_decode(token);
       const profile = {
@@ -69,6 +70,43 @@ export const loginUser = userData => dispatch => {
         email:"mirna@gmail.com"
       }
       dispatch(setCurrentUser(profile));
+=======
+      //setAuthToken(token);
+      // const decoded = jwt_decode(token);
+      const profile = {
+        ID: 1234,
+        name: "mirna",
+        screen_name: "@mirna",
+        created_at: "24/3/2019",
+        location: "Egypt",
+        bio: "ana helwa",
+        followers_count: 100,
+        friends_count: 200,
+        favourites_count: 20,
+        novas_count: 5,
+        novas_IDs: [1, 2, 3, 4, 5],
+        favourites_novas_IDS: [1, 2, 3, 4, 5],
+        profile_image_url: "",
+        default_profile_image: true
+      };
+      const currentUser = {
+        ID: 1234,
+        name: "mirna",
+        screen_name: "@mirna",
+        created_at: "24/3/2019",
+        location: "Egypt",
+        bio: "ana helwa",
+        followers_count: 100,
+        friends_count: 200,
+        favourites_count: 20,
+        novas_count: 5,
+        novas_IDs: [1, 2, 3, 4, 5],
+        favourites_novas_IDS: [1, 2, 3, 4, 5],
+        profile_image_url: "",
+        default_profile_image: true
+      };
+      dispatch(setCurrentUser(profile, currentUser));
+>>>>>>> 338e53e90b1d4cbf11e45c7b1165bc4fe7038b66
     })
     .catch(err => {
       console.log("{hello}", err.response.data.error.message);
@@ -79,10 +117,12 @@ export const loginUser = userData => dispatch => {
     });
 };
 
-
-export const setCurrentUser = decoded => {
-  return{
+export const setCurrentUser = (decoded, currentUser) => {
+  return {
     type: actionTypes.SET_CURRENT_USER,
-    payload: decoded
-  }
-}
+    payload: {
+      decoded: decoded,
+      authUser: currentUser
+    }
+  };
+};
