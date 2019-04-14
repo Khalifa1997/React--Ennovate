@@ -59,20 +59,10 @@ export const loginUser = userData => dispatch => {
       console.log(res);
       const token = res.data.idToken;
       localStorage.setItem("jwtToken", token);
-<<<<<<< HEAD
-      // setAuthToken(token);
-      // const decoded = jwt_decode(token);
-      const profile = {
-        username: "mirna",
-        email: "mirna@gmail.com"
-      };
-      dispatch(setCurrentUser(profile));
-=======
       setAuthToken(token);
       const decoded = jwt_decode(token);
       //const currentUser = res;
       dispatch(setCurrentUser(decoded));
->>>>>>> 7cba2e2e5ec6a27a1e09768f5676e05d509dba21
     })
     .catch(err => {
       console.log("{hello}", err.response);

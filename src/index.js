@@ -28,8 +28,6 @@ const store = createStore(
 if (localStorage.jwtToken) {
   setAuthToken(localStorage.jwtToken);
   const decoded = jwt_decode(localStorage.jwtToken);
-<<<<<<< HEAD
-=======
   /*const profile = {
     ID: 1234,
     name: "mirna",
@@ -52,7 +50,6 @@ if (localStorage.jwtToken) {
   };
   */
   //store.dispatch(setCurrentUser(profile, currentUser));
->>>>>>> 7cba2e2e5ec6a27a1e09768f5676e05d509dba21
   store.dispatch(setCurrentUser(decoded));
 }
 
