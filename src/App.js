@@ -9,10 +9,7 @@ import Signup from "./Containers/Auth/Signup/Signup";
 import Profile from "./Containers/Profile/Profile";
 import ForgotPassword from "./Containers/Auth/ForgotPassword/ForgotPassowrd";
 
-<<<<<<< HEAD
 //import { decode } from "querystring";
-=======
->>>>>>> 338e53e90b1d4cbf11e45c7b1165bc4fe7038b66
 import EditProfile from "./Containers/Profile/EditProfile/EditProfile";
 import FansBox from "./Components/FansBox/Box";
 import PrivateRoute from "./Components/common/PrivateRoute/PrivateRoute";
