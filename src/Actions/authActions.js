@@ -56,28 +56,27 @@ export const loginUser = userData => dispatch => {
   axios
     .post("http://localhost:8080/accounts/signin", userData)
     .then(res => {
-      console.log(res);
-      const token = res.data.idToken;
+      console.log("MEN EL RESPONSE ", res);
+      const token = res.data.token;
       localStorage.setItem("jwtToken", token);
-      setAuthToken(token);
-      const decoded = jwt_decode(token);
-      //const currentUser = res;
-      dispatch(setCurrentUser(decoded));
+      const user = res.data.user;
+      dispatch(setCurrentUser(user, user));
     })
     .catch(err => {
-      console.log("{hello}", err.response);
-      /*
+      console.log("{hello}", err);
       dispatch({
         type: actionTypes.GET_ERRORS,
         payload: err.response
-        
-      });*/
+      });
     });
 };
 
-export const setCurrentUser = decoded => {
+export const setCurrentUser = (profile, authUser) => {
   return {
     type: actionTypes.SET_CURRENT_USER,
-    payload: decoded
+    payload: {
+      profile: profile,
+      authUser: authUser
+    }
   };
 };

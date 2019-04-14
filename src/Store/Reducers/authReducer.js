@@ -4,6 +4,7 @@ import { isEmpty } from "../../utils/isEmpty";
 const initialState = {
   isAuthenticated: false,
   currentUser: {},
+  profile: {},
   me: true
 };
 
@@ -13,7 +14,8 @@ const authReducer = (state = initialState, action) => {
       return {
         ...state,
         isAuthenticated: !isEmpty(action.payload),
-        currentUser: action.payload
+        currentUser: action.payload.authUser,
+        profile: action.payload.profile
       };
     default:
       return state;
