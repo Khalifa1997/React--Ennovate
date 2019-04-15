@@ -7,10 +7,14 @@ import * as actionTypes from "./types";
 export const editUser = userData => dispatch => {
   console.log(userData);
   axios
-    .post("http://localhost:8080/accounts/settings", userData)
+    .post("http://localhost:8080/accounts/settings", userData, {
+      headers: {
+        token: axios.defaults.headers.common.Authorization
+      }
+    })
     .then(res => {
-      console.log(res.data);
-      dispatch(editProfileUser(res.data));
+      console.log("[from edit profile]", { ...res });
+      //dispatch(editProfileUser(res.data));
     })
     .catch(err => {
       /*
@@ -26,7 +30,11 @@ export const editUser = userData => dispatch => {
 export const editImage = userData => dispatch => {
   console.log(userData);
   axios
-    .post("http://localhost:8080/accounts/update_profile_image ", userData)
+    .post("http://localhost:8080/accounts/update_profile_image ", userData, {
+      headers: {
+        token: axios.defaults.headers.common.Authorization
+      }
+    })
     .then(res => {
       dispatch(editImageUser(res.data));
     })
