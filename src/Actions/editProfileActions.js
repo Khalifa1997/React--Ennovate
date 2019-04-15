@@ -1,6 +1,4 @@
 import axios from "../axios-users";
-import setAuthToken from "../utils/setAuthToken";
-import jwt_decode from "jwt-decode";
 
 import * as actionTypes from "./types";
 
@@ -9,12 +7,9 @@ import * as actionTypes from "./types";
 export const editUser = userData => dispatch => {
   console.log(userData);
   axios
-    .post(
-      "https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyPassword?key=AIzaSyBUoi3TDU9jfZRE7jVC0QoA08DK8mJC6wo",
-      userData
-    )
+    .post("http://localhost:8080/accounts/settings", userData)
     .then(res => {
-      dispatch(setProfileUser(decoded));
+      dispatch(editProfileUser(res.data));
     })
     .catch(err => {
       console.log("{hello}", err.response.data.error.message);
@@ -25,21 +20,60 @@ export const editUser = userData => dispatch => {
     });
 };
 
-export const setProfile = () => {
-  return dispatch => {
-      axios.get( 'https://react-my-burger.firebaseio.com/ingredients.json' )
-          .then( response => {
-             dispatch(setProfileUser(response.data));
-          } )
-          .catch( error => {
-              
-          } );
-  };
+export const editImage = userData => dispatch => {
+  console.log(userData);
+  axios
+    .post(
+      "http://localhost:8080/accounts/update_profile_image Update Profile Image",
+      userData
+    )
+    .then(res => {
+      dispatch(editImageUser(res.data));
+    })
+    .catch(err => {
+      console.log("{hello}", err.response.data.error.message);
+      dispatch({
+        type: actionTypes.GET_ERRORS,
+        payload: err.response.data.error.message
+      });
+    });
 };
-export const setProfileUser  = ( currentUser ) =>   {
-  return {
-    type: actionTypes.SET_PROFILE,
-    profile: currentUser
+
+export const setProfile = screen_name => dispatch => {
+  return dispatch => {
+    axios
+      .get("http://localhost:8080/accounts/settings", screen_name)
+      .then(response => {
+        dispatch(setProfileUser(response.data));
+        console.log(response.data);
+      })
+      .catch(error => {});
   };
 };
 
+export const editProfileUser = currentUser => {
+  return {
+    type: actionTypes.EDIT_PROFILE,
+    payload: {
+      profile: currentUser
+    }
+  };
+};
+
+export const editImageUser = currentImage => {
+  return {
+    type: actionTypes.SET_PROFILE_IMAGE,
+    payload: {
+      image: currentImage
+    }
+  };
+};
+
+export const setProfileUser = currentUser => {
+  return {
+    type: actionTypes.SET_PROFILE,
+    payload: {
+      profile: currentUser
+    }
+  };
+};

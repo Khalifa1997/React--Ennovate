@@ -5,10 +5,12 @@ import authReducer from "./authReducer";
 import errorReducer from "./errorReducer";
 import loaderReducer from "./loadingReducer";
 import editProfileReducer from "./editProfileReducer";
+import profileReducer from "./profileReducer";
 
 export default combineReducers({
   auth: authReducer,
   errors: errorReducer,
   loader: loaderReducer,
-  edit: editProfileReducer
+  edit: editProfileReducer,
+  profile: profileReducer
 });

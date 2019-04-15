@@ -1,9 +1,12 @@
 import { EDIT_PROFILE } from "../../Actions/types";
-
+import { SET_PROFILE } from "../../Actions/types";
+import { SET_PROFILE_IMAGE } from "../../Actions/types";
 
 const initialState = {
   isAuthenticated: true,
-  currentUser: { }
+  profile: {},
+  currentUser: {},
+  image: ""
 };
 
 const editProfileReducer = (state = initialState, action) => {
@@ -11,7 +14,17 @@ const editProfileReducer = (state = initialState, action) => {
     case EDIT_PROFILE:
       return {
         ...state,
-        currentUser: action.payload
+        profile: action.payload.profile
+      };
+    case SET_PROFILE_IMAGE:
+      return {
+        ...state,
+        image: action.payload.image
+      };
+    case SET_PROFILE:
+      return {
+        ...state,
+        profile: action.payload.profile
       };
     default:
       return state;

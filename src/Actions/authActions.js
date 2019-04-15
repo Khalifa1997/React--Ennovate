@@ -63,11 +63,13 @@ export const loginUser = userData => dispatch => {
       dispatch(setCurrentUser(user, user));
     })
     .catch(err => {
+      /*
       console.log("{hello}", err);
       dispatch({
         type: actionTypes.GET_ERRORS,
         payload: err.response
       });
+      */
     });
 };
 
