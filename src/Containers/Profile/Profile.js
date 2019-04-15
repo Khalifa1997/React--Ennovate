@@ -4,6 +4,7 @@ import Nav from "../../Components/NavBar/NavBar";
 import Tweet from "../../Components/Tweet/Tweet";
 import "./Profile.css";
 import Axios from "axios";
+import { setProfile } from "../../Actions/profileActions";
 import { runInThisContext } from "vm";
 
 class profile extends Component {
@@ -272,7 +273,11 @@ class profile extends Component {
 
 const mapStateToProps = state => ({
   auth: state.auth,
-  me: state.me
+  me: state.me,
+  profile: state.profile
 });
 
-export default connect(mapStateToProps)(profile);
+export default connect(
+  mapStateToProps,
+  { setProfile }
+)(profile);

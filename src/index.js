@@ -15,6 +15,8 @@ import { setCurrentUser } from "./Actions/authActions";
 
 import "./index.css";
 
+import Profile from "./Containers/Profile/Profile";
+
 //middlerWare
 const middleWare = [thunk];
 const store = createStore(
@@ -28,29 +30,11 @@ const store = createStore(
 if (localStorage.jwtToken) {
   setAuthToken(localStorage.jwtToken);
   const decoded = jwt_decode(localStorage.jwtToken);
-  /*const profile = {
-    ID: 1234,
-    name: "mirna",
-    screen_name: "@mirna",
-    created_at: "24/3/2019",
-    location: "Egypt",
-    bio: "ana mirna",
-    followers_count: 100,
-    friends_count: 200,
-    favourites_count: 20,
-    novas_count: 5,
-    novas_IDs: [1, 2, 3, 4, 5],
-    favourites_novas_IDS: [1, 2, 3, 4, 5],
-    profile_image_url: "",
-    default_profile_image: true
-  };
-  const currentUser = {
-    ID: profile.ID,
-    screen_name: profile.screen_name
-  };
-  */
+  console.log("[decoded]", decoded);
+  const currentUser = store.getState().auth.currentUser;
+  const currentProfile = store.getState().auth.profile;
   //store.dispatch(setCurrentUser(profile, currentUser));
-  store.dispatch(setCurrentUser(decoded));
+  store.dispatch(setCurrentUser(currentProfile, currentUser));
 }
 
 const app = (

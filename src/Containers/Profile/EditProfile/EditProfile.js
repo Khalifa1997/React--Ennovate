@@ -3,6 +3,9 @@ import { connect } from "react-redux";
 import propTypes from "prop-types";
 import InputProfile from "../../../Components/UI/InputProfile/InputProfile";
 import { editUser } from "../../../Actions/editProfileActions";
+import { setProfile } from "../../../Actions/editProfileActions";
+import { editImage } from "../../../Actions/editProfileActions";
+import Button from "../../../Components/UI/button//button";
 
 import "./EditProfile.css";
 
@@ -15,7 +18,7 @@ class editProfile extends Component {
           elementType: "input",
           elementConfig: {
             type: "text",
-            placeholder: "Mirnahatem"
+            placeholder: this.props.auth.profile.screen_name
           },
           value: "",
           validation: {
@@ -35,7 +38,7 @@ class editProfile extends Component {
           elementType: "input",
           elementConfig: {
             type: "text",
-            placeholder: "Mirna Hatem"
+            placeholder: this.props.auth.profile.name
           },
           value: "",
           validation: {
@@ -50,7 +53,7 @@ class editProfile extends Component {
           elementType: "input",
           elementConfig: {
             type: "input",
-            placeholder: "Your bio"
+            placeholder: this.props.auth.profile.bio
           },
           value: "",
           validation: {
@@ -129,12 +132,12 @@ class editProfile extends Component {
     const user = {
       screen_name: this.state.editProfileForm.screenname.value,
       name: this.state.editProfileForm.username.value,
-      bio: this.state.editProfileForm.bio.value,
       location: this.state.editProfileForm.location.value,
-      image: this.state.imagePreview
+      bio: this.state.editProfileForm.bio.value
     };
-
+    const profile_background_image_url = this.state.imagePreview;
     this.props.editUser(user);
+    this.props.editImage(profile_background_image_url);
   };
 
   onChange(e) {
@@ -155,6 +158,9 @@ class editProfile extends Component {
     console.log(file);
   }
 
+  componentDidMount() {
+    this.props.setProfile(this.props.auth.screen_name);
+  }
   componentWillReceiveProps(nextProps) {
     if (nextProps.error) {
       this.setState({ error: nextProps.error }, () => {
@@ -186,7 +192,7 @@ class editProfile extends Component {
       });
     }
     let form = (
-      <form className="editBox">
+      <form onSubmit={this.submitHandler} className="editBox">
         {formElementArray.map(formElement => (
           <InputProfile
             key={formElement.id}
@@ -202,8 +208,8 @@ class editProfile extends Component {
           />
         ))}
 
-        <div class="col-sm-20">
-          <select class="form-control">
+        <div className="col-sm-20">
+          <select className="form-control">
             <option selected="">Select location</option>
             <option value="Egypt">Egypt</option>
             <option>Canada</option>
@@ -222,9 +228,9 @@ class editProfile extends Component {
           <div>
             <h1 className="text-center">Edit your profile</h1>
 
-            <div class="row">
-              <div class="col-sm-5" />
-              <div class="col-sm-4">
+            <div className="row">
+              <div className="col-sm-5" />
+              <div className="col-sm-4">
                 {" "}
                 <img
                   src={this.state.imagePreview}
@@ -251,18 +257,12 @@ class editProfile extends Component {
             </div>
           </div>
 
-          <div class="row">
-            <div class="col-sm-5" />
+          <div className="row">
+            <div className="col-sm-5" />
             <span> </span>
-            <div class="col-sm-4">
-              <div class="form-group">
-                <button
-                  class="btn btn-primary"
-                  type="submit"
-                  onSubmit={this.submitHandler}
-                >
-                  <i class="glyphicon glyphicon-ok-sign" /> Save changes
-                </button>
+            <div className="col-sm-4">
+              <div className="form-group">
+                <Button>Save</Button>
               </div>
             </div>
           </div>
@@ -272,11 +272,12 @@ class editProfile extends Component {
   }
 }
 const mapStateToProps = state => ({
+  auth: state.auth,
   edit: state.edit,
   error: state.errors
 });
 
 export default connect(
   mapStateToProps,
-  { editUser }
+  { editUser, editImage, setProfile }
 )(editProfile);
