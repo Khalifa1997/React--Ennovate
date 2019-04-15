@@ -194,31 +194,45 @@ class profile extends Component {
           <div className="profilecontainer ">
             <div className="profile">
               <div className="profile-image">
-                <img src="https://scontent-hbe1-1.cdninstagram.com/vp/b2bb632c990d9dc803669d899526e5c4/5D2AB7F9/t51.2885-19/s150x150/21568575_1965694313678210_3209559520485310464_n.jpg?_nc_ht=scontent-hbe1-1.cdninstagram.com" />
+                <img src={this.props.auth.profile.profile_image_url} />
               </div>
 
               <div className="profile-user-settings">
-                <h1 className="profile-user-name">janedoe_</h1>
+                <h1 className="profile-user-name">
+                  {this.props.auth.profile.screen_name}
+                </h1>
 
                 {this.state.toggledButton}
               </div>
 
               <div className="profile-stats">
                 <li>
-                  <span className="profile-stat-count">164</span> posts
+                  <span className="profile-stat-count">
+                    {this.props.auth.profile.novas_count}
+                  </span>{" "}
+                  Novas
                 </li>
                 <li>
-                  <span className="profile-stat-count">188</span> followers
+                  <span className="profile-stat-count">
+                    {this.props.auth.profile.followers_count}
+                  </span>{" "}
+                  followers
                 </li>
                 <li>
-                  <span className="profile-stat-count">206</span> following
+                  <span className="profile-stat-count">
+                    {this.props.auth.profile.friends_count}
+                  </span>{" "}
+                  following
                 </li>
               </div>
 
               <div className="profile-bio">
                 <p>
-                  <span className="profile-real-name">Jane Doe</span> Lorem
-                  ipsum dolor sit, amet consectetur adipisicing elit 📷✈️🏕️
+                  <span className="profile-real-name">
+                    {this.props.auth.profile.name}
+                  </span>{" "}
+                  Lorem ipsum dolor sit, amet consectetur adipisicing elit
+                  📷✈️🏕️
                 </p>
               </div>
             </div>
