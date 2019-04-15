@@ -1,4 +1,7 @@
 import React from "react";
+import Modal from "react-bootstrap/Modal";
+import Button from "react-bootstrap/Button";
+import "./Modal.css";
 
 class MyVerticallyCenteredModal extends React.Component {
   render() {
@@ -7,23 +10,30 @@ class MyVerticallyCenteredModal extends React.Component {
         {...this.props}
         size="lg"
         aria-labelledby="contained-modal-title-vcenter"
-        centered
       >
-        <Modal.Header closeButton>
-          <Modal.Title id="contained-modal-title-vcenter">
-            Modal heading
+        <Modal.Header>
+          <Modal.Title
+            className="modalTitle"
+            id="contained-modal-title-vcenter"
+          >
+            New Nova
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <h4>Centered Modal</h4>
-          <p>
-            Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
-            dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta
-            ac consectetur ac, vestibulum at eros.
-          </p>
+          <textarea
+            className="form-control novaArea"
+            id="exampleFormControlTextarea3"
+            rows="3"
+          />
         </Modal.Body>
         <Modal.Footer>
-          <Button onClick={this.props.onHide}>Close</Button>
+          <Button
+            variant="outline-primary"
+            className="modalButton"
+            onClick={this.props.onHide}
+          >
+            Nova
+          </Button>
         </Modal.Footer>
       </Modal>
     );
