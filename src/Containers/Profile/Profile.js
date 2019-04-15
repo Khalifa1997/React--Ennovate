@@ -98,6 +98,7 @@ class profile extends Component {
       .then(res => {
         //console.log(tweets);
         this.setState({ tweets: res.data });
+        //ghalat 3ashan el state bayza
         const posts = this.state.tweets.map(tweet => {
           return (
             <Tweet

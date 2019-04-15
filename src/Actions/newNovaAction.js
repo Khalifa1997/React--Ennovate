@@ -1,5 +1,8 @@
 import React from "react";
 import axios from "../axios-users";
+import setAuthToken from "../utils/setAuthToken";
+import jwt_decode from "jwt-decode";
+
 import * as actionTypes from "./types";
 
 export const newNova = novaText => dispatch => {
@@ -11,7 +14,19 @@ export const newNova = novaText => dispatch => {
       }
     })
     .then(res => {
-      console.log(res);
+      console.log({ ...res });
+      axios
+        .get("http://localhost:8080/users/show", {
+          params: {
+            user_ID: res.data.user
+          }
+        })
+        .then(res => {
+          console.log("MEN EL new tweet response RESPONSE ", res);
+          dispatch(setCurrentUser(res.data, res.data));
+        });
+      // const user = res.data.user;
+      // dispatch(setCurrentUser(user, user));
       //   dispatch({
       //     type: actionTypes.NEWNOVA_ACION,
       //     payload: novaText
@@ -35,4 +50,14 @@ export const newNova = novaText => dispatch => {
       //     payload: err.response.data
       //   });
     });
+};
+
+export const setCurrentUser = (profile, authUser) => {
+  return {
+    type: actionTypes.SET_CURRENT_USER,
+    payload: {
+      profile: profile,
+      authUser: authUser
+    }
+  };
 };

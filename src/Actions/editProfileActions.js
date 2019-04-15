@@ -28,7 +28,10 @@ export const editUser = userData => dispatch => {
 };
 
 export const editImage = userData => dispatch => {
-  console.log(userData);
+  console.log(
+    "[user data]",
+    "http://sf1.sport365.fr/wp-content/uploads/se/2019/04/liverpool_salah-750x410.jpg"
+  );
   axios
     .post("http://localhost:8080/accounts/update_profile_image ", userData, {
       headers: {
