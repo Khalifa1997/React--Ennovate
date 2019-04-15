@@ -10,6 +10,7 @@ export const registerUser = userData => dispatch => {
   axios
     .post("http://localhost:8080/accounts/signup", userData)
     .then(res => {
+      console.log({ ...res });
       // const clone = {
       //   ...this.state.signupForm
       // };
@@ -19,7 +20,7 @@ export const registerUser = userData => dispatch => {
         payload: false
       });
 
-      const token = res.data.idToken;
+      const token = res.data.token;
       localStorage.setItem("jwtToken", token);
       setAuthToken(token);
       const decoded = jwt_decode(token);
