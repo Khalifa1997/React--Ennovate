@@ -1,10 +1,23 @@
 import React from "react";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
+import { newNova } from "../../../Actions/newNovaAction";
+import { connect } from "react-redux";
+
 import "./Modal.css";
 
 class MyVerticallyCenteredModal extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      text: "sfgdfgdfhdhdghghgdh"
+    };
+  }
   render() {
+    const text = {
+      text: "kfghksdbfksdf"
+    };
     return (
       <Modal
         {...this.props}
@@ -30,7 +43,7 @@ class MyVerticallyCenteredModal extends React.Component {
           <Button
             variant="outline-primary"
             className="modalButton"
-            onClick={this.props.onHide}
+            onClick={text => this.props.newNova({ text: "kfghksdbfksdf" })}
           >
             Nova
           </Button>
@@ -40,4 +53,12 @@ class MyVerticallyCenteredModal extends React.Component {
   }
 }
 
-export default MyVerticallyCenteredModal;
+// const mapStateToProps = state => ({
+//   auth: state.auth,
+//   error: state.errors
+// });
+
+export default connect(
+  null,
+  { newNova }
+)(MyVerticallyCenteredModal);
