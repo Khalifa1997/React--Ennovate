@@ -4,7 +4,6 @@ import * as actionTypes from "./types";
 
 export const newNova = novaText => dispatch => {
   console.log("the nova", { ...novaText });
-  console.log(axios.defaults.headers);
   axios
     .post("http://localhost:8080/statuses/update", novaText, {
       headers: {
@@ -12,7 +11,7 @@ export const newNova = novaText => dispatch => {
       }
     })
     .then(res => {
-      console.log("[success newNova]", { ...res });
+      console.log(res);
       //   dispatch({
       //     type: actionTypes.NEWNOVA_ACION,
       //     payload: novaText

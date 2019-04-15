@@ -14,10 +14,18 @@ class MyVerticallyCenteredModal extends React.Component {
       text: "sfgdfgdfhdhdghghgdh"
     };
   }
-  render() {
-    const text = {
-      text: "kfghksdbfksdf"
+
+  onChangeHandler = event => {
+    const cloneState = {
+      ...this.state
     };
+
+    cloneState.text = event.target.value;
+
+    this.setState({ text: cloneState.text });
+  };
+
+  render() {
     return (
       <Modal
         {...this.props}
@@ -37,13 +45,14 @@ class MyVerticallyCenteredModal extends React.Component {
             className="form-control novaArea"
             id="exampleFormControlTextarea3"
             rows="3"
+            onChange={event => this.onChangeHandler(event)}
           />
         </Modal.Body>
         <Modal.Footer>
           <Button
             variant="outline-primary"
             className="modalButton"
-            onClick={text => this.props.newNova({ text: "kfghksdbfksdf" })}
+            onClick={text => this.props.newNova(this.state)}
           >
             Nova
           </Button>
