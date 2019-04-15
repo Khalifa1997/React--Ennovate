@@ -38,7 +38,7 @@ const Tweet = props => {
           <a href="#" class="card-link">
             <FontAwesomeIcon icon={faCommentDots} size="lg" />
           </a>
-          {props.isAuth == true ? (
+          {props.isAuth === true ? (
             <a
               href="#"
               class="card-link"
