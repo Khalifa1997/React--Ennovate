@@ -65,6 +65,7 @@ class editProfile extends Component {
           touched: false
         }
       },
+      location: "",
       formIsValid: false,
       loading: false,
       error: {},
@@ -99,6 +100,9 @@ class editProfile extends Component {
     });
   };
 
+  _handleChange = event => {
+    this.setState({ location: event.target.value });
+  };
   checkValidity(value, rules) {
     let isValid = true;
 
@@ -133,7 +137,7 @@ class editProfile extends Component {
     const user = {
       screen_name: this.state.editProfileForm.screenname.value,
       name: this.state.editProfileForm.username.value,
-      location: this.state.editProfileForm.location.value,
+      location: this.state.location.value,
       bio: this.state.editProfileForm.bio.value
     };
     const profile_background_image_url = this.state.imagePreview;
@@ -212,10 +216,10 @@ class editProfile extends Component {
         ))}
 
         <div className="col-sm-20">
-          <select className="form-control">
+          <select onChange={this._handleChange} className="form-control">
             <option selected="">Select location</option>
             <option value="Egypt">Egypt</option>
-            <option>Canada</option>
+            <option value="Canada">Canada</option>
             <option>United States</option>
             <option>England</option>
             <option>Italy</option>
@@ -280,5 +284,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { editUser, editImage, setProfile }
+  { editUser, editImage }
 )(editProfile);

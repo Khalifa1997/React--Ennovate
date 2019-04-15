@@ -194,7 +194,10 @@ class profile extends Component {
           <div className="profilecontainer ">
             <div className="profile">
               <div className="profile-image">
-                <img src={this.props.auth.profile.profile_image_url} />
+                <img
+                  className="imgwidth"
+                  src={this.props.auth.profile.profile_image_url}
+                />
               </div>
 
               <div className="profile-user-settings">

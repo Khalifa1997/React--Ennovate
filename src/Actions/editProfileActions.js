@@ -9,36 +9,38 @@ export const editUser = userData => dispatch => {
   axios
     .post("http://localhost:8080/accounts/settings", userData)
     .then(res => {
+      console.log(res.data);
       dispatch(editProfileUser(res.data));
     })
     .catch(err => {
+      /*
       console.log("{hello}", err.response.data.error.message);
       dispatch({
         type: actionTypes.GET_ERRORS,
         payload: err.response.data.error.message
       });
+      */
     });
 };
 
 export const editImage = userData => dispatch => {
   console.log(userData);
   axios
-    .post(
-      "http://localhost:8080/accounts/update_profile_image Update Profile Image",
-      userData
-    )
+    .post("http://localhost:8080/accounts/update_profile_image ", userData)
     .then(res => {
       dispatch(editImageUser(res.data));
     })
     .catch(err => {
+      /*
       console.log("{hello}", err.response.data.error.message);
       dispatch({
         type: actionTypes.GET_ERRORS,
         payload: err.response.data.error.message
       });
+      */
     });
 };
-
+/*
 export const setProfile = screen_name => dispatch => {
   return dispatch => {
     axios
@@ -50,7 +52,7 @@ export const setProfile = screen_name => dispatch => {
       .catch(error => {});
   };
 };
-
+*/
 export const editProfileUser = currentUser => {
   return {
     type: actionTypes.EDIT_PROFILE,
