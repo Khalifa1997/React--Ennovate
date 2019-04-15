@@ -1,0 +1,25 @@
+.novaArea {
+  margin-top: 8px;
+  height: 104px !important;
+  padding-left: 25px;
+  padding-top: 10px;
+  border-radius: 40px;
+}
+
+.modal-body {
+  height: 120px !important;
+}
+
+.modal-content {
+  border-radius: 70px !important;
+}
+
+.modalButton {
+  border-radius: 25px;
+  width: 123px;
+  margin-right: 23px;
+}
+
+.modalTitle {
+  margin-left: 20px !important;
+}

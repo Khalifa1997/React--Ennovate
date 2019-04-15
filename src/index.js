@@ -9,11 +9,15 @@ import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import reducer from "./Store/Reducers/reducer";
 
+import { refresh } from "./Actions/refreshAction";
 import jwt_decode from "jwt-decode";
 import setAuthToken from "./utils/setAuthToken";
+import axios from "./axios-users";
 import { setCurrentUser } from "./Actions/authActions";
 
 import "./index.css";
+
+import Profile from "./Containers/Profile/Profile";
 
 //middlerWare
 const middleWare = [thunk];
@@ -27,29 +31,23 @@ const store = createStore(
 
 if (localStorage.jwtToken) {
   setAuthToken(localStorage.jwtToken);
-  //const decoded = jwt_decode(localStorage.jwtToken)
-  const profile = {
-    ID: 1234,
-    name: "mirna",
-    screen_name: "@mirna",
-    created_at: "24/3/2019",
-    location: "Egypt",
-    bio: "ana mirna",
-    followers_count: 100,
-    friends_count: 200,
-    favourites_count: 20,
-    novas_count: 5,
-    novas_IDs: [1, 2, 3, 4, 5],
-    favourites_novas_IDS: [1, 2, 3, 4, 5],
-    profile_image_url: "",
-    default_profile_image: true
-  };
-  const currentUser = {
-    ID: profile.ID,
-    screen_name: profile.screen_name
-  };
-  store.dispatch(setCurrentUser(profile, currentUser));
-  //store.dispatch(setCurrentUser(decoded))
+  const decoded = jwt_decode(localStorage.jwtToken);
+  console.log("[decoded]", decoded._id);
+  const id = decoded._id;
+  // const currentUser = store.getState().auth.currentUser;
+  // const currentProfile = store.getState().auth.profile;
+  //store.dispatch(setCurrentUser(profile, currentUser));
+  //store.dispatch(setCurrentUser(currentProfile, currentUser));
+  axios
+    .get("http://localhost:8080/users/show", {
+      params: {
+        user_ID: id
+      }
+    })
+    .then(res => {
+      console.log("MEN EL refresh RESPONSE ", res);
+      store.dispatch(setCurrentUser(res.data, res.data));
+    });
 }
 
 const app = (

@@ -6,7 +6,7 @@ import Pic from "../../assets/images/Nova.png";
 const userStrip = props => (
   <Aux>
     <div className="FansBox">
-      <div className="d-flex bd-highlight container ">
+      <div className="d-flex bd-highlight container UserStrip">
         <div className="p-2 bd-highlight">
           <img
             className="avatar"
@@ -14,10 +14,10 @@ const userStrip = props => (
             alt="..."
           />
         </div>
-        <div className="p-2 flex-grow-1 bd-highlight">
-          <p className="userName">hello</p>
+        <div className="p-2 middle bd-highlight">
+          <p className="userName">Maram</p>
           <br />
-          hello
+          @maram
         </div>
         <div className="p-2 bd-highlight">
           <button type="button" className="btn btn-primary stripButton">

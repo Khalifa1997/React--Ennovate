@@ -1,6 +1,4 @@
 import axios from "../axios-users";
-import setAuthToken from "../utils/setAuthToken";
-import jwt_decode from "jwt-decode";
 
 import * as actionTypes from "./types";
 
@@ -9,62 +7,90 @@ import * as actionTypes from "./types";
 export const editUser = userData => dispatch => {
   console.log(userData);
   axios
-    .post(
-      "https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyPassword?key=AIzaSyBUoi3TDU9jfZRE7jVC0QoA08DK8mJC6wo",
-      userData
-    )
+    .post("http://localhost:8080/accounts/settings", userData, {
+      headers: {
+        token: axios.defaults.headers.common.Authorization
+      }
+    })
     .then(res => {
-      console.log(res);
-      //const token = res.data.idToken;
-      //localStorage.setItem("jwtToken", token);
-      //setAuthToken(token);
-      // const decoded = jwt_decode(token);
-      const profile = {
-        ID: 1234,
-        name: "mirna",
-        screen_name: "@mirna",
-        created_at: "24/3/2019",
-        location: "Egypt",
-        bio: "ana helwa",
-        followers_count: 100,
-        friends_count: 200,
-        favourites_count: 20,
-        novas_count: 5,
-        novas_IDs: [1, 2, 3, 4, 5],
-        favourites_novas_IDS: [1, 2, 3, 4, 5],
-        profile_image_url: "",
-        default_profile_image: true
-      };
-      const currentUser = {
-        ID: 1234,
-        name: "mirna",
-        screen_name: "@mirna",
-        created_at: "24/3/2019",
-        location: "Egypt",
-        bio: "ana helwa",
-        followers_count: 100,
-        friends_count: 200,
-        favourites_count: 20,
-        novas_count: 5,
-        novas_IDs: [1, 2, 3, 4, 5],
-        favourites_novas_IDS: [1, 2, 3, 4, 5],
-        profile_image_url: "",
-        default_profile_image: true
-      };
-      dispatch(setCurrentUser(profile, currentUser));
+      console.log("[from edit profile]", { ...res });
+      //dispatch(editProfileUser(res.data));
     })
     .catch(err => {
+      /*
       console.log("{hello}", err.response.data.error.message);
       dispatch({
         type: actionTypes.GET_ERRORS,
         payload: err.response.data.error.message
       });
+      */
     });
 };
 
-export const setCurrentUser = decoded => {
+export const editImage = userData => dispatch => {
+  console.log(
+    "[user data]",
+    "http://sf1.sport365.fr/wp-content/uploads/se/2019/04/liverpool_salah-750x410.jpg"
+  );
+  axios
+    .post("http://localhost:8080/accounts/update_profile_image ", userData, {
+      headers: {
+        token: axios.defaults.headers.common.Authorization
+      }
+    })
+    .then(res => {
+      dispatch(editImageUser(res.data));
+    })
+    .catch(err => {
+      /*
+      console.log("{hello}", err.response.data.error.message);
+      dispatch({
+        type: actionTypes.GET_ERRORS,
+        payload: err.response.data.error.message
+      });
+      */
+    });
+};
+
+export const getProfile = screen_name => dispatch => {
+  return dispatch => {
+    axios
+      .get("http://localhost:8080/accounts/settings", {
+        params: {
+          screen_name
+        }
+      })
+      .then(response => {
+        dispatch(setProfileUser(response.data));
+        console.log(response.data);
+      })
+      .catch(error => {});
+  };
+};
+
+export const editProfileUser = currentUser => {
   return {
     type: actionTypes.EDIT_PROFILE,
-    payload: decoded
+    payload: {
+      profile: currentUser
+    }
+  };
+};
+
+export const editImageUser = currentImage => {
+  return {
+    type: actionTypes.SET_PROFILE_IMAGE,
+    payload: {
+      image: currentImage
+    }
+  };
+};
+
+export const setProfileUser = currentUser => {
+  return {
+    type: actionTypes.SET_PROFILE,
+    payload: {
+      profile: currentUser
+    }
   };
 };

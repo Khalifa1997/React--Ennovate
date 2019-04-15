@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import AuthNav from "../../Components/AuthNav/AuthNav";
+import Nav from "../../Components/NavBar/NavBar";
 import Tweet from "../../Components/Tweet/Tweet";
 import "./Profile.css";
 import Axios from "axios";
+import { setProfile } from "../../Actions/profileActions";
 import { runInThisContext } from "vm";
 
 class profile extends Component {
@@ -124,6 +125,7 @@ class profile extends Component {
       .then(res => {
         //console.log(tweets);
         this.setState({ tweets: res.data });
+        //ghalat 3ashan el state bayza
         const posts = this.state.tweets.map(tweet => {
           return (
             <Tweet
@@ -215,16 +217,21 @@ class profile extends Component {
   render() {
     return (
       <div className="body">
-        <AuthNav />
+        <Nav />
         <div className="container widthadjust">
           <div className="profilecontainer ">
             <div className="profile">
               <div className="profile-image">
-                <img src="https://scontent-hbe1-1.cdninstagram.com/vp/b2bb632c990d9dc803669d899526e5c4/5D2AB7F9/t51.2885-19/s150x150/21568575_1965694313678210_3209559520485310464_n.jpg?_nc_ht=scontent-hbe1-1.cdninstagram.com" />
+                <img
+                  className="imgwidth"
+                  src={this.props.auth.profile.profile_image_url}
+                />
               </div>
 
               <div className="profile-user-settings">
-                <h1 className="profile-user-name">{this.state.screenName}</h1>
+                <h1 className="profile-user-name">
+                  {this.props.auth.profile.screen_name}
+                </h1>
 
                 {this.state.toggledButton}
               </div>
@@ -232,19 +239,19 @@ class profile extends Component {
               <div className="profile-stats">
                 <li>
                   <span className="profile-stat-count">
-                    {this.state.novascount}
+                    {this.props.auth.profile.novas_count}
                   </span>{" "}
-                  posts
+                  Novas
                 </li>
                 <li>
                   <span className="profile-stat-count">
-                    {this.state.followerscount}
+                    {this.props.auth.profile.followers_count}
                   </span>{" "}
                   followers
                 </li>
                 <li>
                   <span className="profile-stat-count">
-                    {this.state.followingcount}
+                    {this.props.auth.profile.friends_count}
                   </span>{" "}
                   following
                 </li>
@@ -253,10 +260,9 @@ class profile extends Component {
               <div className="profile-bio">
                 <p>
                   <span className="profile-real-name">
-                    @{this.state.userName}
+                    {this.props.auth.profile.name}
                   </span>{" "}
-                  {this.state.bio}
-                  📷✈️🏕️
+                  {this.props.auth.profile.bio}
                 </p>
               </div>
             </div>
@@ -311,7 +317,11 @@ class profile extends Component {
 
 const mapStateToProps = state => ({
   auth: state.auth,
-  me: state.me
+  me: state.me,
+  profile: state.profile
 });
 
-export default connect(mapStateToProps)(profile);
+export default connect(
+  mapStateToProps,
+  { setProfile }
+)(profile);

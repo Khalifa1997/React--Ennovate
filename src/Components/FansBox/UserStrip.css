@@ -11,11 +11,20 @@
     height: 30px;
 }
 
-.UserStrip{
+/* .UserStrip{
     width: 100%;
     display: inline-block;
     align-items: center;
     padding: 8px 16px;
+} */
+
+.UserStrip{
+    padding-left: 0px !important;
+    padding-right:  0px !important;
+}
+
+.middle{
+    width: 290px !important;
 }
 
 .avatar{
@@ -38,7 +47,7 @@
 }
 
 .FansBox{
-    width:500px;
+    width:inherit;
     
 }
 

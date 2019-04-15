@@ -1,7 +1,9 @@
 img {
   display: block;
 }
-
+.imgwidth {
+  width: inherit;
+}
 .profilecontainer {
   max-width: 93.5rem;
   margin: 0 auto;
@@ -51,6 +53,7 @@ img {
   justify-content: center;
   align-items: center;
   margin-right: 3rem;
+  width: 250px;
 }
 
 .profile-image img {
@@ -319,7 +322,6 @@ a:focus {
     display: none;
   }
 
-  .profile-image,
   .profile-user-settings,
   .profile-bio,
   .profile-stats {
@@ -423,7 +425,6 @@ Remove or comment-out the code block below to see how the browser will fall-back
     grid-gap: 2rem;
   }
 
-  .profile-image,
   .profile-user-settings,
   .profile-stats,
   .profile-bio,
