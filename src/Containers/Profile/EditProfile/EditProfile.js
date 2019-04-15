@@ -12,6 +12,7 @@ import "./EditProfile.css";
 class editProfile extends Component {
   constructor(props) {
     super(props);
+    console.log("mirna", { ...this.props.auth });
     this.state = {
       editProfileForm: {
         screenname: {
@@ -38,7 +39,7 @@ class editProfile extends Component {
           elementType: "input",
           elementConfig: {
             type: "text",
-            placeholder: this.props.auth.profile.name
+            placeholder: this.props.auth.currentUser.name
           },
           value: "",
           validation: {
@@ -53,7 +54,7 @@ class editProfile extends Component {
           elementType: "input",
           elementConfig: {
             type: "input",
-            placeholder: this.props.auth.profile.bio
+            placeholder: this.props.auth.currentUser.bio
           },
           value: "",
           validation: {
@@ -157,10 +158,11 @@ class editProfile extends Component {
     }
     console.log(file);
   }
-
+  /*
   componentDidMount() {
     this.props.setProfile(this.props.auth.screen_name);
   }
+  */
   componentWillReceiveProps(nextProps) {
     if (nextProps.error) {
       this.setState({ error: nextProps.error }, () => {
@@ -181,6 +183,7 @@ class editProfile extends Component {
         }
       });
     }
+    console.log("from receive props", { ...this.props.auth });
   }
 
   render() {
@@ -218,6 +221,9 @@ class editProfile extends Component {
             <option>Italy</option>
             <option>Lebanon</option>
           </select>
+        </div>
+        <div className="form-group">
+          <Button>Save</Button>
         </div>
       </form>
     );
@@ -260,11 +266,6 @@ class editProfile extends Component {
           <div className="row">
             <div className="col-sm-5" />
             <span> </span>
-            <div className="col-sm-4">
-              <div className="form-group">
-                <Button>Save</Button>
-              </div>
-            </div>
           </div>
         </div>
       </div>
