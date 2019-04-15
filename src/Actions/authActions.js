@@ -56,20 +56,17 @@ export const loginUser = userData => dispatch => {
   axios
     .post("http://localhost:8080/accounts/signin", userData)
     .then(res => {
-      console.log("MEN EL RESPONSE ", res);
       const token = res.data.token;
       localStorage.setItem("jwtToken", token);
       const user = res.data.user;
       dispatch(setCurrentUser(user, user));
     })
     .catch(err => {
-      /*
-      console.log("{hello}", err);
+      console.log(err.response.data.msg);
       dispatch({
         type: actionTypes.GET_ERRORS,
-        payload: err.response
+        payload: err.response.data.msg
       });
-      */
     });
 };
 
