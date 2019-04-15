@@ -234,8 +234,7 @@ class profile extends Component {
                   <span className="profile-real-name">
                     {this.props.auth.profile.name}
                   </span>{" "}
-                  Lorem ipsum dolor sit, amet consectetur adipisicing elit
-                  📷✈️🏕️
+                  {this.props.auth.profile.bio}
                 </p>
               </div>
             </div>
