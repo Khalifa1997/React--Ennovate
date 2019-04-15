@@ -1,6 +1,8 @@
 .novaArea {
   margin-top: 8px;
   height: 104px !important;
+  padding-left: 25px;
+  padding-top: 10px;
   border-radius: 40px;
 }
 

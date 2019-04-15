@@ -9,8 +9,10 @@ import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import reducer from "./Store/Reducers/reducer";
 
+import { refresh } from "./Actions/refreshAction";
 import jwt_decode from "jwt-decode";
 import setAuthToken from "./utils/setAuthToken";
+import axios from "./axios-users";
 import { setCurrentUser } from "./Actions/authActions";
 
 import "./index.css";
@@ -30,11 +32,22 @@ const store = createStore(
 if (localStorage.jwtToken) {
   setAuthToken(localStorage.jwtToken);
   const decoded = jwt_decode(localStorage.jwtToken);
-  console.log("[decoded]", decoded);
-  const currentUser = store.getState().auth.currentUser;
-  const currentProfile = store.getState().auth.profile;
+  console.log("[decoded]", decoded._id);
+  const id = decoded._id;
+  // const currentUser = store.getState().auth.currentUser;
+  // const currentProfile = store.getState().auth.profile;
   //store.dispatch(setCurrentUser(profile, currentUser));
-  store.dispatch(setCurrentUser(currentProfile, currentUser));
+  //store.dispatch(setCurrentUser(currentProfile, currentUser));
+  axios
+    .get("http://localhost:8080/users/show", {
+      params: {
+        user_ID: id
+      }
+    })
+    .then(res => {
+      console.log("MEN EL refresh RESPONSE ", res);
+      store.dispatch(setCurrentUser(res.data, res.data));
+    });
 }
 
 const app = (
