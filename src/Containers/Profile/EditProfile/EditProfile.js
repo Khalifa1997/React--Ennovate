@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import propTypes from "prop-types";
 import InputProfile from "../../../Components/UI/InputProfile/InputProfile";
 import { editUser } from "../../../Actions/editProfileActions";
-import { setProfile } from "../../../Actions/editProfileActions";
+import { getProfile } from "../../../Actions/editProfileActions";
 import { editImage } from "../../../Actions/editProfileActions";
 import Button from "../../../Components/UI/button//button";
 
@@ -140,9 +140,9 @@ class editProfile extends Component {
       location: this.state.location.value,
       bio: this.state.editProfileForm.bio.value
     };
-    const profile_background_image_url = this.state.imagePreview;
+    const image_url = this.state.imagePreview;
     this.props.editUser(user);
-    this.props.editImage(profile_background_image_url);
+    this.props.editImage(image_url);
   };
 
   onChange(e) {
@@ -284,5 +284,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { editUser, editImage }
+  { editUser, editImage,getProfile }
 )(editProfile);

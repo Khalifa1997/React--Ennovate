@@ -48,11 +48,15 @@ export const editImage = userData => dispatch => {
       */
     });
 };
-/*
-export const setProfile = screen_name => dispatch => {
+
+export const getProfile = screen_name => dispatch => {
   return dispatch => {
     axios
-      .get("http://localhost:8080/accounts/settings", screen_name)
+      .get("http://localhost:8080/accounts/settings", {
+        params: {
+          screen_name
+        }
+      })
       .then(response => {
         dispatch(setProfileUser(response.data));
         console.log(response.data);
@@ -60,7 +64,7 @@ export const setProfile = screen_name => dispatch => {
       .catch(error => {});
   };
 };
-*/
+
 export const editProfileUser = currentUser => {
   return {
     type: actionTypes.EDIT_PROFILE,
