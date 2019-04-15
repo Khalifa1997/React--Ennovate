@@ -7,7 +7,11 @@ import * as actionTypes from "./types";
 export const editUser = userData => dispatch => {
   console.log(userData);
   axios
-    .post("http://localhost:8080/accounts/settings", userData)
+    .post("http://localhost:8080/accounts/settings", userData, {
+      headers: {
+        token: axios.defaults.headers.common.Authorization
+      }
+    })
     .then(res => {
       console.log(res.data);
       dispatch(editProfileUser(res.data));
@@ -26,7 +30,11 @@ export const editUser = userData => dispatch => {
 export const editImage = userData => dispatch => {
   console.log(userData);
   axios
-    .post("http://localhost:8080/accounts/update_profile_image ", userData)
+    .post("http://localhost:8080/accounts/update_profile_image ", userData, {
+      headers: {
+        token: axios.defaults.headers.common.Authorization
+      }
+    })
     .then(res => {
       dispatch(editImageUser(res.data));
     })
@@ -40,11 +48,15 @@ export const editImage = userData => dispatch => {
       */
     });
 };
-/*
-export const setProfile = screen_name => dispatch => {
+
+export const getProfile = screen_name => dispatch => {
   return dispatch => {
     axios
-      .get("http://localhost:8080/accounts/settings", screen_name)
+      .get("http://localhost:8080/accounts/settings", {
+        params: {
+          screen_name
+        }
+      })
       .then(response => {
         dispatch(setProfileUser(response.data));
         console.log(response.data);
@@ -52,7 +64,7 @@ export const setProfile = screen_name => dispatch => {
       .catch(error => {});
   };
 };
-*/
+
 export const editProfileUser = currentUser => {
   return {
     type: actionTypes.EDIT_PROFILE,
