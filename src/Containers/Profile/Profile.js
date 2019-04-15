@@ -6,6 +6,9 @@ import "./Profile.css";
 import Axios from "axios";
 import { setProfile } from "../../Actions/profileActions";
 import { runInThisContext } from "vm";
+import { bounceInDown } from "react-animations";
+
+import Radium, { StyleRoot } from "radium";
 
 class profile extends Component {
   constructor(props) {
@@ -38,11 +41,17 @@ class profile extends Component {
   }
   tabChangedHandler = (event, tabtIdentifier) => {
     console.log("clicked");
-
+    const styles = {
+      bounceInDown: {
+        animation: "x 1s",
+        animationName: Radium.keyframes(bounceInDown, "bounceInDown")
+      }
+    };
     if (tabtIdentifier === "0") {
       console.log("nova clicked");
       const novasClass = "active";
       const likesClass = "";
+
       const posts = this.state.tweets.map(tweet => {
         return (
           <Tweet
@@ -55,13 +64,18 @@ class profile extends Component {
       });
 
       const contentShown = (
-        <div role="tabpanel" id="Section1">
-          <menu>
-            <div className="d-flex flex-column bd-highlight mb-3 justify-content-center align-items-center">
-              {posts}
-            </div>
-          </menu>
-        </div>
+        <StyleRoot>
+          <div role="tabpanel" id="Section1">
+            <menu>
+              <div
+                className="d-flex flex-column bd-highlight mb-3 justify-content-center align-items-center"
+                style={styles.bounce}
+              >
+                {posts}
+              </div>
+            </menu>
+          </div>
+        </StyleRoot>
       );
       this.setState({
         novasClass: novasClass,
@@ -84,13 +98,18 @@ class profile extends Component {
       });
 
       const contentShown = (
-        <div role="tabpanel" id="Section2">
-          <menu>
-            <div className="d-flex flex-column bd-highlight mb-3 justify-content-center align-items-center">
-              {posts}
-            </div>
-          </menu>
-        </div>
+        <StyleRoot>
+          <div role="tabpanel" id="Section2">
+            <menu>
+              <div
+                className="d-flex flex-column bd-highlight mb-3 justify-content-center align-items-center"
+                style={styles.bounce}
+              >
+                {posts}
+              </div>
+            </menu>
+          </div>
+        </StyleRoot>
       );
       this.setState({
         novasClass: novasClass,
@@ -101,7 +120,12 @@ class profile extends Component {
   };
   componentDidMount() {
     //Get my profile
-    const { handle } = this.props.match.params;
+    const styles = {
+      bounceInDown: {
+        animation: "x 1s",
+        animationName: Radium.keyframes(bounceInDown, "bounceInDown")
+      }
+    };
     Axios.get("http://www.mocky.io/v2/5cb271603000006200a78c83")
       .then(res => {
         this.setState({
@@ -137,13 +161,18 @@ class profile extends Component {
           );
         });
         const contentShown = (
-          <div role="tabpanel" id="Section1">
-            <menu>
-              <div className="d-flex flex-column bd-highlight mb-3 justify-content-center align-items-center">
-                {posts}
-              </div>
-            </menu>
-          </div>
+          <StyleRoot>
+            <div role="tabpanel" id="Section1">
+              <menu>
+                <div
+                  className="d-flex flex-column bd-highlight mb-3 justify-content-center align-items-center"
+                  style={styles.bounceInDown}
+                >
+                  {posts}
+                </div>
+              </menu>
+            </div>
+          </StyleRoot>
         );
         this.setState({
           contentShown: contentShown
