@@ -27,6 +27,7 @@ class profile extends Component {
       novasClass: "active",
       likesClass: "",
       toggledButton: null,
+      posts: null,
       contentShown: (
         <div role="tabpanel" id="Section1">
           <menu>
@@ -66,7 +67,7 @@ class profile extends Component {
       this.setState({
         novasClass: novasClass,
         likesClass: likesClass,
-        contentShown: contentShown
+        posts: posts
       });
     } else if (tabtIdentifier === "1") {
       console.log("like clicked ");
@@ -75,6 +76,7 @@ class profile extends Component {
       const posts = this.state.likedTweets.map(tweet => {
         return (
           <Tweet
+            key={tweet.id}
             screenName={tweet.screenname}
             userName={tweet.username}
             text={tweet.tweet_text}
@@ -95,44 +97,50 @@ class profile extends Component {
       this.setState({
         novasClass: novasClass,
         likesClass: likesClass,
-        contentShown: contentShown
+        posts: posts
       });
     }
   };
+
   componentDidMount() {
     //Get my profile
     const { handle } = this.props.match.params;
-    Axios.get("http://www.mocky.io/v2/5cb271603000006200a78c83")
-      .then(res => {
-        this.setState({
-          screenName: res.data.name,
-          userName: res.data.screen_name,
-          bio: res.data.bio,
-          novascount: res.data.novas_count,
-          location: res.data.location,
-          novaIDs: res.data.novaIDs,
-          favNovasIDs: res.data.favNovasIDs,
-          followerscount: res.data.followers_count,
-          followingcount: res.data.following_count,
-          id: res.data.ID
-        });
-      })
-      .catch(err => {
-        console.log(err);
-      });
+    // Axios.get("http://www.mocky.io/v2/5cb271603000006200a78c83")
+    //   .then(res => {
+    //     this.setState({
+    //       screenName: res.data.name,
+    //       userName: res.data.screen_name,
+    //       bio: res.data.bio,
+    //       novascount: res.data.novas_count,
+    //       location: res.data.location,
+    //       novaIDs: res.data.novaIDs,
+    //       favNovasIDs: res.data.favNovasIDs,
+    //       followerscount: res.data.followers_count,
+    //       followingcount: res.data.following_count,
+    //       id: res.data.ID
+    //     });
+    //   })
+    //   .catch(err => {
+    //     console.log(err);
+    //   });
     //Get my tweets
-    Axios.get("http://www.mocky.io/v2/5cb259bc3000007d00a78c71")
+    Axios.get("http://localhost:8080/statuses/user_timeline", {
+      headers: {
+        token: Axios.defaults.headers.common.Authorization
+      }
+    })
       .then(res => {
-        //console.log(tweets);
+        console.log("success from tweets", { ...res });
         this.setState({ tweets: res.data });
         //ghalat 3ashan el state bayza
         const posts = this.state.tweets.map(tweet => {
           return (
             <Tweet
+              key={tweet.id}
               screenName={tweet.screenname}
               userName={tweet.username}
-              text={tweet.tweet_text}
-              isAuth={tweet.username === "omar"}
+              text={tweet.text}
+              isAuth={tweet.user === this.props.auth.profile._id}
             />
           );
         });
@@ -146,12 +154,13 @@ class profile extends Component {
           </div>
         );
         this.setState({
+          posts: posts,
           contentShown: contentShown
         });
-        this.setState({ tweets: res.data });
+        //this.setState({ tweets: res.data });
       })
       .catch(err => {
-        console.log(err);
+        console.log("failure from tweets", { ...err });
       });
     //Get Liked tweets
     Axios.get("http://www.mocky.io/v2/5cb25f113000005600a78c72")
@@ -213,6 +222,34 @@ class profile extends Component {
         toggledButton: toggledButton
       });
     }
+    Axios.get("http://localhost:8080/statuses/user_timeline", {
+      headers: {
+        token: Axios.defaults.headers.common.Authorization
+      }
+    })
+      .then(res => {
+        console.log("success from will receive props", { ...res });
+        this.setState({ tweets: res.data });
+        //ghalat 3ashan el state bayza
+        const posts = this.state.tweets.map(tweet => {
+          return (
+            <Tweet
+              key={tweet.id}
+              screenName={tweet.screenname}
+              userName={tweet.username}
+              text={tweet.text}
+              isAuth={tweet.user === this.props.auth.profile._id}
+            />
+          );
+        });
+
+        this.setState({
+          posts: posts
+        });
+      })
+      .catch(err => {
+        console.log("failure from tweets", { ...err });
+      });
   }
   render() {
     return (
