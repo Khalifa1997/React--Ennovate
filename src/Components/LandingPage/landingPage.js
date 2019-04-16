@@ -80,30 +80,19 @@ const LandingPage = props => {
                     />
                   </a>
                 </li>
-                {!props.auth.isAuthenticated ? (
-                  <li className="nav-item">
-                    <a className=" nav-link aclass" href="/login">
-                      Login
-                    </a>
-                  </li>
-                ) : null}
-                {!props.auth.isAuthenticated ? (
-                  <li className="nav-item">
-                    <a href="/signup" className="aclass">
-                      <button type="button" className="btn btn-outline-success">
-                        Sign up
-                      </button>
-                    </a>
-                  </li>
-                ) : (
-                  <li className="nav-item">
-                    <a href="/Profile" className="aclass">
-                      <button type="button" className="btn btn-outline-success">
-                        My profile
-                      </button>
-                    </a>
-                  </li>
-                )}
+                <li className="nav-item">
+                  <a className=" nav-link aclass" href="/login">
+                    Login
+                  </a>
+                </li>
+
+                <li className="nav-item">
+                  <a href="/signup" className="aclass">
+                    <button type="button" className="btn btn-outline-success">
+                      Sign up
+                    </button>
+                  </a>
+                </li>
               </ul>
             </div>
           </div>
@@ -222,33 +211,32 @@ const LandingPage = props => {
           </div>
         </div>
       </section>
-      {!props.auth.isAuthenticated ? (
-        <section
-          className=" tm-section-pad-top  text-center"
-          style={{ paddingTop: "60px", paddingBottom: "30px" }}
+
+      <section
+        className=" tm-section-pad-top  text-center"
+        style={{ paddingTop: "60px", paddingBottom: "30px" }}
+      >
+        <h1
+          className="text-center"
+          style={{ paddingBottom: "3px", color: "#3496d8" }}
         >
-          <h1
-            className="text-center"
-            style={{ paddingBottom: "3px", color: "#3496d8" }}
+          No fees needed at all!
+        </h1>
+        <a href="/signup">
+          <button
+            type="button"
+            class="btn btn-light btn-lg"
+            style={{
+              paddingTop: "3px",
+              marginBottom: "20px",
+              color: "White",
+              backgroundColor: "#3496d8"
+            }}
           >
-            No fees needed at all!
-          </h1>
-          <a href="/signup">
-            <button
-              type="button"
-              class="btn btn-light btn-lg"
-              style={{
-                paddingTop: "3px",
-                marginBottom: "20px",
-                color: "White",
-                backgroundColor: "#3496d8"
-              }}
-            >
-              Join us now!
-            </button>
-          </a>
-        </section>
-      ) : null}
+            Join us now!
+          </button>
+        </a>
+      </section>
     </div>
   );
 };

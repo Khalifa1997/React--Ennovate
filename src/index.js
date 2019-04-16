@@ -32,7 +32,6 @@ const store = createStore(
 if (localStorage.jwtToken) {
   setAuthToken(localStorage.jwtToken);
   const decoded = jwt_decode(localStorage.jwtToken);
-  console.log("[decoded]", decoded._id);
   const id = decoded._id;
   // const currentUser = store.getState().auth.currentUser;
   // const currentProfile = store.getState().auth.profile;
