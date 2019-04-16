@@ -6,6 +6,8 @@ import "./Profile.css";
 import Axios from "axios";
 import { setProfile } from "../../Actions/profileActions";
 import { runInThisContext } from "vm";
+import { fadeInDown } from "react-animations";
+import Radium, { StyleRoot } from "radium";
 
 class profile extends Component {
   constructor(props) {
@@ -73,6 +75,7 @@ class profile extends Component {
       console.log("like clicked ");
       const novasClass = "";
       const likesClass = "active";
+      console.log(this.state.likedTweets);
       const posts = this.state.likedTweets.reverse().map(tweet => {
         return (
           <Tweet
@@ -80,7 +83,7 @@ class profile extends Component {
             screenName={tweet.screenname}
             userName={tweet.username}
             text={tweet.tweet_text}
-            isAuth={tweet.username === "omar"}
+            isAuth={tweet.username === this.props.auth.profile._id}
           />
         );
       });
@@ -104,26 +107,6 @@ class profile extends Component {
   };
 
   componentDidMount() {
-    //Get my profile
-    const { handle } = this.props.match.params;
-    // Axios.get("http://www.mocky.io/v2/5cb271603000006200a78c83")
-    //   .then(res => {
-    //     this.setState({
-    //       screenName: res.data.name,
-    //       userName: res.data.screen_name,
-    //       bio: res.data.bio,
-    //       novascount: res.data.novas_count,
-    //       location: res.data.location,
-    //       novaIDs: res.data.novaIDs,
-    //       favNovasIDs: res.data.favNovasIDs,
-    //       followerscount: res.data.followers_count,
-    //       followingcount: res.data.following_count,
-    //       id: res.data.ID
-    //     });
-    //   })
-    //   .catch(err => {
-    //     console.log(err);
-    //   });
     //Get my tweets
     Axios.get("http://localhost:8080/statuses/user_timeline", {
       headers: {
@@ -131,7 +114,8 @@ class profile extends Component {
       }
     })
       .then(res => {
-        console.log("success from tweets", { ...res });
+        console.log("success from tweets");
+        console.log(res.data);
         this.setState({ tweets: res.data });
         //ghalat 3ashan el state bayza
         const posts = this.state.tweets.reverse().map(tweet => {
@@ -145,12 +129,23 @@ class profile extends Component {
             />
           );
         });
+        const styles = {
+          fadeInDown: {
+            animation: "x 1s",
+            animationName: Radium.keyframes(fadeInDown, "fadeInDown")
+          }
+        };
         const contentShown = (
           <div role="tabpanel" id="Section1">
             <menu>
-              <div className="d-flex flex-column bd-highlight mb-3 justify-content-center align-items-center">
-                {posts}
-              </div>
+              <StyleRoot>
+                <div
+                  className="d-flex flex-column bd-highlight mb-3 justify-content-center align-items-center"
+                  style={styles.fadeInDown}
+                >
+                  {posts}
+                </div>
+              </StyleRoot>
             </menu>
           </div>
         );
@@ -164,7 +159,7 @@ class profile extends Component {
         console.log("failure from tweets", { ...err });
       });
     //Get Liked tweets
-    Axios.get("http://www.mocky.io/v2/5cb25f113000005600a78c72")
+    Axios.get("http://www.mocky.io/v2/5cb6078d330000e1345d7fb5")
       .then(res => {
         this.setState({ likedTweets: res.data });
       })
@@ -243,12 +238,23 @@ class profile extends Component {
             />
           );
         });
+        const styles = {
+          fadeInDown: {
+            animation: "x 1s",
+            animationName: Radium.keyframes(fadeInDown, "fadeInDown")
+          }
+        };
         const contentShown = (
           <div role="tabpanel" id="Section1">
             <menu>
-              <div className="d-flex flex-column bd-highlight mb-3 justify-content-center align-items-center">
-                {posts}
-              </div>
+              <StyleRoot>
+                <div
+                  className="d-flex flex-column bd-highlight mb-3 justify-content-center align-items-center"
+                  style={styles.fadeInDown}
+                >
+                  {posts}
+                </div>
+              </StyleRoot>
             </menu>
           </div>
         );
