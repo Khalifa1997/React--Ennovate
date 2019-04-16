@@ -26,7 +26,15 @@ class App extends Component {
             <Route path="/login" component={Login} />
             <Route path="/signup" component={Signup} />
             <Route path="/" exact component={LandingPage} />
+<<<<<<< HEAD
             <Route exact path="/forgotpassword" component={ForgotPassword} />
+=======
+            <PrivateRoute
+              exact
+              path="/forgotpassword"
+              component={ForgotPassword}
+            />
+>>>>>>> bb52c639be090f7a5d832e08175ea314e8e9806c
             <Route exact path="/profile" component={Profile} />
             <Route exact path="/editprofile" component={EditProfile} />
             <Route exact path="/FansBox" component={FansBox} />

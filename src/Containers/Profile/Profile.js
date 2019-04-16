@@ -110,7 +110,7 @@ class profile extends Component {
     //Get my tweets
     Axios.get("http://localhost:8080/statuses/user_timeline", {
       headers: {
-        token: Axios.defaults.headers.common.Authorization
+        token: localStorage.getItem("jwtToken")
       }
     })
       .then(res => {
