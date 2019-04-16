@@ -11,13 +11,19 @@ class profile extends Component {
   constructor(props) {
     super(props);
 
-    // this.state = {
-    //     username:this.props.username,
-    //     token:this.props.token
-    // }
     this.state = {
       tweets: [],
       likedTweets: [],
+      id: "",
+      screenName: "",
+      userName: "",
+      bio: "",
+      location: "",
+      followerscount: 0,
+      followingcount: 0,
+      novascount: 0,
+      novaIDs: [],
+      favNovasIDs: [],
       novasClass: "active",
       likesClass: "",
       toggledButton: null,
@@ -94,6 +100,27 @@ class profile extends Component {
     }
   };
   componentDidMount() {
+    //Get my profile
+    const { handle } = this.props.match.params;
+    Axios.get("http://www.mocky.io/v2/5cb271603000006200a78c83")
+      .then(res => {
+        this.setState({
+          screenName: res.data.name,
+          userName: res.data.screen_name,
+          bio: res.data.bio,
+          novascount: res.data.novas_count,
+          location: res.data.location,
+          novaIDs: res.data.novaIDs,
+          favNovasIDs: res.data.favNovasIDs,
+          followerscount: res.data.followers_count,
+          followingcount: res.data.following_count,
+          id: res.data.ID
+        });
+      })
+      .catch(err => {
+        console.log(err);
+      });
+    //Get my tweets
     Axios.get("http://www.mocky.io/v2/5cb259bc3000007d00a78c71")
       .then(res => {
         //console.log(tweets);
@@ -122,11 +149,11 @@ class profile extends Component {
           contentShown: contentShown
         });
         this.setState({ tweets: res.data });
-        console.log(this.state.tweets);
       })
       .catch(err => {
-        console.log("Hi " + err);
+        console.log(err);
       });
+    //Get Liked tweets
     Axios.get("http://www.mocky.io/v2/5cb25f113000005600a78c72")
       .then(res => {
         this.setState({ likedTweets: res.data });

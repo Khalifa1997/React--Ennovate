@@ -115,3 +115,7 @@ form label {
   margin-top: 196px;
   border: 4px solid #f3f3f3;
 }
+
+.img-rounded {
+  border-radius: 50%;
+}

@@ -19,7 +19,7 @@ const editProfileReducer = (state = initialState, action) => {
     case SET_PROFILE_IMAGE:
       return {
         ...state,
-        image: action.payload.image
+        profile: action.payload.image
       };
     case SET_PROFILE:
       return {
