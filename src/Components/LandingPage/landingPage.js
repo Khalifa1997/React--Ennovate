@@ -24,7 +24,7 @@ const LandingPage = props => {
       <div className="container">
         <nav className="navbar navbar-expand-lg navbar-light primary-color fixed-top navbarbg">
           <div className="container-fluid">
-            <a className="navbar-brand aclass" href="/">
+            <a id="Nova" className="navbar-brand aclass" href="/">
               <img
                 src={NavbarPic}
                 height="48px"
@@ -43,6 +43,7 @@ const LandingPage = props => {
 
                 <li className="nav-item">
                   <a
+                    id="AboutButton"
                     className="nav-link aclass"
                     href="https://about.twitter.com/en_us.html"
                   >
@@ -54,7 +55,7 @@ const LandingPage = props => {
             <div className="navbar-collapse collapse w-100 order-3 dual-collapse2">
               <ul className="navbar-nav ml-auto">
                 <li className="nav-item">
-                  <a href="https://twitter.com/" className="aclass">
+                  <a id="1" href="https://twitter.com/" className="aclass">
                     <FontAwesomeIcon
                       icon={faTwitter}
                       className="navicon"
@@ -89,21 +90,22 @@ const LandingPage = props => {
                 ) : null}
                 {!props.auth.isAuthenticated ? (
                   <li className="nav-item">
-                    <a href="/signup" className="aclass">
+                    <a data-testid='SignUp'
+                      href="/signup" className="aclass">
                       <button type="button" className="btn btn-outline-success">
                         Sign up
                       </button>
                     </a>
                   </li>
                 ) : (
-                  <li className="nav-item">
-                    <a href="/Profile" className="aclass">
-                      <button type="button" className="btn btn-outline-success">
-                        My profile
+                    <li className="nav-item">
+                      <a href="/Profile" className="aclass">
+                        <button type="button" className="btn btn-outline-success">
+                          My profile
                       </button>
-                    </a>
-                  </li>
-                )}
+                      </a>
+                    </li>
+                  )}
               </ul>
             </div>
           </div>
@@ -111,7 +113,7 @@ const LandingPage = props => {
       </div>
       <div className=" text-white tm-font-big bg">
         <div className="tm-next tm-intro-next">
-          <a href="#introduction" className="text-center tm-down-arrow-link">
+          <a id="GoDown" href="#introduction" className="text-center tm-down-arrow-link">
             <FontAwesomeIcon
               icon={faArrowCircleDown}
               size="3x"
@@ -235,6 +237,7 @@ const LandingPage = props => {
           </h1>
           <a href="/signup">
             <button
+              data-testid='JoinUs'
               type="button"
               class="btn btn-light btn-lg"
               style={{
