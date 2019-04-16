@@ -211,24 +211,23 @@ class signup extends Component {
       this.props.history.push("/profile");
     }
 
-    if (nextProps.errors) {
-      console.log(nextProps.errors);
+    if (nextProps.error) {
       this.setState({ error: nextProps.error }, () => {
         this.setState({ loading: false });
-        if (this.state.msg === "screen name already registered.") {
+        if (this.state.error === "screen name already registered.") {
           console.log("hello");
           this.setState({ errorScreenname: true });
-        } else if (this.state.msg === "email already registered.") {
+        } else if (this.state.error === "email already registered.") {
           this.setState({ errorEmail: true });
-        } else if (this.state.msg === ' "email" must be a valid email') {
+        } else if (this.state.error === ' "email" must be a valid email') {
           this.setState({ errorEmail: true });
         } else if (
-          this.state.msg ===
+          this.state.error ===
           ' "screen_name" length must be at least 3 characters long'
         ) {
           this.setState({ errorLenScreenname: true });
         } else if (
-          this.state.msg ===
+          this.state.error ===
           ' "screen_name" length must be less than or equal to 15 characters long'
         ) {
           this.setState({ errorLenScreenname: true });

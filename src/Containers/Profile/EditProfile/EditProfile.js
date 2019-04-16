@@ -147,7 +147,9 @@ class editProfile extends Component {
       img_url: this.state.imagePreview
     };
     this.props.editImage(img_url);
-    this.props.editUser(user);
+    this.props.editUser(this.props, user).then(() => {
+      this.props.history.push("/profile");
+    });
   };
 
   onChange(e) {
@@ -188,7 +190,6 @@ class editProfile extends Component {
         }
       });
     }
-    console.log("from receive props", { ...this.props.auth });
   }
 
   render() {

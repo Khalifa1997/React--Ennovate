@@ -4,8 +4,7 @@ import * as actionTypes from "./types";
 
 //Register User
 
-export const editUser = userData => dispatch => {
-  console.log(userData);
+export const editUser = (props, userData) => dispatch => {
   axios
     .post("http://localhost:8080/accounts/settings", userData, {
       headers: {
@@ -13,18 +12,18 @@ export const editUser = userData => dispatch => {
       }
     })
     .then(res => {
-      console.log("[from edit profile]", { ...res });
+      console.log("[from edit profile LAZZZZ]", { ...res });
       dispatch(editProfileUser(res.data));
     })
     .catch(err => {
-      /*
-      console.log("{hello}", err.response.data.error.message);
-      dispatch({
-        type: actionTypes.GET_ERRORS,
-        payload: err.response.data.error.message
-      });
-      */
+      // console.log("{hello}", err.response.data.error.message);
+      // dispatch({
+      //   type: actionTypes.GET_ERRORS,
+      //   payload: err.response.data.error.message
+      // });
     });
+
+  return Promise.resolve();
 };
 
 export const editImage = userData => dispatch => {
@@ -59,7 +58,6 @@ export const getProfile = screen_name => dispatch => {
       })
       .then(response => {
         dispatch(setProfileUser(response.data));
-        console.log(response.data);
       })
       .catch(error => {});
   };
