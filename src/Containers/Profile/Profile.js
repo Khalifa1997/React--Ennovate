@@ -44,7 +44,7 @@ class profile extends Component {
       console.log("nova clicked");
       const novasClass = "active";
       const likesClass = "";
-      const posts = this.state.tweets.map(tweet => {
+      const posts = this.state.tweets.reverse().map(tweet => {
         return (
           <Tweet
             screenName={tweet.screenname}
@@ -73,7 +73,7 @@ class profile extends Component {
       console.log("like clicked ");
       const novasClass = "";
       const likesClass = "active";
-      const posts = this.state.likedTweets.map(tweet => {
+      const posts = this.state.likedTweets.reverse().map(tweet => {
         return (
           <Tweet
             key={tweet.id}
@@ -232,7 +232,7 @@ class profile extends Component {
         console.log("success from will receive props", { ...res });
         this.setState({ tweets: res.data });
         //ghalat 3ashan el state bayza
-        const posts = this.state.tweets.map(tweet => {
+        const posts = this.state.tweets.reverse().map(tweet => {
           return (
             <Tweet
               key={tweet.id}
