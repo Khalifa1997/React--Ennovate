@@ -243,9 +243,19 @@ class profile extends Component {
             />
           );
         });
+        const contentShown = (
+          <div role="tabpanel" id="Section1">
+            <menu>
+              <div className="d-flex flex-column bd-highlight mb-3 justify-content-center align-items-center">
+                {posts}
+              </div>
+            </menu>
+          </div>
+        );
 
         this.setState({
-          posts: posts
+          posts: posts,
+          contentShown: contentShown
         });
       })
       .catch(err => {
