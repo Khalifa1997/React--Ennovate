@@ -52,11 +52,26 @@
   padding: 8px 32px 8px 12px;
   transition: all 0.2s ease-in-out;
   width: 100%;
-  margin-top:3px;
+  margin-top: 3px;
 }
 
-.searchBar:focus{
+.searchBar:focus {
   outline: none;
-  box-shadow:none !important;
-  border:1px solid #2464ae !important;
+  box-shadow: none !important;
+  border: 1px solid #2464ae !important;
+}
+
+.logoutButton {
+  border-radius: 100px;
+  box-shadow: none;
+  width: 100px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 20px;
+  padding: 6px 16px;
+  position: relative;
+  text-align: center;
+  white-space: nowrap;
+  margin-left: 5px;
 }
