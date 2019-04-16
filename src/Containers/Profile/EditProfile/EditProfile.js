@@ -17,7 +17,7 @@ class editProfile extends Component {
 
     this.state = {
       editProfileForm: {
-        screenname: {
+        screen_name: {
           elementType: "input",
           elementConfig: {
             type: "text",
@@ -37,7 +37,7 @@ class editProfile extends Component {
             "The screen name should start with a letter and with no spaces",
           invalidScreenname: false
         },
-        username: {
+        name: {
           elementType: "input",
           elementConfig: {
             type: "text",
@@ -195,7 +195,6 @@ class editProfile extends Component {
   }
 
   render() {
-    console.log(this.props.auth);
     const formElementArray = [];
     for (let key in this.state.editProfileForm) {
       formElementArray.push({
@@ -203,6 +202,7 @@ class editProfile extends Component {
         config: this.state.editProfileForm[key]
       });
     }
+    console.log(this.props.auth.currentUser);
     let form = (
       <form onSubmit={this.submitHandler} className="editBox">
         {formElementArray.map(formElement => (
@@ -210,7 +210,7 @@ class editProfile extends Component {
             key={formElement.id}
             elementType={formElement.config.elementType}
             elementConfig={formElement.config.elementConfig}
-            value={formElement.config.value}
+            value={this.props.auth.currentUser[formElement.id]} //formElement.config.value}
             invalid={!formElement.config.valid}
             errorMessage={formElement.config.errorMessage}
             shouldValidate={formElement.config.validation}
