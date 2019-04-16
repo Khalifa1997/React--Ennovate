@@ -142,10 +142,12 @@ class editProfile extends Component {
       location: this.state.loc,
       bio: this.state.editProfileForm.bio.value
     };
-    const imageURL = this.state.imagePreview;
+    const img_url = {
+      img_url: this.state.imagePreview
+    };
+    this.props.editImage(img_url);
     this.props.editUser(user);
     console.log("hh", user.location);
-    this.props.editImage(imageURL);
   };
 
   onChange(e) {
