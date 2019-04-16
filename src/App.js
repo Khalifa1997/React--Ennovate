@@ -31,9 +31,9 @@ class App extends Component {
               path="/forgotpassword"
               component={ForgotPassword}
             />
-            <PrivateRoute exact path="/profile" component={Profile} />
-            <PrivateRoute exact path="/editprofile" component={EditProfile} />
-            <PrivateRoute exact path="/FansBox" component={FansBox} />
+            <Route exact path="/profile" component={Profile} />
+            <Route exact path="/editprofile" component={EditProfile} />
+            <Route exact path="/FansBox" component={FansBox} />
           </Switch>
         </Route>
       </div>
