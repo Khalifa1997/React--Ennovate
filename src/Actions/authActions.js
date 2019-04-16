@@ -10,7 +10,7 @@ export const registerUser = userData => dispatch => {
   axios
     .post("http://localhost:8080/accounts/signup", userData)
     .then(res => {
-      console.log({ ...res });
+      console.log(res);
       // const clone = {
       //   ...this.state.signupForm
       // };

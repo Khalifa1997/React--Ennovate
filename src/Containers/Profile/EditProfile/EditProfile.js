@@ -6,6 +6,7 @@ import { editUser } from "../../../Actions/editProfileActions";
 import { getProfile } from "../../../Actions/editProfileActions";
 import { editImage } from "../../../Actions/editProfileActions";
 import Button from "../../../Components/UI/button//button";
+import { withRouter } from "react-router-dom";
 
 import "./EditProfile.css";
 
@@ -147,7 +148,6 @@ class editProfile extends Component {
     };
     this.props.editImage(img_url);
     this.props.editUser(user);
-    console.log("hh", user.location);
   };
 
   onChange(e) {
@@ -325,7 +325,9 @@ const mapStateToProps = state => ({
   error: state.errors
 });
 
-export default connect(
-  mapStateToProps,
-  { editUser, editImage, getProfile }
-)(editProfile);
+export default withRouter(
+  connect(
+    mapStateToProps,
+    { editUser, editImage, getProfile }
+  )(editProfile)
+);
