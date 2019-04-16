@@ -108,7 +108,7 @@ class profile extends Component {
 
   componentDidMount() {
     //Get my tweets
-    Axios.get("http://localhost:8080/statuses/user_timeline", {
+    Axios.get("http://3.19.122.178:3000/statuses/user_timeline", {
       headers: {
         token: localStorage.getItem("jwtToken")
       }
@@ -159,13 +159,13 @@ class profile extends Component {
         console.log("failure from tweets", { ...err });
       });
     //Get Liked tweets
-    Axios.get("http://www.mocky.io/v2/5cb6078d330000e1345d7fb5")
+    /* Axios.get("http://www.mocky.io/v2/5cb6078d330000e1345d7fb5")
       .then(res => {
         this.setState({ likedTweets: res.data });
       })
       .catch(err => {
         console.log(err);
-      });
+      });*/
   }
   componentWillMount() {
     if (this.props.auth.me) {
@@ -218,7 +218,7 @@ class profile extends Component {
         toggledButton: toggledButton
       });
     }
-    Axios.get("http://localhost:8080/statuses/user_timeline", {
+    Axios.get("http://3.19.122.178:3000/statuses/user_timeline", {
       headers: {
         token: Axios.defaults.headers.common.Authorization
       }

@@ -13,7 +13,6 @@ import "./EditProfile.css";
 class editProfile extends Component {
   constructor(props) {
     super(props);
-    console.log("mirna", { ...this.props.auth });
     this.state = {
       editProfileForm: {
         screenname: {
@@ -243,18 +242,14 @@ class editProfile extends Component {
             <option value="Ecuador">Ecuador</option>
             <option value="Egypt">Egypt</option>
             <option value="Ethiopia">Ethiopia</option>
-
             <option value=" Finland"> Finland</option>
             <option value="France">France</option>
             <option value="Germany">Germany</option>
             <option value="Greece">Greece</option>
-            <option value="France">France</option>
-            <option value="France">France</option>
-            <option value="France">France</option>
-            <option>United States</option>
-            <option>England</option>
-            <option>Italy</option>
-            <option>Lebanon</option>
+            <option value="United States">United States</option>
+            <option value="England">England</option>
+            <option value="Italy">Italy</option>
+            <option value="Lebanon">Lebanon</option>
           </select>
         </div>
         <div className="form-group">
