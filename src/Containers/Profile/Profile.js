@@ -6,7 +6,7 @@ import "./Profile.css";
 import Axios from "axios";
 import { setProfile } from "../../Actions/profileActions";
 import { runInThisContext } from "vm";
-import { fadeInDown } from "react-animations";
+import { zoomInUp } from "react-animations";
 import Radium, { StyleRoot } from "radium";
 
 class profile extends Component {
@@ -49,10 +49,10 @@ class profile extends Component {
       const posts = this.state.tweets.reverse().map(tweet => {
         return (
           <Tweet
-            screenName={tweet.screenname}
-            userName={tweet.username}
+            screenName={tweet.user_screen_name}
+            userName={tweet.user_name}
             text={tweet.tweet_text}
-            isAuth={tweet.username === "omar"}
+            isAuth={tweet.user_name === this.props.auth.profile._id}
           />
         );
       });
@@ -79,11 +79,11 @@ class profile extends Component {
       const posts = this.state.likedTweets.reverse().map(tweet => {
         return (
           <Tweet
-            key={tweet.id}
-            screenName={tweet.screenname}
-            userName={tweet.username}
+            key={tweet._id}
+            screenName={tweet.user_screen_name}
+            userName={tweet.user_screen_name}
             text={tweet.tweet_text}
-            isAuth={tweet.username === this.props.auth.profile._id}
+            isAuth={tweet.user_name === this.props.auth.profile._id}
           />
         );
       });
@@ -121,18 +121,18 @@ class profile extends Component {
         const posts = this.state.tweets.reverse().map(tweet => {
           return (
             <Tweet
-              key={tweet.id}
-              screenName={tweet.screenname}
-              userName={tweet.username}
+              key={tweet._id}
+              screenName={tweet.user_screen_name}
+              userName={tweet.user_name}
               text={tweet.text}
               isAuth={tweet.user === this.props.auth.profile._id}
             />
           );
         });
         const styles = {
-          fadeInDown: {
+          zoomInUp: {
             animation: "x 1s",
-            animationName: Radium.keyframes(fadeInDown, "fadeInDown")
+            animationName: Radium.keyframes(zoomInUp, "zoomInUp")
           }
         };
         const contentShown = (
@@ -141,7 +141,7 @@ class profile extends Component {
               <StyleRoot>
                 <div
                   className="d-flex flex-column bd-highlight mb-3 justify-content-center align-items-center"
-                  style={styles.fadeInDown}
+                  style={styles.zoomInUp}
                 >
                   {posts}
                 </div>
@@ -230,18 +230,18 @@ class profile extends Component {
         const posts = this.state.tweets.reverse().map(tweet => {
           return (
             <Tweet
-              key={tweet.id}
-              screenName={tweet.screenname}
-              userName={tweet.username}
+              key={tweet._id}
+              screenName={tweet.user_screen_name}
+              userName={tweet.user_name}
               text={tweet.text}
               isAuth={tweet.user === this.props.auth.profile._id}
             />
           );
         });
         const styles = {
-          fadeInDown: {
+          zoomInUp: {
             animation: "x 1s",
-            animationName: Radium.keyframes(fadeInDown, "fadeInDown")
+            animationName: Radium.keyframes(zoomInUp, "zoomInUp")
           }
         };
         const contentShown = (
@@ -250,7 +250,7 @@ class profile extends Component {
               <StyleRoot>
                 <div
                   className="d-flex flex-column bd-highlight mb-3 justify-content-center align-items-center"
-                  style={styles.fadeInDown}
+                  style={styles.zoomInUp}
                 >
                   {posts}
                 </div>
