@@ -134,7 +134,7 @@ class profile extends Component {
         console.log("success from tweets", { ...res });
         this.setState({ tweets: res.data });
         //ghalat 3ashan el state bayza
-        const posts = this.state.tweets.map(tweet => {
+        const posts = this.state.tweets.reverse().map(tweet => {
           return (
             <Tweet
               key={tweet.id}
