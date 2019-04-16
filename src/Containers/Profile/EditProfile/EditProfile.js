@@ -7,13 +7,14 @@ import { getProfile } from "../../../Actions/editProfileActions";
 import { editImage } from "../../../Actions/editProfileActions";
 import Button from "../../../Components/UI/button//button";
 import { withRouter } from "react-router-dom";
+import { loginUser } from "../../../Actions/authActions";
 
 import "./EditProfile.css";
 
 class editProfile extends Component {
   constructor(props) {
     super(props);
-    console.log("mirna", { ...this.props.auth });
+
     this.state = {
       editProfileForm: {
         screenname: {
@@ -71,7 +72,8 @@ class editProfile extends Component {
       loading: false,
       error: {},
       file: "",
-      imagePreview: "http://ssl.gstatic.com/accounts/ui/avatar_2x.png"
+      imagePreview: "http://ssl.gstatic.com/accounts/ui/avatar_2x.png",
+      currentProfile: {}
       //token: "",
     };
   }
@@ -193,6 +195,7 @@ class editProfile extends Component {
   }
 
   render() {
+    console.log(this.props.auth);
     const formElementArray = [];
     for (let key in this.state.editProfileForm) {
       formElementArray.push({
@@ -329,6 +332,6 @@ const mapStateToProps = state => ({
 export default withRouter(
   connect(
     mapStateToProps,
-    { editUser, editImage, getProfile }
+    { loginUser } //{ editUser, editImage, getProfile }
   )(editProfile)
 );
