@@ -97,7 +97,8 @@ class profile extends Component {
       this.setState({
         novasClass: novasClass,
         likesClass: likesClass,
-        posts: posts
+        posts: posts,
+        contentShown: contentShown
       });
     }
   };
