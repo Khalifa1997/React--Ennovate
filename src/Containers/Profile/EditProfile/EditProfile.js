@@ -19,7 +19,7 @@ class editProfile extends Component {
           elementType: "input",
           elementConfig: {
             type: "text",
-            placeholder: this.props.auth.profile.screen_name
+            placeholder: "Enter your updated screen name"
           },
           value: "",
           validation: {
@@ -39,7 +39,7 @@ class editProfile extends Component {
           elementType: "input",
           elementConfig: {
             type: "text",
-            placeholder: this.props.auth.currentUser.name
+            placeholder: "Enter your updated name"
           },
           value: "",
           validation: {
@@ -54,7 +54,7 @@ class editProfile extends Component {
           elementType: "input",
           elementConfig: {
             type: "input",
-            placeholder: this.props.auth.currentUser.bio
+            placeholder: "Enter your bio "
           },
           value: "",
           validation: {
@@ -65,7 +65,7 @@ class editProfile extends Component {
           touched: false
         }
       },
-      location: "",
+      loc: "",
       formIsValid: false,
       loading: false,
       error: {},
@@ -74,6 +74,7 @@ class editProfile extends Component {
       //token: "",
     };
   }
+
   inputChangeHandler = (event, inputIdentifier) => {
     const updatedEditsProfileForm = {
       ...this.state.editProfileForm
@@ -101,7 +102,8 @@ class editProfile extends Component {
   };
 
   _handleChange = event => {
-    this.setState({ location: event.target.value });
+    this.setState({ loc: event.target.value });
+    //this.setState({ location: event.target.value });
   };
   checkValidity(value, rules) {
     let isValid = true;
@@ -137,12 +139,13 @@ class editProfile extends Component {
     const user = {
       screen_name: this.state.editProfileForm.screenname.value,
       name: this.state.editProfileForm.username.value,
-      location: this.state.location.value,
+      location: this.state.loc,
       bio: this.state.editProfileForm.bio.value
     };
-    const image_url = this.state.imagePreview;
+    const imageURL = this.state.imagePreview;
     this.props.editUser(user);
-    this.props.editImage(image_url);
+    console.log("hh", user.location);
+    this.props.editImage(imageURL);
   };
 
   onChange(e) {
@@ -160,13 +163,9 @@ class editProfile extends Component {
     if (file) {
       reader.readAsDataURL(file);
     }
-    console.log(file);
+    console.log(reader.result);
   }
-  /*
-  componentDidMount() {
-    this.props.setProfile(this.props.auth.screen_name);
-  }
-  */
+
   componentWillReceiveProps(nextProps) {
     if (nextProps.error) {
       this.setState({ error: nextProps.error }, () => {
@@ -218,8 +217,37 @@ class editProfile extends Component {
         <div className="col-sm-20">
           <select onChange={this._handleChange} className="form-control">
             <option selected="">Select location</option>
-            <option value="Egypt">Egypt</option>
+
+            <option value="Afghanistan">Afghanistan</option>
+            <option value="Algeria">Algeria</option>
+            <option value="Angola">Angola</option>
+            <option value="Argentina">Argentina</option>
+            <option value="Armenia">Armenia</option>
+            <option value="Australia">Australia</option>
+            <option value="Austria">Austria</option>
+
+            <option value="Bahrain">Bahrain</option>
+            <option value="Belgium">Belgium</option>
+            <option value="Brazil">Brazil</option>
+            <option value="Bulgaria">Bulgaria</option>
+            <option value="Cameroon">Cameroon</option>
+            <option value="China">China</option>
+            <option value="Colombia">Colombia</option>
+            <option value="Costa Rica">Costa Rica</option>
+            <option value="Cuba">Cuba</option>
+            <option value="Denmark">Denmark</option>
             <option value="Canada">Canada</option>
+            <option value="Ecuador">Ecuador</option>
+            <option value="Egypt">Egypt</option>
+            <option value="Ethiopia">Ethiopia</option>
+
+            <option value=" Finland"> Finland</option>
+            <option value="France">France</option>
+            <option value="Germany">Germany</option>
+            <option value="Greece">Greece</option>
+            <option value="France">France</option>
+            <option value="France">France</option>
+            <option value="France">France</option>
             <option>United States</option>
             <option>England</option>
             <option>Italy</option>
@@ -236,25 +264,38 @@ class editProfile extends Component {
       <div>
         <div>
           <div>
-            <h1 className="text-center">Edit your profile</h1>
+            <h1 className="text-center editHeader">Edit your profile</h1>
 
             <div className="row">
               <div className="col-sm-5" />
-              <div className="col-sm-4">
-                {" "}
+              <div className="col-sm-3">
                 <img
                   src={this.state.imagePreview}
                   width="200"
                   height="200"
-                  border="0"
-                  className="img-circle"
+                  border="10"
+                  className="img-rounded"
                 />
-                <h6>Upload a different photo...</h6>
-                <input
-                  type="file"
-                  className="text-center center-block file-upload"
-                  onChange={e => this.onChange(e)}
-                />{" "}
+                <h1> </h1>
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="inputGroupFileAddon01">
+                      Upload
+                    </span>
+                  </div>
+                  <div class="custom-file">
+                    <input
+                      type="file"
+                      class="custom-file-input"
+                      id="inputGroupFile01"
+                      aria-describedby="inputGroupFileAddon01"
+                      onChange={e => this.onChange(e)}
+                    />
+                    <label class="custom-file-label" for="inputGroupFile01">
+                      Choose file
+                    </label>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -284,5 +325,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { editUser, editImage,getProfile }
+  { editUser, editImage, getProfile }
 )(editProfile);
