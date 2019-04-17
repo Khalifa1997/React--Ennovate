@@ -4,7 +4,7 @@ import * as actionTypes from "./types";
 
 //Register User
 
-export const editUser = (props, userData) => dispatch => {
+export const editUser = userData => dispatch => {
   axios
     .post("http://localhost:8080/accounts/settings", userData, {
       headers: {

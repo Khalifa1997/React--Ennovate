@@ -79,6 +79,7 @@ class editProfile extends Component {
   }
 
   inputChangeHandler = (event, inputIdentifier) => {
+    console.log("data el event", event.target.value);
     const updatedEditsProfileForm = {
       ...this.state.editProfileForm
     };
@@ -140,8 +141,8 @@ class editProfile extends Component {
     }
 
     const user = {
-      screen_name: this.state.editProfileForm.screenname.value,
-      name: this.state.editProfileForm.username.value,
+      screen_name: this.state.editProfileForm.screen_name.value,
+      name: this.state.editProfileForm.name.value,
       location: this.state.loc,
       bio: this.state.editProfileForm.bio.value
     };
@@ -149,7 +150,7 @@ class editProfile extends Component {
       img_url: this.state.imagePreview
     };
     this.props.editImage(img_url);
-    this.props.editUser(this.props, user).then(() => {
+    this.props.editUser(user).then(() => {
       this.props.history.push("/profile");
     });
   };
@@ -210,7 +211,7 @@ class editProfile extends Component {
             key={formElement.id}
             elementType={formElement.config.elementType}
             elementConfig={formElement.config.elementConfig}
-            value={this.props.auth.currentUser[formElement.id]} //formElement.config.value}
+            defaultValue={this.props.auth.currentUser[formElement.id]} //formElement.config.value}
             invalid={!formElement.config.valid}
             errorMessage={formElement.config.errorMessage}
             shouldValidate={formElement.config.validation}
@@ -332,6 +333,6 @@ const mapStateToProps = state => ({
 export default withRouter(
   connect(
     mapStateToProps,
-    { loginUser } //{ editUser, editImage, getProfile }
+    { editUser, editImage, getProfile }
   )(editProfile)
 );
