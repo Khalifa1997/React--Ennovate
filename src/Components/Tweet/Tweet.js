@@ -14,9 +14,9 @@ const onClickHandler = () => {
 };
 const Tweet = props => {
   return (
-    <div class="container-fluid mt-4">
+    <div className="container-fluid mt-4">
       <div
-        class="card"
+        className="card"
         style={{
           textAlign: "left",
           width: inherits,
@@ -25,25 +25,25 @@ const Tweet = props => {
           alignContent: "center"
         }}
       >
-        <div class="card-body">
-          <h5 class="card-title">{props.screenName}</h5>
-          <h6 class="card-subtitle mb-2 text-muted">@{props.userName}</h6>
-          <p class="card-text">{props.text}</p>
-          <a href="#" class="card-link">
+        <div className="card-body">
+          <h5 className="card-title">{props.screenName}</h5>
+          <h6 className="card-subtitle mb-2 text-muted">@{props.userName}</h6>
+          <p className="card-text">{props.text}</p>
+          <a href="javascript:;" className="card-link">
             <FontAwesomeIcon icon={faHeart} size="lg" />
           </a>
-          <a href="#" class="card-link">
+          <a href="javascript:;" className="card-link">
             <FontAwesomeIcon icon={faRetweet} size="lg" />
           </a>
-          <a href="#" class="card-link">
+          <a href="javascript:;" className="card-link">
             <FontAwesomeIcon icon={faCommentDots} size="lg" />
           </a>
-          {props.isAuth === true ? (
+          {props.isAuth === false ? (
             <a
-              href="#"
-              class="card-link"
+              href="javascript:;"
+              className="card-link"
               style={{ float: "right" }}
-              onClick={onClickHandler}
+              onClick={props.deleteClicked}
             >
               <FontAwesomeIcon icon={faTrashAlt} color="red" size="lg" />
             </a>

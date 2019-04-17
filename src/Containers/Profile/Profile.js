@@ -17,7 +17,6 @@ class profile extends Component {
     super(props);
 
     this.state = {
-      tweets: [],
       likedTweets: [],
       id: "",
       screenName: "",
@@ -32,21 +31,48 @@ class profile extends Component {
       novasClass: "active",
       likesClass: "",
       toggledButton: null,
-      novas: null,
-      contentShown: (
-        <div role="tabpanel" id="Section1">
-          <menu>
-            <div className="d-flex flex-column bd-highlight mb-3 justify-content-center align-items-center" />
-          </menu>
-        </div>
-      )
+      novas: [],
+      contentShown: null
     };
   }
   deleteNovaHandeler = novaID => {
     //Deleting a Nova
-    const newPosts = { ...this.state.novas };
-    newPosts.splice(novaID, 1);
-    this.setState({ novas: newPosts });
+    const newPosts = [...this.state.novas];
+    console.log(this.state.novas);
+    //Delete a new tweet
+    const index = newPosts.findIndex(a => a._id === novaID);
+    console.log(index);
+    if (index != -1) {
+      newPosts.splice(index, 1);
+      this.setState({ novas: newPosts });
+      const novas = newPosts.map(tweet => {
+        return (
+          <CSSTransition key={tweet._id} timeout={500} classNames="move">
+            <Tweet
+              screenName={tweet.user_screen_name}
+              key={tweet._id}
+              userName={tweet.user_name}
+              deleteClicked={() => this.deleteNovaHandeler(tweet._id)}
+              text={tweet.text}
+              isAuth={false}
+            />
+          </CSSTransition>
+        );
+      });
+
+      const contentShown = (
+        <div role="tabpanel" id="Section1">
+          <menu>
+            <TransitionGroup className="d-flex flex-column bd-highlight mb-3 justify-content-center align-items-center">
+              {novas}
+            </TransitionGroup>
+          </menu>
+        </div>
+      );
+      this.setState({
+        contentShown: contentShown
+      });
+    }
   };
   tabChangedHandler = (event, tabtIdentifier) => {
     console.log("clicked");
@@ -55,15 +81,17 @@ class profile extends Component {
       console.log("nova clicked");
       const novasClass = "active";
       const likesClass = "";
-      const novas = this.state.tweets.reverse().map(tweet => {
+      console.log(this.state.novas);
+      const novas = this.state.novas.map(tweet => {
         return (
-          <CSSTransition key={tweet._id} timeout={700} classNames="move">
+          <CSSTransition key={tweet._id} timeout={500} classNames="move">
             <Tweet
               screenName={tweet.user_screen_name}
               key={tweet._id}
               userName={tweet.user_name}
-              text={tweet.tweet_text}
-              isAuth={tweet.user_name === this.props.auth.profile._id}
+              deleteClicked={() => this.deleteNovaHandeler(tweet._id)}
+              text={tweet.text}
+              isAuth={false}
             />
           </CSSTransition>
         );
@@ -81,23 +109,23 @@ class profile extends Component {
       this.setState({
         novasClass: novasClass,
         likesClass: likesClass,
-        contentShown: contentShown,
-        novas: novas
+        contentShown: contentShown
       });
     } else if (tabtIdentifier === "1") {
       console.log("like clicked ");
       const novasClass = "";
       const likesClass = "active";
       console.log(this.state.likedTweets);
-      const novas = this.state.likedTweets.reverse().map(tweet => {
+      const likedTweets = this.state.likedTweets.map(tweet => {
         return (
-          <CSSTransition key={tweet._id} timeout={700} classNames="move">
+          <CSSTransition key={tweet._id} timeout={500} classNames="move">
             <Tweet
               screenName={tweet.user_screen_name}
               key={tweet._id}
               userName={tweet.user_name}
-              text={tweet.tweet_text}
-              isAuth={tweet.user_name === this.props.auth.profile._id}
+              text={tweet.text}
+              deleteClicked={() => this.deleteNovaHandeler(tweet._id)}
+              isAuth={false}
             />
           </CSSTransition>
         );
@@ -107,7 +135,7 @@ class profile extends Component {
         <div role="tabpanel" id="Section2">
           <menu>
             <TransitionGroup className="d-flex flex-column bd-highlight mb-3 justify-content-center align-items-center">
-              {novas}
+              {likedTweets}
             </TransitionGroup>
           </menu>
         </div>
@@ -115,57 +143,59 @@ class profile extends Component {
       this.setState({
         novasClass: novasClass,
         likesClass: likesClass,
-        novas: novas,
+        likedTweets: likedTweets,
         contentShown: contentShown
       });
     }
   };
 
-  componentDidMount() {
-    //Get my tweets
-    Axios.get("http://localhost:8080/statuses/user_timeline", {
+  async componentDidMount() {
+    //Get my novas
+    await Axios.get("http://localhost:8080/statuses/user_timeline", {
       headers: {
         token: localStorage.getItem("jwtToken")
       }
     })
       .then(res => {
-        console.log("success from tweets");
-        console.log(res.data);
-        this.setState({ tweets: res.data });
-        //ghalat 3ashan el state bayza
-        const novas = this.state.tweets.reverse().map(tweet => {
-          return (
-            <CSSTransition key={tweet._id} timeout={700} classNames="move">
-              <Tweet
-                screenName={tweet.user_screen_name}
-                key={tweet._id}
-                userName={tweet.user_name}
-                text={tweet.tweet_text}
-                isAuth={tweet.user_name === this.props.auth.profile._id}
-              />
-            </CSSTransition>
-          );
-        });
+        console.log("Component Did mount");
 
-        const contentShown = (
-          <div role="tabpanel" id="Section1">
-            <menu>
-              <TransitionGroup className="d-flex flex-column bd-highlight mb-3 justify-content-center align-items-center">
-                {novas}
-              </TransitionGroup>
-            </menu>
-          </div>
-        );
-        this.setState({
-          novas: novas,
-          contentShown: contentShown
-        });
-        //this.setState({ tweets: res.data });
+        this.setState({ novas: res.data });
       })
       .catch(err => {
-        console.log("failure from tweets", { ...err });
+        console.log("failure from novas", { ...err });
       });
-    //Get Liked tweets
+    //ghalat 3ashan el state bayza
+
+    if (this.state.novas) {
+      const novas = this.state.novas.reverse().map(tweet => {
+        return (
+          <CSSTransition key={tweet._id} timeout={500} classNames="move">
+            <Tweet
+              screenName={tweet.user_screen_name}
+              key={tweet._id}
+              userName={tweet.user_name}
+              deleteClicked={() => this.deleteNovaHandeler(tweet._id)}
+              text={tweet.text}
+              isAuth={false}
+            />
+          </CSSTransition>
+        );
+      });
+
+      const contentShown = (
+        <div role="tabpanel" id="Section1">
+          <menu>
+            <TransitionGroup className="d-flex flex-column bd-highlight mb-3 justify-content-center align-items-center">
+              {novas}
+            </TransitionGroup>
+          </menu>
+        </div>
+      );
+      this.setState({
+        contentShown: contentShown
+      });
+    }
+    //Get Liked novas
     /* Axios.get("http://www.mocky.io/v2/5cb6078d330000e1345d7fb5")
       .then(res => {
         this.setState({ likedTweets: res.data });
@@ -175,6 +205,7 @@ class profile extends Component {
       });*/
   }
   componentWillMount() {
+    console.log("Componenet will mount");
     if (this.props.auth.me) {
       let toggledButton = this.state.toggledButton;
       toggledButton = (
@@ -199,7 +230,8 @@ class profile extends Component {
       });
     }
   }
-  componentWillReceiveProps(nextprops) {
+  async componentWillReceiveProps(nextprops) {
+    //console.log("Component will reciever props");
     if (nextprops.auth.me) {
       console.log("me is true");
       let toggledButton = this.state.toggledButton;
@@ -225,47 +257,49 @@ class profile extends Component {
         toggledButton: toggledButton
       });
     }
-    Axios.get("http://localhost:8080/statuses/user_timeline", {
+    await Axios.get("http://localhost:8080/statuses/user_timeline", {
       headers: {
         token: Axios.defaults.headers.common.Authorization
       }
     })
       .then(res => {
-        console.log("success from will receive props", { ...res });
-        this.setState({ tweets: res.data });
+        console.log("success from will receive props");
+
+        this.setState({ novas: res.data });
         //ghalat 3ashan el state bayza
-        const novas = this.state.tweets.reverse().map(tweet => {
-          return (
-            <CSSTransition key={tweet._id} timeout={700} classNames="move">
-              <Tweet
-                screenName={tweet.user_screen_name}
-                key={tweet._id}
-                userName={tweet.user_name}
-                text={tweet.tweet_text}
-                isAuth={tweet.user_name === this.props.auth.profile._id}
-              />
-            </CSSTransition>
-          );
-        });
-
-        const contentShown = (
-          <div role="tabpanel" id="Section1">
-            <menu>
-              <TransitionGroup className="d-flex flex-column bd-highlight mb-3 justify-content-center align-items-center">
-                {novas}
-              </TransitionGroup>
-            </menu>
-          </div>
-        );
-
-        this.setState({
-          novas: novas,
-          contentShown: contentShown
-        });
       })
       .catch(err => {
-        console.log("failure from tweets", { ...err });
+        console.log("failure from novas", { ...err });
       });
+    console.log(this.state.novas);
+    const novas = this.state.novas.reverse().map(tweet => {
+      return (
+        <CSSTransition key={tweet._id} timeout={500} classNames="move">
+          <Tweet
+            screenName={tweet.user_screen_name}
+            key={tweet._id}
+            deleteClicked={() => this.deleteNovaHandeler(tweet._id)}
+            userName={tweet.user_name}
+            text={tweet.text}
+            isAuth={false}
+          />
+        </CSSTransition>
+      );
+    });
+
+    const contentShown = (
+      <div role="tabpanel" id="Section1">
+        <menu>
+          <TransitionGroup className="d-flex flex-column bd-highlight mb-3 justify-content-center align-items-center">
+            {novas}
+          </TransitionGroup>
+        </menu>
+      </div>
+    );
+
+    this.setState({
+      contentShown: contentShown
+    });
   }
   render() {
     return (
@@ -332,6 +366,7 @@ class profile extends Component {
                           aria-controls="novas"
                           role="tab"
                           data-toggle="tab"
+                          href="javascript:;"
                           onClick={event => this.tabChangedHandler(event, "0")}
                         >
                           Novas
@@ -345,6 +380,7 @@ class profile extends Component {
                     <ul className="nav nav-tabs" role="tablist">
                       <li role="presentation" className={this.state.likesClass}>
                         <a
+                          href="javascript:;"
                           aria-controls="likes"
                           role="tab"
                           data-toggle="tab"
@@ -357,7 +393,9 @@ class profile extends Component {
                   </div>
                 </div>
                 <div className="col-md-12 ">
-                  <div class="tab-content tabs">{this.state.contentShown}</div>
+                  <div className="tab-content tabs">
+                    {this.state.contentShown}
+                  </div>
                 </div>
               </div>
             </div>

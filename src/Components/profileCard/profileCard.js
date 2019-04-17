@@ -9,16 +9,16 @@ const ProfileCard = props => {
   return (
     <div>
       <div
-        class="card"
+        className="card"
         style={{ width: "18rem", backgroundColor: "gainsboro" }}
       >
-        <img src="..." class="card-img-top" alt="..." />
-        <div class="card-body">
-          <h5 class="card-title">Bongo</h5>
-          <h6 class="card-subtitle mb-2 text-muted">
+        <img src="..." className="card-img-top" alt="..." />
+        <div className="card-body">
+          <h5 className="card-title">Bongo</h5>
+          <h6 className="card-subtitle mb-2 text-muted">
             @{props.auth.user.user_id}
           </h6>
-          <p class="card-text">
+          <p className="card-text">
             Some quick example text to build on the card title and make up the
             bulk of the card's content.
           </p>
