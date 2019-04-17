@@ -1,4 +1,32 @@
-import React, { Component } from "react";
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: Containers/Profile/Profile.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: Containers/Profile/Profile.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React, { Component } from "react";
 import { connect } from "react-redux";
 import Nav from "../../Components/NavBar/NavBar";
 import Tweet from "../../Components/Tweet/Tweet";
@@ -53,11 +81,11 @@ class profile extends Component {
       toggledButton: null,
       posts: null,
       contentShown: (
-        <div role="tabpanel" id="Section1">
-          <menu>
-            <div className="d-flex flex-column bd-highlight mb-3 justify-content-center align-items-center" />
-          </menu>
-        </div>
+        &lt;div role="tabpanel" id="Section1">
+          &lt;menu>
+            &lt;div className="d-flex flex-column bd-highlight mb-3 justify-content-center align-items-center" />
+          &lt;/menu>
+        &lt;/div>
       )
     };
   }
@@ -70,7 +98,7 @@ class profile extends Component {
       const likesClass = "";
       const posts = this.state.tweets.reverse().map(tweet => {
         return (
-          <Tweet
+          &lt;Tweet
             screenName={tweet.user_screen_name}
             userName={tweet.user_name}
             text={tweet.tweet_text}
@@ -80,13 +108,13 @@ class profile extends Component {
       });
 
       const contentShown = (
-        <div role="tabpanel" id="Section1">
-          <menu>
-            <div className="d-flex flex-column bd-highlight mb-3 justify-content-center align-items-center">
+        &lt;div role="tabpanel" id="Section1">
+          &lt;menu>
+            &lt;div className="d-flex flex-column bd-highlight mb-3 justify-content-center align-items-center">
               {posts}
-            </div>
-          </menu>
-        </div>
+            &lt;/div>
+          &lt;/menu>
+        &lt;/div>
       );
       this.setState({
         novasClass: novasClass,
@@ -100,7 +128,7 @@ class profile extends Component {
       console.log(this.state.likedTweets);
       const posts = this.state.likedTweets.reverse().map(tweet => {
         return (
-          <Tweet
+          &lt;Tweet
             key={tweet._id}
             screenName={tweet.user_screen_name}
             userName={tweet.user_screen_name}
@@ -111,13 +139,13 @@ class profile extends Component {
       });
 
       const contentShown = (
-        <div role="tabpanel" id="Section2">
-          <menu>
-            <div className="d-flex flex-column bd-highlight mb-3 justify-content-center align-items-center">
+        &lt;div role="tabpanel" id="Section2">
+          &lt;menu>
+            &lt;div className="d-flex flex-column bd-highlight mb-3 justify-content-center align-items-center">
               {posts}
-            </div>
-          </menu>
-        </div>
+            &lt;/div>
+          &lt;/menu>
+        &lt;/div>
       );
       this.setState({
         novasClass: novasClass,
@@ -142,7 +170,7 @@ class profile extends Component {
         //ghalat 3ashan el state bayza
         const posts = this.state.tweets.reverse().map(tweet => {
           return (
-            <Tweet
+            &lt;Tweet
               key={tweet._id}
               screenName={tweet.user_screen_name}
               userName={tweet.user_name}
@@ -158,18 +186,18 @@ class profile extends Component {
           }
         };
         const contentShown = (
-          <div role="tabpanel" id="Section1">
-            <menu>
-              <StyleRoot>
-                <div
+          &lt;div role="tabpanel" id="Section1">
+            &lt;menu>
+              &lt;StyleRoot>
+                &lt;div
                   className="d-flex flex-column bd-highlight mb-3 justify-content-center align-items-center"
                   style={styles.zoomInUp}
                 >
                   {posts}
-                </div>
-              </StyleRoot>
-            </menu>
-          </div>
+                &lt;/div>
+              &lt;/StyleRoot>
+            &lt;/menu>
+          &lt;/div>
         );
         this.setState({
           posts: posts,
@@ -193,11 +221,11 @@ class profile extends Component {
     if (this.props.auth.me) {
       let toggledButton = this.state.toggledButton;
       toggledButton = (
-        <button className="btn profilebtn profile-edit-btn">
-          <a href="/editprofile" className="referencecolor">
+        &lt;button className="btn profilebtn profile-edit-btn">
+          &lt;a href="/editprofile" className="referencecolor">
             Edit Profile
-          </a>
-        </button>
+          &lt;/a>
+        &lt;/button>
       );
       this.setState({
         toggledButton: toggledButton
@@ -205,9 +233,9 @@ class profile extends Component {
     } else {
       let toggledButton = this.state.toggledButton;
       toggledButton = (
-        <button className="btn profilebtn profile-edit-btn">
-          <a className="referencecolor">Follow</a>
-        </button>
+        &lt;button className="btn profilebtn profile-edit-btn">
+          &lt;a className="referencecolor">Follow&lt;/a>
+        &lt;/button>
       );
       this.setState({
         toggledButton: toggledButton
@@ -219,11 +247,11 @@ class profile extends Component {
       console.log("me is true");
       let toggledButton = this.state.toggledButton;
       toggledButton = (
-        <button className="btn profilebtn profile-edit-btn">
-          <a href="/editprofile" className="referencecolor">
+        &lt;button className="btn profilebtn profile-edit-btn">
+          &lt;a href="/editprofile" className="referencecolor">
             Edit Profile
-          </a>
-        </button>
+          &lt;/a>
+        &lt;/button>
       );
       this.setState({
         toggledButton: toggledButton
@@ -232,9 +260,9 @@ class profile extends Component {
       console.log("me is false");
       let toggledButton = this.state.toggledButton;
       toggledButton = (
-        <button className="btn profilebtn profile-edit-btn">
-          <a className="referencecolor">Follow</a>
-        </button>
+        &lt;button className="btn profilebtn profile-edit-btn">
+          &lt;a className="referencecolor">Follow&lt;/a>
+        &lt;/button>
       );
       this.setState({
         toggledButton: toggledButton
@@ -251,7 +279,7 @@ class profile extends Component {
         //ghalat 3ashan el state bayza
         const posts = this.state.tweets.reverse().map(tweet => {
           return (
-            <Tweet
+            &lt;Tweet
               key={tweet._id}
               screenName={tweet.user_screen_name}
               userName={tweet.user_name}
@@ -267,18 +295,18 @@ class profile extends Component {
           }
         };
         const contentShown = (
-          <div role="tabpanel" id="Section1">
-            <menu>
-              <StyleRoot>
-                <div
+          &lt;div role="tabpanel" id="Section1">
+            &lt;menu>
+              &lt;StyleRoot>
+                &lt;div
                   className="d-flex flex-column bd-highlight mb-3 justify-content-center align-items-center"
                   style={styles.zoomInUp}
                 >
                   {posts}
-                </div>
-              </StyleRoot>
-            </menu>
-          </div>
+                &lt;/div>
+              &lt;/StyleRoot>
+            &lt;/menu>
+          &lt;/div>
         );
 
         this.setState({
@@ -292,101 +320,101 @@ class profile extends Component {
   }
   render() {
     return (
-      <div className="body">
-        <Nav />
-        <div className="container widthadjust">
-          <div className="profilecontainer ">
-            <div className="profile">
-              <div className="profile-image">
-                <img
+      &lt;div className="body">
+        &lt;Nav />
+        &lt;div className="container widthadjust">
+          &lt;div className="profilecontainer ">
+            &lt;div className="profile">
+              &lt;div className="profile-image">
+                &lt;img
                   className="imgwidth"
                   src={this.props.auth.profile.profile_image_url}
                 />
-              </div>
+              &lt;/div>
 
-              <div className="profile-user-settings">
-                <h1 className="profile-user-name">
+              &lt;div className="profile-user-settings">
+                &lt;h1 className="profile-user-name">
                   {this.props.auth.profile.screen_name}
-                </h1>
+                &lt;/h1>
 
                 {this.state.toggledButton}
-              </div>
+              &lt;/div>
 
-              <div className="profile-stats">
-                <li>
-                  <span className="profile-stat-count">
+              &lt;div className="profile-stats">
+                &lt;li>
+                  &lt;span className="profile-stat-count">
                     {this.props.auth.profile.novas_count}
-                  </span>{" "}
+                  &lt;/span>{" "}
                   Novas
-                </li>
-                <li>
-                  <span className="profile-stat-count">
+                &lt;/li>
+                &lt;li>
+                  &lt;span className="profile-stat-count">
                     {this.props.auth.profile.followers_count}
-                  </span>{" "}
+                  &lt;/span>{" "}
                   followers
-                </li>
-                <li>
-                  <span className="profile-stat-count">
+                &lt;/li>
+                &lt;li>
+                  &lt;span className="profile-stat-count">
                     {this.props.auth.profile.friends_count}
-                  </span>{" "}
+                  &lt;/span>{" "}
                   following
-                </li>
-              </div>
+                &lt;/li>
+              &lt;/div>
 
-              <div className="profile-bio">
-                <p>
-                  <span className="profile-real-name">
+              &lt;div className="profile-bio">
+                &lt;p>
+                  &lt;span className="profile-real-name">
                     {this.props.auth.profile.name}
-                  </span>{" "}
+                  &lt;/span>{" "}
                   {this.props.auth.profile.bio}
-                </p>
-              </div>
-            </div>
-          </div>
+                &lt;/p>
+              &lt;/div>
+            &lt;/div>
+          &lt;/div>
 
-          <div className="container ">
-            <div className="centerdiv">
-              <div className="row ">
-                <div className="col-md-6 ">
-                  <div className="tab" role="tabpanel">
-                    <ul className="nav nav-tabs" role="tablist">
-                      <li role="presentation" className={this.state.novasClass}>
-                        <a
+          &lt;div className="container ">
+            &lt;div className="centerdiv">
+              &lt;div className="row ">
+                &lt;div className="col-md-6 ">
+                  &lt;div className="tab" role="tabpanel">
+                    &lt;ul className="nav nav-tabs" role="tablist">
+                      &lt;li role="presentation" className={this.state.novasClass}>
+                        &lt;a
                           aria-controls="novas"
                           role="tab"
                           data-toggle="tab"
                           onClick={event => this.tabChangedHandler(event, "0")}
                         >
                           Novas
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-                <div className="col-md-6 ">
-                  <div className="tab" role="tabpanel">
-                    <ul className="nav nav-tabs" role="tablist">
-                      <li role="presentation" className={this.state.likesClass}>
-                        <a
+                        &lt;/a>
+                      &lt;/li>
+                    &lt;/ul>
+                  &lt;/div>
+                &lt;/div>
+                &lt;div className="col-md-6 ">
+                  &lt;div className="tab" role="tabpanel">
+                    &lt;ul className="nav nav-tabs" role="tablist">
+                      &lt;li role="presentation" className={this.state.likesClass}>
+                        &lt;a
                           aria-controls="likes"
                           role="tab"
                           data-toggle="tab"
                           onClick={event => this.tabChangedHandler(event, "1")}
                         >
                           Likes
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-                <div className="col-md-12 ">
-                  <div class="tab-content tabs">{this.state.contentShown}</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+                        &lt;/a>
+                      &lt;/li>
+                    &lt;/ul>
+                  &lt;/div>
+                &lt;/div>
+                &lt;div className="col-md-12 ">
+                  &lt;div class="tab-content tabs">{this.state.contentShown}&lt;/div>
+                &lt;/div>
+              &lt;/div>
+            &lt;/div>
+          &lt;/div>
+        &lt;/div>
+      &lt;/div>
     );
   }
 }
@@ -401,3 +429,26 @@ export default connect(
   mapStateToProps,
   { setProfile }
 )(profile);
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="forgotPassword.html">forgotPassword</a></li><li><a href="login.html">login</a></li><li><a href="profile.html">profile</a></li><li><a href="signup.html">signup</a></li></ul><h3>Global</h3><ul><li><a href="global.html#button">button</a></li><li><a href="global.html#input">input</a></li><li><a href="global.html#LandingPage">LandingPage</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Wed Apr 17 2019 10:07:13 GMT+0200 (Egypt Standard Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
