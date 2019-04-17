@@ -190,6 +190,9 @@ class editProfile extends Component {
       });
     }
   }
+  componentDidMount() {
+    console.log("received auth" + JSON.stringify(this.props.auth));
+  }
 
   render() {
     const formElementArray = [];
