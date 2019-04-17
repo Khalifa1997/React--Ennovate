@@ -12,7 +12,7 @@ import axios from "../../../axios-users";
  * */
 class signup extends Component {
   /**
-  
+   
    * @property {json}  signupForm               - The Signup Form object that contains all the form's components properties.
    * @property {json} signupForm.screenname -User's screen name properties and configurations.
    * @property {string} signupForm.screenname.elementType -The type of the input element.

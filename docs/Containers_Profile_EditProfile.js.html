@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: Containers/Profile/EditProfile.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: Containers/Profile/EditProfile.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React, { Component } from "react";
+import { connect } from "react-redux";
+import propTypes from "prop-types";
+import InputProfile from "../../../Components/UI/InputProfile/InputProfile";
+import { editUser } from "../../../Actions/editProfileActions";
+import { getProfile } from "../../../Actions/editProfileActions";
+import { editImage } from "../../../Actions/editProfileActions";
+import Button from "../../../Components/UI/button//button";
+import { withRouter } from "react-router-dom";
+import { loginUser } from "../../../Actions/authActions";
+
+import "./EditProfile.css";
+import Radium, { StyleRoot } from "radium";
+/**
+ * This is a description of the editProfile Component.
+ * @class
+ * */
+class editProfile extends Component {
+  /**
+   * @property {json}  editProfileForm               - The Signup Form object that contains all the form's components properties.
+   * @property {json} editProfileForm.screen_name  -User's screen name properties and configurations.
+   * @property {string} editProfileForm.screen_name.elementType   -The type of the input element.
+   * @property {json} editProfileForm.screen_name.elementConfig   -The input element configurations.
+   * @property {string} editProfileForm.screen_name.elementConfig.type     -The input element type.
+   * @property {string} editProfileForm.screen_name.elementConfig.placeholder  -The input element's placeholder.
+   * @property {string} editProfileForm.screen_name.value  -The value of the Screen Name.
+   * @property {boolean} editProfileForm.screen_name.valid  -indicates whether the input value is valid or not.
+   * @property {boolean} editProfileForm.screen_name.touched  -indicates whether the the input element has been touched or not.
+   * @property {boolean} editProfileForm.screen_name.autoFocus  - Is set to true when the element should be autofocused.
+   * @property {string} editProfileForm.screen_name.errorMessage  -The error message to be displayed when the input is invalid.
+   * @property {json} editProfileForm.screen_name.validation  -The validations required for the screen name.
+   * @property {boolean} editProfileForm.screen_name.validation.required  -Indicates whether the field is necessary or not to signup.
+   * @property {boolean} editProfileForm.screen_name.validation.nospace  -Is set to true when spaces are not allowed in the input value.
+   * @property {boolean} editProfileForm.screen_name.validation.startLetter  -Is set to true when the input value should start with a letter only.
+   * @property {integer} editProfileForm.screen_name.validation.maxLength  -The maximum length for the input value.
+   * @property {json} editProfileForm.name  -User's name properties and configurations.
+   * @property {string} editProfileForm.name.elementType  -The type of the element.
+   * @property {json} editProfileForm.name.elementConfig  -The input element configurations.
+   * @property {string} editProfileForm.name.elementConfig.type  -The input element type.
+   * @property {string} editProfileForm.name.elementConfig.placeholder  -The input element's placeholder.
+   * @property {string} editProfileForm.name.value  -The value of the Username.
+   * @property {boolean} editProfileForm.name.valid  -indicates whether the input value is valid or not.
+   * @property {boolean} editProfileForm.name.touched  -indicates whether the the input element has been touched or not.
+   * @property {string} editProfileForm.name.errorMessage -The error message to be displayed when the input is invalid.
+   * @property {json} editProfileForm.name.validation  -The validations required for the name.
+   * @property {boolean} editProfileForm.name.validation.required  -Indicates whether the field is necessary or not to signup.
+   * @property {integer} editProfileForm.name.validation.maxLength  -The maximum length for the input value.
+   * @property {json} editProfileForm.bio  -User's bio properties and configurations.
+   * @property {string} editProfileForm.bio.elementType  -The type of the element.
+   * @property {json} editProfileForm.bio.elementConfig  -The input element configurations.
+   * @property {string} editProfileForm.bio.elementConfig.type  -The input element type.
+   * @property {string} editProfileForm.bio.elementConfig.placeholder -The input element's placeholder.
+   * @property {string} editProfileForm.bio.value -The value of the Username.
+   * @property {boolean} editProfileForm.bio.valid -indicates whether the input value is valid or not.
+   * @property {boolean} editProfileForm.bio.touched -indicates whether the the input element has been touched or not.
+   * @property {string} editProfileForm.bio.errorMessage -The error message to be displayed when the input is invalid.
+   * @property {json} editProfileForm.bio.validation -The validations required for the bio.
+   * @property {boolean} editProfileForm.bio.validation.required -Indicates whether the field is necessary or not to signup.
+   * @property {integer} editProfileForm.bio.validation.maxLength -The maximum length for the input value.
+   * @property {string} loc -location of user.
+   * @property {bool} formIsValid -indicates whether the form is valid or not before submitting.
+   * @property {bool} loading -indicates whether the spinner should be displayed or not.
+   * @property {string} file -image file path.
+   * @property {string} imapePreview  -default image url.
+   * @property {JSON} currentProfile -data of current user.
+   */
+
+  state = {
+    editProfileForm: {
+      screen_name: {
+        elementType: "input",
+        elementConfig: {
+          type: "text",
+          placeholder: "Enter your updated screen name"
+        },
+        value: "",
+        validation: {
+          required: true,
+          nospace: true,
+          maxLength: 15,
+          startLetter: true
+        },
+        valid: false,
+        touched: false,
+        autoFocus: true,
+        errorMessage:
+          "The screen name should start with a letter and with no spaces",
+        invalidScreenname: false
+      },
+      name: {
+        elementType: "input",
+        elementConfig: {
+          type: "text",
+          placeholder: "Enter your updated name"
+        },
+        value: "",
+        validation: {
+          maxLength: 15
+        },
+        errorMessage: "Maximum length is 15",
+        valid: false,
+        touched: false
+      },
+
+      bio: {
+        elementType: "input",
+        elementConfig: {
+          type: "input",
+          placeholder: "Enter your bio "
+        },
+        value: "",
+        validation: {
+          maxLength: 100
+        },
+        errorMessage: "Maximum length is 100",
+        valid: false,
+        touched: false
+      }
+    },
+    loc: "",
+    formIsValid: false,
+    loading: false,
+    error: {},
+    file: "",
+    imagePreview: "http://ssl.gstatic.com/accounts/ui/avatar_2x.png",
+    currentProfile: {}
+    //token: "",
+  };
+  /**
+   * Handles changes in the input elements by running its validity checks and updating its value in the state.
+   * @param {event} event - The change event.
+   * @param {integer} inputIdentifier - The input element's identifier.
+   */
+  inputChangeHandler(event, inputIdentifier) {
+    const updatedEditsProfileForm = {
+      ...this.state.editProfileForm
+    };
+    const updatedFormElement = {
+      ...updatedEditsProfileForm[inputIdentifier]
+    };
+    updatedFormElement.value = event.target.value;
+    updatedFormElement.valid = this.checkValidity(
+      updatedFormElement.value,
+      updatedFormElement.validation
+    );
+    updatedFormElement.touched = true;
+    updatedEditsProfileForm[inputIdentifier] = updatedFormElement;
+
+    let formIsValid = true;
+    for (let inputIdentifier in updatedEditsProfileForm) {
+      formIsValid =
+        updatedEditsProfileForm[inputIdentifier].valid &amp;&amp; formIsValid;
+    }
+    this.setState({
+      editProfileForm: updatedEditsProfileForm,
+      formIsValid: formIsValid
+    });
+  }
+
+  _handleChange = event => {
+    this.setState({ loc: event.target.value });
+    //this.setState({ location: event.target.value });
+  };
+  /**
+   * Check if a value matches a given set of validation rules.
+   * @param {string} value - The value to be checked.
+   * @param {json} rules - The set of vaidation rules to check against.
+   */
+  checkValidity(value, rules) {
+    let isValid = true;
+
+    if (rules.startLetter) {
+      isValid = !!value.match(/^[a-zA-Z][a-zA-Z_0-9]*$/) &amp;&amp; isValid;
+    }
+
+    if (rules.nospace) {
+      isValid = !(value.indexOf(" ") >= 0) &amp;&amp; isValid;
+    }
+    if (rules.minLength) {
+      isValid = value.length >= rules.minLength &amp;&amp; isValid;
+    }
+
+    if (rules.maxLength) {
+      isValid = value.length &lt;= rules.maxLength &amp;&amp; isValid;
+    }
+
+    return isValid;
+  }
+
+  submitHandler = event => {
+    event.preventDefault();
+    this.setState({ loading: true });
+    const formData = {};
+    for (let formElementIdentifier in this.state.editProfileForm) {
+      formData[formElementIdentifier] = this.state.editProfileForm[
+        formElementIdentifier
+      ].value;
+    }
+
+    const user = {
+      screen_name: this.state.editProfileForm.screenname.value,
+      name: this.state.editProfileForm.username.value,
+      location: this.state.loc,
+      bio: this.state.editProfileForm.bio.value
+    };
+    const img_url = {
+      img_url: this.state.imagePreview
+    };
+    this.props.editImage(img_url);
+    this.props.editUser(this.props, user).then(() => {
+      this.props.history.push("/profile");
+    });
+  };
+
+  onChange(e) {
+    e.preventDefault();
+
+    let reader = new FileReader();
+    let file = e.target.files[0];
+
+    reader.onload = e => {
+      this.setState({
+        file,
+        imagePreview: reader.result
+      });
+    };
+    if (file) {
+      reader.readAsDataURL(file);
+    }
+    console.log(reader.result);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.error) {
+      this.setState({ error: nextProps.error }, () => {
+        this.setState({ loading: false });
+        if (this.state.msg === "screen name already registered.") {
+          console.log("hello");
+          this.setState({ errorScreenname: true });
+        } else if (
+          this.state.msg ===
+          ' "screen_name" length must be at least 3 characters long'
+        ) {
+          this.setState({ errorLenScreenname: true });
+        } else if (
+          this.state.msg ===
+          ' "screen_name" length must be less than or equal to 15 characters long'
+        ) {
+          this.setState({ errorLenScreenname: true });
+        }
+      });
+    }
+  }
+
+  render() {
+    const formElementArray = [];
+    for (let key in this.state.editProfileForm) {
+      formElementArray.push({
+        id: key,
+        config: this.state.editProfileForm[key]
+      });
+    }
+    console.log(this.props.auth.currentUser);
+    let form = (
+      &lt;form onSubmit={this.submitHandler} className="editBox">
+        {formElementArray.map(formElement => (
+          &lt;InputProfile
+            key={formElement.id}
+            elementType={formElement.config.elementType}
+            elementConfig={formElement.config.elementConfig}
+            value={this.props.auth.currentUser[formElement.id]} //formElement.config.value}
+            invalid={!formElement.config.valid}
+            errorMessage={formElement.config.errorMessage}
+            shouldValidate={formElement.config.validation}
+            touched={formElement.config.touched}
+            autoFocus={formElement.config.autoFocus}
+            changed={event => this.inputChangeHandler(event, formElement.id)}
+          />
+        ))}
+
+        &lt;div className="col-sm-20">
+          &lt;select onChange={this._handleChange} className="form-control">
+            &lt;option selected="">Select location&lt;/option>
+
+            &lt;option value="Afghanistan">Afghanistan&lt;/option>
+            &lt;option value="Algeria">Algeria&lt;/option>
+            &lt;option value="Angola">Angola&lt;/option>
+            &lt;option value="Argentina">Argentina&lt;/option>
+            &lt;option value="Armenia">Armenia&lt;/option>
+            &lt;option value="Australia">Australia&lt;/option>
+            &lt;option value="Austria">Austria&lt;/option>
+
+            &lt;option value="Bahrain">Bahrain&lt;/option>
+            &lt;option value="Belgium">Belgium&lt;/option>
+            &lt;option value="Brazil">Brazil&lt;/option>
+            &lt;option value="Bulgaria">Bulgaria&lt;/option>
+            &lt;option value="Cameroon">Cameroon&lt;/option>
+            &lt;option value="China">China&lt;/option>
+            &lt;option value="Colombia">Colombia&lt;/option>
+            &lt;option value="Costa Rica">Costa Rica&lt;/option>
+            &lt;option value="Cuba">Cuba&lt;/option>
+            &lt;option value="Denmark">Denmark&lt;/option>
+            &lt;option value="Canada">Canada&lt;/option>
+            &lt;option value="Ecuador">Ecuador&lt;/option>
+            &lt;option value="Egypt">Egypt&lt;/option>
+            &lt;option value="Ethiopia">Ethiopia&lt;/option>
+
+            &lt;option value=" Finland"> Finland&lt;/option>
+            &lt;option value="France">France&lt;/option>
+            &lt;option value="Germany">Germany&lt;/option>
+            &lt;option value="Greece">Greece&lt;/option>
+            &lt;option value="France">France&lt;/option>
+            &lt;option value="France">France&lt;/option>
+            &lt;option value="France">France&lt;/option>
+            &lt;option>United States&lt;/option>
+            &lt;option>England&lt;/option>
+            &lt;option>Italy&lt;/option>
+            &lt;option>Lebanon&lt;/option>
+          &lt;/select>
+        &lt;/div>
+        &lt;div className="form-group">
+          &lt;Button>Save&lt;/Button>
+        &lt;/div>
+      &lt;/form>
+    );
+
+    return (
+      &lt;div>
+        &lt;div>
+          &lt;div>
+            &lt;h1 className="text-center editHeader">Edit your profile&lt;/h1>
+
+            &lt;div className="row">
+              &lt;div className="col-sm-5" />
+              &lt;div className="col-sm-3">
+                &lt;img
+                  src={this.state.imagePreview}
+                  width="200"
+                  height="200"
+                  border="10"
+                  className="img-rounded"
+                />
+                &lt;h1> &lt;/h1>
+                &lt;div class="input-group">
+                  &lt;div class="input-group-prepend">
+                    &lt;span class="input-group-text" id="inputGroupFileAddon01">
+                      Upload
+                    &lt;/span>
+                  &lt;/div>
+                  &lt;div class="custom-file">
+                    &lt;input
+                      type="file"
+                      class="custom-file-input"
+                      id="inputGroupFile01"
+                      aria-describedby="inputGroupFileAddon01"
+                      onChange={e => this.onChange(e)}
+                    />
+                    &lt;label class="custom-file-label" for="inputGroupFile01">
+                      Choose file
+                    &lt;/label>
+                  &lt;/div>
+                &lt;/div>
+              &lt;/div>
+            &lt;/div>
+          &lt;/div>
+          &lt;div className="text-center">
+            &lt;h4> &lt;/h4>
+            &lt;h4> &lt;/h4>
+            &lt;h2 className="editHeader">update your info&lt;/h2>
+            &lt;div className="col-xs-20">
+              &lt;div className="container">{form}&lt;/div>
+            &lt;/div>
+          &lt;/div>
+
+          &lt;div className="row">
+            &lt;div className="col-sm-5" />
+            &lt;span> &lt;/span>
+          &lt;/div>
+        &lt;/div>
+      &lt;/div>
+    );
+  }
+}
+const mapStateToProps = state => ({
+  auth: state.auth,
+  edit: state.edit,
+  error: state.errors
+});
+
+export default withRouter(
+  connect(
+    mapStateToProps,
+    { loginUser } //{ editUser, editImage, getProfile }
+  )(editProfile)
+);
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="editProfile.html">editProfile</a></li><li><a href="forgotPassword.html">forgotPassword</a></li><li><a href="login.html">login</a></li><li><a href="profile.html">profile</a></li><li><a href="signup.html">signup</a></li></ul><h3>Global</h3><ul><li><a href="global.html#button">button</a></li><li><a href="global.html#input">input</a></li><li><a href="global.html#LandingPage">LandingPage</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Wed Apr 17 2019 10:35:55 GMT+0200 (Egypt Standard Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

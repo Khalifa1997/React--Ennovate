@@ -13,9 +13,7 @@ import Radium, { StyleRoot } from "radium";
  * @class
  * */
 class profile extends Component {
-  constructor(props) {
-    super(props);
-    /**
+  /**
     * @property {json[]}  novas             - The user's novas.
     * @property {json[]}  likedNovas      - The user's liked novas.
     * @property {string} id                  -The user's unique id.
@@ -32,35 +30,35 @@ class profile extends Component {
     * @property {string} likesClass         -The likes option in the tab bar styling class.
     * @property {JSX} toggledButton         -The button to be rendered according to authentication.
     * @property {JSON[]} posts        -The posts currently rendered.
-    * @property {JSX} contentShown        -The container of posts currently displayed.
+    * @property {JSX} contentShown        -The container of posts currently displayed
     
-    **/
-    state = {
-      tweets: [],
-      likedTweets: [],
-      id: "",
-      screenName: "",
-      userName: "",
-      bio: "",
-      location: "",
-      followerscount: 0,
-      followingcount: 0,
-      novascount: 0,
-      novaIDs: [],
-      favNovasIDs: [],
-      novasClass: "active",
-      likesClass: "",
-      toggledButton: null,
-      posts: null,
-      contentShown: (
-        <div role="tabpanel" id="Section1">
-          <menu>
-            <div className="d-flex flex-column bd-highlight mb-3 justify-content-center align-items-center" />
-          </menu>
-        </div>
-      )
-    };
-  }
+  */
+  state = {
+    tweets: [],
+    likedTweets: [],
+    id: "",
+    screenName: "",
+    userName: "",
+    bio: "",
+    location: "",
+    followerscount: 0,
+    followingcount: 0,
+    novascount: 0,
+    novaIDs: [],
+    favNovasIDs: [],
+    novasClass: "active",
+    likesClass: "",
+    toggledButton: null,
+    posts: null,
+    contentShown: (
+      <div role="tabpanel" id="Section1">
+        <menu>
+          <div className="d-flex flex-column bd-highlight mb-3 justify-content-center align-items-center" />
+        </menu>
+      </div>
+    )
+  };
+
   tabChangedHandler = (event, tabtIdentifier) => {
     console.log("clicked");
 

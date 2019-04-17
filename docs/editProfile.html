@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Class: signup</title>
+    <title>JSDoc: Class: editProfile</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Class: signup</h1>
+    <h1 class="page-title">Class: editProfile</h1>
 
     
 
@@ -28,9 +28,9 @@
 
 <header>
     
-        <h2><span class="attribs"><span class="type-signature"></span></span>signup<span class="signature">()</span><span class="type-signature"></span></h2>
+        <h2><span class="attribs"><span class="type-signature"></span></span>editProfile<span class="signature">()</span><span class="type-signature"></span></h2>
         
-            <div class="class-description">This is a description of the signup Component.</div>
+            <div class="class-description">This is a description of the editProfile Component.</div>
         
     
 </header>
@@ -45,7 +45,7 @@
     
 
     
-    <h4 class="name" id="signup"><span class="type-signature"></span>new signup<span class="signature">()</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="editProfile"><span class="type-signature"></span>new editProfile<span class="signature">()</span><span class="type-signature"></span></h4>
     
 
     
@@ -93,7 +93,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Containers_Auth_Signup_Signup.js.html">Containers/Auth/Signup/Signup.js</a>, <a href="Containers_Auth_Signup_Signup.js.html#line13">line 13</a>
+        <a href="Containers_Profile_EditProfile.js.html">Containers/Profile/EditProfile.js</a>, <a href="Containers_Profile_EditProfile.js.html#line18">line 18</a>
     </li></ul></dd>
     
 
@@ -178,7 +178,7 @@
 
         <tr>
             
-                <td class="name"><code>signupForm</code></td>
+                <td class="name"><code>editProfileForm</code></td>
             
 
             <td class="type">
@@ -219,7 +219,7 @@
 
         <tr>
             
-                <td class="name"><code>screenname</code></td>
+                <td class="name"><code>screen_name</code></td>
             
 
             <td class="type">
@@ -639,7 +639,7 @@
 
         <tr>
             
-                <td class="name"><code>username</code></td>
+                <td class="name"><code>name</code></td>
             
 
             <td class="type">
@@ -655,7 +655,7 @@
 
             
 
-            <td class="description last">User's username properties and configurations.
+            <td class="description last">User's name properties and configurations.
                 <h6>Properties</h6>
 
 <table class="props">
@@ -905,7 +905,7 @@
 
             
 
-            <td class="description last">The validations required for the username.
+            <td class="description last">The validations required for the name.
                 <h6>Properties</h6>
 
 <table class="props">
@@ -990,7 +990,7 @@
 
         <tr>
             
-                <td class="name"><code>email</code></td>
+                <td class="name"><code>bio</code></td>
             
 
             <td class="type">
@@ -1006,7 +1006,7 @@
 
             
 
-            <td class="description last">User's email properties and configurations.
+            <td class="description last">User's bio properties and configurations.
                 <h6>Properties</h6>
 
 <table class="props">
@@ -1256,358 +1256,7 @@
 
             
 
-            <td class="description last">The validations required for the email.
-                <h6>Properties</h6>
-
-<table class="props">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>required</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">boolean</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Indicates whether the field is necessary or not to signup.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>email</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">boolean</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Check the user's input against emails' regex.</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-            </td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-            </td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>password</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">json</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">User's password properties and configurations.
-                <h6>Properties</h6>
-
-<table class="props">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>elementType</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The type of the input element.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>elementConfig</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">json</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The input element configurations.
-                <h6>Properties</h6>
-
-<table class="props">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>type</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The input element type.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>placeholder</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The input element's placeholder.</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-            </td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>value</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The value of the password.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>valid</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">boolean</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">indicates whether the input value is valid or not.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>touched</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">boolean</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">indicates whether the the input element has been touched or not.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>errorMessage</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The error message to be displayed when the input is invalid.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>validation</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">json</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The validations required for the password.
+            <td class="description last">The validations required for the bio.
                 <h6>Properties</h6>
 
 <table class="props">
@@ -1671,30 +1320,14 @@
 
             
 
-            <td class="description last">The maximum length for password.</td>
+            <td class="description last">The maximum length for the input value.</td>
         </tr>
 
     
+    </tbody>
+</table>
 
-        <tr>
-            
-                <td class="name"><code>minLength</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">integer</span>
-
-
-            
             </td>
-
-            
-
-            
-
-            <td class="description last">The minimum length for password.</td>
         </tr>
 
     
@@ -1715,48 +1348,7 @@
 
         <tr>
             
-                <td class="name"><code>reenter</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">json</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">User's reentered password properties and configurations.
-                <h6>Properties</h6>
-
-<table class="props">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>elementType</code></td>
+                <td class="name"><code>loc</code></td>
             
 
             <td class="type">
@@ -1772,301 +1364,7 @@
 
             
 
-            <td class="description last">The type of the input element.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>elementConfig</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">json</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The input element configurations.
-                <h6>Properties</h6>
-
-<table class="props">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>type</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The input element type.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>placeholder</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The input element's placeholder.</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-            </td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>value</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The value of the reenter.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>valid</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">boolean</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">indicates whether the input value is valid or not.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>touched</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">boolean</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">indicates whether the the input element has been touched or not.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>errorMessage</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The error message to be displayed when the input is invalid.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>validation</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">json</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The validations required for the reentered password.
-                <h6>Properties</h6>
-
-<table class="props">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>required</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">boolean</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Indicates whether the field is necessary or not to signup.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>matching</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">integer</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Check whether the reentered password matched the password</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-            </td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-            </td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-            </td>
+            <td class="description last">location of user.</td>
         </tr>
 
     
@@ -2079,7 +1377,7 @@
             <td class="type">
             
                 
-<span class="param-type">boolean</span>
+<span class="param-type">bool</span>
 
 
             
@@ -2089,7 +1387,7 @@
 
             
 
-            <td class="description last">indicates whether the data in the signup form is valid ot not.</td>
+            <td class="description last">indicates whether the form is valid or not before submitting.</td>
         </tr>
 
     
@@ -2102,7 +1400,7 @@
             <td class="type">
             
                 
-<span class="param-type">boolean</span>
+<span class="param-type">bool</span>
 
 
             
@@ -2112,37 +1410,14 @@
 
             
 
-            <td class="description last">Is set to true while posting users to the database.</td>
+            <td class="description last">indicates whether the spinner should be displayed or not.</td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>error</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">json</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The error respone caught from the backend.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>token</code></td>
+                <td class="name"><code>file</code></td>
             
 
             <td class="type">
@@ -2158,20 +1433,20 @@
 
             
 
-            <td class="description last">The session's token.</td>
+            <td class="description last">image file path.</td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>erroremail</code></td>
+                <td class="name"><code>imapePreview</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">boolean</span>
+<span class="param-type">string</span>
 
 
             
@@ -2181,20 +1456,20 @@
 
             
 
-            <td class="description last">Is set true when the submitted email is invalid.</td>
+            <td class="description last">default image url.</td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>errorscreenname</code></td>
+                <td class="name"><code>currentProfile</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">boolean</span>
+<span class="param-type">JSON</span>
 
 
             
@@ -2204,7 +1479,7 @@
 
             
 
-            <td class="description last">Is set to true when the screenname already exists in the database</td>
+            <td class="description last">data of current user.</td>
         </tr>
 
     
@@ -2243,7 +1518,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Containers_Auth_Signup_Signup.js.html">Containers/Auth/Signup/Signup.js</a>, <a href="Containers_Auth_Signup_Signup.js.html#line88">line 88</a>
+        <a href="Containers_Profile_EditProfile.js.html">Containers/Profile/EditProfile.js</a>, <a href="Containers_Profile_EditProfile.js.html#line68">line 68</a>
     </li></ul></dd>
     
 
@@ -2395,7 +1670,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Containers_Auth_Signup_Signup.js.html">Containers/Auth/Signup/Signup.js</a>, <a href="Containers_Auth_Signup_Signup.js.html#line209">line 209</a>
+        <a href="Containers_Profile_EditProfile.js.html">Containers/Profile/EditProfile.js</a>, <a href="Containers_Profile_EditProfile.js.html#line169">line 169</a>
     </li></ul></dd>
     
 
@@ -2429,7 +1704,7 @@
     
 
     
-    <h4 class="name" id="inputChangedHandler"><span class="type-signature"></span>inputChangedHandler<span class="signature">(event, inputIdentifier)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="inputChangeHandler"><span class="type-signature"></span>inputChangeHandler<span class="signature">(event, inputIdentifier)</span><span class="type-signature"></span></h4>
     
 
     
@@ -2553,142 +1828,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Containers_Auth_Signup_Signup.js.html">Containers/Auth/Signup/Signup.js</a>, <a href="Containers_Auth_Signup_Signup.js.html#line183">line 183</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id="submitHandler"><span class="type-signature"></span>submitHandler<span class="signature">(event)</span><span class="type-signature"></span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    Handles the signup form submission and sends a signup request to the server.
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>event</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">event</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The submit form event.</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Containers_Auth_Signup_Signup.js.html">Containers/Auth/Signup/Signup.js</a>, <a href="Containers_Auth_Signup_Signup.js.html#line246">line 246</a>
+        <a href="Containers_Profile_EditProfile.js.html">Containers/Profile/EditProfile.js</a>, <a href="Containers_Profile_EditProfile.js.html#line134">line 134</a>
     </li></ul></dd>
     
 
