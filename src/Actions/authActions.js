@@ -23,13 +23,15 @@ export const registerUser = userData => dispatch => {
       const token = res.data.token;
       localStorage.setItem("jwtToken", token);
       setAuthToken(token);
-      const decoded = jwt_decode(token);
-      dispatch({
-        type: actionTypes.SET_CURRENT_USER,
-        payload: decoded
-      });
+      // const decoded = jwt_decode(token);
+      // dispatch({
+      //   type: actionTypes.SET_CURRENT_USER,
+      //   payload: decoded
+      // });
       //   clone.token = res.headers.auth;
       //   this.setState({ token: clone.token });
+      const user = res.data.user;
+      dispatch(setCurrentUser(user, user));
     })
     .catch(err => {
       dispatch({
