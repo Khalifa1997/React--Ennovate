@@ -128,17 +128,11 @@ describe("<Signup />", () => {
       .at(2)
       .dive()
       .find("input");
-<<<<<<< HEAD
-
-    const validation = { required: true, email: true };
-    checkValidity(username, validation);
-=======
     check.simulate("change", {
       target: {
         value: email
       }
     });
->>>>>>> 84acfe1ae7b11d524b01d45763be23958c6c4101
 
     expect(wrapper.state().signupForm.email.valid).toBe(true);
   });
@@ -150,11 +144,11 @@ describe("<Signup />", () => {
       .at(3)
       .dive()
       .find("input");
-      check.simulate("change", {
-        target: {
-          value: password
-        }
-      });
+    check.simulate("change", {
+      target: {
+        value: password
+      }
+    });
     expect(wrapper.state().signupForm.password.valid).toBe(false);
   });
 
@@ -165,11 +159,11 @@ describe("<Signup />", () => {
       .at(0)
       .dive()
       .find("input");
-      check.simulate("change", {
-        target: {
-          value: screenname
-        }
-      });
+    check.simulate("change", {
+      target: {
+        value: screenname
+      }
+    });
     expect(wrapper.state().signupForm.screenname.valid).toBe(false);
   });
 
@@ -180,11 +174,11 @@ describe("<Signup />", () => {
       .at(0)
       .dive()
       .find("input");
-      check.simulate("change", {
-        target: {
-          value: screenname
-        }
-      });
+    check.simulate("change", {
+      target: {
+        value: screenname
+      }
+    });
     expect(wrapper.state().signupForm.screenname.valid).toBe(false);
   });
 });
