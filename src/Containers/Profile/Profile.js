@@ -6,6 +6,8 @@ import "./Profile.css";
 import Axios from "axios";
 import { setProfile } from "../../Actions/profileActions";
 import { runInThisContext } from "vm";
+import { zoomInUp } from "react-animations";
+import Radium, { StyleRoot } from "radium";
 
 class profile extends Component {
   constructor(props) {
@@ -27,6 +29,7 @@ class profile extends Component {
       novasClass: "active",
       likesClass: "",
       toggledButton: null,
+      posts: null,
       contentShown: (
         <div role="tabpanel" id="Section1">
           <menu>
@@ -43,13 +46,13 @@ class profile extends Component {
       console.log("nova clicked");
       const novasClass = "active";
       const likesClass = "";
-      const posts = this.state.tweets.map(tweet => {
+      const posts = this.state.tweets.reverse().map(tweet => {
         return (
           <Tweet
-            screenName={tweet.screenname}
-            userName={tweet.username}
+            screenName={tweet.user_screen_name}
+            userName={tweet.user_name}
             text={tweet.tweet_text}
-            isAuth={tweet.username === "omar"}
+            isAuth={tweet.user_name === this.props.auth.profile._id}
           />
         );
       });
@@ -66,19 +69,21 @@ class profile extends Component {
       this.setState({
         novasClass: novasClass,
         likesClass: likesClass,
-        contentShown: contentShown
+        posts: posts
       });
     } else if (tabtIdentifier === "1") {
       console.log("like clicked ");
       const novasClass = "";
       const likesClass = "active";
-      const posts = this.state.likedTweets.map(tweet => {
+      console.log(this.state.likedTweets);
+      const posts = this.state.likedTweets.reverse().map(tweet => {
         return (
           <Tweet
-            screenName={tweet.screenname}
-            userName={tweet.username}
+            key={tweet._id}
+            screenName={tweet.user_screen_name}
+            userName={tweet.user_screen_name}
             text={tweet.tweet_text}
-            isAuth={tweet.username === "omar"}
+            isAuth={tweet.user_name === this.props.auth.profile._id}
           />
         );
       });
@@ -95,66 +100,66 @@ class profile extends Component {
       this.setState({
         novasClass: novasClass,
         likesClass: likesClass,
+        posts: posts,
         contentShown: contentShown
       });
     }
   };
+
   componentDidMount() {
-    //Get my profile
-    const { handle } = this.props.match.params;
-    Axios.get("http://www.mocky.io/v2/5cb271603000006200a78c83")
-      .then(res => {
-        this.setState({
-          screenName: res.data.name,
-          userName: res.data.screen_name,
-          bio: res.data.bio,
-          novascount: res.data.novas_count,
-          location: res.data.location,
-          novaIDs: res.data.novaIDs,
-          favNovasIDs: res.data.favNovasIDs,
-          followerscount: res.data.followers_count,
-          followingcount: res.data.following_count,
-          id: res.data.ID
-        });
-      })
-      .catch(err => {
-        console.log(err);
-      });
     //Get my tweets
-    Axios.get("http://www.mocky.io/v2/5cb259bc3000007d00a78c71")
+    Axios.get("http://localhost:8080/statuses/user_timeline", {
+      headers: {
+        token: localStorage.getItem("jwtToken")
+      }
+    })
       .then(res => {
-        //console.log(tweets);
+        console.log("success from tweets");
+        console.log(res.data);
         this.setState({ tweets: res.data });
         //ghalat 3ashan el state bayza
-        const posts = this.state.tweets.map(tweet => {
+        const posts = this.state.tweets.reverse().map(tweet => {
           return (
             <Tweet
-              screenName={tweet.screenname}
-              userName={tweet.username}
-              text={tweet.tweet_text}
-              isAuth={tweet.username === "omar"}
+              key={tweet._id}
+              screenName={tweet.user_screen_name}
+              userName={tweet.user_name}
+              text={tweet.text}
+              isAuth={tweet.user === this.props.auth.profile._id}
             />
           );
         });
+        const styles = {
+          zoomInUp: {
+            animation: "x 1s",
+            animationName: Radium.keyframes(zoomInUp, "zoomInUp")
+          }
+        };
         const contentShown = (
           <div role="tabpanel" id="Section1">
             <menu>
-              <div className="d-flex flex-column bd-highlight mb-3 justify-content-center align-items-center">
-                {posts}
-              </div>
+              <StyleRoot>
+                <div
+                  className="d-flex flex-column bd-highlight mb-3 justify-content-center align-items-center"
+                  style={styles.zoomInUp}
+                >
+                  {posts}
+                </div>
+              </StyleRoot>
             </menu>
           </div>
         );
         this.setState({
+          posts: posts,
           contentShown: contentShown
         });
-        this.setState({ tweets: res.data });
+        //this.setState({ tweets: res.data });
       })
       .catch(err => {
-        console.log(err);
+        console.log("failure from tweets", { ...err });
       });
     //Get Liked tweets
-    Axios.get("http://www.mocky.io/v2/5cb25f113000005600a78c72")
+    Axios.get("http://www.mocky.io/v2/5cb6078d330000e1345d7fb5")
       .then(res => {
         this.setState({ likedTweets: res.data });
       })
@@ -213,6 +218,55 @@ class profile extends Component {
         toggledButton: toggledButton
       });
     }
+    Axios.get("http://localhost:8080/statuses/user_timeline", {
+      headers: {
+        token: Axios.defaults.headers.common.Authorization
+      }
+    })
+      .then(res => {
+        console.log("success from will receive props", { ...res });
+        this.setState({ tweets: res.data });
+        //ghalat 3ashan el state bayza
+        const posts = this.state.tweets.reverse().map(tweet => {
+          return (
+            <Tweet
+              key={tweet._id}
+              screenName={tweet.user_screen_name}
+              userName={tweet.user_name}
+              text={tweet.text}
+              isAuth={tweet.user === this.props.auth.profile._id}
+            />
+          );
+        });
+        const styles = {
+          zoomInUp: {
+            animation: "x 1s",
+            animationName: Radium.keyframes(zoomInUp, "zoomInUp")
+          }
+        };
+        const contentShown = (
+          <div role="tabpanel" id="Section1">
+            <menu>
+              <StyleRoot>
+                <div
+                  className="d-flex flex-column bd-highlight mb-3 justify-content-center align-items-center"
+                  style={styles.zoomInUp}
+                >
+                  {posts}
+                </div>
+              </StyleRoot>
+            </menu>
+          </div>
+        );
+
+        this.setState({
+          posts: posts,
+          contentShown: contentShown
+        });
+      })
+      .catch(err => {
+        console.log("failure from tweets", { ...err });
+      });
   }
   render() {
     return (

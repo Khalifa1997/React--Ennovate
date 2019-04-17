@@ -6,16 +6,18 @@ import { editUser } from "../../../Actions/editProfileActions";
 import { getProfile } from "../../../Actions/editProfileActions";
 import { editImage } from "../../../Actions/editProfileActions";
 import Button from "../../../Components/UI/button//button";
+import { withRouter } from "react-router-dom";
+import { loginUser } from "../../../Actions/authActions";
 
 import "./EditProfile.css";
 
 class editProfile extends Component {
   constructor(props) {
     super(props);
-    console.log("mirna", { ...this.props.auth });
+
     this.state = {
       editProfileForm: {
-        screenname: {
+        screen_name: {
           elementType: "input",
           elementConfig: {
             type: "text",
@@ -35,7 +37,7 @@ class editProfile extends Component {
             "The screen name should start with a letter and with no spaces",
           invalidScreenname: false
         },
-        username: {
+        name: {
           elementType: "input",
           elementConfig: {
             type: "text",
@@ -70,12 +72,14 @@ class editProfile extends Component {
       loading: false,
       error: {},
       file: "",
-      imagePreview: "http://ssl.gstatic.com/accounts/ui/avatar_2x.png"
+      imagePreview: this.props.auth.currentUser.profile_image_url, //"http://ssl.gstatic.com/accounts/ui/avatar_2x.png",
+      currentProfile: {}
       //token: "",
     };
   }
 
   inputChangeHandler = (event, inputIdentifier) => {
+    console.log("data el event", event.target.value);
     const updatedEditsProfileForm = {
       ...this.state.editProfileForm
     };
@@ -137,8 +141,8 @@ class editProfile extends Component {
     }
 
     const user = {
-      screen_name: this.state.editProfileForm.screenname.value,
-      name: this.state.editProfileForm.username.value,
+      screen_name: this.state.editProfileForm.screen_name.value,
+      name: this.state.editProfileForm.name.value,
       location: this.state.loc,
       bio: this.state.editProfileForm.bio.value
     };
@@ -146,8 +150,9 @@ class editProfile extends Component {
       img_url: this.state.imagePreview
     };
     this.props.editImage(img_url);
-    this.props.editUser(user);
-    console.log("hh", user.location);
+    this.props.editUser(user).then(() => {
+      this.props.history.push("/profile");
+    });
   };
 
   onChange(e) {
@@ -188,7 +193,6 @@ class editProfile extends Component {
         }
       });
     }
-    console.log("from receive props", { ...this.props.auth });
   }
 
   render() {
@@ -199,6 +203,7 @@ class editProfile extends Component {
         config: this.state.editProfileForm[key]
       });
     }
+    console.log(this.props.auth.currentUser);
     let form = (
       <form onSubmit={this.submitHandler} className="editBox">
         {formElementArray.map(formElement => (
@@ -206,7 +211,9 @@ class editProfile extends Component {
             key={formElement.id}
             elementType={formElement.config.elementType}
             elementConfig={formElement.config.elementConfig}
-            value={formElement.config.value}
+            defaultValue={this.props.auth.currentUser[formElement.id]} //formElement.config.value}
+            // value={formElement.config.value}
+            placeholder={this.props.auth.currentUser[formElement.id]}
             invalid={!formElement.config.valid}
             errorMessage={formElement.config.errorMessage}
             shouldValidate={formElement.config.validation}
@@ -325,7 +332,9 @@ const mapStateToProps = state => ({
   error: state.errors
 });
 
-export default connect(
-  mapStateToProps,
-  { editUser, editImage, getProfile }
-)(editProfile);
+export default withRouter(
+  connect(
+    mapStateToProps,
+    { editUser, editImage, getProfile }
+  )(editProfile)
+);

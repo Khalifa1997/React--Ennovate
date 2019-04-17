@@ -178,7 +178,7 @@ class login extends Component {
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.auth.isAuthenticated) {
-      this.props.history.push("/");
+      this.props.history.push("/profile");
     }
 
     if (nextProps.error) {

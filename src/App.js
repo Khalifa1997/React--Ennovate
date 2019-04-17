@@ -24,14 +24,16 @@ class App extends Component {
         <Route>
           <Switch>
             <Route path="/login" component={Login} />
-            <Route path="/ProfileCard" component={ProfileCard} />
             <Route path="/signup" component={Signup} />
-            <PrivateRoute path="/tweet" component={Tweet} />
             <Route path="/" exact component={LandingPage} />
-            <Route path="/forgotpassword" component={ForgotPassword} />
-            <Route path="/profile" component={Profile} />
-            <Route path="/editprofile" component={EditProfile} />
-            <Route path="/FansBox" component={FansBox} />
+            <PrivateRoute
+              exact
+              path="/forgotpassword"
+              component={ForgotPassword}
+            />
+            <Route exact path="/profile" component={Profile} />
+            <Route exact path="/editprofile" component={EditProfile} />
+            <Route exact path="/FansBox" component={FansBox} />
           </Switch>
         </Route>
       </div>

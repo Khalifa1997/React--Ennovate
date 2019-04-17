@@ -2,6 +2,8 @@ import React from "react";
 import Aux from "./../../Components/Wrapper/Auxilary";
 import img from "../../assets/images/Nova.png";
 import MyVerticallyCenteredModal from "../UI/Modal/Modal";
+
+import { withRouter } from "react-router-dom";
 import "./NavBar.css";
 
 class authNav extends React.Component {
@@ -10,6 +12,12 @@ class authNav extends React.Component {
 
     this.state = { modalShow: false };
   }
+
+  logout = () => {
+    localStorage.removeItem("jwtToken");
+    this.props.history.push("/");
+  };
+
   render() {
     let modalClose = () => this.setState({ modalShow: false });
 
@@ -61,11 +69,19 @@ class authNav extends React.Component {
                 aria-label="Search"
               />
               <button
-                class="btn btn-outline-success my-2 my-sm-0 tweetButton"
+                className="btn btn-outline-success my-2 my-sm-0 tweetButton"
                 onClick={() => this.setState({ modalShow: true })}
                 type="button"
               >
                 Nova
+              </button>
+
+              <button
+                className="btn btn-outline-dark  logoutButton"
+                onClick={this.logout}
+                type="button"
+              >
+                Logout
               </button>
 
               <MyVerticallyCenteredModal
@@ -80,4 +96,4 @@ class authNav extends React.Component {
   }
 }
 
-export default authNav;
+export default withRouter(authNav);

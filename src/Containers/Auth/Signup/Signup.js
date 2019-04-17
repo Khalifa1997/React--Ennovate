@@ -145,7 +145,7 @@ class signup extends Component {
     this.setState({ signupForm: updatedSignupForm, formIsValid: formIsValid });
   };
 
-   sum(a, b) {
+  sum(a, b) {
     return a + b;
   }
   checkValidity(value, rules) {
@@ -207,72 +207,76 @@ class signup extends Component {
   };
 
   componentWillReceiveProps(nextProps) {
+    if (nextProps.auth.isAuthenticated) {
+      this.props.history.push("/profile");
+    }
+
     if (nextProps.error) {
       this.setState({ error: nextProps.error }, () => {
         this.setState({ loading: false });
-        if (this.state.msg === "screen name already registered.") {
+        if (this.state.error === "screen name already registered.") {
           console.log("hello");
           this.setState({ errorScreenname: true });
-        } else if (this.state.msg  === "email already registered.") {
+        } else if (this.state.error === "email already registered.") {
           this.setState({ errorEmail: true });
-        } else if (this.state.msg  === ' "email" must be a valid email') {
+        } else if (this.state.error === ' "email" must be a valid email') {
           this.setState({ errorEmail: true });
         } else if (
-          this.state.msg  ===
+          this.state.error ===
           ' "screen_name" length must be at least 3 characters long'
         ) {
           this.setState({ errorLenScreenname: true });
         } else if (
-          this.state.msg  ===
+          this.state.error ===
           ' "screen_name" length must be less than or equal to 15 characters long'
         ) {
           this.setState({ errorLenScreenname: true });
         }
       });
 
-    if(nextProps.loader){
-      this.setState({loading: nextProps.loader})
-    }
+      if (nextProps.loader) {
+        this.setState({ loading: nextProps.loader });
+      }
 
-    //   /*
-    //   const clone = {
-    //     ...this.state.signupForm
-    //   };
-     
-    //  // clone.error = err.response.data;
-    //   //this.setState({ error: clone.error });
-    //   if (
-    //     this.state.error.error.message === "INVALID_EMAIL" ||
-    //     this.state.error.error.message === "EMAIL_NOT_FOUND"
-    //   ) {
-    //     this.setState({ erroremail: true });
-    //   } else if (
-    //     this.state.errors.error.message === "INVALID_SCREENNAME" ||
-    //     this.state.errors.error.message === "EXISTING_SCREENNAME"
-    //   ) {
-    //     this.setState({ errorscreenname: true });
-    //   }
-    //   */
-    //   console.log(err.response.data.msg);
-    //   this.setState({ loading: false });
-    //   if (err.response.data.msg === "screen name already registered.") {
-    //     console.log("hello");
-    //     this.setState({ errorScreenname: true });
-    //   } else if (err.response.data.msg === "email already registered.") {
-    //     this.setState({ errorEmail: true });
-    //   } else if (err.response.data.msg === ' "email" must be a valid email') {
-    //     this.setState({ errorEmail: true });
-    //   } else if (
-    //     err.response.data.msg ===
-    //     ' "screen_name" length must be at least 3 characters long'
-    //   ) {
-    //     this.setState({ errorLenScreenname: true });
-    //   } else if (
-    //     err.response.data.msg ===
-    //     ' "screen_name" length must be less than or equal to 15 characters long'
-    //   ) {
-    //     this.setState({ errorLenScreenname: true });
-    //   }
+      //   /*
+      //   const clone = {
+      //     ...this.state.signupForm
+      //   };
+
+      //  // clone.error = err.response.data;
+      //   //this.setState({ error: clone.error });
+      //   if (
+      //     this.state.error.error.message === "INVALID_EMAIL" ||
+      //     this.state.error.error.message === "EMAIL_NOT_FOUND"
+      //   ) {
+      //     this.setState({ erroremail: true });
+      //   } else if (
+      //     this.state.errors.error.message === "INVALID_SCREENNAME" ||
+      //     this.state.errors.error.message === "EXISTING_SCREENNAME"
+      //   ) {
+      //     this.setState({ errorscreenname: true });
+      //   }
+      //   */
+      //   console.log(err.response.data.msg);
+      //   this.setState({ loading: false });
+      //   if (err.response.data.msg === "screen name already registered.") {
+      //     console.log("hello");
+      //     this.setState({ errorScreenname: true });
+      //   } else if (err.response.data.msg === "email already registered.") {
+      //     this.setState({ errorEmail: true });
+      //   } else if (err.response.data.msg === ' "email" must be a valid email') {
+      //     this.setState({ errorEmail: true });
+      //   } else if (
+      //     err.response.data.msg ===
+      //     ' "screen_name" length must be at least 3 characters long'
+      //   ) {
+      //     this.setState({ errorLenScreenname: true });
+      //   } else if (
+      //     err.response.data.msg ===
+      //     ' "screen_name" length must be less than or equal to 15 characters long'
+      //   ) {
+      //     this.setState({ errorLenScreenname: true });
+      //   }
     }
   }
 
