@@ -8,7 +8,7 @@ import * as actionTypes from "./types";
 export const newNova = novaText => dispatch => {
   console.log("the nova", { ...novaText });
   axios
-    .post("http://3.19.122.178:3000/statuses/update", novaText, {
+    .post("http://localhost:8080/statuses/update", novaText, {
       headers: {
         token: axios.defaults.headers.common.Authorization
       }
@@ -16,7 +16,7 @@ export const newNova = novaText => dispatch => {
     .then(res => {
       console.log({ ...res });
       axios
-        .get("http://3.19.122.178:3000/users/show", {
+        .get("http://localhost:8080/users/show", {
           params: {
             user_ID: res.data.user
           }

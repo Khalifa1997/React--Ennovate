@@ -8,7 +8,7 @@ import { decode } from "querystring";
 //Register User
 export const registerUser = userData => dispatch => {
   axios
-    .post("http://3.19.122.178:3000/accounts/signup", userData)
+    .post("http://localhost:8080/accounts/signup", userData)
     .then(res => {
       console.log(res);
       // const clone = {
@@ -57,7 +57,7 @@ export const registerUser = userData => dispatch => {
 export const loginUser = userData => dispatch => {
   console.log(userData);
   axios
-    .post("http://3.19.122.178:3000/accounts/signin", userData)
+    .post("http://localhost:8080/accounts/signin", userData)
     .then(res => {
       const token = res.data.token;
       localStorage.setItem("jwtToken", token);

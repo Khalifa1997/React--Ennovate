@@ -6,7 +6,7 @@ import * as actionTypes from "./types";
 
 export const editUser = (props, userData) => dispatch => {
   axios
-    .post("http://3.19.122.178:3000/accounts/settings", userData, {
+    .post("http://localhost:8080/accounts/settings", userData, {
       headers: {
         token: axios.defaults.headers.common.Authorization
       }
@@ -29,7 +29,7 @@ export const editUser = (props, userData) => dispatch => {
 export const editImage = userData => dispatch => {
   console.log("{image}", userData);
   axios
-    .post("http://3.19.122.178:3000/accounts/update_profile_image ", userData, {
+    .post("http://localhost:8080/accounts/update_profile_image ", userData, {
       headers: {
         token: axios.defaults.headers.common.Authorization
       }
@@ -51,7 +51,7 @@ export const editImage = userData => dispatch => {
 export const getProfile = screen_name => dispatch => {
   return dispatch => {
     axios
-      .get("http://3.19.122.178:3000/accounts/settings", {
+      .get("http://localhost:8080/accounts/settings", {
         params: {
           screen_name
         }

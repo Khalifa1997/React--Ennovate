@@ -6,8 +6,11 @@ import "./Profile.css";
 import Axios from "axios";
 import { setProfile } from "../../Actions/profileActions";
 import { runInThisContext } from "vm";
-import { zoomInUp } from "react-animations";
-import Radium, { StyleRoot } from "radium";
+import {
+  CSSTransition,
+  Transition,
+  TransitionGroup
+} from "react-transition-group";
 
 class profile extends Component {
   constructor(props) {
@@ -29,7 +32,7 @@ class profile extends Component {
       novasClass: "active",
       likesClass: "",
       toggledButton: null,
-      posts: null,
+      novas: null,
       contentShown: (
         <div role="tabpanel" id="Section1">
           <menu>
@@ -39,6 +42,12 @@ class profile extends Component {
       )
     };
   }
+  deleteNovaHandeler = novaID => {
+    //Deleting a Nova
+    const newPosts = { ...this.state.novas };
+    newPosts.splice(novaID, 1);
+    this.setState({ novas: newPosts });
+  };
   tabChangedHandler = (event, tabtIdentifier) => {
     console.log("clicked");
 
@@ -46,61 +55,67 @@ class profile extends Component {
       console.log("nova clicked");
       const novasClass = "active";
       const likesClass = "";
-      const posts = this.state.tweets.reverse().map(tweet => {
+      const novas = this.state.tweets.reverse().map(tweet => {
         return (
-          <Tweet
-            screenName={tweet.user_screen_name}
-            userName={tweet.user_name}
-            text={tweet.tweet_text}
-            isAuth={tweet.user_name === this.props.auth.profile._id}
-          />
+          <CSSTransition key={tweet._id} timeout={700} classNames="move">
+            <Tweet
+              screenName={tweet.user_screen_name}
+              key={tweet._id}
+              userName={tweet.user_name}
+              text={tweet.tweet_text}
+              isAuth={tweet.user_name === this.props.auth.profile._id}
+            />
+          </CSSTransition>
         );
       });
 
       const contentShown = (
         <div role="tabpanel" id="Section1">
           <menu>
-            <div className="d-flex flex-column bd-highlight mb-3 justify-content-center align-items-center">
-              {posts}
-            </div>
+            <TransitionGroup className="d-flex flex-column bd-highlight mb-3 justify-content-center align-items-center">
+              {novas}
+            </TransitionGroup>
           </menu>
         </div>
       );
       this.setState({
         novasClass: novasClass,
         likesClass: likesClass,
-        posts: posts
+        contentShown: contentShown,
+        novas: novas
       });
     } else if (tabtIdentifier === "1") {
       console.log("like clicked ");
       const novasClass = "";
       const likesClass = "active";
       console.log(this.state.likedTweets);
-      const posts = this.state.likedTweets.reverse().map(tweet => {
+      const novas = this.state.likedTweets.reverse().map(tweet => {
         return (
-          <Tweet
-            key={tweet._id}
-            screenName={tweet.user_screen_name}
-            userName={tweet.user_screen_name}
-            text={tweet.tweet_text}
-            isAuth={tweet.user_name === this.props.auth.profile._id}
-          />
+          <CSSTransition key={tweet._id} timeout={700} classNames="move">
+            <Tweet
+              screenName={tweet.user_screen_name}
+              key={tweet._id}
+              userName={tweet.user_name}
+              text={tweet.tweet_text}
+              isAuth={tweet.user_name === this.props.auth.profile._id}
+            />
+          </CSSTransition>
         );
       });
 
       const contentShown = (
         <div role="tabpanel" id="Section2">
           <menu>
-            <div className="d-flex flex-column bd-highlight mb-3 justify-content-center align-items-center">
-              {posts}
-            </div>
+            <TransitionGroup className="d-flex flex-column bd-highlight mb-3 justify-content-center align-items-center">
+              {novas}
+            </TransitionGroup>
           </menu>
         </div>
       );
       this.setState({
         novasClass: novasClass,
         likesClass: likesClass,
-        posts: posts,
+        novas: novas,
         contentShown: contentShown
       });
     }
@@ -108,7 +123,7 @@ class profile extends Component {
 
   componentDidMount() {
     //Get my tweets
-    Axios.get("http://3.19.122.178:3000/statuses/user_timeline", {
+    Axios.get("http://localhost:8080/statuses/user_timeline", {
       headers: {
         token: localStorage.getItem("jwtToken")
       }
@@ -118,39 +133,31 @@ class profile extends Component {
         console.log(res.data);
         this.setState({ tweets: res.data });
         //ghalat 3ashan el state bayza
-        const posts = this.state.tweets.reverse().map(tweet => {
+        const novas = this.state.tweets.reverse().map(tweet => {
           return (
-            <Tweet
-              key={tweet._id}
-              screenName={tweet.user_screen_name}
-              userName={tweet.user_name}
-              text={tweet.text}
-              isAuth={tweet.user === this.props.auth.profile._id}
-            />
+            <CSSTransition key={tweet._id} timeout={700} classNames="move">
+              <Tweet
+                screenName={tweet.user_screen_name}
+                key={tweet._id}
+                userName={tweet.user_name}
+                text={tweet.tweet_text}
+                isAuth={tweet.user_name === this.props.auth.profile._id}
+              />
+            </CSSTransition>
           );
         });
-        const styles = {
-          zoomInUp: {
-            animation: "x 1s",
-            animationName: Radium.keyframes(zoomInUp, "zoomInUp")
-          }
-        };
+
         const contentShown = (
           <div role="tabpanel" id="Section1">
             <menu>
-              <StyleRoot>
-                <div
-                  className="d-flex flex-column bd-highlight mb-3 justify-content-center align-items-center"
-                  style={styles.zoomInUp}
-                >
-                  {posts}
-                </div>
-              </StyleRoot>
+              <TransitionGroup className="d-flex flex-column bd-highlight mb-3 justify-content-center align-items-center">
+                {novas}
+              </TransitionGroup>
             </menu>
           </div>
         );
         this.setState({
-          posts: posts,
+          novas: novas,
           contentShown: contentShown
         });
         //this.setState({ tweets: res.data });
@@ -218,7 +225,7 @@ class profile extends Component {
         toggledButton: toggledButton
       });
     }
-    Axios.get("http://3.19.122.178:3000/statuses/user_timeline", {
+    Axios.get("http://localhost:8080/statuses/user_timeline", {
       headers: {
         token: Axios.defaults.headers.common.Authorization
       }
@@ -227,40 +234,32 @@ class profile extends Component {
         console.log("success from will receive props", { ...res });
         this.setState({ tweets: res.data });
         //ghalat 3ashan el state bayza
-        const posts = this.state.tweets.reverse().map(tweet => {
+        const novas = this.state.tweets.reverse().map(tweet => {
           return (
-            <Tweet
-              key={tweet._id}
-              screenName={tweet.user_screen_name}
-              userName={tweet.user_name}
-              text={tweet.text}
-              isAuth={tweet.user === this.props.auth.profile._id}
-            />
+            <CSSTransition key={tweet._id} timeout={700} classNames="move">
+              <Tweet
+                screenName={tweet.user_screen_name}
+                key={tweet._id}
+                userName={tweet.user_name}
+                text={tweet.tweet_text}
+                isAuth={tweet.user_name === this.props.auth.profile._id}
+              />
+            </CSSTransition>
           );
         });
-        const styles = {
-          zoomInUp: {
-            animation: "x 1s",
-            animationName: Radium.keyframes(zoomInUp, "zoomInUp")
-          }
-        };
+
         const contentShown = (
           <div role="tabpanel" id="Section1">
             <menu>
-              <StyleRoot>
-                <div
-                  className="d-flex flex-column bd-highlight mb-3 justify-content-center align-items-center"
-                  style={styles.zoomInUp}
-                >
-                  {posts}
-                </div>
-              </StyleRoot>
+              <TransitionGroup className="d-flex flex-column bd-highlight mb-3 justify-content-center align-items-center">
+                {novas}
+              </TransitionGroup>
             </menu>
           </div>
         );
 
         this.setState({
-          posts: posts,
+          novas: novas,
           contentShown: contentShown
         });
       })
