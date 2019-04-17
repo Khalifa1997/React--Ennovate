@@ -470,7 +470,7 @@ Remove or comment-out the code block below to see how the browser will fall-back
 }
 .move-enter {
   opacity: 0.01;
-  transform: translate(-40px, 0);
+  transform: translate(80px, 0);
 }
 
 .move-enter-active {
@@ -486,6 +486,6 @@ Remove or comment-out the code block below to see how the browser will fall-back
 
 .move-exit-active {
   opacity: 0.01;
-  transform: translate(40px, 0);
+  transform: translate(80px, 0);
   transition: all 500ms ease-in;
 }

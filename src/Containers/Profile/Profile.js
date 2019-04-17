@@ -46,15 +46,22 @@ class profile extends Component {
       newPosts.splice(index, 1);
       this.setState({ novas: newPosts });
       const novas = newPosts.map(tweet => {
+        const isLiked = this.props.auth.currentUser.favorites_novas_IDs.includes(
+          tweet._id
+        );
         return (
           <CSSTransition key={tweet._id} timeout={500} classNames="move">
             <Tweet
               screenName={tweet.user_screen_name}
+              isliked={isLiked}
               key={tweet._id}
               userName={tweet.user_name}
               deleteClicked={() => this.deleteNovaHandeler(tweet._id)}
               text={tweet.text}
-              isAuth={false}
+              isAuth={
+                this.props.auth.currentUser.screen_name ===
+                tweet.user_screen_name
+              }
             />
           </CSSTransition>
         );
@@ -83,15 +90,22 @@ class profile extends Component {
       const likesClass = "";
       console.log(this.state.novas);
       const novas = this.state.novas.map(tweet => {
+        const isLiked = this.props.auth.currentUser.favorites_novas_IDs.includes(
+          tweet._id
+        );
         return (
           <CSSTransition key={tweet._id} timeout={500} classNames="move">
             <Tweet
               screenName={tweet.user_screen_name}
+              isliked={isLiked}
               key={tweet._id}
               userName={tweet.user_name}
               deleteClicked={() => this.deleteNovaHandeler(tweet._id)}
               text={tweet.text}
-              isAuth={false}
+              isAuth={
+                this.props.auth.currentUser.screen_name ===
+                tweet.user_screen_name
+              }
             />
           </CSSTransition>
         );
@@ -117,15 +131,20 @@ class profile extends Component {
       const likesClass = "active";
       console.log(this.state.likedTweets);
       const likedTweets = this.state.likedTweets.map(tweet => {
+        const isLiked = true;
         return (
           <CSSTransition key={tweet._id} timeout={500} classNames="move">
             <Tweet
               screenName={tweet.user_screen_name}
+              isliked={isLiked}
               key={tweet._id}
               userName={tweet.user_name}
               text={tweet.text}
               deleteClicked={() => this.deleteNovaHandeler(tweet._id)}
-              isAuth={false}
+              isAuth={
+                this.props.auth.currentUser.screen_name ===
+                tweet.user_screen_name
+              }
             />
           </CSSTransition>
         );
@@ -168,15 +187,22 @@ class profile extends Component {
 
     if (this.state.novas) {
       const novas = this.state.novas.reverse().map(tweet => {
+        const isLiked = this.props.auth.currentUser.favorites_novas_IDs.includes(
+          tweet._id
+        );
         return (
           <CSSTransition key={tweet._id} timeout={500} classNames="move">
             <Tweet
               screenName={tweet.user_screen_name}
+              isliked={isLiked}
               key={tweet._id}
               userName={tweet.user_name}
               deleteClicked={() => this.deleteNovaHandeler(tweet._id)}
               text={tweet.text}
-              isAuth={false}
+              isAuth={
+                this.props.auth.currentUser.screen_name ===
+                tweet.user_screen_name
+              }
             />
           </CSSTransition>
         );
@@ -195,14 +221,8 @@ class profile extends Component {
         contentShown: contentShown
       });
     }
-    //Get Liked novas
-    /* Axios.get("http://www.mocky.io/v2/5cb6078d330000e1345d7fb5")
-      .then(res => {
-        this.setState({ likedTweets: res.data });
-      })
-      .catch(err => {
-        console.log(err);
-      });*/
+
+    //Get Liked Novas
   }
   componentWillMount() {
     console.log("Componenet will mount");
@@ -273,15 +293,22 @@ class profile extends Component {
       });
     console.log(this.state.novas);
     const novas = this.state.novas.reverse().map(tweet => {
+      const isLiked = this.props.auth.currentUser.favorites_novas_IDs.includes(
+        tweet._id
+      );
+
       return (
         <CSSTransition key={tweet._id} timeout={500} classNames="move">
           <Tweet
             screenName={tweet.user_screen_name}
+            isliked={isLiked}
             key={tweet._id}
             deleteClicked={() => this.deleteNovaHandeler(tweet._id)}
             userName={tweet.user_name}
             text={tweet.text}
-            isAuth={false}
+            isAuth={
+              this.props.auth.currentUser.screen_name === tweet.user_screen_name
+            }
           />
         </CSSTransition>
       );
