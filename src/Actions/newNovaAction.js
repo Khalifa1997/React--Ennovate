@@ -50,6 +50,8 @@ export const newNova = novaText => dispatch => {
       //     payload: err.response.data
       //   });
     });
+
+  return Promise.resolve();
 };
 
 export const setCurrentUser = (profile, authUser) => {
