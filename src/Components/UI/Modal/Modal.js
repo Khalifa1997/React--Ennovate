@@ -52,7 +52,11 @@ class MyVerticallyCenteredModal extends React.Component {
           <Button
             variant="outline-primary"
             className="modalButton"
-            onClick={text => this.props.newNova(this.state)}
+            onClick={text =>
+              this.props.newNova(this.state).then(() => {
+                this.props.onHide();
+              })
+            }
           >
             Nova
           </Button>
