@@ -72,7 +72,7 @@ class editProfile extends Component {
       loading: false,
       error: {},
       file: "",
-      imagePreview: "http://ssl.gstatic.com/accounts/ui/avatar_2x.png",
+      imagePreview: this.props.auth.currentUser.profile_image_url, //"http://ssl.gstatic.com/accounts/ui/avatar_2x.png",
       currentProfile: {}
       //token: "",
     };
@@ -212,6 +212,8 @@ class editProfile extends Component {
             elementType={formElement.config.elementType}
             elementConfig={formElement.config.elementConfig}
             defaultValue={this.props.auth.currentUser[formElement.id]} //formElement.config.value}
+            // value={formElement.config.value}
+            placeholder={this.props.auth.currentUser[formElement.id]}
             invalid={!formElement.config.valid}
             errorMessage={formElement.config.errorMessage}
             shouldValidate={formElement.config.validation}
