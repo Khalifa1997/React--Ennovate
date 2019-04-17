@@ -37,7 +37,8 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "createdoc": "jsdoc src -r -d docs",
-    "test:coverage": "jest --verbose --coverage"
+    "test:coverage": "jest --verbose --coverage",
+    "test:e2e": "cypress open"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -49,6 +50,7 @@
     "not op_mini all"
   ],
   "devDependencies": {
+    "cypress": "^3.2.0",
     "enzyme": "^3.9.0",
     "enzyme-adapter-react-16": "^1.11.2",
     "enzyme-to-json": "^3.3.5"
