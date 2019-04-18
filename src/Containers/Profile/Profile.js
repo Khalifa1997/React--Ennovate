@@ -5,6 +5,7 @@ import Tweet from "../../Components/Tweet/Tweet";
 import "./Profile.css";
 import Axios from "axios";
 import { setProfile } from "../../Actions/profileActions";
+import { deleteNova } from "../../Actions/deleteNovaAction";
 import { runInThisContext } from "vm";
 import {
   CSSTransition,
