@@ -6,6 +6,7 @@ import "./Profile.css";
 import Axios from "axios";
 import { setProfile } from "../../Actions/profileActions";
 import { deleteNova } from "../../Actions/deleteNovaAction";
+import { likeNova } from "../../Actions/likeNovaAction";
 import { runInThisContext } from "vm";
 import {
   CSSTransition,
@@ -36,6 +37,9 @@ class profile extends Component {
       contentShown: null
     };
   }
+  likeNovaHandler = novaID => {
+    this.props.likeNova(novaID);
+  };
   deleteNovaHandler = novaID => {
     //Deleting a Nova
     this.props.deleteNova(novaID);
@@ -103,6 +107,7 @@ class profile extends Component {
               key={tweet._id}
               userName={tweet.user_name}
               deleteClicked={() => this.deleteNovaHandler(tweet._id)}
+              likeClicked={() => this.likeNovaHandler(tweet._id)}
               text={tweet.text}
               isAuth={
                 this.props.auth.currentUser.screen_name ===
@@ -143,6 +148,7 @@ class profile extends Component {
               userName={tweet.user_name}
               text={tweet.text}
               deleteClicked={() => this.deleteNovaHandler(tweet._id)}
+              likeClicked={() => this.likeNovaHandler(tweet._id)}
               isAuth={
                 this.props.auth.currentUser.screen_name ===
                 tweet.user_screen_name
@@ -200,6 +206,7 @@ class profile extends Component {
               key={tweet._id}
               userName={tweet.user_name}
               deleteClicked={() => this.deleteNovaHandler(tweet._id)}
+              likeClicked={() => this.likeNovaHandler(tweet._id)}
               text={tweet.text}
               isAuth={
                 this.props.auth.currentUser.screen_name ===
@@ -306,6 +313,7 @@ class profile extends Component {
             isliked={isLiked}
             key={tweet._id}
             deleteClicked={() => this.deleteNovaHandler(tweet._id)}
+            likeClicked={() => this.likeNovaHandler(tweet._id)}
             userName={tweet.user_name}
             text={tweet.text}
             isAuth={
@@ -443,5 +451,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { setProfile, deleteNova }
+  { setProfile, deleteNova, likeNova }
 )(profile);

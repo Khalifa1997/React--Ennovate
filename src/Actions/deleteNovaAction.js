@@ -17,11 +17,11 @@ export const deleteNova = nova_ID => dispatch => {
 
   return Promise.resolve();
 };
-export const deleteCurrentNova = currentUser => {
+export const deleteCurrentNova = updatedUser => {
   return {
     type: actionTypes.DELETE_NOVA,
     payload: {
-      profile: currentUser
+      auth: updatedUser
     }
   };
 };

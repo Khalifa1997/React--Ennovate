@@ -32,11 +32,19 @@ const Tweet = props => {
           <p className="card-text">{props.text}</p>
           {props.isliked === true ? (
             <a href="javascript:;" className="card-link">
-              <FontAwesomeIcon icon={faHeart} size="lg" />
+              <FontAwesomeIcon
+                onClick={props.likeClicked}
+                icon={faHeart}
+                size="lg"
+              />
             </a>
           ) : (
             <a href="javascript:;" className="card-link">
-              <FontAwesomeIcon icon={faHeartnotLiked} size="lg" />
+              <FontAwesomeIcon
+                onClick={props.likeClicked}
+                icon={faHeartnotLiked}
+                size="lg"
+              />
             </a>
           )}
 
