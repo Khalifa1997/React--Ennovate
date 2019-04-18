@@ -36,51 +36,52 @@ class profile extends Component {
       contentShown: null
     };
   }
-  deleteNovaHandeler = novaID => {
+  deleteNovaHandler = novaID => {
     //Deleting a Nova
-    const newPosts = [...this.state.novas];
-    console.log(this.state.novas);
+    this.props.deleteNova(novaID);
+    //const newPosts = [...this.state.novas];
+    //console.log(this.state.novas);
     //Delete a new tweet
-    const index = newPosts.findIndex(a => a._id === novaID);
-    console.log(index);
-    if (index != -1) {
-      newPosts.splice(index, 1);
-      this.setState({ novas: newPosts });
-      const novas = newPosts.map(tweet => {
-        const isLiked = this.props.auth.currentUser.favorites_novas_IDs.includes(
-          tweet._id
-        );
-        return (
-          <CSSTransition key={tweet._id} timeout={500} classNames="move">
-            <Tweet
-              screenName={tweet.user_screen_name}
-              isliked={isLiked}
-              key={tweet._id}
-              userName={tweet.user_name}
-              deleteClicked={() => this.deleteNovaHandeler(tweet._id)}
-              text={tweet.text}
-              isAuth={
-                this.props.auth.currentUser.screen_name ===
-                tweet.user_screen_name
-              }
-            />
-          </CSSTransition>
-        );
-      });
+    // const index = newPosts.findIndex(a => a._id === novaID);
+    // console.log(index);
+    // if (index != -1) {
+    //   newPosts.splice(index, 1);
+    //   this.setState({ novas: newPosts });
+    //   const novas = newPosts.map(tweet => {
+    //     const isLiked = this.props.auth.currentUser.favorites_novas_IDs.includes(
+    //       tweet._id
+    //     );
+    //     return (
+    //       <CSSTransition key={tweet._id} timeout={500} classNames="move">
+    //         <Tweet
+    //           screenName={tweet.user_screen_name}
+    //           isliked={isLiked}
+    //           key={tweet._id}
+    //           userName={tweet.user_name}
+    //           deleteClicked={() => this.deleteNovaHandler(tweet._id)}
+    //           text={tweet.text}
+    //           isAuth={
+    //             this.props.auth.currentUser.screen_name ===
+    //             tweet.user_screen_name
+    //           }
+    //         />
+    //       </CSSTransition>
+    //     );
+    //   });
 
-      const contentShown = (
-        <div role="tabpanel" id="Section1">
-          <menu>
-            <TransitionGroup className="d-flex flex-column bd-highlight mb-3 justify-content-center align-items-center">
-              {novas}
-            </TransitionGroup>
-          </menu>
-        </div>
-      );
-      this.setState({
-        contentShown: contentShown
-      });
-    }
+    //   const contentShown = (
+    //     <div role="tabpanel" id="Section1">
+    //       <menu>
+    //         <TransitionGroup className="d-flex flex-column bd-highlight mb-3 justify-content-center align-items-center">
+    //           {novas}
+    //         </TransitionGroup>
+    //       </menu>
+    //     </div>
+    //   );
+    //   this.setState({
+    //     contentShown: contentShown
+    //   });
+    // }
   };
   tabChangedHandler = (event, tabtIdentifier) => {
     console.log("clicked");
@@ -101,7 +102,7 @@ class profile extends Component {
               isliked={isLiked}
               key={tweet._id}
               userName={tweet.user_name}
-              deleteClicked={() => this.deleteNovaHandeler(tweet._id)}
+              deleteClicked={() => this.deleteNovaHandler(tweet._id)}
               text={tweet.text}
               isAuth={
                 this.props.auth.currentUser.screen_name ===
@@ -141,7 +142,7 @@ class profile extends Component {
               key={tweet._id}
               userName={tweet.user_name}
               text={tweet.text}
-              deleteClicked={() => this.deleteNovaHandeler(tweet._id)}
+              deleteClicked={() => this.deleteNovaHandler(tweet._id)}
               isAuth={
                 this.props.auth.currentUser.screen_name ===
                 tweet.user_screen_name
@@ -198,7 +199,7 @@ class profile extends Component {
               isliked={isLiked}
               key={tweet._id}
               userName={tweet.user_name}
-              deleteClicked={() => this.deleteNovaHandeler(tweet._id)}
+              deleteClicked={() => this.deleteNovaHandler(tweet._id)}
               text={tweet.text}
               isAuth={
                 this.props.auth.currentUser.screen_name ===
@@ -304,7 +305,7 @@ class profile extends Component {
             screenName={tweet.user_screen_name}
             isliked={isLiked}
             key={tweet._id}
-            deleteClicked={() => this.deleteNovaHandeler(tweet._id)}
+            deleteClicked={() => this.deleteNovaHandler(tweet._id)}
             userName={tweet.user_name}
             text={tweet.text}
             isAuth={
@@ -442,5 +443,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { setProfile }
+  { setProfile, deleteNova }
 )(profile);
