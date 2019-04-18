@@ -42,50 +42,51 @@ class profile extends Component {
   };
   deleteNovaHandler = novaID => {
     //Deleting a Nova
-    this.props.deleteNova(novaID);
-    //const newPosts = [...this.state.novas];
-    //console.log(this.state.novas);
+    //this.props.deleteNova(novaID);
+    const newPosts = [...this.state.novas];
+    console.log(this.state.novas);
     //Delete a new tweet
-    // const index = newPosts.findIndex(a => a._id === novaID);
-    // console.log(index);
-    // if (index != -1) {
-    //   newPosts.splice(index, 1);
-    //   this.setState({ novas: newPosts });
-    //   const novas = newPosts.map(tweet => {
-    //     const isLiked = this.props.auth.currentUser.favorites_novas_IDs.includes(
-    //       tweet._id
-    //     );
-    //     return (
-    //       <CSSTransition key={tweet._id} timeout={500} classNames="move">
-    //         <Tweet
-    //           screenName={tweet.user_screen_name}
-    //           isliked={isLiked}
-    //           key={tweet._id}
-    //           userName={tweet.user_name}
-    //           deleteClicked={() => this.deleteNovaHandler(tweet._id)}
-    //           text={tweet.text}
-    //           isAuth={
-    //             this.props.auth.currentUser.screen_name ===
-    //             tweet.user_screen_name
-    //           }
-    //         />
-    //       </CSSTransition>
-    //     );
-    //   });
+    const index = newPosts.findIndex(a => a._id === novaID);
+    console.log(index);
+    if (index != -1) {
+      newPosts.splice(index, 1);
+      this.setState({ novas: newPosts });
+      const novas = newPosts.map(tweet => {
+        const isLiked = this.props.auth.currentUser.favorites_novas_IDs.includes(
+          tweet._id
+        );
+        return (
+          <CSSTransition key={tweet._id} timeout={500} classNames="move">
+            <Tweet
+              screenName={tweet.user_screen_name}
+              isliked={isLiked}
+              key={tweet._id}
+              userName={tweet.user_name}
+              likeClicked={() => this.likeNovaHandler(tweet._id)}
+              deleteClicked={() => this.deleteNovaHandler(tweet._id)}
+              text={tweet.text}
+              isAuth={
+                this.props.auth.currentUser.screen_name ===
+                tweet.user_screen_name
+              }
+            />
+          </CSSTransition>
+        );
+      });
 
-    //   const contentShown = (
-    //     <div role="tabpanel" id="Section1">
-    //       <menu>
-    //         <TransitionGroup className="d-flex flex-column bd-highlight mb-3 justify-content-center align-items-center">
-    //           {novas}
-    //         </TransitionGroup>
-    //       </menu>
-    //     </div>
-    //   );
-    //   this.setState({
-    //     contentShown: contentShown
-    //   });
-    // }
+      const contentShown = (
+        <div role="tabpanel" id="Section1">
+          <menu>
+            <TransitionGroup className="d-flex flex-column bd-highlight mb-3 justify-content-center align-items-center">
+              {novas}
+            </TransitionGroup>
+          </menu>
+        </div>
+      );
+      this.setState({
+        contentShown: contentShown
+      });
+    }
   };
   tabChangedHandler = (event, tabtIdentifier) => {
     console.log("clicked");
@@ -259,7 +260,7 @@ class profile extends Component {
       });
     }
   }
-  async componentWillReceiveProps(nextprops) {
+  componentWillReceiveProps(nextprops) {
     //console.log("Component will reciever props");
     if (nextprops.auth.me) {
       console.log("me is true");
@@ -286,7 +287,7 @@ class profile extends Component {
         toggledButton: toggledButton
       });
     }
-    await Axios.get("http://localhost:8080/statuses/user_timeline", {
+    Axios.get("http://localhost:8080/statuses/user_timeline", {
       headers: {
         token: Axios.defaults.headers.common.Authorization
       }
