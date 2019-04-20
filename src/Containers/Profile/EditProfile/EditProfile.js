@@ -79,7 +79,7 @@ class editProfile extends Component {
   }
 
   inputChangeHandler = (event, inputIdentifier) => {
-    console.log("data el event", event.target.value);
+    //console.log("data el event", event.target.value);
     const updatedEditsProfileForm = {
       ...this.state.editProfileForm
     };
@@ -146,10 +146,10 @@ class editProfile extends Component {
       location: this.state.loc,
       bio: this.state.editProfileForm.bio.value
     };
-    const img_url = {
-      img_url: this.state.imagePreview
+    const profile_background_image_url = {
+      profile_background_image_url: this.state.imagePreview
     };
-    this.props.editImage(img_url);
+    this.props.editImage(profile_background_image_url);
     this.props.editUser(user).then(() => {
       this.props.history.push("/profile");
     });

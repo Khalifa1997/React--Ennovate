@@ -13,7 +13,18 @@ export const editUser = userData => dispatch => {
     })
     .then(res => {
       console.log("[from edit profile LAZZZZ]", { ...res });
-      dispatch(editProfileUser(res.data));
+     dispatch(editProfileUser(res.data));
+      console.log("hjbjkj",{ ...res });
+      axios
+        .get("http://localhost:8080/users/show", {
+          params: {
+            user_ID: res.data._id
+          }
+        })
+        .then(res => {
+          console.log("MEN EL update ", res);
+          dispatch(setCurrentUser(res.data, res.data));
+        });
     })
     .catch(err => {
       // console.log("{hello}", err.response.data.error.message);
@@ -27,7 +38,7 @@ export const editUser = userData => dispatch => {
 };
 
 export const editImage = userData => dispatch => {
-  console.log("{image}", userData);
+  //console.log("{image}", userData);
   axios
     .post("http://localhost:8080/accounts/update_profile_image ", userData, {
       headers: {
@@ -35,7 +46,19 @@ export const editImage = userData => dispatch => {
       }
     })
     .then(res => {
+      console.log("h",{ ...res });
       dispatch(editImageUser(res.data));
+      axios
+        .get("http://localhost:8080/users/show", {
+          params: {
+            user_ID: res.data._id
+          }
+        })
+        .then(res => {
+          console.log("MEN EL image ", res);
+          dispatch(setCurrentUser(res.data, res.data));
+        });
+      
     })
     .catch(err => {
       /*
@@ -46,6 +69,7 @@ export const editImage = userData => dispatch => {
       });
       */
     });
+    return Promise.resolve();
 };
 
 export const getProfile = screen_name => dispatch => {
@@ -86,6 +110,16 @@ export const setProfileUser = currentUser => {
     type: actionTypes.SET_PROFILE,
     payload: {
       profile: currentUser
+    }
+  };
+};
+
+export const setCurrentUser = (profile, authUser) => {
+  return {
+    type: actionTypes.SET_CURRENT_USER,
+    payload: {
+      profile: profile,
+      authUser: authUser
     }
   };
 };
