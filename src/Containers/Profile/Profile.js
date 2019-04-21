@@ -7,6 +7,7 @@ import Axios from "axios";
 import { setProfile } from "../../Actions/profileActions";
 import { deleteNova } from "../../Actions/deleteNovaAction";
 import { likeNova } from "../../Actions/likeNovaAction";
+import { reNovaNova } from "../../Actions/retweetNovaAction";
 import { runInThisContext } from "vm";
 import {
   CSSTransition,
@@ -40,6 +41,9 @@ class profile extends Component {
   likeNovaHandler = novaID => {
     this.props.likeNova(novaID);
   };
+  reNovaHandler = novaID => {
+    this.props.reNova(novaID);
+  };
   deleteNovaHandler = novaID => {
     //Deleting a Nova
     //this.props.deleteNova(novaID);
@@ -64,6 +68,7 @@ class profile extends Component {
               userName={tweet.user_name}
               likeClicked={() => this.likeNovaHandler(tweet._id)}
               deleteClicked={() => this.deleteNovaHandler(tweet._id)}
+              reNovaClicked={() => this.reNovaHandler(tweet._id)}
               text={tweet.text}
               isAuth={
                 this.props.auth.currentUser.screen_name ===
@@ -109,6 +114,7 @@ class profile extends Component {
               userName={tweet.user_name}
               deleteClicked={() => this.deleteNovaHandler(tweet._id)}
               likeClicked={() => this.likeNovaHandler(tweet._id)}
+              reNovaClicked={() => this.reNovaHandler(tweet._id)}
               text={tweet.text}
               isAuth={
                 this.props.auth.currentUser.screen_name ===
@@ -150,6 +156,7 @@ class profile extends Component {
               text={tweet.text}
               deleteClicked={() => this.deleteNovaHandler(tweet._id)}
               likeClicked={() => this.likeNovaHandler(tweet._id)}
+              reNovaClicked={() => this.reNovaHandler(tweet._id)}
               isAuth={
                 this.props.auth.currentUser.screen_name ===
                 tweet.user_screen_name
@@ -208,6 +215,7 @@ class profile extends Component {
               userName={tweet.user_name}
               deleteClicked={() => this.deleteNovaHandler(tweet._id)}
               likeClicked={() => this.likeNovaHandler(tweet._id)}
+              reNovaClicked={() => this.reNovaHandler(tweet._id)}
               text={tweet.text}
               isAuth={
                 this.props.auth.currentUser.screen_name ===
@@ -315,6 +323,7 @@ class profile extends Component {
             key={tweet._id}
             deleteClicked={() => this.deleteNovaHandler(tweet._id)}
             likeClicked={() => this.likeNovaHandler(tweet._id)}
+            reNovaClicked={() => this.reNovaHandler(tweet._id)}
             userName={tweet.user_name}
             text={tweet.text}
             isAuth={

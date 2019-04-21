@@ -1,4 +1,4 @@
-import { GET_PROFILE_DATA, DELETE_NOVA, LIKE_NOVA } from "../../Actions/types";
+import { GET_PROFILE_DATA, DELETE_NOVA } from "../../Actions/types";
 
 const initialState = {
   isAuthenticated: true,
@@ -19,12 +19,6 @@ const profileReducer = (state = initialState, action) => {
       return {
         ...state,
         currentUser: action.payload.profile
-      };
-    case LIKE_NOVA:
-      console.log("Y");
-      return {
-        ...state,
-        currentUser: action.payload.updatedUser
       };
     default:
       return state;

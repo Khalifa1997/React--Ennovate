@@ -1,11 +1,12 @@
 import * as actionTypes from "./types";
 import axios from "../axios-users";
-export const likeNova = nova_ID => dispatch => {
+export const reNova = nova_ID => dispatch => {
   axios
     .post("http://www.mocky.io/v2/5cb7ddd34c00007b0cd3d294", nova_ID, {
       headers: {
         token: axios.defaults.headers.common.Authorization
       }
+      //Params Nova ida
     })
     .then(res => {
       const firstUser = response.data.slice(0, 1);
@@ -32,11 +33,11 @@ export const likeNova = nova_ID => dispatch => {
           })
         )
         .catch(err => {
-          console.log("Failed Like nova get");
+          console.log("Failed reNova nova get");
         });
     })
     .catch(err => {
-      console.log("Failed Like nova post");
+      console.log("Failed reNova nova post");
     });
 
   return Promise.resolve();

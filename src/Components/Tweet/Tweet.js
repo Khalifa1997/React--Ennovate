@@ -9,10 +9,7 @@ import {
 import { faHeart as faHeartnotLiked } from "@fortawesome/free-regular-svg-icons";
 import { connect } from "react-redux";
 import { inherits } from "util";
-const onClickHandler = () => {
-  //Add delete request
-  console.log("Deleted");
-};
+
 const Tweet = props => {
   return (
     <div className="container-fluid mt-4">
@@ -49,7 +46,11 @@ const Tweet = props => {
           )}
 
           <a href="javascript:;" className="card-link">
-            <FontAwesomeIcon icon={faRetweet} size="lg" />
+            <FontAwesomeIcon
+              icon={faRetweet}
+              size="lg"
+              onClick={props.reNovaClicked}
+            />
           </a>
           <a href="javascript:;" className="card-link">
             <FontAwesomeIcon icon={faCommentDots} size="lg" />
