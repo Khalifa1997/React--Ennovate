@@ -260,7 +260,7 @@ class profile extends Component {
       });
     }
   }
-  componentWillReceiveProps(nextprops) {
+  async componentWillReceiveProps(nextprops) {
     //console.log("Component will reciever props");
     if (nextprops.auth.me) {
       console.log("me is true");
@@ -287,7 +287,7 @@ class profile extends Component {
         toggledButton: toggledButton
       });
     }
-    Axios.get("http://localhost:8080/statuses/user_timeline", {
+    await Axios.get("http://localhost:8080/statuses/user_timeline", {
       headers: {
         token: Axios.defaults.headers.common.Authorization
       }
