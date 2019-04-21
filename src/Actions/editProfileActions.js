@@ -13,8 +13,8 @@ export const editUser = userData => dispatch => {
     })
     .then(res => {
       console.log("[from edit profile LAZZZZ]", { ...res });
-     dispatch(editProfileUser(res.data));
-      console.log("hjbjkj",{ ...res });
+      dispatch(editProfileUser(res.data));
+      console.log("hjbjkj", { ...res });
       axios
         .get("http://localhost:8080/users/show", {
           params: {
@@ -27,11 +27,11 @@ export const editUser = userData => dispatch => {
         });
     })
     .catch(err => {
-      // console.log("{hello}", err.response.data.error.message);
-      // dispatch({
-      //   type: actionTypes.GET_ERRORS,
-      //   payload: err.response.data.error.message
-      // });
+      console.log("{hello}", err.response.data);
+      dispatch({
+        type: actionTypes.GET_ERRORS,
+        payload: err.response.data
+      });
     });
 
   return Promise.resolve();
@@ -46,7 +46,7 @@ export const editImage = userData => dispatch => {
       }
     })
     .then(res => {
-      console.log("h",{ ...res });
+      console.log("h", { ...res });
       dispatch(editImageUser(res.data));
       axios
         .get("http://localhost:8080/users/show", {
@@ -58,18 +58,15 @@ export const editImage = userData => dispatch => {
           console.log("MEN EL image ", res);
           dispatch(setCurrentUser(res.data, res.data));
         });
-      
     })
     .catch(err => {
-      /*
-      console.log("{hello}", err.response.data.error.message);
+      console.log("{hello}", err.response.data);
       dispatch({
         type: actionTypes.GET_ERRORS,
-        payload: err.response.data.error.message
+        payload: err.response.data
       });
-      */
     });
-    return Promise.resolve();
+  return Promise.resolve();
 };
 
 export const getProfile = screen_name => dispatch => {

@@ -33,6 +33,15 @@ const input = props => {
         characters"
       </p>
     );
+  } else if (props.errorScreenname) {
+    inputClasses = "InputElement Invalid";
+    validationError = (
+      <p className="ValidationError">
+        {" "}
+        "Screenname must be not less than 3 characters and not more than 15
+        characters"
+      </p>
+    );
   } else validationError = null;
   inputElement = (
     <input
