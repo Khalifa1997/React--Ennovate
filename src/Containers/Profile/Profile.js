@@ -2,12 +2,13 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import Nav from "../../Components/NavBar/NavBar";
 import Tweet from "../../Components/Tweet/Tweet";
+import novaModal from "../../Components/novaModal/novaModal";
 import "./Profile.css";
 import Axios from "axios";
 import { setProfile } from "../../Actions/profileActions";
 import { deleteNova } from "../../Actions/deleteNovaAction";
 import { likeNova } from "../../Actions/likeNovaAction";
-import { reNovaNova } from "../../Actions/retweetNovaAction";
+import { reNova } from "../../Actions/retweetNovaAction";
 import { runInThisContext } from "vm";
 import {
   CSSTransition,
@@ -352,6 +353,7 @@ class profile extends Component {
     return (
       <div className="body">
         <Nav />
+
         <div className="container widthadjust">
           <div className="profilecontainer ">
             <div className="profile">
@@ -461,5 +463,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { setProfile, deleteNova, likeNova }
+  { setProfile, deleteNova, likeNova, reNova }
 )(profile);

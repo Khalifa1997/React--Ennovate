@@ -8,8 +8,8 @@ export const likeNova = nova_ID => dispatch => {
       }
     })
     .then(res => {
-      const firstUser = response.data.slice(0, 1);
-      const secondUser = response.data.slice(1, 2);
+      const firstUser = res.data.slice(0, 1);
+      const secondUser = res.data.slice(1, 2);
 
       axios
         .all([

@@ -9,8 +9,8 @@ export const reNova = nova_ID => dispatch => {
       //Params Nova ida
     })
     .then(res => {
-      const firstUser = response.data.slice(0, 1);
-      const secondUser = response.data.slice(1, 2);
+      const firstUser = res.data.slice(0, 1);
+      const secondUser = res.data.slice(1, 2);
 
       axios
         .all([
