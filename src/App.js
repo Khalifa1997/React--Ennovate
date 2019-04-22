@@ -26,7 +26,6 @@ class App extends Component {
             <Route path="/login" component={Login} />
             <Route path="/signup" component={Signup} />
             <Route path="/" exact component={LandingPage} />
-            <Route path="/lol" exact component={novaModal} />
             <PrivateRoute
               exact
               path="/forgotpassword"

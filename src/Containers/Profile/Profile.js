@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import Nav from "../../Components/NavBar/NavBar";
 import Tweet from "../../Components/Tweet/Tweet";
-import novaModal from "../../Components/novaModal/novaModal";
+import NovaModal from "../../Components/novaModal/novaModal";
 import "./Profile.css";
 import Axios from "axios";
 import { setProfile } from "../../Actions/profileActions";
@@ -36,12 +36,59 @@ class profile extends Component {
       likesClass: "",
       toggledButton: null,
       novas: [],
-      contentShown: null
+      contentShown: null,
+      modal: null,
+      modalShown: false,
+      comments: []
     };
   }
+
+  toggle = () => {
+    this.setState({
+      modalShown: !this.state.modalShown
+    });
+  };
   likeNovaHandler = novaID => {
     this.props.likeNova(novaID);
   };
+  async modalShowHandler(novaID) {
+    console.log("hi man");
+    await Axios.get("http://localhost:8080/statuses/user_timeline", {
+      headers: {
+        token: localStorage.getItem("jwtToken")
+      }
+    })
+      .then(res => {
+        this.setState({ comments: res.data });
+      })
+      .catch(err => {});
+    const comments = this.state.comments
+      .reverse()
+      .slice(0, 5)
+      .map(tweet => {
+        return (
+          <Tweet
+            screenName={tweet.user_screen_name}
+            isliked={false}
+            key={tweet._id}
+            userName={tweet.user_name}
+            deleteClicked={() => this.deleteNovaHandler(tweet._id)}
+            likeClicked={() => this.likeNovaHandler(tweet._id)}
+            reNovaClicked={() => this.reNovaHandler(tweet._id)}
+            text={tweet.text}
+            isAuth={
+              this.props.auth.currentUser.screen_name === tweet.user_screen_name
+            }
+          />
+        );
+      });
+    /*  ); */
+    /*  }); */
+    //All coments are shown as tweets-- Add them to Modal
+    this.setState({ modalShown: true });
+    const Modal = { comments };
+    this.setState({ modal: comments });
+  }
   reNovaHandler = novaID => {
     this.props.reNova(novaID);
   };
@@ -57,19 +104,20 @@ class profile extends Component {
       newPosts.splice(index, 1);
       this.setState({ novas: newPosts });
       const novas = newPosts.map(tweet => {
-        const isLiked = this.props.auth.currentUser.favorites_novas_IDs.includes(
+        /*  const isLiked = this.props.auth.currentUser.favorites_novas_IDs.includes(
           tweet._id
-        );
+        ); */
         return (
           <CSSTransition key={tweet._id} timeout={500} classNames="move">
             <Tweet
               screenName={tweet.user_screen_name}
-              isliked={isLiked}
+              isliked={false}
               key={tweet._id}
               userName={tweet.user_name}
               likeClicked={() => this.likeNovaHandler(tweet._id)}
               deleteClicked={() => this.deleteNovaHandler(tweet._id)}
               reNovaClicked={() => this.reNovaHandler(tweet._id)}
+              textClicked={() => this.modalShowHandler(tweet._id)}
               text={tweet.text}
               isAuth={
                 this.props.auth.currentUser.screen_name ===
@@ -103,19 +151,20 @@ class profile extends Component {
       const likesClass = "";
       console.log(this.state.novas);
       const novas = this.state.novas.map(tweet => {
-        const isLiked = this.props.auth.currentUser.favorites_novas_IDs.includes(
+        /*  const isLiked = this.props.auth.currentUser.favorites_novas_IDs.includes(
           tweet._id
-        );
+        ); */
         return (
           <CSSTransition key={tweet._id} timeout={500} classNames="move">
             <Tweet
               screenName={tweet.user_screen_name}
-              isliked={isLiked}
+              isliked={false}
               key={tweet._id}
               userName={tweet.user_name}
               deleteClicked={() => this.deleteNovaHandler(tweet._id)}
               likeClicked={() => this.likeNovaHandler(tweet._id)}
               reNovaClicked={() => this.reNovaHandler(tweet._id)}
+              textClicked={() => this.modalShowHandler(tweet._id)}
               text={tweet.text}
               isAuth={
                 this.props.auth.currentUser.screen_name ===
@@ -146,7 +195,7 @@ class profile extends Component {
       const likesClass = "active";
       console.log(this.state.likedTweets);
       const likedTweets = this.state.likedTweets.map(tweet => {
-        const isLiked = true;
+        const isLiked = false;
         return (
           <CSSTransition key={tweet._id} timeout={500} classNames="move">
             <Tweet
@@ -157,6 +206,7 @@ class profile extends Component {
               text={tweet.text}
               deleteClicked={() => this.deleteNovaHandler(tweet._id)}
               likeClicked={() => this.likeNovaHandler(tweet._id)}
+              textClicked={() => this.modalShowHandler(tweet._id)}
               reNovaClicked={() => this.reNovaHandler(tweet._id)}
               isAuth={
                 this.props.auth.currentUser.screen_name ===
@@ -194,7 +244,6 @@ class profile extends Component {
     })
       .then(res => {
         console.log("Component Did mount");
-
         this.setState({ novas: res.data });
       })
       .catch(err => {
@@ -204,19 +253,20 @@ class profile extends Component {
 
     if (this.state.novas) {
       const novas = this.state.novas.reverse().map(tweet => {
-        const isLiked = this.props.auth.currentUser.favorites_novas_IDs.includes(
+        /* const isLiked = this.props.auth.currentUser.favorites_novas_IDs.includes(
           tweet._id
-        );
+        ); */
         return (
           <CSSTransition key={tweet._id} timeout={500} classNames="move">
             <Tweet
               screenName={tweet.user_screen_name}
-              isliked={isLiked}
+              isliked={false}
               key={tweet._id}
               userName={tweet.user_name}
               deleteClicked={() => this.deleteNovaHandler(tweet._id)}
               likeClicked={() => this.likeNovaHandler(tweet._id)}
               reNovaClicked={() => this.reNovaHandler(tweet._id)}
+              textClicked={() => this.modalShowHandler(tweet._id)}
               text={tweet.text}
               isAuth={
                 this.props.auth.currentUser.screen_name ===
@@ -312,19 +362,20 @@ class profile extends Component {
       });
     console.log(this.state.novas);
     const novas = this.state.novas.reverse().map(tweet => {
-      const isLiked = this.props.auth.currentUser.favorites_novas_IDs.includes(
+      /* const isLiked = this.props.auth.currentUser.favorites_novas_IDs.includes(
         tweet._id
-      );
+      ); */
 
       return (
         <CSSTransition key={tweet._id} timeout={500} classNames="move">
           <Tweet
             screenName={tweet.user_screen_name}
-            isliked={isLiked}
+            isliked={false}
             key={tweet._id}
             deleteClicked={() => this.deleteNovaHandler(tweet._id)}
             likeClicked={() => this.likeNovaHandler(tweet._id)}
             reNovaClicked={() => this.reNovaHandler(tweet._id)}
+            textClicked={() => this.modalShowHandler(tweet._id)}
             userName={tweet.user_name}
             text={tweet.text}
             isAuth={
@@ -444,6 +495,12 @@ class profile extends Component {
                 <div className="col-md-12 ">
                   <div className="tab-content tabs">
                     {this.state.contentShown}
+                    <NovaModal
+                      isOpen={this.state.modalShown}
+                      toggle={() => this.toggle()}
+                    >
+                      {this.state.modal}
+                    </NovaModal>
                   </div>
                 </div>
               </div>

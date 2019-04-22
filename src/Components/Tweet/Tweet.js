@@ -26,7 +26,9 @@ const Tweet = props => {
         <div className="card-body">
           <h5 className="card-title">{props.screenName}</h5>
           <h6 className="card-subtitle mb-2 text-muted">@{props.userName}</h6>
-          <p className="card-text">{props.text}</p>
+          <p className="card-text" onClick={props.textClicked}>
+            {props.text}
+          </p>
           {props.isliked === true ? (
             <a href="javascript:;" className="card-link">
               <FontAwesomeIcon
