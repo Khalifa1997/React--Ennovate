@@ -10,7 +10,8 @@ class forgotPassword extends Component {
   state = {
     email: "",
     inputClasses: "form-control InputElement",
-    validationError: <p />
+    validationError: <p />,
+    inputValid: false
   };
 
   inputChangedHandler = event => {
@@ -24,13 +25,26 @@ class forgotPassword extends Component {
       )
     ) {
       inputClasses = "InputElement Invalid";
-      validationError = <p className="ValidationError"> Invalid email</p>;
-    }
+      validationError = (
+        <p className="ValidationError"> Email format is incorrect</p>
+      );
+      this.setState({ inputValid: false });
+    } else this.setState({ inputValid: true });
     this.setState({
       email: email,
       inputClasses: inputClasses,
       validationError: validationError
     });
+  };
+  submitHandler = (event, email) => {
+    axios
+      .get("http://localhost:8080/forgetPassword/" + email)
+      .then(response => {
+        console.log(response.data);
+      })
+      .catch(error => {
+        console.log(error.response.data);
+      });
   };
   render() {
     return (
@@ -40,15 +54,19 @@ class forgotPassword extends Component {
           <div className="container">
             <div className="PageHeader Edge">Reset Password</div>
             <p>Enter the email associated with your Ennovate account</p>
-            <form>
-              <input
-                className={this.state.inputClasses}
-                autoFocus={true}
-                onChange={event => this.inputChangedHandler(event)}
-              />
-              {this.state.validationError}
-              <Button>Reset</Button>
-            </form>
+
+            <input
+              className={this.state.inputClasses}
+              autoFocus={true}
+              onChange={event => this.inputChangedHandler(event)}
+            />
+            {this.state.validationError}
+            <Button
+              clicked={event => this.submitHandler(event, this.state.email)}
+              disabled={!this.state.inputValid}
+            >
+              Reset
+            </Button>
           </div>
         </div>
       </div>

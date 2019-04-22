@@ -8,7 +8,7 @@ import ProfileCard from "./Components/profileCard/profileCard";
 import Signup from "./Containers/Auth/Signup/Signup";
 import Profile from "./Containers/Profile/Profile";
 import ForgotPassword from "./Containers/Auth/ForgotPassword/ForgotPassowrd";
-
+import ResetPassword from "./Containers/Auth/ForgotPassword/ResetPassword";
 //import { decode } from "querystring";
 import EditProfile from "./Containers/Profile/EditProfile/EditProfile";
 import FansBox from "./Components/FansBox/Box";
@@ -26,11 +26,8 @@ class App extends Component {
             <Route path="/login" component={Login} />
             <Route path="/signup" component={Signup} />
             <Route path="/" exact component={LandingPage} />
-            <PrivateRoute
-              exact
-              path="/forgotpassword"
-              component={ForgotPassword}
-            />
+            <Route exact path="/forgotpassword" component={ForgotPassword} />
+            <Route exact path="/resetpassword" component={ResetPassword} />
             <Route exact path="/profile" component={Profile} />
             <Route exact path="/editprofile" component={EditProfile} />
             <Route exact path="/FansBox" component={FansBox} />
