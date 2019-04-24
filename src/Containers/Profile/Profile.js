@@ -82,11 +82,8 @@ class profile extends Component {
           />
         );
       });
-    /*  ); */
-    /*  }); */
     //All coments are shown as tweets-- Add them to Modal
     this.setState({ modalShown: true });
-    const Modal = { comments };
     this.setState({ modal: comments });
   }
   reNovaHandler = novaID => {

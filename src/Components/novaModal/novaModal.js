@@ -8,10 +8,10 @@ const NovaModal = props => {
       <Modal
         isOpen={props.isOpen}
         toggle={props.toggle}
-        style={{ minWidth: "70%" }}
+        style={{ minWidth: "90%" }}
       >
         <ModalHeader toggle={props.toggle}>Comments</ModalHeader>
-        <ModalBody>{props.children}</ModalBody>
+        <ModalBody style={{ height: "60%" }}>{props.children}</ModalBody>
         <ModalFooter>
           <Button color="danger" onClick={props.toggle}>
             Cancel
