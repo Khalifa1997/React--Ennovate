@@ -8,6 +8,7 @@ import { editImage } from "../../../Actions/editProfileActions";
 import Button from "../../../Components/UI/button//button";
 import { withRouter } from "react-router-dom";
 import { loginUser } from "../../../Actions/authActions";
+import Nav from "../../../Components/NavBar/NavBar";
 
 import "./EditProfile.css";
 
@@ -209,7 +210,24 @@ class editProfile extends Component {
     console.log(this.props.auth.currentUser);
     let form = (
       <form onSubmit={this.submitHandler} className="editBox">
-        <h2 className="editHeader">update your info</h2>
+        <div className="center">
+          <img src={this.state.imagePreview} className="img-rounded " />
+        </div>
+        <div className="form-group limitwidth center">
+          <div className="custom-file ">
+            <input
+              type="file"
+              className="custom-file-input InputElement"
+              id="inputGroupFile01"
+              aria-describedby="inputGroupFileAddon01"
+              onChange={e => this.onChange(e)}
+            />
+            <label class="custom-file-label" for="inputGroupFile01">
+              Choose file
+            </label>
+          </div>
+        </div>
+
         {formElementArray.map(formElement => (
           <InputProfile
             key={formElement.id}
@@ -275,64 +293,13 @@ class editProfile extends Component {
     );
 
     return (
-      <div>
-        <div>
-          <h1 className="text-center editHeader">Edit Your eNOVAte Profile</h1>
-          <div class="row">
-            <div class="col-5" />
-            <div class="col-7">
-              <img
-                src={this.state.imagePreview}
-                width="200"
-                height="200"
-                border="10"
-                className="img-rounded"
-              />
-            </div>
-          </div>
+      <div className="Body scroll">
+        <Nav />
+        <div className="jumbotron jumbotron-fluid editprofilePageCanvas align-items-center ">
+          <div className="container toppadding">
+            <h2 className="editHeader">Update your info</h2>
 
-          <div class="container">
-            <div class="row">
-              <div class="col-6 col-md-4">
-                <h1> </h1>
-              </div>
-
-              <div class="col-6 col-md-4">
-                <div class="input-group">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text" id="inputGroupFileAddon01">
-                      Upload
-                    </span>
-                  </div>
-                  <div class="custom-file">
-                    <input
-                      type="file"
-                      class="custom-file-input"
-                      id="inputGroupFile01"
-                      aria-describedby="inputGroupFileAddon01"
-                      onChange={e => this.onChange(e)}
-                    />
-                    <label class="custom-file-label" for="inputGroupFile01">
-                      Choose file
-                    </label>
-                  </div>
-                </div>
-              </div>
-              <div class="col-6 col-md-4" />
-            </div>
-          </div>
-
-          <div className="text-center">
-            <div className="col-xs-20">
-              <div className="jumbotron jumbotron-fluid signupPageCanvass">
-                <div className="container">{form}</div>
-              </div>
-            </div>
-          </div>
-
-          <div className="row">
-            <div className="col-sm-5" />
-            <span> </span>
+            <div className="container ">{form}</div>
           </div>
         </div>
       </div>
