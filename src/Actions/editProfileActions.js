@@ -12,6 +12,7 @@ export const editUser = userData => dispatch => {
       }
     })
     .then(res => {
+      console.log("token:" + axios.defaults.headers.common.Authorization);
       console.log("[from edit profile LAZZZZ]", { ...res });
       dispatch(editProfileUser(res.data));
       console.log("hjbjkj", { ...res });

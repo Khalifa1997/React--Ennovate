@@ -10,18 +10,19 @@ const ProfileCard = props => {
     <div>
       <div
         class="card"
-        style={{ width: "18rem", backgroundColor: "gainsboro" }}
+        style={{ width: "inherit", backgroundColor: "gainsboro" }}
       >
-        <img src="..." class="card-img-top" alt="..." />
+        <img
+          src={props.auth.currentUser.profile_image_url}
+          class="card-img-top"
+          alt="..."
+        />
         <div class="card-body">
-          <h5 class="card-title">Bongo</h5>
+          <h5 class="card-title">{props.auth.currentUser.name}</h5>
           <h6 class="card-subtitle mb-2 text-muted">
-            @{props.auth.user.user_id}
+            @{props.auth.currentUser.screen_name}
           </h6>
-          <p class="card-text">
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
-          </p>
+          <p class="card-text">{props.auth.currentUser.bio}</p>
           <p>
             <FontAwesomeIcon
               icon={faMapMarkerAlt}
@@ -29,7 +30,7 @@ const ProfileCard = props => {
               color="dimgray"
               style={{ marginRight: "9px" }}
             />
-            Cairo,Egypt
+            {props.auth.currentUser.location}
           </p>
           <p>
             <FontAwesomeIcon

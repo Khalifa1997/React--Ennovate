@@ -9,44 +9,145 @@ import axios from "../../../axios-users";
 
 class resetPassword extends Component {
   state = {
-    password: "",
+    resetPasswordForm: {
+      password: {
+        elementType: "input",
+        elementConfig: {
+          type: "password",
+          placeholder: "Your password"
+        },
+        value: "",
+        validation: {
+          required: true,
+          minLength: 8,
+          maxLength: 25
+        },
+        errorMessage: "Password should be between 8 and 25 characters long",
+        valid: false,
+        touched: false
+      },
+      reenter: {
+        elementType: "input",
+        elementConfig: {
+          type: "password",
+          placeholder: "Re-enter Password"
+        },
+        value: "",
+        validation: {
+          required: true,
+          matching: true
+        },
+        errorMessage: "Passwords mismatch",
+        valid: false,
+        touched: false
+      }
+    },
     inputClasses: "form-control InputElement",
     validationError: <p />,
-    inputValid: false
+    formIsValid: false
   };
-  inputChangedHandler = (event, id) => {
-    if (id == 0) {
+  inputChangedHandler = (event, inputIdentifier) => {
+    const updatedResetPasswordForm = {
+      ...this.state.resetPasswordForm
+    };
+    const updatedFormElement = {
+      ...updatedResetPasswordForm[inputIdentifier]
+    };
+    updatedFormElement.value = event.target.value;
+    updatedFormElement.valid = this.checkValidity(
+      updatedFormElement.value,
+      updatedFormElement.validation
+    );
+    updatedFormElement.touched = true;
+    updatedResetPasswordForm[inputIdentifier] = updatedFormElement;
+
+    let formIsValid = true;
+    for (let inputIdentifier in updatedResetPasswordForm) {
+      formIsValid =
+        updatedResetPasswordForm[inputIdentifier].valid && formIsValid;
     }
+    this.setState({
+      resetPasswordForm: updatedResetPasswordForm,
+      formIsValid: formIsValid
+    });
+  };
+  checkValidity(value, rules) {
+    let isValid = true;
+    if (rules.minLength) {
+      isValid = value.length >= rules.minLength && isValid;
+    }
+
+    if (rules.maxLength) {
+      isValid = value.length <= rules.maxLength && isValid;
+    }
+    if (rules.matching) {
+      isValid =
+        value === this.state.resetPasswordForm.password.value && isValid;
+    }
+
+    return isValid;
+  }
+  submitHandler = event => {
+    event.preventDefault();
+    this.setState({ loading: true });
+    let password = { password: this.state.resetPasswordForm.password.value };
+    axios
+      .post(
+        "http://localhost:8080/reset_password?token=" +
+          this.props.match.params.token,
+        password,
+        {
+          headers: {
+            token: this.props.match.params.token
+          }
+        }
+      )
+      .then(response => {
+        console.log(response.data);
+      })
+      .catch(error => {
+        console.log(error.response.data);
+      });
   };
   render() {
+    const formElementsArray = [];
+    for (let key in this.state.resetPasswordForm) {
+      formElementsArray.push({
+        id: key,
+        config: this.state.resetPasswordForm[key]
+      });
+    }
+    let form = (
+      <form onSubmit={this.submitHandler} className="signupBox">
+        <h3 className="signupHeader">Reset your password</h3>
+        {formElementsArray.map(formElement => (
+          <Input
+            key={formElement.id}
+            elementType={formElement.config.elementType}
+            elementConfig={formElement.config.elementConfig}
+            value={formElement.config.value}
+            invalid={!formElement.config.valid}
+            errorMessage={formElement.config.errorMessage}
+            shouldValidate={formElement.config.validation}
+            touched={formElement.config.touched}
+            autoFocus={formElement.config.autoFocus}
+            changed={event => this.inputChangedHandler(event, formElement.id)}
+          />
+        ))}
+        <Button
+          //className="btn btn-primary signupButton"
+          //onClick={this.passwordHandler}
+          disabled={!this.state.formIsValid}
+        >
+          Signup
+        </Button>
+      </form>
+    );
     return (
       <div>
         <AuthNav />
         <div className="PasswordPageCanvas">
-          <div className="container">
-            <div className="PageHeader Edge">Reset Password</div>
-            <p>Enter the new password</p>
-
-            <input
-              className={this.state.inputClasses}
-              autoFocus={true}
-              onChange={event => this.inputChangedHandler(event)}
-              type="password"
-            />
-            <input
-              type="password"
-              className={this.state.inputClasses}
-              autoFocus={true}
-              onChange={event => this.inputChangedHandler(event)}
-            />
-            {this.state.validationError}
-            <Button
-              onClick={event => this.submitHandler(event)}
-              disabled={!this.state.inputValid}
-            >
-              Reset
-            </Button>
-          </div>
+          <div className="container">{form}</div>
         </div>
       </div>
     );

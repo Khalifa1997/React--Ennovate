@@ -7,6 +7,7 @@ import ProfileCard from "./Components/profileCard/profileCard";
 
 import Signup from "./Containers/Auth/Signup/Signup";
 import Profile from "./Containers/Profile/Profile";
+import Newsfeed from "./Containers/Newsfeed/Newsfeed";
 import ForgotPassword from "./Containers/Auth/ForgotPassword/ForgotPassowrd";
 import ResetPassword from "./Containers/Auth/ForgotPassword/ResetPassword";
 //import { decode } from "querystring";
@@ -27,8 +28,13 @@ class App extends Component {
             <Route path="/signup" component={Signup} />
             <Route path="/" exact component={LandingPage} />
             <Route exact path="/forgotpassword" component={ForgotPassword} />
-            <Route exact path="/resetpassword" component={ResetPassword} />
+            <Route
+              exact
+              path="/reset_password/:token"
+              component={ResetPassword}
+            />
             <Route exact path="/profile" component={Profile} />
+            <Route exact path="/newsfeed" component={Newsfeed} />
             <Route exact path="/editprofile" component={EditProfile} />
             <Route exact path="/FansBox" component={FansBox} />
           </Switch>
