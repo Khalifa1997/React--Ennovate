@@ -191,7 +191,7 @@ const LandingPage = props => {
       >
         <div className="container-fluid">
           <div className="row">
-            <div class="col-sm text-center">
+            <div className="col-sm text-center">
               <FontAwesomeIcon
                 icon={faGrin}
                 size="6x"
@@ -200,7 +200,7 @@ const LandingPage = props => {
               <h1 style={{ display: "block" }}>Totally Moderated Content</h1>
             </div>
 
-            <div class="col-sm text-center">
+            <div className="col-sm text-center">
               <FontAwesomeIcon
                 icon={faUserFriends}
                 size="6x"
@@ -225,7 +225,7 @@ const LandingPage = props => {
         <a href="/signup">
           <button
             type="button"
-            class="btn btn-light btn-lg"
+            className="btn btn-light btn-lg"
             style={{
               paddingTop: "3px",
               marginBottom: "20px",

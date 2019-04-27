@@ -61,9 +61,9 @@ class authNav extends React.Component {
                 </a>
               </li>
             </ul>
-            <form class="form-inline my-2 my-lg-0 searchForm">
+            <form className="form-inline my-2 my-lg-0 searchForm">
               <input
-                class="form-control mr-sm-2 searchBar"
+                className="form-control mr-sm-2 searchBar"
                 type="search"
                 placeholder="Search"
                 aria-label="Search"
