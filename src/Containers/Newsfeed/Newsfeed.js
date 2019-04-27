@@ -7,15 +7,66 @@ import "./Newsfeed.css";
 import Axios from "axios";
 import { setProfile } from "../../Actions/profileActions";
 import { runInThisContext } from "vm";
+import NovaModal from "../../Components/novaModal/novaModal";
+import { likeNova } from "../../Actions/likeNovaAction";
+import { reNova } from "../../Actions/retweetNovaAction";
 import { zoomInUp } from "react-animations";
 import Radium, { StyleRoot } from "radium";
 
 class Newsfeed extends Component {
   state = {
-    contentShown: null
+    contentShown: null,
+    modal: null,
+    modalShown: false,
+    comments: []
   };
-  componentDidMount() {
-    Axios.get("http://localhost:8080/statuses/home_timeline", {
+  toggle = () => {
+    this.setState({
+      modalShown: !this.state.modalShown
+    });
+  };
+  likeNovaHandler = novaID => {
+    this.props.likeNova(novaID);
+  };
+  reNovaHandler = novaID => {
+    this.props.reNova(novaID);
+  };
+  async modalShowHandler(novaID) {
+    console.log("hi man");
+    await Axios.get("http://localhost:8080/statuses/user_timeline", {
+      headers: {
+        token: localStorage.getItem("jwtToken")
+      }
+    })
+      .then(res => {
+        this.setState({ comments: res.data });
+      })
+      .catch(err => {});
+    const comments = this.state.comments
+      .reverse()
+      .slice(0, 5)
+      .map(tweet => {
+        return (
+          <Tweet
+            screenName={tweet.user_screen_name}
+            isliked={false}
+            key={tweet._id}
+            userName={tweet.user_name}
+            likeClicked={() => this.likeNovaHandler(tweet._id)}
+            reNovaClicked={() => this.reNovaHandler(tweet._id)}
+            text={tweet.text}
+            isAuth={
+              this.props.auth.currentUser.screen_name === tweet.user_screen_name
+            }
+          />
+        );
+      });
+    //All coments are shown as tweets-- Add them to Modal
+    this.setState({ modalShown: true });
+    this.setState({ modal: comments });
+  }
+  async componentDidMount() {
+    await Axios.get("http://localhost:8080/statuses/user_timeline", {
       headers: {
         token: localStorage.getItem("jwtToken")
       }
@@ -32,6 +83,9 @@ class Newsfeed extends Component {
               screenName={tweet.user_screen_name}
               userName={tweet.user_name}
               text={tweet.text}
+              textClicked={() => this.modalShowHandler(tweet._id)}
+              likeClicked={() => this.likeNovaHandler(tweet._id)}
+              reNovaClicked={() => this.reNovaHandler(tweet._id)}
               isAuth={tweet.user === this.props.auth.profile._id}
             />
           );
@@ -74,7 +128,15 @@ class Newsfeed extends Component {
           <div className="p-2">
             <ProfileCard />
           </div>
-          <div className="p-2 flex-grow-1">{this.state.contentShown}</div>
+          <div className="p-2 flex-grow-1">
+            {this.state.contentShown}
+            <NovaModal
+              isOpen={this.state.modalShown}
+              toggle={() => this.toggle()}
+            >
+              {this.state.modal}
+            </NovaModal>
+          </div>
         </div>
       </div>
     );
@@ -84,4 +146,7 @@ const mapStateToProps = state => ({
   auth: state.auth
 });
 
-export default connect(mapStateToProps)(Newsfeed);
+export default connect(
+  mapStateToProps,
+  { likeNova, reNova }
+)(Newsfeed);

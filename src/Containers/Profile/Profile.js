@@ -72,7 +72,6 @@ class profile extends Component {
             isliked={false}
             key={tweet._id}
             userName={tweet.user_name}
-            deleteClicked={() => this.deleteNovaHandler(tweet._id)}
             likeClicked={() => this.likeNovaHandler(tweet._id)}
             reNovaClicked={() => this.reNovaHandler(tweet._id)}
             text={tweet.text}
