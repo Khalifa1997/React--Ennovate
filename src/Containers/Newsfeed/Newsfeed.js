@@ -125,7 +125,7 @@ class Newsfeed extends Component {
       <div className="body">
         <Nav />
         <div className="d-flex">
-          <div className="p-2">
+          <div className="p-2" style={{ width: "25%", marginTop: "3%" }}>
             <ProfileCard />
           </div>
           <div className="p-2 flex-grow-1">
