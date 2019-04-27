@@ -25,14 +25,16 @@ class Newsfeed extends Component {
         console.log(res.data);
         let tweets = res.data;
         //ghalat 3ashan el state bayza
-        const posts = tweets.reverse().map(tweet => {
+        const posts = tweets.map(tweet => {
           return (
             <Tweet
               key={tweet._id}
               screenName={tweet.user_screen_name}
               userName={tweet.user_name}
               text={tweet.text}
-              isAuth={tweet.user === this.props.auth.profile._id}
+              isAuth={
+                tweet.user_scree_name === this.props.auth.profile.screen_name
+              }
             />
           );
         });

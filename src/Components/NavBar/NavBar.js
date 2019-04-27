@@ -17,6 +17,9 @@ class authNav extends React.Component {
     localStorage.removeItem("jwtToken");
     this.props.history.push("/");
   };
+  submitHandler = event => {
+    this.props.history.push("/search/" + event.target.value);
+  };
 
   render() {
     let modalClose = () => this.setState({ modalShow: false });
@@ -64,9 +67,9 @@ class authNav extends React.Component {
             <form class="form-inline my-2 my-lg-0 searchForm">
               <input
                 class="form-control mr-sm-2 searchBar"
-                type="search"
                 placeholder="Search"
                 aria-label="Search"
+                onDoubleClick={this.submitHandler}
               />
               <button
                 className="btn btn-outline-success my-2 my-sm-0 tweetButton"
