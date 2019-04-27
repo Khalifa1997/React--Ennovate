@@ -4,7 +4,7 @@ import Login from "./Containers/Auth/Login/Login";
 import LandingPage from "./Components/LandingPage/landingPage";
 import Tweet from "./Components/Tweet/Tweet";
 import ProfileCard from "./Components/profileCard/profileCard";
-
+import novaModal from "./Components/novaModal/novaModal";
 import Signup from "./Containers/Auth/Signup/Signup";
 import Profile from "./Containers/Profile/Profile";
 import Newsfeed from "./Containers/Newsfeed/Newsfeed";

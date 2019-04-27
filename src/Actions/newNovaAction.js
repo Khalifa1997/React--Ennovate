@@ -14,7 +14,7 @@ export const newNova = novaText => dispatch => {
       }
     })
     .then(res => {
-      console.log("hjbjkj",{ ...res });
+      console.log("hjbjkj", { ...res });
       axios
         .get("http://localhost:8080/users/show", {
           params: {
