@@ -10,6 +10,8 @@ import {
   Transition,
   TransitionGroup
 } from "react-transition-group";
+import { fabomb, faBomb } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 class Search extends Component {
   constructor(props) {
     super(props);
@@ -102,12 +104,25 @@ class Search extends Component {
           <Nav />
         </div>
         <div className="container" style={{ width: "80%" }}>
-          <div className="list-group">
-            <button className="list-group-item list-group-item-action active">
-              Search Results
-            </button>
-            <TransitionGroup>{this.state.results}</TransitionGroup>
-          </div>
+          {this.state.resultsArr.length > 0 ? (
+            <div className="list-group">
+              <button className="list-group-item list-group-item-action active">
+                Search Results
+              </button>
+              <TransitionGroup>{this.state.results}</TransitionGroup>
+            </div>
+          ) : (
+            <div style={{ textAlign: "center", marginTop: "10%" }}>
+              <FontAwesomeIcon
+                icon={faBomb}
+                size={"10x"}
+                style={{ color: "black", textAlign: "center" }}
+              />
+              <h1 style={{ textAlign: "center", marginTop: "2%" }}>
+                No results
+              </h1>
+            </div>
+          )}
         </div>
       </div>
     );
