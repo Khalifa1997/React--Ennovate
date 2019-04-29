@@ -1,16 +1,23 @@
 import React, { Component } from "react";
-import { connect } from "react-redux";
 import Nav from "../../Components/NavBar/NavBar";
-import ProfileCard from "../../Components/profileCard/profileCard";
-import Tweet from "../../Components/Tweet/Tweet";
-
+import ProfileSearch from "../../Components/profileSearch/profileSearch";
 import Axios from "axios";
-import { setProfile } from "../../Actions/profileActions";
-import { runInThisContext } from "vm";
+import { connect } from "react-redux";
 import { zoomInUp } from "react-animations";
-import Radium, { StyleRoot } from "radium";
-
+import "./Search.css";
+import {
+  CSSTransition,
+  Transition,
+  TransitionGroup
+} from "react-transition-group";
 class Search extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      resultsArr: [],
+      results: null
+    };
+  }
   // componentDidMount() {
   //   Axios.get(
   //     "http://localhost:8080/users/search?query=" +
@@ -47,8 +54,8 @@ class Search extends Component {
   //       console.log("failure from search", { ...err });
   //     });
   // }
-  getSearchResults() {
-    Axios.get(
+  async componentDidMount() {
+    await Axios.get(
       "http://localhost:8080/users/search?query=" +
         this.props.match.params.value,
       {
@@ -60,18 +67,54 @@ class Search extends Component {
       .then(res => {
         console.log("success from search");
         console.log(res.data);
+        this.setState({ resultsArr: res.data });
+        const showResults = this.state.resultsArr.map(profile => {
+          console.log("auth:");
+          console.log(this.props.auth);
+          return (
+            <CSSTransition key={profile._id} timeout={500} classNames="scroll">
+              <button
+                type="button"
+                className="list-group-item list-group-item-action"
+              >
+                <ProfileSearch
+                  key={profile._id}
+                  name={profile.name}
+                  usernmae={profile.screen_name}
+                  text={profile.bio}
+                  profile_image_url={profile.profile_image_url}
+                />
+              </button>
+            </CSSTransition>
+          );
+        });
+        this.setState({ results: showResults });
       })
       .catch(err => {
         console.log("failure from search", { ...err });
       });
   }
   render() {
-    this.getSearchResults();
+    // this.getSearchResults();
     return (
-      <div>
-        <Nav />
+      <div className="container-fluid">
+        <div style={{ marginBottom: "1%" }}>
+          <Nav />
+        </div>
+        <div className="container" style={{ width: "80%" }}>
+          <div className="list-group">
+            <button className="list-group-item list-group-item-action active">
+              Search Results
+            </button>
+            <TransitionGroup>{this.state.results}</TransitionGroup>
+          </div>
+        </div>
       </div>
     );
   }
 }
-export default Search;
+const mapStateToProps = state => ({
+  auth: state.auth
+});
+
+export default connect(mapStateToProps)(Search);
