@@ -4,6 +4,7 @@ import ProfileSearch from "../../Components/profileSearch/profileSearch";
 import Axios from "axios";
 import { connect } from "react-redux";
 import { zoomInUp } from "react-animations";
+import Spinner from "../../Components/UI/Spinner/Spinner";
 import "./Search.css";
 import {
   CSSTransition,
@@ -17,6 +18,7 @@ class Search extends Component {
     super(props);
     this.state = {
       resultsArr: [],
+      loading: true,
       results: null
     };
   }
@@ -57,6 +59,7 @@ class Search extends Component {
   //     });
   // }
   async componentDidMount() {
+    this.setState({ loading: true });
     await Axios.get(
       "http://localhost:8080/users/search?query=" +
         this.props.match.params.value,
@@ -66,10 +69,10 @@ class Search extends Component {
         }
       }
     )
-      .then(res => {
+      .then(async res => {
         console.log("success from search");
         console.log(res.data);
-        this.setState({ resultsArr: res.data });
+        await this.setState({ resultsArr: res.data });
         const showResults = this.state.resultsArr.map(profile => {
           console.log("auth:");
           console.log(this.props.auth);
@@ -95,6 +98,7 @@ class Search extends Component {
       .catch(err => {
         console.log("failure from search", { ...err });
       });
+    this.setState({ loading: false });
   }
   render() {
     // this.getSearchResults();
@@ -104,23 +108,35 @@ class Search extends Component {
           <Nav />
         </div>
         <div className="container" style={{ width: "80%" }}>
-          {this.state.resultsArr.length > 0 ? (
-            <div className="list-group">
-              <button className="list-group-item list-group-item-action active">
-                Search Results
-              </button>
-              <TransitionGroup>{this.state.results}</TransitionGroup>
+          {this.state.loading ? (
+            <div
+              class="d-flex justify-content-center"
+              style={{ marginTop: "2%" }}
+            >
+              <Spinner />
             </div>
           ) : (
-            <div style={{ textAlign: "center", marginTop: "10%" }}>
-              <FontAwesomeIcon
-                icon={faBomb}
-                size={"10x"}
-                style={{ color: "black", textAlign: "center" }}
-              />
-              <h1 style={{ textAlign: "center", marginTop: "2%" }}>
-                No results
-              </h1>
+            <div>
+              {this.state.resultsArr.length > 0 ? (
+                <div className="list-group">
+                  <button className="list-group-item list-group-item-action active">
+                    Search Results
+                  </button>
+                  <TransitionGroup>{this.state.results}</TransitionGroup>
+                </div>
+              ) : (
+                <div style={{ textAlign: "center", marginTop: "10%" }}>
+                  <FontAwesomeIcon
+                    icon={faBomb}
+                    size={"10x"}
+                    style={{ color: "black", textAlign: "center" }}
+                  />
+
+                  <h1 style={{ textAlign: "center", marginTop: "2%" }}>
+                    No results
+                  </h1>
+                </div>
+              )}
             </div>
           )}
         </div>
