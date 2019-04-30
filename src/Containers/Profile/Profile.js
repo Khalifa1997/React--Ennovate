@@ -10,6 +10,7 @@ import { deleteNova } from "../../Actions/deleteNovaAction";
 import { likeNova } from "../../Actions/likeNovaAction";
 import { reNova } from "../../Actions/retweetNovaAction";
 import { runInThisContext } from "vm";
+import Spinner from "../../Components/UI/Spinner/Spinner";
 import {
   CSSTransition,
   Transition,
@@ -23,6 +24,7 @@ class profile extends Component {
     this.state = {
       likedTweets: [],
       id: "",
+      loading: true,
       screenName: "",
       userName: "",
       bio: "",
@@ -62,6 +64,7 @@ class profile extends Component {
         this.setState({ comments: res.data });
       })
       .catch(err => {});
+
     const comments = this.state.comments
       .reverse()
       .slice(0, 5)
@@ -81,6 +84,7 @@ class profile extends Component {
           />
         );
       });
+    this.setState({ loading: false });
     //All coments are shown as tweets-- Add them to Modal
     this.setState({ modalShown: true });
     this.setState({ modal: comments });
@@ -233,6 +237,7 @@ class profile extends Component {
 
   async componentDidMount() {
     //Get my novas
+    this.setState({ loading: true });
     await Axios.get("http://localhost:8080/statuses/user_timeline", {
       headers: {
         token: localStorage.getItem("jwtToken")
@@ -283,7 +288,8 @@ class profile extends Component {
         </div>
       );
       this.setState({
-        contentShown: contentShown
+        contentShown: contentShown,
+        loading: false
       });
     }
 
@@ -317,6 +323,7 @@ class profile extends Component {
   }
   async componentWillReceiveProps(nextprops) {
     //console.log("Component will reciever props");
+    this.setState({ loading: false });
     if (nextprops.auth.me) {
       console.log("me is true");
       let toggledButton = this.state.toggledButton;
@@ -393,7 +400,8 @@ class profile extends Component {
     );
 
     this.setState({
-      contentShown: contentShown
+      contentShown: contentShown,
+      loading: false
     });
   }
   render() {
@@ -490,13 +498,24 @@ class profile extends Component {
                 </div>
                 <div className="col-md-12 ">
                   <div className="tab-content tabs">
-                    {this.state.contentShown}
-                    <NovaModal
-                      isOpen={this.state.modalShown}
-                      toggle={() => this.toggle()}
-                    >
-                      {this.state.modal}
-                    </NovaModal>
+                    {this.state.loading ? (
+                      <div
+                        className="d-flex justify-content-center"
+                        style={{ marginTop: "2%" }}
+                      >
+                        <Spinner />
+                      </div>
+                    ) : (
+                      <div>
+                        {this.state.contentShown}
+                        <NovaModal
+                          isOpen={this.state.modalShown}
+                          toggle={() => this.toggle()}
+                        >
+                          {this.state.modal}
+                        </NovaModal>
+                      </div>
+                    )}
                   </div>
                 </div>
               </div>

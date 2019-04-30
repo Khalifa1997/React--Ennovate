@@ -101,7 +101,7 @@ class Search extends Component {
     this.setState({ loading: false });
   }
   render() {
-    // this.getSearchResults();
+    // this.getSearchResults();z
     return (
       <div className="container-fluid">
         <div style={{ marginBottom: "1%" }}>
