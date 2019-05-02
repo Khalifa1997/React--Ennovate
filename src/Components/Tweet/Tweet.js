@@ -6,17 +6,15 @@ import {
   faCommentDots,
   faTrashAlt
 } from "@fortawesome/free-solid-svg-icons";
+import { faHeart as faHeartnotLiked } from "@fortawesome/free-regular-svg-icons";
 import { connect } from "react-redux";
 import { inherits } from "util";
-const onClickHandler = () => {
-  //Add delete request
-  console.log("Deleted");
-};
+
 const Tweet = props => {
   return (
-    <div class="container-fluid mt-4">
+    <div className="container-fluid mt-4">
       <div
-        class="card"
+        className="card"
         style={{
           textAlign: "left",
           width: inherits,
@@ -25,25 +23,46 @@ const Tweet = props => {
           alignContent: "center"
         }}
       >
-        <div class="card-body">
-          <h5 class="card-title">{props.screenName}</h5>
-          <h6 class="card-subtitle mb-2 text-muted">@{props.userName}</h6>
-          <p class="card-text">{props.text}</p>
-          <a href="#" class="card-link">
-            <FontAwesomeIcon icon={faHeart} size="lg" />
+        <div className="card-body">
+          <h5 className="card-title">{props.screenName}</h5>
+          <h6 className="card-subtitle mb-2 text-muted">@{props.userName}</h6>
+          <p className="card-text" onClick={props.textClicked}>
+            {props.text}
+          </p>
+          {props.isliked === true ? (
+            <a href="javascript:;" className="card-link">
+              <FontAwesomeIcon
+                onClick={props.likeClicked}
+                icon={faHeart}
+                size="lg"
+              />
+            </a>
+          ) : (
+            <a href="javascript:;" className="card-link">
+              <FontAwesomeIcon
+                onClick={props.likeClicked}
+                icon={faHeartnotLiked}
+                size="lg"
+              />
+            </a>
+          )}
+
+          <a href="javascript:;" className="card-link">
+            <FontAwesomeIcon
+              icon={faRetweet}
+              size="lg"
+              onClick={props.reNovaClicked}
+            />
           </a>
-          <a href="#" class="card-link">
-            <FontAwesomeIcon icon={faRetweet} size="lg" />
-          </a>
-          <a href="#" class="card-link">
+          <a href="javascript:;" className="card-link">
             <FontAwesomeIcon icon={faCommentDots} size="lg" />
           </a>
           {props.isAuth === true ? (
             <a
-              href="#"
-              class="card-link"
+              href="javascript:;"
+              className="card-link"
               style={{ float: "right" }}
-              onClick={onClickHandler}
+              onClick={props.deleteClicked}
             >
               <FontAwesomeIcon icon={faTrashAlt} color="red" size="lg" />
             </a>

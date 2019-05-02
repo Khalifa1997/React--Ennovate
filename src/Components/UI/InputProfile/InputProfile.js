@@ -8,8 +8,7 @@ const inputProfile = props => {
   if (props.invalid && props.touched) {
     inputClasses = "InputElement Invalid";
     validationError = <p className="ValidationError"> {props.errorMessage}</p>;
-  } 
- else if (props.invalidScreenname) {
+  } else if (props.invalidScreenname) {
     inputClasses = "InputElement Invalid";
     validationError = (
       <p className="ValidationError">
@@ -17,6 +16,7 @@ const inputProfile = props => {
         "invalid Screenname. Screenname already exist"
       </p>
     );
+  } else if (props.errorScreenname) {
   } else if (props.invalidLenScreenname) {
     inputClasses = "InputElement Invalid";
     validationError = (

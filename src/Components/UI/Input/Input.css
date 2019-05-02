@@ -9,6 +9,9 @@
   display: block;
   margin-bottom: 8px;
 }
+.scroll {
+  overflow-y: scroll;
+}
 
 .InputElement {
   outline: none;

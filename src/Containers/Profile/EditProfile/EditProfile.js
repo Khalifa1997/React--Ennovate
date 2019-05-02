@@ -8,6 +8,7 @@ import { editImage } from "../../../Actions/editProfileActions";
 import Button from "../../../Components/UI/button//button";
 import { withRouter } from "react-router-dom";
 import { loginUser } from "../../../Actions/authActions";
+import Nav from "../../../Components/NavBar/NavBar";
 
 import "./EditProfile.css";
 
@@ -72,14 +73,16 @@ class editProfile extends Component {
       loading: false,
       error: {},
       file: "",
-      imagePreview: this.props.auth.currentUser.profile_image_url, //"http://ssl.gstatic.com/accounts/ui/avatar_2x.png",
-      currentProfile: {}
+      imagePreview: "http://ssl.gstatic.com/accounts/ui/avatar_2x.png",
+      currentProfile: {},
+      errorScreenname: false,
+      msg: ""
       //token: "",
     };
   }
 
   inputChangeHandler = (event, inputIdentifier) => {
-    console.log("data el event", event.target.value);
+    //console.log("data el event", event.target.value);
     const updatedEditsProfileForm = {
       ...this.state.editProfileForm
     };
@@ -146,10 +149,10 @@ class editProfile extends Component {
       location: this.state.loc,
       bio: this.state.editProfileForm.bio.value
     };
-    const img_url = {
-      img_url: this.state.imagePreview
+    const profile_image_url = {
+      profile_image_url: this.state.imagePreview
     };
-    this.props.editImage(img_url);
+    this.props.editImage(profile_image_url);
     this.props.editUser(user).then(() => {
       this.props.history.push("/profile");
     });
@@ -175,11 +178,11 @@ class editProfile extends Component {
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.error) {
-      this.setState({ error: nextProps.error }, () => {
+      this.setState({ msg: nextProps.error }, () => {
         this.setState({ loading: false });
-        if (this.state.msg === "screen name already registered.") {
+        if (this.state.msg === "screen name is already used") {
           console.log("hello");
-          this.setState({ errorScreenname: true });
+          this.setState({ invalidScreenname: true });
         } else if (
           this.state.msg ===
           ' "screen_name" length must be at least 3 characters long'
@@ -196,6 +199,7 @@ class editProfile extends Component {
   }
 
   render() {
+    console.log("yaraab", this.state.editProfileForm.screen_name.value);
     const formElementArray = [];
     for (let key in this.state.editProfileForm) {
       formElementArray.push({
@@ -206,6 +210,24 @@ class editProfile extends Component {
     console.log(this.props.auth.currentUser);
     let form = (
       <form onSubmit={this.submitHandler} className="editBox">
+        <div className="center">
+          <img src={this.state.imagePreview} className="img-rounded " />
+        </div>
+        <div className="form-group limitwidth center">
+          <div className="custom-file ">
+            <input
+              type="file"
+              className="custom-file-input InputElement"
+              id="inputGroupFile01"
+              aria-describedby="inputGroupFileAddon01"
+              onChange={e => this.onChange(e)}
+            />
+            <label class="custom-file-label" for="inputGroupFile01">
+              Choose file
+            </label>
+          </div>
+        </div>
+
         {formElementArray.map(formElement => (
           <InputProfile
             key={formElement.id}
@@ -255,14 +277,15 @@ class editProfile extends Component {
             <option value="Germany">Germany</option>
             <option value="Greece">Greece</option>
             <option value="France">France</option>
-            <option value="France">France</option>
-            <option value="France">France</option>
             <option>United States</option>
             <option>England</option>
             <option>Italy</option>
             <option>Lebanon</option>
           </select>
+          <h4> </h4>
+          <h4> </h4>
         </div>
+
         <div className="form-group">
           <Button>Save</Button>
         </div>
@@ -270,56 +293,13 @@ class editProfile extends Component {
     );
 
     return (
-      <div>
-        <div>
-          <div>
-            <h1 className="text-center editHeader">Edit your profile</h1>
+      <div className="Body scroll">
+        <Nav />
+        <div className="jumbotron jumbotron-fluid editprofilePageCanvas align-items-center ">
+          <div className="container toppadding">
+            <h2 className="editHeader">Update your info</h2>
 
-            <div className="row">
-              <div className="col-sm-5" />
-              <div className="col-sm-3">
-                <img
-                  src={this.state.imagePreview}
-                  width="200"
-                  height="200"
-                  border="10"
-                  className="img-rounded"
-                />
-                <h1> </h1>
-                <div class="input-group">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text" id="inputGroupFileAddon01">
-                      Upload
-                    </span>
-                  </div>
-                  <div class="custom-file">
-                    <input
-                      type="file"
-                      class="custom-file-input"
-                      id="inputGroupFile01"
-                      aria-describedby="inputGroupFileAddon01"
-                      onChange={e => this.onChange(e)}
-                    />
-                    <label class="custom-file-label" for="inputGroupFile01">
-                      Choose file
-                    </label>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="text-center">
-            <h4> </h4>
-            <h4> </h4>
-            <h2 className="editHeader">update your info</h2>
-            <div className="col-xs-20">
-              <div className="container">{form}</div>
-            </div>
-          </div>
-
-          <div className="row">
-            <div className="col-sm-5" />
-            <span> </span>
+            <div className="container ">{form}</div>
           </div>
         </div>
       </div>

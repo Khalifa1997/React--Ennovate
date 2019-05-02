@@ -1,4 +1,4 @@
-import { GET_PROFILE_DATA, DELETE_NOVA } from "../../Actions/types";
+import { GET_PROFILE_DATA } from "../../Actions/types";
 
 const initialState = {
   isAuthenticated: true,
@@ -12,13 +12,6 @@ const profileReducer = (state = initialState, action) => {
       return {
         ...state,
         profile: action.payload.profile
-      };
-    case DELETE_NOVA:
-      console.log("X");
-
-      return {
-        ...state,
-        currentUser: action.payload.profile
       };
     default:
       return state;
