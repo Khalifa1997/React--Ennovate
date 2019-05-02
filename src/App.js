@@ -17,7 +17,9 @@ import FansBox from "./Components/FansBox/Box";
 import profileSearch from "./Components/profileSearch/profileSearch";
 import PrivateRoute from "./Components/common/PrivateRoute/PrivateRoute";
 import { decode } from "querystring";
-
+import { ToastContainer, Flip, Zoom, Bounce } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { flip } from "react-animations";
 //check for token
 
 class App extends Component {
@@ -43,6 +45,18 @@ class App extends Component {
             <Route exact path="/FansBox" component={FansBox} />
           </Switch>
         </Route>
+        <ToastContainer
+          position="top-center"
+          autoClose={3000}
+          hideProgressBar={false}
+          newestOnTop
+          closeOnClick
+          rtl={false}
+          pauseOnVisibilityChange
+          draggable
+          pauseOnHover
+          transition={Bounce}
+        />
       </div>
     );
   }

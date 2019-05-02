@@ -94,7 +94,7 @@ class profile extends Component {
   };
   deleteNovaHandler = novaID => {
     //Deleting a Nova
-    //this.props.deleteNova(novaID);
+    this.props.deleteNova(novaID);
     const newPosts = [...this.state.novas];
     console.log(this.state.novas);
     //Delete a new tweet
