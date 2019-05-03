@@ -105,7 +105,9 @@ class Search extends Component {
     return (
       <div className="container-fluid">
         <div style={{ marginBottom: "1%" }}>
-          <Nav />
+          <Nav
+            notifcationsCount={this.props.notifications.notifications.length}
+          />
         </div>
         <div className="container" style={{ width: "80%" }}>
           {this.state.loading ? (
@@ -145,7 +147,8 @@ class Search extends Component {
   }
 }
 const mapStateToProps = state => ({
-  auth: state.auth
+  auth: state.auth,
+  notifications: state.notifications
 });
 
 export default connect(mapStateToProps)(Search);
