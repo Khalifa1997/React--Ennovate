@@ -1,18 +1,24 @@
 import * as actionTypes from "./types";
 import axios from "../axios-users";
-export const reNova = nova_ID => dispatch => {
+export const reNova = id => dispatch => {
+  const idObj = {
+    nova_ID: id
+  };
+  console.log(idObj);
   axios
-    .post("http://www.mocky.io/v2/5cb7ddd34c00007b0cd3d294", nova_ID, {
+    .post("http://localhost:8080/statuses/reNova", idObj, {
       headers: {
         token: axios.defaults.headers.common.Authorization
       }
       //Params Nova ida
     })
     .then(res => {
-      const firstUser = res.data.slice(0, 1);
+      console.log(res.data);
+      dispatch(setCurrentUser(res.data.user, res.data.novauser));
+      /* const firstUser = res.data.slice(0, 1);
       const secondUser = res.data.slice(1, 2);
-
-      axios
+      dispatch(setCurrentUser(firstUser.data, secondUser.data)); */
+      /* axios
         .all([
           //Auth user Get
           axios.get("http://localhost:8080/users/show", {
@@ -26,15 +32,16 @@ export const reNova = nova_ID => dispatch => {
               user_ID: secondUser.user
             }
           })
-        ])
-        .then(
+        ]) */
+      /* .then(
           axios.spread((AuthRes, ProfileRes) => {
             dispatch(setCurrentUser(AuthRes.data, ProfileRes.data));
           })
-        )
-        .catch(err => {
+        ) */
+      /* .catch(err => {
           console.log("Failed reNova nova get");
         });
+    }) */
     })
     .catch(err => {
       console.log("Failed reNova nova post");
@@ -46,8 +53,8 @@ export const setCurrentUser = (authUser, profile) => {
   return {
     type: actionTypes.SET_CURRENT_USER,
     payload: {
-      profile: profile,
-      authUser: authUser
+      authUser: authUser,
+      profile: profile
     }
   };
 };

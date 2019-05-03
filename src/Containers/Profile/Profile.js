@@ -8,10 +8,12 @@ import Axios from "axios";
 import { setProfile } from "../../Actions/profileActions";
 import { deleteNova } from "../../Actions/deleteNovaAction";
 import { likeNova } from "../../Actions/likeNovaAction";
+import { getNotifications } from "../../Actions/notificationsAction";
 import { reNova } from "../../Actions/retweetNovaAction";
 import { runInThisContext } from "vm";
 import { Button, Header, Icon, Image, Modal } from "semantic-ui-react";
 
+import Spinner from "../../Components/UI/Spinner/Spinner";
 import {
   CSSTransition,
   Transition,
@@ -27,6 +29,7 @@ class profile extends Component {
     this.state = {
       likedTweets: [],
       id: "",
+      loading: true,
       screenName: "",
       userName: "",
       bio: "",
@@ -46,11 +49,26 @@ class profile extends Component {
       modalShownFans: false,
       comments: [],
       followers: [],
-      followings: []
+      followings: [],
+      modalType: null,
+      comments: []
     };
   }
-
+  notifcationsClickHandler = () => {
+    //Add notifcation message passing here
+    //Appending it to this.state.modal and set the two states
+    this.props.getNotifications(false);
+    this.setState({
+      modalShown: true,
+      modal: null,
+      modalType: 1
+    });
+  };
   toggle = () => {
+    if (this.state.modalShown === true && this.state.modalType === 1) {
+      //Clear notifications
+      this.props.getNotifications(true);
+    }
     this.setState({
       modalShown: !this.state.modalShown
     });
@@ -76,6 +94,7 @@ class profile extends Component {
         this.setState({ comments: res.data });
       })
       .catch(err => {});
+
     const comments = this.state.comments
       .reverse()
       .slice(0, 5)
@@ -95,8 +114,9 @@ class profile extends Component {
           />
         );
       });
+    this.setState({ loading: false });
     //All coments are shown as tweets-- Add them to Modal
-    this.setState({ modalShown: true });
+    this.setState({ modalShown: true, modalType: 0 });
     this.setState({ modal: comments });
   }
   reNovaHandler = novaID => {
@@ -104,7 +124,7 @@ class profile extends Component {
   };
   deleteNovaHandler = novaID => {
     //Deleting a Nova
-    //this.props.deleteNova(novaID);
+    this.props.deleteNova(novaID);
     const newPosts = [...this.state.novas];
     console.log(this.state.novas);
     //Delete a new tweet
@@ -247,20 +267,23 @@ class profile extends Component {
 
   async componentDidMount() {
     //Get my novas
+    this.setState({ loading: true });
     await Axios.get("http://localhost:8080/statuses/user_timeline", {
       headers: {
         token: localStorage.getItem("jwtToken")
       }
     })
       .then(res => {
-        console.log("Component Did mount");
         this.setState({ novas: res.data });
       })
       .catch(err => {
         console.log("failure from novas", { ...err });
       });
     //ghalat 3ashan el state bayza
-    await Axios.get("http://localhost:8080/friendships/list?screen_name=maram")
+    await Axios.get(
+      "http://localhost:8080/friendships/list?screen_name=" +
+        this.props.profile.user.screen_name
+    )
       .then(res => {
         console.log("frin lazloz");
         console.log(res.data.users);
@@ -307,14 +330,15 @@ class profile extends Component {
         </div>
       );
       this.setState({
-        contentShown: contentShown
+        contentShown: contentShown,
+        loading: false
       });
     }
 
     //Get Liked Novas
   }
   componentWillMount() {
-    console.log("Componenet will mount");
+    this.props.setProfile(this.props.match.params.screenName);
     if (this.props.auth.me) {
       let toggledButton = this.state.toggledButton;
       toggledButton = (
@@ -341,6 +365,7 @@ class profile extends Component {
   }
   async componentWillReceiveProps(nextprops) {
     //console.log("Component will reciever props");
+    this.setState({ loading: false });
     if (nextprops.auth.me) {
       console.log("me is true");
       let toggledButton = this.state.toggledButton;
@@ -372,8 +397,6 @@ class profile extends Component {
       }
     })
       .then(res => {
-        console.log("success from will receive props");
-
         this.setState({ novas: res.data });
         //ghalat 3ashan el state bayza
       })
@@ -417,13 +440,17 @@ class profile extends Component {
     );
 
     this.setState({
-      contentShown: contentShown
+      contentShown: contentShown,
+      loading: false
     });
   }
   render() {
     return (
       <div className="body">
-        <Nav />
+        <Nav
+          onClickHandler={() => this.notifcationsClickHandler()}
+          notifcationsCount={this.props.notifications.notifications.length}
+        />
 
         <div className="container widthadjust">
           <div className="profilecontainer ">
@@ -431,13 +458,13 @@ class profile extends Component {
               <div className="profile-image">
                 <img
                   className="imgwidth"
-                  src={this.props.auth.profile.profile_image_url}
+                  src={this.props.profile.user.profile_image_url}
                 />
               </div>
 
               <div className="profile-user-settings">
                 <h1 className="profile-user-name">
-                  {this.props.auth.profile.screen_name}
+                  {this.props.profile.user.screen_name}
                 </h1>
 
                 {this.state.toggledButton}
@@ -446,19 +473,19 @@ class profile extends Component {
               <div className="profile-stats">
                 <li>
                   <span className="profile-stat-count">
-                    {this.props.auth.profile.novas_count}
+                    {this.props.profile.user.novas_count}
                   </span>{" "}
                   Novas
                 </li>
                 <li>
                   <span className="profile-stat-count">
-                    {this.props.auth.profile.followers_count}
+                    {this.props.profile.user.followers_count}
                   </span>{" "}
                   followers
                 </li>
                 <li>
                   <span className="profile-stat-count">
-                    {this.props.auth.profile.friends_count}
+                    {this.props.profile.user.friends_count}
                   </span>{" "}
                   <span
                     onClick={() => {
@@ -474,9 +501,9 @@ class profile extends Component {
               <div className="profile-bio">
                 <p>
                   <span className="profile-real-name">
-                    {this.props.auth.profile.name}
+                    {this.props.profile.user.name}
                   </span>{" "}
-                  {this.props.auth.profile.bio}
+                  {this.props.profile.user.bio}
                 </p>
               </div>
             </div>
@@ -521,13 +548,25 @@ class profile extends Component {
                 </div>
                 <div className="col-md-12 ">
                   <div className="tab-content tabs">
-                    {this.state.contentShown}
-                    <NovaModal
-                      isOpen={this.state.modalShown}
-                      toggle={() => this.toggle()}
-                    >
-                      {this.state.modal}
-                    </NovaModal>
+                    {this.state.loading ? (
+                      <div
+                        className="d-flex justify-content-center"
+                        style={{ marginTop: "2%" }}
+                      >
+                        <Spinner />
+                      </div>
+                    ) : (
+                      <div>
+                        {this.state.contentShown}
+                        <NovaModal
+                          isOpen={this.state.modalShown}
+                          toggle={() => this.toggle()}
+                          modalType={this.state.modalType}
+                        >
+                          {this.state.modal}
+                        </NovaModal>
+                      </div>
+                    )}
                   </div>
                 </div>
                 <FanModal
@@ -548,10 +587,11 @@ class profile extends Component {
 const mapStateToProps = state => ({
   auth: state.auth,
   me: state.me,
+  notifications: state.notifications,
   profile: state.profile
 });
 
 export default connect(
   mapStateToProps,
-  { setProfile, deleteNova, likeNova, reNova }
+  { setProfile, deleteNova, likeNova, reNova, getNotifications }
 )(profile);

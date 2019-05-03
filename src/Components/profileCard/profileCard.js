@@ -9,20 +9,20 @@ const ProfileCard = props => {
   return (
     <div>
       <div
-        class="card"
+        className="card"
         style={{ width: "inherit", backgroundColor: "gainsboro" }}
       >
         <img
           src={props.auth.currentUser.profile_image_url}
-          class="card-img-top"
+          className="card-img-top"
           alt="..."
         />
-        <div class="card-body">
-          <h5 class="card-title">{props.auth.currentUser.name}</h5>
-          <h6 class="card-subtitle mb-2 text-muted">
+        <div className="card-body">
+          <h5 className="card-title">{props.auth.currentUser.name}</h5>
+          <h6 className="card-subtitle mb-2 text-muted">
             @{props.auth.currentUser.screen_name}
           </h6>
-          <p class="card-text">{props.auth.currentUser.bio}</p>
+          <p className="card-text">{props.auth.currentUser.bio}</p>
           <p>
             <FontAwesomeIcon
               icon={faMapMarkerAlt}

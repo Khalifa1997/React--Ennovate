@@ -222,7 +222,7 @@ class editProfile extends Component {
               aria-describedby="inputGroupFileAddon01"
               onChange={e => this.onChange(e)}
             />
-            <label class="custom-file-label" for="inputGroupFile01">
+            <label className="custom-file-label" for="inputGroupFile01">
               Choose file
             </label>
           </div>

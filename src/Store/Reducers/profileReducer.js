@@ -1,9 +1,8 @@
 import { GET_PROFILE_DATA, DELETE_NOVA } from "../../Actions/types";
 
 const initialState = {
-  isAuthenticated: true,
-  profile: {},
-  currentUser: {}
+  user: {},
+  following: null
 };
 
 const profileReducer = (state = initialState, action) => {
@@ -11,7 +10,8 @@ const profileReducer = (state = initialState, action) => {
     case GET_PROFILE_DATA:
       return {
         ...state,
-        profile: action.payload.profile
+        user: action.payload.user,
+        following: action.payload.following
       };
     case DELETE_NOVA:
       console.log("X");
