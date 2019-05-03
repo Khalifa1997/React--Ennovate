@@ -1,15 +1,8 @@
 import { GET_PROFILE_DATA, DELETE_NOVA } from "../../Actions/types";
 
 const initialState = {
-<<<<<<< HEAD
   user: {},
   following: null
-=======
-  isAuthenticated: true,
-  profile: {},
-  currentUser: {},
-  me: true
->>>>>>> 6b44fa4a0dbb7ee4ff2c756a4ee674d5cd6d0d69
 };
 
 const profileReducer = (state = initialState, action) => {
