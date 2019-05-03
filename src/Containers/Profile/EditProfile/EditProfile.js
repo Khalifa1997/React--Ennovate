@@ -154,7 +154,7 @@ class editProfile extends Component {
     };
     this.props.editImage(profile_image_url);
     this.props.editUser(user).then(() => {
-      this.props.history.push("/profile");
+      this.props.history.push("/profile/" + user.screen_name);
     });
   };
 

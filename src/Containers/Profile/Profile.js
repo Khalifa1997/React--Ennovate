@@ -30,13 +30,7 @@ class profile extends Component {
       likedTweets: [],
       id: "",
       loading: true,
-      screenName: "",
-      userName: "",
-      bio: "",
-      location: "",
-      followerscount: 0,
-      followingcount: 0,
-      novascount: 0,
+
       novaIDs: [],
       favNovasIDs: [],
       novasClass: "active",
@@ -274,7 +268,9 @@ class profile extends Component {
 
   async componentDidMount() {
     //Get my novas
+
     this.setState({ loading: true });
+    // this.setButton();
     await Axios.get("http://localhost:8080/statuses/user_timeline", {
       headers: {
         token: localStorage.getItem("jwtToken")
@@ -356,60 +352,46 @@ class profile extends Component {
 
     //Get Liked Novas
   }
+  setButton = () => {
+    let toggledButton = this.state.toggledButton;
+    console.log(
+      this.props.auth.currentUser.screen_name + "and" + this.props.profile.user
+    );
+    console.log(
+      "follow" + this.props.auth.currentUser.screen_name ==
+        this.props.profile.user.screen_name
+    );
+    if (
+      this.props.auth.currentUser.screen_name ==
+      this.props.profile.user.screen_name
+    ) {
+      toggledButton = (
+        <button className="btn profilebtn profile-edit-btn">
+          <a href="/editprofile" className="referencecolor">
+            Edit Profile
+          </a>
+        </button>
+      );
+    } else {
+      toggledButton = (
+        <button className="btn profilebtn profile-edit-btn">
+          <a className="referencecolor">Follow</a>
+        </button>
+      );
+    }
+    this.setState({
+      toggledButton: toggledButton
+    });
+  };
   componentWillMount() {
     this.props.setProfile(this.props.match.params.screenName);
-    if (this.props.auth.me) {
-      let toggledButton = this.state.toggledButton;
-      toggledButton = (
-        <button className="btn profilebtn profile-edit-btn">
-          <a href="/editprofile" className="referencecolor">
-            Edit Profile
-          </a>
-        </button>
-      );
-      this.setState({
-        toggledButton: toggledButton
-      });
-    } else {
-      let toggledButton = this.state.toggledButton;
-      toggledButton = (
-        <button className="btn profilebtn profile-edit-btn">
-          <a className="referencecolor">Follow</a>
-        </button>
-      );
-      this.setState({
-        toggledButton: toggledButton
-      });
-    }
+    // this.setButton();
   }
   async componentWillReceiveProps(nextprops) {
+    // this.setButton();
     //console.log("Component will reciever props");
     this.setState({ loading: false });
-    if (nextprops.auth.me) {
-      console.log("me is true");
-      let toggledButton = this.state.toggledButton;
-      toggledButton = (
-        <button className="btn profilebtn profile-edit-btn">
-          <a href="/editprofile" className="referencecolor">
-            Edit Profile
-          </a>
-        </button>
-      );
-      this.setState({
-        toggledButton: toggledButton
-      });
-    } else {
-      console.log("me is false");
-      let toggledButton = this.state.toggledButton;
-      toggledButton = (
-        <button className="btn profilebtn profile-edit-btn">
-          <a className="referencecolor">Follow</a>
-        </button>
-      );
-      this.setState({
-        toggledButton: toggledButton
-      });
-    }
+
     await Axios.get("http://localhost:8080/statuses/user_timeline", {
       headers: {
         token: Axios.defaults.headers.common.Authorization
@@ -464,6 +446,34 @@ class profile extends Component {
     });
   }
   render() {
+    let toggledButton = "";
+
+    if (
+      this.props.auth.currentUser.screen_name ==
+      this.props.profile.user.screen_name
+    ) {
+      toggledButton = (
+        <button className="btn profilebtn profile-edit-btn">
+          <a href="/editprofile" className="referencecolor">
+            Edit Profile
+          </a>
+        </button>
+      );
+    } else {
+      if (this.props.profile.following) {
+        toggledButton = (
+          <button className="btn profilebtn profile-edit-btn">
+            <a className="referencecolor">Follow</a>
+          </button>
+        );
+      } else {
+        toggledButton = (
+          <button className="btn profilebtn profile-edit-btn">
+            <a className="referencecolor">Unfollow</a>
+          </button>
+        );
+      }
+    }
     return (
       <div className="body">
         <Nav
@@ -486,7 +496,7 @@ class profile extends Component {
                   {this.props.profile.user.screen_name}
                 </h1>
 
-                {this.state.toggledButton}
+                {toggledButton}
               </div>
 
               <div className="profile-stats">
