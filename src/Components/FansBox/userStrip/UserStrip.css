@@ -1,0 +1,60 @@
+.followingCanvas {
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  width: 38px;
+  height: 38px;
+}
+
+.pictureSpan {
+  width: 30px;
+  height: 30px;
+}
+
+/* .UserStrip{
+    width: 100%;
+    display: inline-block;
+    align-items: center;
+    padding: 8px 16px;
+} */
+
+.UserStrip {
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+}
+
+.middle {
+  width: 290px !important;
+}
+
+.avatar {
+  border-radius: 25px;
+  margin-top: 2px;
+  width: 50px;
+  height: 50px;
+}
+
+.stripButton {
+  float: right;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  width: 100px;
+  height: 35px;
+  border-radius: 25px;
+}
+.imgAndData {
+  float: left;
+}
+
+.FansBox {
+  width: inherit;
+}
+
+.userName {
+  display: inline;
+  font-weight: 500;
+}
+
+.data {
+  display: inline;
+}

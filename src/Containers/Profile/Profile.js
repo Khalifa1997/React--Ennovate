@@ -10,11 +10,15 @@ import { deleteNova } from "../../Actions/deleteNovaAction";
 import { likeNova } from "../../Actions/likeNovaAction";
 import { reNova } from "../../Actions/retweetNovaAction";
 import { runInThisContext } from "vm";
+import { Button, Header, Icon, Image, Modal } from "semantic-ui-react";
+
 import {
   CSSTransition,
   Transition,
   TransitionGroup
 } from "react-transition-group";
+
+import FanModal from "../../Components/FansBox/modal/fansModal";
 
 class profile extends Component {
   constructor(props) {
@@ -39,13 +43,23 @@ class profile extends Component {
       contentShown: null,
       modal: null,
       modalShown: false,
-      comments: []
+      modalShownFans: false,
+      comments: [],
+      followers: [],
+      followings: []
     };
   }
 
   toggle = () => {
     this.setState({
       modalShown: !this.state.modalShown
+    });
+  };
+
+  toggleFans = () => {
+    console.log("toggkl");
+    this.setState({
+      modalShownFans: !this.state.modalShownFans
     });
   };
   likeNovaHandler = novaID => {
@@ -246,6 +260,16 @@ class profile extends Component {
         console.log("failure from novas", { ...err });
       });
     //ghalat 3ashan el state bayza
+    await Axios.get("http://localhost:8080/friendships/list?screen_name=maram")
+      .then(res => {
+        console.log("frin lazloz");
+        console.log(res.data.users);
+        this.setState({ followings: res.data.users });
+        console.log("list of followings ", this.state.followings);
+      })
+      .catch(err => {
+        console.log("failure from followers", { ...err });
+      });
 
     if (this.state.novas) {
       const novas = this.state.novas.reverse().map(tweet => {
@@ -436,7 +460,14 @@ class profile extends Component {
                   <span className="profile-stat-count">
                     {this.props.auth.profile.friends_count}
                   </span>{" "}
-                  following
+                  <span
+                    onClick={() => {
+                      console.log("hii");
+                      this.toggleFans();
+                    }}
+                  >
+                    following
+                  </span>
                 </li>
               </div>
 
@@ -499,6 +530,12 @@ class profile extends Component {
                     </NovaModal>
                   </div>
                 </div>
+                <FanModal
+                  boxName="Followings"
+                  list={this.state.followings}
+                  isOpen={this.state.modalShownFans}
+                  onClose={() => this.toggleFans()}
+                />
               </div>
             </div>
           </div>
