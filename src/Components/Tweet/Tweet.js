@@ -10,6 +10,8 @@ import { faHeart as faHeartnotLiked } from "@fortawesome/free-regular-svg-icons"
 import { connect } from "react-redux";
 import { inherits } from "util";
 
+import MyVerticallyCenteredModal from "../UI/Modal/Modal";
+
 const Tweet = props => {
   return (
     <div className="container-fluid mt-4">
@@ -69,6 +71,7 @@ const Tweet = props => {
           ) : null}
         </div>
       </div>
+      <MyVerticallyCenteredModal show={props.repliesShow} onHide={modalClose} />
     </div>
   );
 };
