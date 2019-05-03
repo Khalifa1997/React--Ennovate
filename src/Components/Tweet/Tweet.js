@@ -55,7 +55,7 @@ const Tweet = props => {
             />
           </a>
           <a href="javascript:;" className="card-link">
-            <FontAwesomeIcon icon={faCommentDots} size="lg" onClick={} />
+            <FontAwesomeIcon icon={faCommentDots} size="lg" />
           </a>
           {props.isAuth === true ? (
             <a
