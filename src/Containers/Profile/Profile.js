@@ -8,6 +8,7 @@ import Axios from "axios";
 import { setProfile } from "../../Actions/profileActions";
 import { deleteNova } from "../../Actions/deleteNovaAction";
 import { likeNova } from "../../Actions/likeNovaAction";
+import { getNotifications } from "../../Actions/notificationsAction";
 import { reNova } from "../../Actions/retweetNovaAction";
 import { runInThisContext } from "vm";
 import Spinner from "../../Components/UI/Spinner/Spinner";
@@ -48,7 +49,7 @@ class profile extends Component {
   notifcationsClickHandler = () => {
     //Add notifcation message passing here
     //Appending it to this.state.modal and set the two states
-
+    this.props.getNotifications(false);
     this.setState({
       modalShown: true,
       modal: null,
@@ -56,6 +57,10 @@ class profile extends Component {
     });
   };
   toggle = () => {
+    if (this.state.modalShown === true && this.state.modalType === 1) {
+      //Clear notifications
+      this.props.getNotifications(true);
+    }
     this.setState({
       modalShown: !this.state.modalShown
     });
@@ -550,5 +555,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { setProfile, deleteNova, likeNova, reNova }
+  { setProfile, deleteNova, likeNova, reNova, getNotifications }
 )(profile);

@@ -9,7 +9,7 @@ const notificationReducer = (state = initialState, action) => {
     case NOTIFICATIONS:
       return {
         ...state,
-        notifications: action.notifications
+        notifications: action.payload.notifications
       };
     default:
       return state;

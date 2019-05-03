@@ -11,7 +11,7 @@ const NovaModal = props => {
         style={{ minWidth: "90%" }}
       >
         <ModalHeader toggle={props.toggle}>
-          {props.modalType === 1 ? <h5>Notications</h5> : <h5>Comments</h5>}
+          {props.modalType === 1 ? <p>Notications</p> : <p>Comments</p>}
         </ModalHeader>
         <ModalBody style={{ height: "60%" }}>{props.children}</ModalBody>
         <ModalFooter>

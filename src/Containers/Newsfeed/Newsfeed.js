@@ -8,6 +8,7 @@ import Axios from "axios";
 import { setProfile } from "../../Actions/profileActions";
 import { runInThisContext } from "vm";
 import NovaModal from "../../Components/novaModal/novaModal";
+import { getNotifications } from "../../Actions/notificationsAction";
 import { likeNova } from "../../Actions/likeNovaAction";
 import { reNova } from "../../Actions/retweetNovaAction";
 import { zoomInUp } from "react-animations";
@@ -22,6 +23,10 @@ class Newsfeed extends Component {
     comments: []
   };
   toggle = () => {
+    if (this.state.modalShown === true && this.state.modalType === 1) {
+      //Clear notifications
+      this.props.getNotifications(true);
+    }
     this.setState({
       modalShown: !this.state.modalShown
     });
@@ -29,6 +34,7 @@ class Newsfeed extends Component {
   notifcationsClickHandler = () => {
     //Add notifcation message passing here
     //Append it to this.state.modal and set the two states
+    this.props.getNotifications(false);
     this.setState({
       modalShown: true,
       modal: null,
@@ -163,5 +169,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { likeNova, reNova }
+  { likeNova, reNova, getNotifications }
 )(Newsfeed);
