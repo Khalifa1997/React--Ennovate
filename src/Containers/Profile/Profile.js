@@ -47,6 +47,7 @@ class profile extends Component {
       modal: null,
       modalShown: false,
       modalShownFans: false,
+      modalShownFollowers: false,
       comments: [],
       followers: [],
       followings: [],
@@ -75,11 +76,17 @@ class profile extends Component {
   };
 
   toggleFans = () => {
-    console.log("toggkl");
     this.setState({
       modalShownFans: !this.state.modalShownFans
     });
   };
+
+  toggleFollowers = () => {
+    this.setState({
+      modalShownFollowers: !this.state.modalShownFollowers
+    });
+  };
+
   likeNovaHandler = novaID => {
     this.props.likeNova(novaID);
   };
@@ -285,10 +292,22 @@ class profile extends Component {
         this.props.profile.user.screen_name
     )
       .then(res => {
-        console.log("frin lazloz");
         console.log(res.data.users);
         this.setState({ followings: res.data.users });
         console.log("list of followings ", this.state.followings);
+      })
+      .catch(err => {
+        console.log("failure from followers", { ...err });
+      });
+
+    await Axios.get(
+      "http://localhost:8080/followers/list?screen_name=" +
+        this.props.profile.user.screen_name
+    )
+      .then(res => {
+        console.log(res.data.users);
+        this.setState({ followers: res.data.users });
+        console.log("list of followers ", this.state.followers);
       })
       .catch(err => {
         console.log("failure from followers", { ...err });
@@ -481,7 +500,14 @@ class profile extends Component {
                   <span className="profile-stat-count">
                     {this.props.profile.user.followers_count}
                   </span>{" "}
-                  followers
+                  <span
+                    onClick={() => {
+                      console.log("hii");
+                      this.toggleFollowers();
+                    }}
+                  >
+                    followers
+                  </span>
                 </li>
                 <li>
                   <span className="profile-stat-count">
@@ -574,6 +600,13 @@ class profile extends Component {
                   list={this.state.followings}
                   isOpen={this.state.modalShownFans}
                   onClose={() => this.toggleFans()}
+                />
+
+                <FanModal
+                  boxName="Followers"
+                  list={this.state.followers}
+                  isOpen={this.state.modalShownFollowers}
+                  onClose={() => this.toggleFollowers()}
                 />
               </div>
             </div>

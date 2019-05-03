@@ -10,13 +10,13 @@ const userStrip = props => (
           <img className="avatar" src={props.imgUrl} alt="..." />
         </div>
         <div className="p-2 middle bd-highlight">
-          <p className="userName">{props.userName}</p>
+          <a
+            className="userName"
+            href={"http://localhost:3000/profile/" + props.screenName}
+          >
+            {props.userName}
+          </a>
           <br />@{props.screenName}
-        </div>
-        <div className="p-2 bd-highlight">
-          <button type="button" className="btn btn-primary stripButton">
-            Hello
-          </button>
         </div>
       </div>
     </div>

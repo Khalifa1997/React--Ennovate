@@ -5,8 +5,14 @@ import jwt_decode from "jwt-decode";
 
 import * as actionTypes from "./types";
 
-export const newNova = novaText => dispatch => {
-  console.log("the nova", { ...novaText });
+export const newNova = (novaText, mentions) => dispatch => {
+  const data = {
+    novaText: novaText,
+    entitiesObject: {
+      users_mentions_ID: mentions
+    }
+  };
+  console.log(data);
   axios
     .post("http://localhost:8080/statuses/update", novaText, {
       headers: {
