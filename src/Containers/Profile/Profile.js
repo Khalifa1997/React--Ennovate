@@ -11,12 +11,16 @@ import { likeNova } from "../../Actions/likeNovaAction";
 import { getNotifications } from "../../Actions/notificationsAction";
 import { reNova } from "../../Actions/retweetNovaAction";
 import { runInThisContext } from "vm";
+import { Button, Header, Icon, Image, Modal } from "semantic-ui-react";
+
 import Spinner from "../../Components/UI/Spinner/Spinner";
 import {
   CSSTransition,
   Transition,
   TransitionGroup
 } from "react-transition-group";
+
+import FanModal from "../../Components/FansBox/modal/fansModal";
 
 class profile extends Component {
   constructor(props) {
@@ -26,13 +30,7 @@ class profile extends Component {
       likedTweets: [],
       id: "",
       loading: true,
-      screenName: "",
-      userName: "",
-      bio: "",
-      location: "",
-      followerscount: 0,
-      followingcount: 0,
-      novascount: 0,
+
       novaIDs: [],
       favNovasIDs: [],
       novasClass: "active",
@@ -42,6 +40,11 @@ class profile extends Component {
       contentShown: null,
       modal: null,
       modalShown: false,
+      modalShownFans: false,
+      modalShownFollowers: false,
+      comments: [],
+      followers: [],
+      followings: [],
       modalType: null,
       comments: []
     };
@@ -65,6 +68,19 @@ class profile extends Component {
       modalShown: !this.state.modalShown
     });
   };
+
+  toggleFans = () => {
+    this.setState({
+      modalShownFans: !this.state.modalShownFans
+    });
+  };
+
+  toggleFollowers = () => {
+    this.setState({
+      modalShownFollowers: !this.state.modalShownFollowers
+    });
+  };
+
   likeNovaHandler = novaID => {
     this.props.likeNova(novaID);
   };
@@ -266,7 +282,9 @@ class profile extends Component {
 
   async componentDidMount() {
     //Get my novas
+
     this.setState({ loading: true });
+    // this.setButton();
     await Axios.get("http://localhost:8080/statuses/user_timeline", {
       headers: {
         token: localStorage.getItem("jwtToken")
@@ -279,6 +297,31 @@ class profile extends Component {
         console.log("failure from novas", { ...err });
       });
     //ghalat 3ashan el state bayza
+    await Axios.get(
+      "http://localhost:8080/friendships/list?screen_name=" +
+        this.props.profile.user.screen_name
+    )
+      .then(res => {
+        console.log(res.data.users);
+        this.setState({ followings: res.data.users });
+        console.log("list of followings ", this.state.followings);
+      })
+      .catch(err => {
+        console.log("failure from followers", { ...err });
+      });
+
+    await Axios.get(
+      "http://localhost:8080/followers/list?screen_name=" +
+        this.props.profile.user.screen_name
+    )
+      .then(res => {
+        console.log(res.data.users);
+        this.setState({ followers: res.data.users });
+        console.log("list of followers ", this.state.followers);
+      })
+      .catch(err => {
+        console.log("failure from followers", { ...err });
+      });
 
     if (this.state.novas) {
       const novas = this.state.novas.reverse().map(tweet => {
@@ -327,60 +370,46 @@ class profile extends Component {
 
     //Get Liked Novas
   }
+  setButton = () => {
+    let toggledButton = this.state.toggledButton;
+    console.log(
+      this.props.auth.currentUser.screen_name + "and" + this.props.profile.user
+    );
+    console.log(
+      "follow" + this.props.auth.currentUser.screen_name ==
+        this.props.profile.user.screen_name
+    );
+    if (
+      this.props.auth.currentUser.screen_name ==
+      this.props.profile.user.screen_name
+    ) {
+      toggledButton = (
+        <button className="btn profilebtn profile-edit-btn">
+          <a href="/editprofile" className="referencecolor">
+            Edit Profile
+          </a>
+        </button>
+      );
+    } else {
+      toggledButton = (
+        <button className="btn profilebtn profile-edit-btn">
+          <a className="referencecolor">Follow</a>
+        </button>
+      );
+    }
+    this.setState({
+      toggledButton: toggledButton
+    });
+  };
   componentWillMount() {
     this.props.setProfile(this.props.match.params.screenName);
-    if (this.props.auth.me) {
-      let toggledButton = this.state.toggledButton;
-      toggledButton = (
-        <button className="btn profilebtn profile-edit-btn">
-          <a href="/editprofile" className="referencecolor">
-            Edit Profile
-          </a>
-        </button>
-      );
-      this.setState({
-        toggledButton: toggledButton
-      });
-    } else {
-      let toggledButton = this.state.toggledButton;
-      toggledButton = (
-        <button className="btn profilebtn profile-edit-btn">
-          <a className="referencecolor">Follow</a>
-        </button>
-      );
-      this.setState({
-        toggledButton: toggledButton
-      });
-    }
+    // this.setButton();
   }
   async componentWillReceiveProps(nextprops) {
+    // this.setButton();
     //console.log("Component will reciever props");
     this.setState({ loading: false });
-    if (nextprops.auth.me) {
-      console.log("me is true");
-      let toggledButton = this.state.toggledButton;
-      toggledButton = (
-        <button className="btn profilebtn profile-edit-btn">
-          <a href="/editprofile" className="referencecolor">
-            Edit Profile
-          </a>
-        </button>
-      );
-      this.setState({
-        toggledButton: toggledButton
-      });
-    } else {
-      console.log("me is false");
-      let toggledButton = this.state.toggledButton;
-      toggledButton = (
-        <button className="btn profilebtn profile-edit-btn">
-          <a className="referencecolor">Follow</a>
-        </button>
-      );
-      this.setState({
-        toggledButton: toggledButton
-      });
-    }
+
     await Axios.get("http://localhost:8080/statuses/user_timeline", {
       headers: {
         token: Axios.defaults.headers.common.Authorization
@@ -439,6 +468,34 @@ class profile extends Component {
     });
   }
   render() {
+    let toggledButton = "";
+
+    if (
+      this.props.auth.currentUser.screen_name ==
+      this.props.profile.user.screen_name
+    ) {
+      toggledButton = (
+        <button className="btn profilebtn profile-edit-btn">
+          <a href="/editprofile" className="referencecolor">
+            Edit Profile
+          </a>
+        </button>
+      );
+    } else {
+      if (this.props.profile.following) {
+        toggledButton = (
+          <button className="btn profilebtn profile-edit-btn">
+            <a className="referencecolor">Follow</a>
+          </button>
+        );
+      } else {
+        toggledButton = (
+          <button className="btn profilebtn profile-edit-btn">
+            <a className="referencecolor">Unfollow</a>
+          </button>
+        );
+      }
+    }
     return (
       <div className="body">
         <Nav
@@ -461,7 +518,7 @@ class profile extends Component {
                   {this.props.profile.user.screen_name}
                 </h1>
 
-                {this.state.toggledButton}
+                {toggledButton}
               </div>
 
               <div className="profile-stats">
@@ -475,13 +532,27 @@ class profile extends Component {
                   <span className="profile-stat-count">
                     {this.props.profile.user.followers_count}
                   </span>{" "}
-                  followers
+                  <span
+                    onClick={() => {
+                      console.log("hii");
+                      this.toggleFollowers();
+                    }}
+                  >
+                    followers
+                  </span>
                 </li>
                 <li>
                   <span className="profile-stat-count">
                     {this.props.profile.user.friends_count}
                   </span>{" "}
-                  following
+                  <span
+                    onClick={() => {
+                      console.log("hii");
+                      this.toggleFans();
+                    }}
+                  >
+                    following
+                  </span>
                 </li>
               </div>
 
@@ -556,6 +627,19 @@ class profile extends Component {
                     )}
                   </div>
                 </div>
+                <FanModal
+                  boxName="Followings"
+                  list={this.state.followings}
+                  isOpen={this.state.modalShownFans}
+                  onClose={() => this.toggleFans()}
+                />
+
+                <FanModal
+                  boxName="Followers"
+                  list={this.state.followers}
+                  isOpen={this.state.modalShownFollowers}
+                  onClose={() => this.toggleFollowers()}
+                />
               </div>
             </div>
           </div>

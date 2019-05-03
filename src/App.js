@@ -13,7 +13,7 @@ import ForgotPassword from "./Containers/Auth/ForgotPassword/ForgotPassowrd";
 import ResetPassword from "./Containers/Auth/ForgotPassword/ResetPassword";
 //import { decode } from "querystring";
 import EditProfile from "./Containers/Profile/EditProfile/EditProfile";
-import FansBox from "./Components/FansBox/Box";
+import FansBox from "./Components/FansBox/Container/Box";
 import profileSearch from "./Components/profileSearch/profileSearch";
 import PrivateRoute from "./Components/common/PrivateRoute/PrivateRoute";
 import { decode } from "querystring";
