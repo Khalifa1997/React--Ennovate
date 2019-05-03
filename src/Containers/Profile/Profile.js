@@ -8,8 +8,10 @@ import Axios from "axios";
 import { setProfile } from "../../Actions/profileActions";
 import { deleteNova } from "../../Actions/deleteNovaAction";
 import { likeNova } from "../../Actions/likeNovaAction";
+import { getNotifications } from "../../Actions/notificationsAction";
 import { reNova } from "../../Actions/retweetNovaAction";
 import { runInThisContext } from "vm";
+import Spinner from "../../Components/UI/Spinner/Spinner";
 import {
   CSSTransition,
   Transition,
@@ -23,6 +25,7 @@ class profile extends Component {
     this.state = {
       likedTweets: [],
       id: "",
+      loading: true,
       screenName: "",
       userName: "",
       bio: "",
@@ -39,11 +42,25 @@ class profile extends Component {
       contentShown: null,
       modal: null,
       modalShown: false,
+      modalType: null,
       comments: []
     };
   }
-
+  notifcationsClickHandler = () => {
+    //Add notifcation message passing here
+    //Appending it to this.state.modal and set the two states
+    this.props.getNotifications(false);
+    this.setState({
+      modalShown: true,
+      modal: null,
+      modalType: 1
+    });
+  };
   toggle = () => {
+    if (this.state.modalShown === true && this.state.modalType === 1) {
+      //Clear notifications
+      this.props.getNotifications(true);
+    }
     this.setState({
       modalShown: !this.state.modalShown
     });
@@ -62,6 +79,7 @@ class profile extends Component {
         this.setState({ comments: res.data });
       })
       .catch(err => {});
+
     const comments = this.state.comments
       .reverse()
       .slice(0, 5)
@@ -81,8 +99,9 @@ class profile extends Component {
           />
         );
       });
+    this.setState({ loading: false });
     //All coments are shown as tweets-- Add them to Modal
-    this.setState({ modalShown: true });
+    this.setState({ modalShown: true, modalType: 0 });
     this.setState({ modal: comments });
   }
   reNovaHandler = novaID => {
@@ -90,7 +109,7 @@ class profile extends Component {
   };
   deleteNovaHandler = novaID => {
     //Deleting a Nova
-    //this.props.deleteNova(novaID);
+    this.props.deleteNova(novaID);
     const newPosts = [...this.state.novas];
     console.log(this.state.novas);
     //Delete a new tweet
@@ -233,7 +252,11 @@ class profile extends Component {
 
   async componentDidMount() {
     //Get my novas
+<<<<<<< HEAD
 
+=======
+    this.setState({ loading: true });
+>>>>>>> 6b44fa4a0dbb7ee4ff2c756a4ee674d5cd6d0d69
     await Axios.get("http://localhost:8080/statuses/user_timeline", {
       headers: {
         token: localStorage.getItem("jwtToken")
@@ -283,7 +306,8 @@ class profile extends Component {
         </div>
       );
       this.setState({
-        contentShown: contentShown
+        contentShown: contentShown,
+        loading: false
       });
     }
 
@@ -317,7 +341,11 @@ class profile extends Component {
   }
   async componentWillReceiveProps(nextprops) {
     //console.log("Component will reciever props");
+<<<<<<< HEAD
     console.log(nextprops);
+=======
+    this.setState({ loading: false });
+>>>>>>> 6b44fa4a0dbb7ee4ff2c756a4ee674d5cd6d0d69
     if (nextprops.auth.me) {
       console.log("me is true");
       let toggledButton = this.state.toggledButton;
@@ -392,13 +420,17 @@ class profile extends Component {
     );
 
     this.setState({
-      contentShown: contentShown
+      contentShown: contentShown,
+      loading: false
     });
   }
   render() {
     return (
       <div className="body">
-        <Nav />
+        <Nav
+          onClickHandler={() => this.notifcationsClickHandler()}
+          notifcationsCount={this.props.notifications.notifications.length}
+        />
 
         <div className="container widthadjust">
           <div className="profilecontainer ">
@@ -489,13 +521,25 @@ class profile extends Component {
                 </div>
                 <div className="col-md-12 ">
                   <div className="tab-content tabs">
-                    {this.state.contentShown}
-                    <NovaModal
-                      isOpen={this.state.modalShown}
-                      toggle={() => this.toggle()}
-                    >
-                      {this.state.modal}
-                    </NovaModal>
+                    {this.state.loading ? (
+                      <div
+                        className="d-flex justify-content-center"
+                        style={{ marginTop: "2%" }}
+                      >
+                        <Spinner />
+                      </div>
+                    ) : (
+                      <div>
+                        {this.state.contentShown}
+                        <NovaModal
+                          isOpen={this.state.modalShown}
+                          toggle={() => this.toggle()}
+                          modalType={this.state.modalType}
+                        >
+                          {this.state.modal}
+                        </NovaModal>
+                      </div>
+                    )}
                   </div>
                 </div>
               </div>
@@ -510,10 +554,11 @@ class profile extends Component {
 const mapStateToProps = state => ({
   auth: state.auth,
   me: state.me,
+  notifications: state.notifications,
   profile: state.profile
 });
 
 export default connect(
   mapStateToProps,
-  { setProfile, deleteNova, likeNova, reNova }
+  { setProfile, deleteNova, likeNova, reNova, getNotifications }
 )(profile);

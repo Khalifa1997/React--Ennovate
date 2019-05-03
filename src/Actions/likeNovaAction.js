@@ -1,17 +1,22 @@
 import * as actionTypes from "./types";
 import axios from "../axios-users";
 export const likeNova = nova_ID => dispatch => {
+  const obj = {
+    nova_ID: nova_ID
+  };
+  console.log(obj);
   axios
-    .post("http://www.mocky.io/v2/5cb7ddd34c00007b0cd3d294", nova_ID, {
+    .post("http://localhost:8080/favorites/create", obj, {
       headers: {
         token: axios.defaults.headers.common.Authorization
       }
     })
     .then(res => {
+      /* 
       const firstUser = res.data.slice(0, 1);
-      const secondUser = res.data.slice(1, 2);
-
-      axios
+      const secondUser = res.data.slice(1, 2); */
+      console.log(res);
+      /* axios
         .all([
           //Auth user Get
           axios.get("http://localhost:8080/users/show", {
@@ -33,7 +38,7 @@ export const likeNova = nova_ID => dispatch => {
         )
         .catch(err => {
           console.log("Failed Like nova get");
-        });
+        }); */
     })
     .catch(err => {
       console.log("Failed Like nova post");

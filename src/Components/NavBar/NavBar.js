@@ -55,12 +55,13 @@ class authNav extends React.Component {
                   <span className="sr-only">(current)</span>
                 </a>
               </li>
-              <li className="nav-item">
-                <a
-                  className="nav-link"
-                  href="https://about.twitter.com/en_us.html"
-                >
-                  <strong>Notifications</strong>
+              <li className="nav-item" onClick={this.props.onClickHandler}>
+                <a className="nav-link" href="javascript:;">
+                  <strong>Notifications </strong>
+                  <span className="badge badge-primary">
+                    {this.props.notifcationsCount}
+                  </span>
+                  <span className="sr-only">unread messages</span>
                 </a>
               </li>
             </ul>
