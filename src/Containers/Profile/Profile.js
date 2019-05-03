@@ -252,11 +252,7 @@ class profile extends Component {
 
   async componentDidMount() {
     //Get my novas
-<<<<<<< HEAD
-
-=======
     this.setState({ loading: true });
->>>>>>> 6b44fa4a0dbb7ee4ff2c756a4ee674d5cd6d0d69
     await Axios.get("http://localhost:8080/statuses/user_timeline", {
       headers: {
         token: localStorage.getItem("jwtToken")
@@ -341,11 +337,7 @@ class profile extends Component {
   }
   async componentWillReceiveProps(nextprops) {
     //console.log("Component will reciever props");
-<<<<<<< HEAD
-    console.log(nextprops);
-=======
     this.setState({ loading: false });
->>>>>>> 6b44fa4a0dbb7ee4ff2c756a4ee674d5cd6d0d69
     if (nextprops.auth.me) {
       console.log("me is true");
       let toggledButton = this.state.toggledButton;
