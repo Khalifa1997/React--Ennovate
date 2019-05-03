@@ -41,10 +41,21 @@ class profile extends Component {
       contentShown: null,
       modal: null,
       modalShown: false,
+      modalType: null,
+      notifcations: [],
       comments: []
     };
   }
+  notifcationsClickHandler = () => {
+    //Add notifcation message passing here
+    //Appending it to this.state.modal and set the two states
 
+    this.setState({
+      modalShown: true,
+      modal: null,
+      modalType: 1
+    });
+  };
   toggle = () => {
     this.setState({
       modalShown: !this.state.modalShown
@@ -86,7 +97,7 @@ class profile extends Component {
       });
     this.setState({ loading: false });
     //All coments are shown as tweets-- Add them to Modal
-    this.setState({ modalShown: true });
+    this.setState({ modalShown: true, modalType: 0 });
     this.setState({ modal: comments });
   }
   reNovaHandler = novaID => {
@@ -407,7 +418,10 @@ class profile extends Component {
   render() {
     return (
       <div className="body">
-        <Nav />
+        <Nav
+          onClickHandler={() => this.notifcationsClickHandler()}
+          notifcationsCount={this.state.notifcations.length}
+        />
 
         <div className="container widthadjust">
           <div className="profilecontainer ">
@@ -511,6 +525,7 @@ class profile extends Component {
                         <NovaModal
                           isOpen={this.state.modalShown}
                           toggle={() => this.toggle()}
+                          modalType={this.state.modalType}
                         >
                           {this.state.modal}
                         </NovaModal>

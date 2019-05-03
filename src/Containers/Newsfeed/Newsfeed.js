@@ -18,11 +18,22 @@ class Newsfeed extends Component {
     contentShown: null,
     modal: null,
     modalShown: false,
+    notifcations: [],
+    modalType: null,
     comments: []
   };
   toggle = () => {
     this.setState({
       modalShown: !this.state.modalShown
+    });
+  };
+  notifcationsClickHandler = () => {
+    //Add notifcation message passing here
+    //Append it to this.state.modal and set the two states
+    this.setState({
+      modalShown: true,
+      modal: null,
+      modalType: 1
     });
   };
   likeNovaHandler = novaID => {
@@ -62,7 +73,7 @@ class Newsfeed extends Component {
         );
       });
     //All coments are shown as tweets-- Add them to Modal
-    this.setState({ modalShown: true });
+    this.setState({ modalShown: true, modalType: 0 });
     this.setState({ modal: comments });
   }
   async componentDidMount() {
@@ -123,7 +134,10 @@ class Newsfeed extends Component {
   render() {
     return (
       <div className="body">
-        <Nav />
+        <Nav
+          onClickHandler={() => this.notifcationsClickHandler()}
+          notifcationsCount={this.state.notifcations.length}
+        />
         <div className="d-flex">
           <div className="p-2" style={{ width: "25%", marginTop: "3%" }}>
             <ProfileCard />
@@ -133,6 +147,7 @@ class Newsfeed extends Component {
             <NovaModal
               isOpen={this.state.modalShown}
               toggle={() => this.toggle()}
+              modalType={this.state.modalType}
             >
               {this.state.modal}
             </NovaModal>
