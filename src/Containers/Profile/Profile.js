@@ -11,12 +11,16 @@ import { likeNova } from "../../Actions/likeNovaAction";
 import { getNotifications } from "../../Actions/notificationsAction";
 import { reNova } from "../../Actions/retweetNovaAction";
 import { runInThisContext } from "vm";
+import { Button, Header, Icon, Image, Modal } from "semantic-ui-react";
+
 import Spinner from "../../Components/UI/Spinner/Spinner";
 import {
   CSSTransition,
   Transition,
   TransitionGroup
 } from "react-transition-group";
+
+import FanModal from "../../Components/FansBox/modal/fansModal";
 
 class profile extends Component {
   constructor(props) {
@@ -36,6 +40,11 @@ class profile extends Component {
       contentShown: null,
       modal: null,
       modalShown: false,
+      modalShownFans: false,
+      modalShownFollowers: false,
+      comments: [],
+      followers: [],
+      followings: [],
       modalType: null,
       comments: []
     };
@@ -59,6 +68,19 @@ class profile extends Component {
       modalShown: !this.state.modalShown
     });
   };
+
+  toggleFans = () => {
+    this.setState({
+      modalShownFans: !this.state.modalShownFans
+    });
+  };
+
+  toggleFollowers = () => {
+    this.setState({
+      modalShownFollowers: !this.state.modalShownFollowers
+    });
+  };
+
   likeNovaHandler = novaID => {
     this.props.likeNova(novaID);
   };
@@ -261,6 +283,31 @@ class profile extends Component {
         console.log("failure from novas", { ...err });
       });
     //ghalat 3ashan el state bayza
+    await Axios.get(
+      "http://localhost:8080/friendships/list?screen_name=" +
+        this.props.profile.user.screen_name
+    )
+      .then(res => {
+        console.log(res.data.users);
+        this.setState({ followings: res.data.users });
+        console.log("list of followings ", this.state.followings);
+      })
+      .catch(err => {
+        console.log("failure from followers", { ...err });
+      });
+
+    await Axios.get(
+      "http://localhost:8080/followers/list?screen_name=" +
+        this.props.profile.user.screen_name
+    )
+      .then(res => {
+        console.log(res.data.users);
+        this.setState({ followers: res.data.users });
+        console.log("list of followers ", this.state.followers);
+      })
+      .catch(err => {
+        console.log("failure from followers", { ...err });
+      });
 
     if (this.state.novas) {
       const novas = this.state.novas.reverse().map(tweet => {
@@ -463,13 +510,27 @@ class profile extends Component {
                   <span className="profile-stat-count">
                     {this.props.profile.user.followers_count}
                   </span>{" "}
-                  followers
+                  <span
+                    onClick={() => {
+                      console.log("hii");
+                      this.toggleFollowers();
+                    }}
+                  >
+                    followers
+                  </span>
                 </li>
                 <li>
                   <span className="profile-stat-count">
                     {this.props.profile.user.friends_count}
                   </span>{" "}
-                  following
+                  <span
+                    onClick={() => {
+                      console.log("hii");
+                      this.toggleFans();
+                    }}
+                  >
+                    following
+                  </span>
                 </li>
               </div>
 
@@ -544,6 +605,19 @@ class profile extends Component {
                     )}
                   </div>
                 </div>
+                <FanModal
+                  boxName="Followings"
+                  list={this.state.followings}
+                  isOpen={this.state.modalShownFans}
+                  onClose={() => this.toggleFans()}
+                />
+
+                <FanModal
+                  boxName="Followers"
+                  list={this.state.followers}
+                  isOpen={this.state.modalShownFollowers}
+                  onClose={() => this.toggleFollowers()}
+                />
               </div>
             </div>
           </div>
