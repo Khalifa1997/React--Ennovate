@@ -37,6 +37,7 @@ if (localStorage.jwtToken) {
   // const currentProfile = store.getState().auth.profile;
   //store.dispatch(setCurrentUser(profile, currentUser));
   //store.dispatch(setCurrentUser(currentProfile, currentUser));
+  console.log(id);
   axios
     .get("http://localhost:8080/users/show", {
       params: {
@@ -45,7 +46,7 @@ if (localStorage.jwtToken) {
     })
     .then(res => {
       console.log("MEN EL refresh RESPONSE ", res);
-      store.dispatch(setCurrentUser(res.data, res.data));
+      store.dispatch(setCurrentUser(res.data.user, res.data.user));
     });
 }
 

@@ -233,13 +233,13 @@ class profile extends Component {
 
   async componentDidMount() {
     //Get my novas
+
     await Axios.get("http://localhost:8080/statuses/user_timeline", {
       headers: {
         token: localStorage.getItem("jwtToken")
       }
     })
       .then(res => {
-        console.log("Component Did mount");
         this.setState({ novas: res.data });
       })
       .catch(err => {
@@ -290,7 +290,7 @@ class profile extends Component {
     //Get Liked Novas
   }
   componentWillMount() {
-    console.log("Componenet will mount");
+    this.props.setProfile(this.props.match.params.screenName);
     if (this.props.auth.me) {
       let toggledButton = this.state.toggledButton;
       toggledButton = (
@@ -317,6 +317,7 @@ class profile extends Component {
   }
   async componentWillReceiveProps(nextprops) {
     //console.log("Component will reciever props");
+    console.log(nextprops);
     if (nextprops.auth.me) {
       console.log("me is true");
       let toggledButton = this.state.toggledButton;
@@ -348,8 +349,6 @@ class profile extends Component {
       }
     })
       .then(res => {
-        console.log("success from will receive props");
-
         this.setState({ novas: res.data });
         //ghalat 3ashan el state bayza
       })
@@ -407,13 +406,13 @@ class profile extends Component {
               <div className="profile-image">
                 <img
                   className="imgwidth"
-                  src={this.props.auth.profile.profile_image_url}
+                  src={this.props.profile.user.profile_image_url}
                 />
               </div>
 
               <div className="profile-user-settings">
                 <h1 className="profile-user-name">
-                  {this.props.auth.profile.screen_name}
+                  {this.props.profile.user.screen_name}
                 </h1>
 
                 {this.state.toggledButton}
@@ -422,19 +421,19 @@ class profile extends Component {
               <div className="profile-stats">
                 <li>
                   <span className="profile-stat-count">
-                    {this.props.auth.profile.novas_count}
+                    {this.props.profile.user.novas_count}
                   </span>{" "}
                   Novas
                 </li>
                 <li>
                   <span className="profile-stat-count">
-                    {this.props.auth.profile.followers_count}
+                    {this.props.profile.user.followers_count}
                   </span>{" "}
                   followers
                 </li>
                 <li>
                   <span className="profile-stat-count">
-                    {this.props.auth.profile.friends_count}
+                    {this.props.profile.user.friends_count}
                   </span>{" "}
                   following
                 </li>
@@ -443,9 +442,9 @@ class profile extends Component {
               <div className="profile-bio">
                 <p>
                   <span className="profile-real-name">
-                    {this.props.auth.profile.name}
+                    {this.props.profile.user.name}
                   </span>{" "}
-                  {this.props.auth.profile.bio}
+                  {this.props.profile.user.bio}
                 </p>
               </div>
             </div>

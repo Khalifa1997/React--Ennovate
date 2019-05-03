@@ -36,7 +36,7 @@ class App extends Component {
               path="/reset_password/:token"
               component={ResetPassword}
             />
-            <Route exact path="/profile" component={Profile} />
+            <Route exact path="/profile/:screenName" component={Profile} />
             <Route exact path="/search/:value" component={Search} />
             <Route exact path="/newsfeed" component={Newsfeed} />
             <Route exact path="/editprofile" component={EditProfile} />
