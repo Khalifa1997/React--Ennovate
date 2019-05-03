@@ -42,7 +42,6 @@ class profile extends Component {
       modal: null,
       modalShown: false,
       modalType: null,
-      notifcations: [],
       comments: []
     };
   }
@@ -420,7 +419,7 @@ class profile extends Component {
       <div className="body">
         <Nav
           onClickHandler={() => this.notifcationsClickHandler()}
-          notifcationsCount={this.state.notifcations.length}
+          notifcationsCount={this.props.notifications.notifications.length}
         />
 
         <div className="container widthadjust">
@@ -545,6 +544,7 @@ class profile extends Component {
 const mapStateToProps = state => ({
   auth: state.auth,
   me: state.me,
+  notifications: state.notifications,
   profile: state.profile
 });
 

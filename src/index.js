@@ -34,7 +34,7 @@ const customMiddleWare = store => next => action => {
     oldState.auth.currentUser.novas_count <
       nextState.auth.currentUser.novas_count
   ) {
-    toast.success("👍 New Tweet!", {
+    toast.success("New Tweet!👍", {
       position: "top-center",
       autoClose: 3000,
       hideProgressBar: false,

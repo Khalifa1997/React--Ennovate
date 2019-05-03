@@ -18,7 +18,6 @@ class Newsfeed extends Component {
     contentShown: null,
     modal: null,
     modalShown: false,
-    notifcations: [],
     modalType: null,
     comments: []
   };
@@ -136,7 +135,7 @@ class Newsfeed extends Component {
       <div className="body">
         <Nav
           onClickHandler={() => this.notifcationsClickHandler()}
-          notifcationsCount={this.state.notifcations.length}
+          notifcationsCount={this.props.notifications.notifications.length}
         />
         <div className="d-flex">
           <div className="p-2" style={{ width: "25%", marginTop: "3%" }}>
@@ -158,7 +157,8 @@ class Newsfeed extends Component {
   }
 }
 const mapStateToProps = state => ({
-  auth: state.auth
+  auth: state.auth,
+  notifications: state.notifications
 });
 
 export default connect(
