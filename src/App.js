@@ -14,6 +14,7 @@ import ResetPassword from "./Containers/Auth/ForgotPassword/ResetPassword";
 //import { decode } from "querystring";
 import EditProfile from "./Containers/Profile/EditProfile/EditProfile";
 import FansBox from "./Components/FansBox/Box";
+import profileSearch from "./Components/profileSearch/profileSearch";
 import PrivateRoute from "./Components/common/PrivateRoute/PrivateRoute";
 import { decode } from "querystring";
 
@@ -26,6 +27,7 @@ class App extends Component {
         <Route>
           <Switch>
             <Route path="/login" component={Login} />
+            <Route path="/pfp" component={profileSearch} />
             <Route path="/signup" component={Signup} />
             <Route path="/" exact component={LandingPage} />
             <Route exact path="/forgotpassword" component={ForgotPassword} />
