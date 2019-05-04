@@ -27,7 +27,7 @@ class authNav extends React.Component {
     return (
       <Aux>
         <nav className="navbar navbar-expand-lg navbar-light bg-light AuthNav">
-          <a className="navbar-brand" href="/">
+          <a className="navbar-brand" href="http://localhost:3000/newsfeed">
             <img className="LogoNavBar" src={img} alt="" height="40" />
           </a>
           <button
