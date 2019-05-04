@@ -65,7 +65,9 @@ class Newsfeed extends Component {
         return (
           <Tweet
             screenName={tweet.user_screen_name}
-            isliked={false}
+            isliked={this.props.auth.currentUser.favorites_novas_IDs.includes(
+              tweet._id
+            )}
             key={tweet._id}
             userName={tweet.user_name}
             likeClicked={() => this.likeNovaHandler(tweet._id)}
@@ -92,13 +94,16 @@ class Newsfeed extends Component {
         console.log(res.data);
         let tweets = res.data;
         //ghalat 3ashan el state bayza
-        const posts = tweets.map(tweet => {
+        const posts = tweets.reverse().map(tweet => {
           return (
             <Tweet
               key={tweet._id}
               screenName={tweet.user_screen_name}
               userName={tweet.user_name}
               text={tweet.text}
+              isliked={this.props.auth.currentUser.favorites_novas_IDs.includes(
+                tweet._id
+              )}
               textClicked={() => this.modalShowHandler(tweet._id)}
               likeClicked={() => this.likeNovaHandler(tweet._id)}
               reNovaClicked={() => this.reNovaHandler(tweet._id)}
@@ -144,7 +149,7 @@ class Newsfeed extends Component {
           notifcationsCount={this.props.notifications.notifications.length}
         />
         <div className="d-flex">
-          <div className="p-2" style={{ width: "25%", marginTop: "3%" }}>
+          <div className="p-2" style={{ width: "18%", marginTop: "3%" }}>
             <ProfileCard />
           </div>
           <div className="p-2 flex-grow-1">

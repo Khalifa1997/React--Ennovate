@@ -1,21 +1,40 @@
 import * as actionTypes from "./types";
 import axios from "../axios-users";
-export const deleteNova = nova_ID => dispatch => {
-  axios
-    .delete("http://www.mocky.io/v2/5cb7ddd34c00007b0cd3d294", {
-      headers: {
-        token: axios.defaults.headers.common.Authorization
-      }
-    })
-    .then(res => {
-      console.log(res.status);
-      dispatch(deleteCurrentNova(res.data));
-    })
-    .catch(err => {
-      console.log("Failed delete tweet");
-    });
-
-  return Promise.resolve();
+export const deleteNova = (nova_ID, mytweet) => async dispatch => {
+  const obj = {
+    _id: nova_ID
+  };
+  console.log(mytweet);
+  if (!mytweet) {
+    await axios
+      .post("http://localhost:8080/statuses/destroy", obj, {
+        headers: {
+          token: axios.defaults.headers.common.Authorization
+        }
+      })
+      .then(res => {
+        console.log("My res");
+        console.log(res);
+        dispatch(deleteCurrentNova(res.data));
+      })
+      .catch(err => {
+        console.log(err);
+        console.log("Failed delete tweet");
+      });
+  } else {
+    await axios
+      .post("http://localhost:8080/statuses/unrenova", obj, {
+        headers: {
+          token: axios.defaults.headers.common.Authorization
+        }
+      })
+      .then(res => {
+        dispatch(deleteCurrentNova(res.data));
+      })
+      .catch(err => {
+        console.log("Failed delete tweet");
+      });
+  }
 };
 export const deleteCurrentNova = updatedUser => {
   return {
