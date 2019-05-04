@@ -49,7 +49,7 @@ class Newsfeed extends Component {
   };
   async modalShowHandler(novaID) {
     console.log("hi man");
-    await Axios.get("/statuses/home_timeline", {
+    await Axios.get("http://localhost:8080/statuses/home_timeline", {
       headers: {
         token: localStorage.getItem("jwtToken")
       }
@@ -91,7 +91,7 @@ class Newsfeed extends Component {
     this.setState({ modal: comments });
   }
   async componentDidMount() {
-    await Axios.get("/statuses/home_timeline", {
+    await Axios.get("http://localhost:8080/statuses/home_timeline", {
       headers: {
         token: localStorage.getItem("jwtToken")
       }

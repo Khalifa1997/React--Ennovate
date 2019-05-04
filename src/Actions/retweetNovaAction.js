@@ -6,7 +6,7 @@ export const reNova = id => dispatch => {
   };
   console.log(idObj);
   axios
-    .post("/statuses/reNova", idObj, {
+    .post("http://localhost:8080/statuses/reNova", idObj, {
       headers: {
         token: axios.defaults.headers.common.Authorization
       }

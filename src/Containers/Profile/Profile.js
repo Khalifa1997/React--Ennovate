@@ -504,9 +504,9 @@ class profile extends Component {
         <CSSTransition key={tweet._id} timeout={500} classNames="move">
           <Tweet
             screenName={tweet.user_screen_name}
-            isliked={this.props.auth.currentUser.favorites_novas_IDs.includes(
-              tweet._id
-            )}
+            // isliked={this.props.auth.currentUser.favorites_novas_IDs.includes(
+            //   tweet._id
+            // )}
             isRenovaed={tweet.renovaed_by_IDs.includes(this.props.profile._id)}
             renovaUser={this.props.profile.screen_name}
             id={tweet._id}
