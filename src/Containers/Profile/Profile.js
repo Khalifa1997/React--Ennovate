@@ -415,6 +415,32 @@ class profile extends Component {
     this.setState({ loading: false });
 
     await Axios.get(
+      "http://localhost:8080/friendships/list?screen_name=" +
+        this.props.profile.user.screen_name
+    )
+      .then(res => {
+        console.log(res.data.users);
+        this.setState({ followings: res.data.users });
+        console.log("list of followings ", this.state.followings);
+      })
+      .catch(err => {
+        console.log("failure from followers", { ...err });
+      });
+
+    await Axios.get(
+      "http://localhost:8080/followers/list?screen_name=" +
+        this.props.profile.user.screen_name
+    )
+      .then(res => {
+        console.log(res.data.users);
+        this.setState({ followers: res.data.users });
+        console.log("list of followers ", this.state.followers);
+      })
+      .catch(err => {
+        console.log("failure from followers", { ...err });
+      });
+
+    await Axios.get(
       "http://localhost:8080/statuses/user_timeline/" +
         nextprops.profile.user.screen_name,
       {

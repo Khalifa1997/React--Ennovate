@@ -33,8 +33,6 @@ export const registerUser = userData => dispatch => {
       dispatch(setCurrentUser(user, user));
       //   clone.token = res.headers.auth;
       //   this.setState({ token: clone.token });
-      // user = res.data.user;
-      // dispatch(setCurrentUser(user, user));
     })
     .catch(err => {
       dispatch({
