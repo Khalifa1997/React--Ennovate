@@ -99,7 +99,7 @@ class MyVerticallyCenteredModal extends React.Component {
               };
               console.log(mentions);
               for (var i = 0; i < mentions.length; i++) {
-                clone.handles.push(mentions[i].textContent);
+                clone.handles.push(mentions[i].textContent.substring(1));
               }
 
               this.setState({ handles: clone.handles }, () => {
