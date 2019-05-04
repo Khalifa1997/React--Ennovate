@@ -65,9 +65,7 @@ class Newsfeed extends Component {
         return (
           <Tweet
             screenName={tweet.user_screen_name}
-            isliked={this.props.auth.currentUser.favorites_novas_IDs.includes(
-              tweet._id
-            )}
+            isliked={false}
             key={tweet._id}
             userName={tweet.user_name}
             likeClicked={() => this.likeNovaHandler(tweet._id)}
@@ -101,9 +99,6 @@ class Newsfeed extends Component {
               screenName={tweet.user_screen_name}
               userName={tweet.user_name}
               text={tweet.text}
-              isliked={this.props.auth.currentUser.favorites_novas_IDs.includes(
-                tweet._id
-              )}
               textClicked={() => this.modalShowHandler(tweet._id)}
               likeClicked={() => this.likeNovaHandler(tweet._id)}
               reNovaClicked={() => this.reNovaHandler(tweet._id)}
