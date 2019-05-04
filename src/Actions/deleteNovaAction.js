@@ -1,15 +1,22 @@
 import * as actionTypes from "./types";
 import axios from "../axios-users";
 export const deleteNova = nova_ID => dispatch => {
+  const obj = {
+    nova_ID: nova_ID
+  };
   axios
-    .delete("http://www.mocky.io/v2/5cb7ddd34c00007b0cd3d294", {
-      headers: {
-        token: axios.defaults.headers.common.Authorization
+    .post(
+      "http://localhost:8080/statuses/destroy",
+      { _id: nova_ID },
+      {
+        headers: {
+          token: axios.defaults.headers.common.Authorization
+        }
       }
-    })
+    )
     .then(res => {
-      console.log(res.status);
-      dispatch(deleteCurrentNova(res.data));
+      console.log(res);
+      //dispatch(deleteCurrentNova(res.data));
     })
     .catch(err => {
       console.log("Failed delete tweet");

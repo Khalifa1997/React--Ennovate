@@ -10,7 +10,7 @@ import { faHeart as faHeartnotLiked } from "@fortawesome/free-regular-svg-icons"
 import { connect } from "react-redux";
 import { inherits } from "util";
 
-import ReplyModal from "../UI/replyModal/replyModal";
+import ReplyModal from "../UI/replymodal/replyModal";
 
 class Tweet extends React.Component {
   constructor(props) {
