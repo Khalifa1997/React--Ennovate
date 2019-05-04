@@ -10,7 +10,9 @@ import { faHeart as faHeartnotLiked } from "@fortawesome/free-regular-svg-icons"
 import { connect } from "react-redux";
 import { inherits } from "util";
 
-import ReplyModal from "../UI/replymodal/replyModal";
+import Editor from "../UI/TweetDraft/draft";
+
+import ReplyModal from "../UI/replyModal/replyModal";
 
 class Tweet extends React.Component {
   constructor(props) {
@@ -24,6 +26,7 @@ class Tweet extends React.Component {
   modalClose = () => this.setState({ modalShow: false });
 
   render() {
+    // console.log("nova screenName ", this.props);
     return (
       <div className="container-fluid mt-4">
         <div
@@ -49,6 +52,7 @@ class Tweet extends React.Component {
             <p className="card-text" onClick={this.props.textClicked}>
               {this.props.text}
             </p>
+            {/* <Editor placeholder={this.props.text} readOnly={false}/> */}
             {this.props.isliked === true ? (
               <a href="javascript:;" className="card-link">
                 <FontAwesomeIcon
