@@ -105,6 +105,7 @@ class replyModal extends React.Component {
               this.setState({ handles: clone.handles }, () => {
                 console.log("handles", this.state.handles);
               });
+              console.log("tweet id " + this.props.id);
               this.props
                 .newNova(this.state.text, this.state.handles, this.props.id)
                 .then(() => {
