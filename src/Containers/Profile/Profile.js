@@ -97,35 +97,32 @@ class profile extends Component {
       })
       .catch(err => {});
 
-    const comments = this.state.comments
-      .reverse()
-      .slice(0, 5)
-      .map(tweet => {
-        return (
-          <Tweet
-            screenName={tweet.user_screen_name}
-            isliked={this.props.auth.currentUser.favorites_novas_IDs.includes(
+    const comments = this.state.comments.slice(0, 5).map(tweet => {
+      return (
+        <Tweet
+          screenName={tweet.user_screen_name}
+          isliked={this.props.auth.currentUser.favorites_novas_IDs.includes(
+            tweet._id
+          )}
+          isRenovaed={tweet.renovaed_by_IDs.includes(this.props.profile._id)}
+          renovaUser={this.props.profile.screen_name}
+          key={tweet._id}
+          id={tweet._id}
+          userName={tweet.user_name}
+          likeClicked={() => {
+            let isLiked = this.props.auth.currentUser.favorites_novas_IDs.includes(
               tweet._id
-            )}
-            isRenovaed={tweet.renovaed_by_IDs.includes(this.props.profile._id)}
-            renovaUser={this.props.profile.screen_name}
-            key={tweet._id}
-            id={tweet._id}
-            userName={tweet.user_name}
-            likeClicked={() => {
-              let isLiked = this.props.auth.currentUser.favorites_novas_IDs.includes(
-                tweet._id
-              );
-              this.likeNovaHandler(tweet._id, isLiked);
-            }}
-            reNovaClicked={() => this.reNovaHandler(tweet._id)}
-            text={tweet.text}
-            isAuth={
-              this.props.auth.currentUser.screen_name === tweet.user_screen_name
-            }
-          />
-        );
-      });
+            );
+            this.likeNovaHandler(tweet._id, isLiked);
+          }}
+          reNovaClicked={() => this.reNovaHandler(tweet._id)}
+          text={tweet.text}
+          isAuth={
+            this.props.auth.currentUser.screen_name === tweet.user_screen_name
+          }
+        />
+      );
+    });
     this.setState({ loading: false });
     //All coments are shown as tweets-- Add them to Modal
     this.setState({ modalShown: true, modalType: 0 });
