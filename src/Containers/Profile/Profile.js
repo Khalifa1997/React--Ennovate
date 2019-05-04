@@ -459,15 +459,9 @@ class profile extends Component {
         <CSSTransition key={tweet._id} timeout={500} classNames="move">
           <Tweet
             screenName={tweet.user_screen_name}
-<<<<<<< HEAD
-            // isliked={this.props.auth.currentUser.favorites_novas_IDs.contains(
-            //   tweet._id
-            // )}
-=======
             isliked={this.props.auth.currentUser.favorites_novas_IDs.includes(
               tweet._id
             )}
->>>>>>> ff0d2e1173bc9bbf312d8a5863004d810f35b983
             key={tweet._id}
             deleteClicked={() => this.deleteNovaHandler(tweet._id)}
             likeClicked={() => {
