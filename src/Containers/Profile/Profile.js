@@ -81,8 +81,8 @@ class profile extends Component {
     });
   };
 
-  likeNovaHandler = novaID => {
-    this.props.likeNova(novaID);
+  likeNovaHandler = (novaID, isLiked) => {
+    this.props.likeNova(novaID, isLiked);
   };
   async modalShowHandler(novaID) {
     console.log("hi man");
@@ -103,10 +103,17 @@ class profile extends Component {
         return (
           <Tweet
             screenName={tweet.user_screen_name}
-            isliked={false}
+            isliked={this.props.auth.currentUser.favorites_novas_IDs.contains(
+              tweet._id
+            )}
             key={tweet._id}
             userName={tweet.user_name}
-            likeClicked={() => this.likeNovaHandler(tweet._id)}
+            likeClicked={() => {
+              let isLiked = this.props.auth.currentUser.favorites_novas_IDs.contains(
+                tweet._id
+              );
+              this.likeNovaHandler(tweet._id, isLiked);
+            }}
             reNovaClicked={() => this.reNovaHandler(tweet._id)}
             text={tweet.text}
             isAuth={
@@ -142,10 +149,17 @@ class profile extends Component {
           <CSSTransition key={tweet._id} timeout={500} classNames="move">
             <Tweet
               screenName={tweet.user_screen_name}
-              isliked={false}
+              isliked={this.props.auth.currentUser.favorites_novas_IDs.contains(
+                tweet._id
+              )}
               key={tweet._id}
               userName={tweet.user_name}
-              likeClicked={() => this.likeNovaHandler(tweet._id)}
+              likeClicked={() => {
+                let isLiked = this.props.auth.currentUser.favorites_novas_IDs.contains(
+                  tweet._id
+                );
+                this.likeNovaHandler(tweet._id, isLiked);
+              }}
               deleteClicked={() => this.deleteNovaHandler(tweet._id)}
               reNovaClicked={() => this.reNovaHandler(tweet._id)}
               textClicked={() => this.modalShowHandler(tweet._id)}
@@ -189,11 +203,18 @@ class profile extends Component {
           <CSSTransition key={tweet._id} timeout={500} classNames="move">
             <Tweet
               screenName={tweet.user_screen_name}
-              isliked={false}
+              isliked={this.props.auth.currentUser.favorites_novas_IDs.contains(
+                tweet._id
+              )}
               key={tweet._id}
               userName={tweet.user_name}
               deleteClicked={() => this.deleteNovaHandler(tweet._id)}
-              likeClicked={() => this.likeNovaHandler(tweet._id)}
+              likeClicked={() => {
+                let isLiked = this.props.auth.currentUser.favorites_novas_IDs.contains(
+                  tweet._id
+                );
+                this.likeNovaHandler(tweet._id, isLiked);
+              }}
               reNovaClicked={() => this.reNovaHandler(tweet._id)}
               textClicked={() => this.modalShowHandler(tweet._id)}
               text={tweet.text}
@@ -236,7 +257,12 @@ class profile extends Component {
               userName={tweet.user_name}
               text={tweet.text}
               deleteClicked={() => this.deleteNovaHandler(tweet._id)}
-              likeClicked={() => this.likeNovaHandler(tweet._id)}
+              likeClicked={() => {
+                let isLiked = this.props.auth.currentUser.favorites_novas_IDs.contains(
+                  tweet._id
+                );
+                this.likeNovaHandler(tweet._id, isLiked);
+              }}
               textClicked={() => this.modalShowHandler(tweet._id)}
               reNovaClicked={() => this.reNovaHandler(tweet._id)}
               isAuth={
@@ -318,11 +344,18 @@ class profile extends Component {
           <CSSTransition key={tweet._id} timeout={500} classNames="move">
             <Tweet
               screenName={tweet.user_screen_name}
-              isliked={false}
+              isliked={this.props.auth.currentUser.favorites_novas_IDs.contains(
+                tweet._id
+              )}
               key={tweet._id}
               userName={tweet.user_name}
               deleteClicked={() => this.deleteNovaHandler(tweet._id)}
-              likeClicked={() => this.likeNovaHandler(tweet._id)}
+              likeClicked={() => {
+                let isLiked = this.props.auth.currentUser.favorites_novas_IDs.contains(
+                  tweet._id
+                );
+                this.likeNovaHandler(tweet._id, isLiked);
+              }}
               reNovaClicked={() => this.reNovaHandler(tweet._id)}
               textClicked={() => this.modalShowHandler(tweet._id)}
               text={tweet.text}
@@ -414,10 +447,17 @@ class profile extends Component {
         <CSSTransition key={tweet._id} timeout={500} classNames="move">
           <Tweet
             screenName={tweet.user_screen_name}
-            isliked={false}
+            isliked={this.props.auth.currentUser.favorites_novas_IDs.contains(
+              tweet._id
+            )}
             key={tweet._id}
             deleteClicked={() => this.deleteNovaHandler(tweet._id)}
-            likeClicked={() => this.likeNovaHandler(tweet._id)}
+            likeClicked={() => {
+              let isLiked = this.props.auth.currentUser.favorites_novas_IDs.contains(
+                tweet._id
+              );
+              this.likeNovaHandler(tweet._id, isLiked);
+            }}
             reNovaClicked={() => this.reNovaHandler(tweet._id)}
             textClicked={() => this.modalShowHandler(tweet._id)}
             userName={tweet.user_name}
