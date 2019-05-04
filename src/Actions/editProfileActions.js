@@ -24,7 +24,8 @@ export const editUser = userData => dispatch => {
         })
         .then(res => {
           console.log("MEN EL update ", res);
-          dispatch(setCurrentUser(res.data, res.data));
+          const user = res.data.user;
+          dispatch(setCurrentUser(user, user));
         });
     })
     .catch(err => {

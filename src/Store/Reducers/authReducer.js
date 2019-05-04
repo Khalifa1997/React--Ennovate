@@ -5,7 +5,8 @@ const initialState = {
   isAuthenticated: false,
   currentUser: {},
   profile: {},
-  me: true
+  me: true,
+  isedited: false
 };
 
 const authReducer = (state = initialState, action) => {
@@ -15,7 +16,8 @@ const authReducer = (state = initialState, action) => {
         ...state,
         isAuthenticated: !isEmpty(action.payload),
         currentUser: action.payload.authUser,
-        profile: action.payload.profile
+        profile: action.payload.profile,
+        isedited: true
       };
     default:
       return state;

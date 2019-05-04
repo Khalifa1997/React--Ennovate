@@ -177,6 +177,7 @@ class login extends Component {
   };
 
   componentWillReceiveProps(nextProps) {
+    console.log("jv", nextProps.auth);
     if (nextProps.auth.isAuthenticated) {
       this.props.history.push(
         "/profile/" + nextProps.auth.currentUser.screen_name

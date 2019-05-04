@@ -24,7 +24,7 @@ class editProfile extends Component {
             type: "text",
             placeholder: "Enter your updated screen name"
           },
-          value: "",
+          value: this.props.auth.profile.screen_name,
           validation: {
             required: true,
             nospace: true,
@@ -44,7 +44,7 @@ class editProfile extends Component {
             type: "text",
             placeholder: "Enter your updated name"
           },
-          value: "",
+          value: this.props.auth.profile.name,
           validation: {
             maxLength: 15
           },
@@ -59,7 +59,7 @@ class editProfile extends Component {
             type: "input",
             placeholder: "Enter your bio "
           },
-          value: "",
+          value: this.props.auth.profile.bio,
           validation: {
             maxLength: 100
           },
@@ -68,7 +68,7 @@ class editProfile extends Component {
           touched: false
         }
       },
-      loc: "",
+      loc: this.props.auth.profile.location,
       formIsValid: false,
       loading: false,
       error: {},
@@ -154,9 +154,10 @@ class editProfile extends Component {
     };
     this.props.editImage(profile_image_url);
     this.props.editUser(user).then(() => {
-      this.props.history.push(
-        "/profile/" + this.props.auth.currentUser.screen_name
-      );
+      console.log("edit", user.screen_name);
+      //if (this.props.auth.isedited) {
+      this.props.history.push("/profile/" + user.screen_name);
+      //}
     });
   };
 
@@ -179,6 +180,9 @@ class editProfile extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
+    // if (nextProps.edit.isedited) {
+    //   this.props.history.push("/profile/" + nextProps.auth.profile.screen_name);
+    // }
     if (nextProps.error) {
       this.setState({ msg: nextProps.error }, () => {
         this.setState({ loading: false });
@@ -199,6 +203,10 @@ class editProfile extends Component {
       });
     }
   }
+  // componentWillReceiveProps(nextProps) {
+  //   console.log("el edit", nextProps.auth.profile.screen_name);
+  //
+  // }
 
   render() {
     console.log("yaraab", this.state.editProfileForm.screen_name.value);
