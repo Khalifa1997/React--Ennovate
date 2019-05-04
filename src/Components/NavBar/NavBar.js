@@ -2,7 +2,7 @@ import React from "react";
 import Aux from "./../../Components/Wrapper/Auxilary";
 import img from "../../assets/images/Nova.png";
 import MyVerticallyCenteredModal from "../UI/Modal/Modal";
-
+import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import "./NavBar.css";
 
@@ -27,7 +27,7 @@ class authNav extends React.Component {
     return (
       <Aux>
         <nav className="navbar navbar-expand-lg navbar-light bg-light AuthNav">
-          <a className="navbar-brand" href="/">
+          <a className="navbar-brand" href="http://localhost:3000/newsfeed">
             <img className="LogoNavBar" src={img} alt="" height="40" />
           </a>
           <button
@@ -44,13 +44,19 @@ class authNav extends React.Component {
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav">
               <li className="nav-item">
-                <a className="nav-link" href="/">
+                <a className="nav-link" href="http://localhost:3000/newsfeed">
                   <strong>Home</strong>{" "}
                   <span className="sr-only">(current)</span>
                 </a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="/">
+                <a
+                  className="nav-link"
+                  href={
+                    "http://localhost:3000/profile/" +
+                    this.props.auth.currentUser.screen_name
+                  }
+                >
                   <strong>Profile</strong>{" "}
                   <span className="sr-only">(current)</span>
                 </a>
@@ -100,5 +106,11 @@ class authNav extends React.Component {
     );
   }
 }
+const mapStateToProps = state => ({
+  auth: state.auth,
+  me: state.me,
+  notifications: state.notifications,
+  profile: state.profile
+});
 
-export default withRouter(authNav);
+export default connect(mapStateToProps)(withRouter(authNav));

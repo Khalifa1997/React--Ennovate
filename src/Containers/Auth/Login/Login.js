@@ -189,14 +189,16 @@ class login extends Component {
         console.log("from login", this.state.errors);
         let clone = JSON.parse(JSON.stringify(this.state));
 
-        if (this.state.errors === "EMAIL_NOT_FOUND") {
+        if (this.state.errors === "UserNotFound") {
           clone.email.valid = false;
           clone.password.valid = true;
+
           this.setState({ email: clone.email });
           this.setState({ password: clone.password });
-        } else if (this.state.errors === "INVALID_PASSWORD") {
+        } else if (this.state.errors === "IncorrectPassword") {
           clone.password.valid = false;
           clone.email.valid = true;
+
           this.setState({ password: clone.password });
           this.setState({ email: clone.email });
         }
@@ -236,7 +238,7 @@ class login extends Component {
                     this.state.sentRequest === true && (
                       <div id="emailBack" className="invalid-feedback">
                         {" "}
-                        {this.state.errors.error.message}{" "}
+                        {this.state.errors}{" "}
                       </div>
                     )}
                   {this.state.email.valid === false &&

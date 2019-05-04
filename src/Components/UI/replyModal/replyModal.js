@@ -13,10 +13,10 @@ import {
   Modifier,
   ContentState
 } from "draft-js";
-import "./Modal.css";
+import "./replyModal.css";
 import * as Regex from "../TweetDraft/lex";
 
-class MyVerticallyCenteredModal extends React.Component {
+class replyModal extends React.Component {
   constructor(props) {
     super(props);
 
@@ -99,14 +99,15 @@ class MyVerticallyCenteredModal extends React.Component {
               };
               console.log(mentions);
               for (var i = 0; i < mentions.length; i++) {
-                clone.handles.push(mentions[i].textContent.substring(1));
+                clone.handles.push(mentions[i].textContent);
               }
 
               this.setState({ handles: clone.handles }, () => {
                 console.log("handles", this.state.handles);
               });
+              console.log("tweet id " + this.props.id);
               this.props
-                .newNova(this.state.text, this.state.handles, null)
+                .newNova(this.state.text, this.state.handles, this.props.id)
                 .then(() => {
                   this.props.onHide();
                 });
@@ -160,4 +161,4 @@ const styles = {
 export default connect(
   null,
   { newNova }
-)(MyVerticallyCenteredModal);
+)(replyModal);

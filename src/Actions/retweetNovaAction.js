@@ -13,35 +13,8 @@ export const reNova = id => dispatch => {
       //Params Nova ida
     })
     .then(res => {
-      console.log(res.data);
       dispatch(setCurrentUser(res.data.user, res.data.novauser));
-      /* const firstUser = res.data.slice(0, 1);
-      const secondUser = res.data.slice(1, 2);
-      dispatch(setCurrentUser(firstUser.data, secondUser.data)); */
-      /* axios
-        .all([
-          //Auth user Get
-          axios.get("http://localhost:8080/users/show", {
-            params: {
-              user_ID: firstUser.user
-            }
-          }),
-          //Profile user Get
-          axios.get("http://localhost:8080/users/show", {
-            params: {
-              user_ID: secondUser.user
-            }
-          })
-        ]) */
-      /* .then(
-          axios.spread((AuthRes, ProfileRes) => {
-            dispatch(setCurrentUser(AuthRes.data, ProfileRes.data));
-          })
-        ) */
-      /* .catch(err => {
-          console.log("Failed reNova nova get");
-        });
-    }) */
+      //dispatch(setCurrentUser(res.data.user, res.data.novauser));
     })
     .catch(err => {
       console.log("Failed reNova nova post");

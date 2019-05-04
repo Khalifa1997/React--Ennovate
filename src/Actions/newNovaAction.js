@@ -5,16 +5,38 @@ import jwt_decode from "jwt-decode";
 
 import * as actionTypes from "./types";
 
-export const newNova = (novaText, mentions) => dispatch => {
-  const data = {
-    novaText: novaText,
-    entitiesObject: {
-      users_mentions_ID: mentions
-    }
-  };
+export const newNova = (novaText, mentions, replyID) => dispatch => {
+  let length = mentions.length;
+
+  console.log("di el reply id " + replyID);
+  let data = {};
+  if (mentions.length > 0 && replyID !== null) {
+    data = {
+      text: novaText,
+      user_mentions_count: length.toString(),
+      user_mentions_screen_names: mentions,
+      in_reply_to_status_id: replyID
+    };
+  } else if (mentions.length > 0 && replyID === null) {
+    data = {
+      text: novaText,
+      user_mentions_count: length.toString(),
+      user_mentions_screen_names: mentions
+    };
+  } else if (mentions.length === 0 && replyID !== null) {
+    data = {
+      text: novaText,
+      in_reply_to_status_id: replyID
+    };
+  } else if (mentions.length === 0 && replyID === null) {
+    data = {
+      text: novaText
+    };
+  }
+
   console.log(data);
   axios
-    .post("http://localhost:8080/statuses/update", novaText, {
+    .post("http://localhost:8080/statuses/update", data, {
       headers: {
         token: axios.defaults.headers.common.Authorization
       }
@@ -29,7 +51,7 @@ export const newNova = (novaText, mentions) => dispatch => {
         })
         .then(res => {
           console.log("MEN EL new tweet response RESPONSE ", res);
-          dispatch(setCurrentUser(res.data, res.data));
+          dispatch(setCurrentUser(res.data.user, res.data.user));
         });
       // const user = res.data.user;
       // dispatch(setCurrentUser(user, user));
