@@ -3,13 +3,9 @@ import Axios from "axios";
 import * as actionTypes from "./types";
 
 export const setProfile = screen_name => dispatch => {
-  console.log("profile actions dispatch");
+  console.log("profile actions dispatch ", axios.defaults);
   axios
-    .get("http://localhost:8080/users/show?screen_name=" + screen_name, {
-      headers: {
-        token: axios.defaults.headers.common.Authorization
-      }
-    })
+    .get("http://localhost:8080/users/show?screen_name=" + screen_name)
     .then(response => {
       console.log(response.data);
       dispatch(getProfileUser(response.data.user, response.data.following));
