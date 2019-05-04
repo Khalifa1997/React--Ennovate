@@ -11,8 +11,7 @@ import { connect } from "react-redux";
 import { inherits } from "util";
 
 import Editor from "../UI/TweetDraft/draft";
-
-import ReplyModal from "../UI/replyModal/replyModal";
+import ReplyModal from "../UI/replymodal/replyModal";
 
 class Tweet extends React.Component {
   constructor(props) {
