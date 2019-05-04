@@ -7,14 +7,12 @@ import * as actionTypes from "./types";
 
 export const newNova = (novaText, mentions) => dispatch => {
   const data = {
-    novaText: novaText,
-    entitiesObject: {
-      users_mentions_ID: mentions
-    }
+    text: novaText,
+    user_mentions_ID: mentions
   };
   console.log(data);
   axios
-    .post("http://localhost:8080/statuses/update", novaText, {
+    .post("/statuses/update", data, {
       headers: {
         token: axios.defaults.headers.common.Authorization
       }
@@ -22,7 +20,7 @@ export const newNova = (novaText, mentions) => dispatch => {
     .then(res => {
       console.log("hjbjkj", { ...res });
       axios
-        .get("http://localhost:8080/users/show", {
+        .get("/users/show", {
           params: {
             user_ID: res.data.user
           }
