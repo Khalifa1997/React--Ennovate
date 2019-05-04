@@ -7,14 +7,12 @@ import * as actionTypes from "./types";
 
 export const newNova = (novaText, mentions) => dispatch => {
   const data = {
-    novaText: novaText,
-    entitiesObject: {
-      users_mentions_ID: mentions
-    }
+    text: novaText,
+    user_mentions_ID: mentions
   };
   console.log(data);
   axios
-    .post("/statuses/update", novaText, {
+    .post("/statuses/update", data, {
       headers: {
         token: axios.defaults.headers.common.Authorization
       }
