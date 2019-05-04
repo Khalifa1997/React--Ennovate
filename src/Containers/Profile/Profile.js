@@ -107,6 +107,7 @@ class profile extends Component {
               tweet._id
             )}
             key={tweet._id}
+            isaReNova={tweet.in_reply_to_screen_name}
             userName={tweet.user_name}
             likeClicked={() => {
               const isliked = this.props.auth.currentUser.favorites_novas_IDs.includes(
@@ -154,6 +155,7 @@ class profile extends Component {
               )}
               key={tweet._id}
               userName={tweet.user_name}
+              isaReNova={tweet.in_reply_to_screen_name}
               likeClicked={() => {
                 const isliked = this.props.auth.currentUser.favorites_novas_IDs.includes(
                   tweet._id
@@ -209,6 +211,7 @@ class profile extends Component {
                 tweet._id
               )}
               key={tweet._id}
+              isaReNova={tweet.in_reply_to_screen_name}
               userName={tweet.user_name}
               deleteClicked={() =>
                 this.deleteNovaHandler(tweet._id, tweet.in_reply_to_screen_name)
@@ -262,6 +265,7 @@ class profile extends Component {
               key={tweet._id}
               userName={tweet.user_name}
               text={tweet.text}
+              isaReNova={tweet.in_reply_to_screen_name}
               deleteClicked={() =>
                 this.deleteNovaHandler(tweet._id, tweet.in_reply_to_screen_name)
               }
@@ -361,6 +365,7 @@ class profile extends Component {
               )}
               key={tweet._id}
               userName={tweet.user_name}
+              isaReNova={tweet.in_reply_to_screen_name}
               deleteClicked={() =>
                 this.deleteNovaHandler(tweet._id, tweet.in_reply_to_screen_name)
               }
@@ -494,6 +499,7 @@ class profile extends Component {
             isliked={this.props.auth.currentUser.favorites_novas_IDs.includes(
               tweet._id
             )}
+            isaReNova={tweet.in_reply_to_screen_name}
             key={tweet._id}
             deleteClicked={() =>
               this.deleteNovaHandler(tweet._id, tweet.in_reply_to_screen_name)
