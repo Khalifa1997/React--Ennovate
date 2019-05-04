@@ -32,6 +32,7 @@ class textEditor extends React.Component {
   render() {
     return (
       <Editor
+        {...this.props}
         editorState={this.state.editorState}
         onChange={this.onChange}
         ref="editor"
