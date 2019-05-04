@@ -106,7 +106,7 @@ class MyVerticallyCenteredModal extends React.Component {
                 console.log("handles", this.state.handles);
               });
               this.props
-                .newNova(this.state.text, this.state.handles)
+                .newNova(this.state.text, this.state.handles, null)
                 .then(() => {
                   this.props.onHide();
                 });

@@ -85,17 +85,14 @@ class profile extends Component {
     this.props.likeNova(novaID, isLiked);
   };
   async modalShowHandler(novaID) {
-    console.log("hi man");
-    await Axios.get(
-      "http://localhost:8080/statuses/user_timeline/" +
-        this.props.match.params.screenName,
-      {
-        headers: {
-          token: localStorage.getItem("jwtToken")
-        }
+    console.log("hi man " + novaID);
+    await Axios.get("http://localhost:8080/statuses/show/" + novaID, {
+      headers: {
+        token: localStorage.getItem("jwtToken")
       }
-    )
+    })
       .then(res => {
+        console.log("comments ", res);
         this.setState({ comments: res.data });
       })
       .catch(err => {});
@@ -113,6 +110,7 @@ class profile extends Component {
             isRenovaed={tweet.renovaed_by_IDs.includes(this.props.profile._id)}
             renovaUser={this.props.profile.screen_name}
             key={tweet._id}
+            id={tweet._id}
             userName={tweet.user_name}
             likeClicked={() => {
               let isLiked = this.props.auth.currentUser.favorites_novas_IDs.includes(
@@ -159,6 +157,7 @@ class profile extends Component {
                 tweet._id
               )}
               key={tweet._id}
+              id={tweet._id}
               userName={tweet.user_name}
               likeClicked={() => {
                 let isLiked = this.props.auth.currentUser.favorites_novas_IDs.includes(
@@ -217,6 +216,7 @@ class profile extends Component {
                 tweet._id
               )}
               key={tweet._id}
+              id={tweet._id}
               userName={tweet.user_name}
               deleteClicked={() => this.deleteNovaHandler(tweet._id)}
               likeClicked={() => {
@@ -268,6 +268,7 @@ class profile extends Component {
               screenName={tweet.user_screen_name}
               isliked={isLiked}
               key={tweet._id}
+              id={tweet._id}
               userName={tweet.user_name}
               text={tweet.text}
               isRenovaed={tweet.renovaed_by_IDs.includes(
@@ -369,6 +370,7 @@ class profile extends Component {
               isliked={this.props.auth.currentUser.favorites_novas_IDs.includes(
                 tweet._id
               )}
+              id={tweet._id}
               key={tweet._id}
               userName={tweet.user_name}
               deleteClicked={() => this.deleteNovaHandler(tweet._id)}
@@ -482,6 +484,7 @@ class profile extends Component {
             )}
             isRenovaed={tweet.renovaed_by_IDs.includes(this.props.profile._id)}
             renovaUser={this.props.profile.screen_name}
+            id={tweet._id}
             key={tweet._id}
             deleteClicked={() => this.deleteNovaHandler(tweet._id)}
             likeClicked={() => {

@@ -97,7 +97,11 @@ class Tweet extends React.Component {
             ) : null}
           </div>
         </div>
-        <ReplyModal show={this.state.modalShow} onHide={this.modalClose} />
+        <ReplyModal
+          show={this.state.modalShow}
+          onHide={this.modalClose}
+          id={this.props.id}
+        />
       </div>
     );
   }

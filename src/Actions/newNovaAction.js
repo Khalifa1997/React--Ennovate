@@ -5,17 +5,30 @@ import jwt_decode from "jwt-decode";
 
 import * as actionTypes from "./types";
 
-export const newNova = (novaText, mentions) => dispatch => {
+export const newNova = (novaText, mentions, replyID) => dispatch => {
   let length = mentions.length;
 
+  console.log("di el reply id " + replyID);
   let data = {};
-  if (mentions.length > 0) {
+  if (mentions.length > 0 && replyID !== null) {
+    data = {
+      text: novaText,
+      user_mentions_count: length.toString(),
+      user_mentions_screen_names: mentions,
+      in_reply_to_status_id: replyID
+    };
+  } else if (mentions.length > 0 && replyID === null) {
     data = {
       text: novaText,
       user_mentions_count: length.toString(),
       user_mentions_screen_names: mentions
     };
-  } else {
+  } else if (mentions.length === 0 && replyID !== null) {
+    data = {
+      text: novaText,
+      in_reply_to_status_id: replyID
+    };
+  } else if (mentions.length === 0 && replyID === null) {
     data = {
       text: novaText
     };
