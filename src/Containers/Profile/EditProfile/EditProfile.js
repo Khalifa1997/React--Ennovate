@@ -22,7 +22,7 @@ class editProfile extends Component {
           elementType: "input",
           elementConfig: {
             type: "text",
-            placeholder: this.props.auth.profile.screen_name
+            placeholder: "Enter your updated screen name"
           },
           value: this.props.auth.profile.screen_name,
           validation: {
