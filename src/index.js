@@ -73,6 +73,11 @@ const customMiddleWare = store => next => action => {
       draggable: true
     });
   }
+  if (Object.entries(oldState.auth.currentUser).length > 0) {
+    console.log(oldState.auth.currentUser.favorites_novas_IDs.length);
+    console.log(nextState.auth.currentUser.favorites_novas_IDs.length);
+  }
+
   if (action2 == "DELETE_NOVA") {
     toast.error("Nova Deleted!🔥", {
       position: "top-center",

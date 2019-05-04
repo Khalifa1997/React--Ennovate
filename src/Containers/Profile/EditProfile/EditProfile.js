@@ -15,16 +15,16 @@ import "./EditProfile.css";
 class editProfile extends Component {
   constructor(props) {
     super(props);
-
+    console.log("noo", this.props.profile.user);
     this.state = {
       editProfileForm: {
         screen_name: {
           elementType: "input",
           elementConfig: {
             type: "text",
-            placeholder: "Enter your updated screen name"
+            placeholder: this.props.auth.profile.screen_name
           },
-          value: "",
+          value: this.props.auth.profile.screen_name,
           validation: {
             required: true,
             nospace: true,
@@ -44,7 +44,7 @@ class editProfile extends Component {
             type: "text",
             placeholder: "Enter your updated name"
           },
-          value: "",
+          value: this.props.auth.profile.name,
           validation: {
             maxLength: 15
           },
@@ -59,7 +59,7 @@ class editProfile extends Component {
             type: "input",
             placeholder: "Enter your bio "
           },
-          value: "",
+          value: this.props.auth.profile.bio,
           validation: {
             maxLength: 100
           },
@@ -68,7 +68,7 @@ class editProfile extends Component {
           touched: false
         }
       },
-      loc: "",
+      loc: this.props.auth.profile.location,
       formIsValid: false,
       loading: false,
       error: {},
@@ -199,7 +199,8 @@ class editProfile extends Component {
   }
 
   render() {
-    console.log("yaraab", this.state.editProfileForm.screen_name.value);
+    console.log("profile", this.props.auth.profile.screen_name);
+    console.log("profile", this.props.auth.currentUser.screen_name);
     const formElementArray = [];
     for (let key in this.state.editProfileForm) {
       formElementArray.push({
@@ -207,7 +208,7 @@ class editProfile extends Component {
         config: this.state.editProfileForm[key]
       });
     }
-    console.log(this.props.auth.currentUser);
+    //console.log(this.props.auth.currentUser);
     let form = (
       <form onSubmit={this.submitHandler} className="editBox">
         <div className="center">
@@ -309,7 +310,8 @@ class editProfile extends Component {
 const mapStateToProps = state => ({
   auth: state.auth,
   edit: state.edit,
-  error: state.errors
+  error: state.errors,
+  profile: state.profile
 });
 
 export default withRouter(
