@@ -3,11 +3,15 @@ import Axios from "axios";
 import * as actionTypes from "./types";
 
 export const setProfile = screen_name => dispatch => {
-  console.log("profile actions dispatch ", axios.defaults);
+  console.log("profile actions dispatch", localStorage.jwtToken);
   axios
-    .get("http://localhost:8080/users/show?screen_name=" + screen_name)
+    .get("http://localhost:8080/users/show?screen_name=" + screen_name, {
+      headers: {
+        token: localStorage.jwtToken
+      }
+    })
     .then(response => {
-      console.log(response.data);
+      console.log("set profile", response.data);
       dispatch(getProfileUser(response.data.user, response.data.following));
     })
     .catch(error => {

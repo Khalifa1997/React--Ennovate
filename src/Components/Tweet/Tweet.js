@@ -11,8 +11,12 @@ import { connect } from "react-redux";
 import { inherits } from "util";
 
 import Editor from "../UI/TweetDraft/draft";
+<<<<<<< HEAD
 
 import ReplyModal from "../UI/replymodal/ReplyModal";
+=======
+import ReplyModal from "../UI/replymodal/replyModal";
+>>>>>>> ALL_NIGHTER
 
 class Tweet extends React.Component {
   constructor(props) {
