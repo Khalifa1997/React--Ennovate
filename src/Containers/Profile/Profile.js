@@ -107,13 +107,13 @@ class profile extends Component {
         return (
           <Tweet
             screenName={tweet.user_screen_name}
-            isliked={this.props.auth.currentUser.favorites_novas_IDs.contains(
+            isliked={this.props.auth.currentUser.favorites_novas_IDs.includes(
               tweet._id
             )}
             key={tweet._id}
             userName={tweet.user_name}
             likeClicked={() => {
-              let isLiked = this.props.auth.currentUser.favorites_novas_IDs.contains(
+              let isLiked = this.props.auth.currentUser.favorites_novas_IDs.includes(
                 tweet._id
               );
               this.likeNovaHandler(tweet._id, isLiked);
@@ -153,13 +153,13 @@ class profile extends Component {
           <CSSTransition key={tweet._id} timeout={500} classNames="move">
             <Tweet
               screenName={tweet.user_screen_name}
-              isliked={this.props.auth.currentUser.favorites_novas_IDs.contains(
+              isliked={this.props.auth.currentUser.favorites_novas_IDs.includes(
                 tweet._id
               )}
               key={tweet._id}
               userName={tweet.user_name}
               likeClicked={() => {
-                let isLiked = this.props.auth.currentUser.favorites_novas_IDs.contains(
+                let isLiked = this.props.auth.currentUser.favorites_novas_IDs.includes(
                   tweet._id
                 );
                 this.likeNovaHandler(tweet._id, isLiked);
@@ -207,14 +207,14 @@ class profile extends Component {
           <CSSTransition key={tweet._id} timeout={500} classNames="move">
             <Tweet
               screenName={tweet.user_screen_name}
-              isliked={this.props.auth.currentUser.favorites_novas_IDs.contains(
+              isliked={this.props.auth.currentUser.favorites_novas_IDs.includes(
                 tweet._id
               )}
               key={tweet._id}
               userName={tweet.user_name}
               deleteClicked={() => this.deleteNovaHandler(tweet._id)}
               likeClicked={() => {
-                let isLiked = this.props.auth.currentUser.favorites_novas_IDs.contains(
+                let isLiked = this.props.auth.currentUser.favorites_novas_IDs.includes(
                   tweet._id
                 );
                 this.likeNovaHandler(tweet._id, isLiked);
@@ -262,7 +262,7 @@ class profile extends Component {
               text={tweet.text}
               deleteClicked={() => this.deleteNovaHandler(tweet._id)}
               likeClicked={() => {
-                let isLiked = this.props.auth.currentUser.favorites_novas_IDs.contains(
+                let isLiked = this.props.auth.currentUser.favorites_novas_IDs.includes(
                   tweet._id
                 );
                 this.likeNovaHandler(tweet._id, isLiked);
@@ -352,14 +352,14 @@ class profile extends Component {
           <CSSTransition key={tweet._id} timeout={500} classNames="move">
             <Tweet
               screenName={tweet.user_screen_name}
-              isliked={this.props.auth.currentUser.favorites_novas_IDs.contains(
+              isliked={this.props.auth.currentUser.favorites_novas_IDs.includes(
                 tweet._id
               )}
               key={tweet._id}
               userName={tweet.user_name}
               deleteClicked={() => this.deleteNovaHandler(tweet._id)}
               likeClicked={() => {
-                let isLiked = this.props.auth.currentUser.favorites_novas_IDs.contains(
+                let isLiked = this.props.auth.currentUser.favorites_novas_IDs.includes(
                   tweet._id
                 );
                 this.likeNovaHandler(tweet._id, isLiked);
@@ -459,13 +459,13 @@ class profile extends Component {
         <CSSTransition key={tweet._id} timeout={500} classNames="move">
           <Tweet
             screenName={tweet.user_screen_name}
-            isliked={this.props.auth.currentUser.favorites_novas_IDs.contains(
+            isliked={this.props.auth.currentUser.favorites_novas_IDs.includes(
               tweet._id
             )}
             key={tweet._id}
             deleteClicked={() => this.deleteNovaHandler(tweet._id)}
             likeClicked={() => {
-              let isLiked = this.props.auth.currentUser.favorites_novas_IDs.contains(
+              let isLiked = this.props.auth.currentUser.favorites_novas_IDs.includes(
                 tweet._id
               );
               this.likeNovaHandler(tweet._id, isLiked);
