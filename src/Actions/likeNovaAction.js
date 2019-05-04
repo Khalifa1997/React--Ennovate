@@ -4,7 +4,8 @@ export const likeNova = (nova_ID, isLiked) => dispatch => {
   const obj = {
     nova_ID: nova_ID
   };
-  if (isLiked) {
+  console.log("is Liked " + isLiked);
+  if (!isLiked) {
     axios
       .post("http://localhost:8080/favorites/create", obj, {
         headers: {
