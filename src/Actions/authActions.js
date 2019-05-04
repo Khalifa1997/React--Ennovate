@@ -35,9 +35,10 @@ export const registerUser = userData => dispatch => {
       //   this.setState({ token: clone.token });
     })
     .catch(err => {
+      console.log(err);
       dispatch({
         type: actionTypes.GET_ERRORS,
-        payload: err.response.data
+        payload: err.response.data.msg
       });
     });
 };
@@ -66,7 +67,6 @@ export const loginUser = userData => dispatch => {
       dispatch(setCurrentUser(user, user));
     })
     .catch(err => {
-      console.log(err.response.data.msg);
       dispatch({
         type: actionTypes.GET_ERRORS,
         payload: err.response.data.msg

@@ -78,7 +78,8 @@ class login extends Component {
       },
       token: "",
       sentRequest: false,
-      errors: {}
+      errors: {},
+      errorMessage: null
     };
   }
 
@@ -187,19 +188,35 @@ class login extends Component {
       this.setState({ errors: nextProps.error }, () => {
         console.log("from login", this.state.errors);
         let clone = JSON.parse(JSON.stringify(this.state));
-
-        if (this.state.errors === "EMAIL_NOT_FOUND") {
+        if (this.state.errors === "UserNotFound") {
           clone.email.valid = false;
           clone.password.valid = true;
+          clone.errorMessage = <p>User not found</p>;
           this.setState({ email: clone.email });
           this.setState({ password: clone.password });
-        } else if (this.state.errors === "INVALID_PASSWORD") {
+          this.setState({ errorMessage: clone.errorMessage });
+        } else if (this.state.errors === "IncorrectPassword") {
           clone.password.valid = false;
           clone.email.valid = true;
+          clone.errorMessage = <p>IncorrectPassword</p>;
           this.setState({ password: clone.password });
           this.setState({ email: clone.email });
+          this.setState({ errorMessage: clone.errorMessage });
         }
+        // if (this.state.errors === "EMAIL_NOT_FOUND") {
+        //   clone.email.valid = false;
+        //   clone.password.valid = true;
+        //   this.setState({ email: clone.email });
+        //   this.setState({ password: clone.password });
+        // } else if (this.state.errors === "INVALID_PASSWORD") {
+        //   clone.password.valid = false;
+        //   clone.email.valid = true;
+        //   this.setState({ password: clone.password });
+        //   this.setState({ email: clone.email });
+        // }
       });
+    } else {
+      this.setState({ errorMessage: null });
     }
   }
 
@@ -219,6 +236,7 @@ class login extends Component {
               <form className="loginBox" onSubmit={this.Login}>
                 <h3 className="headerText">Log in to eNOVAte</h3>
                 <div className="form-group">
+                  {this.state.errorMessage}
                   <input
                     className={Classnames("form-control inputFields", {
                       "is-invalid":
@@ -231,13 +249,7 @@ class login extends Component {
                     autoFocus
                     onChange={event => this.onChangeHandler(event, "email")}
                   />
-                  {this.state.email.valid === false &&
-                    this.state.sentRequest === true && (
-                      <div id="emailBack" className="invalid-feedback">
-                        {" "}
-                        {this.state.errors.error.message}{" "}
-                      </div>
-                    )}
+
                   {this.state.email.valid === false &&
                     submitButtonDisabled === true &&
                     this.state.sentRequest === false && (
@@ -260,17 +272,7 @@ class login extends Component {
                     placeholder="Password"
                     onChange={event => this.onChangeHandler(event, "password")}
                   />
-                  {this.state.password.valid === false &&
-                    this.state.sentRequest === true && (
-                      <div
-                        id="passBack"
-                        style={{ marginTop: "-22px" }}
-                        className="invalid-feedback"
-                      >
-                        {" "}
-                        {this.state.errors}{" "}
-                      </div>
-                    )}
+
                   {this.state.password.valid === false &&
                     submitButtonDisabled === true &&
                     this.state.sentRequest === false && (
