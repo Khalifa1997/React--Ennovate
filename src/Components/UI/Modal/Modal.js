@@ -99,14 +99,14 @@ class MyVerticallyCenteredModal extends React.Component {
               };
               console.log(mentions);
               for (var i = 0; i < mentions.length; i++) {
-                clone.handles.push(mentions[i].textContent);
+                clone.handles.push(mentions[i].textContent.substring(1));
               }
 
               this.setState({ handles: clone.handles }, () => {
                 console.log("handles", this.state.handles);
               });
               this.props
-                .newNova(this.state.text, this.state.handles)
+                .newNova(this.state.text, this.state.handles, null)
                 .then(() => {
                   this.props.onHide();
                 });

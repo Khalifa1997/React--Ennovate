@@ -6,7 +6,8 @@ const initialState = {
   isAuthenticated: true,
   profile: {},
   currentUser: {},
-  image: ""
+  image: "",
+  isedited: false
 };
 
 const editProfileReducer = (state = initialState, action) => {
@@ -14,17 +15,20 @@ const editProfileReducer = (state = initialState, action) => {
     case EDIT_PROFILE:
       return {
         ...state,
-        profile: action.payload.profile
+        profile: action.payload.profile,
+        isedited: true
       };
     case SET_PROFILE_IMAGE:
       return {
         ...state,
-        profile: action.payload.image
+        profile: action.payload.image,
+        isedited: true
       };
     case SET_PROFILE:
       return {
         ...state,
-        profile: action.payload.profile
+        profile: action.payload.profile,
+        isedited: true
       };
     default:
       return state;

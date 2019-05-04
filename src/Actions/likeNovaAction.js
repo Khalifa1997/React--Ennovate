@@ -5,10 +5,10 @@ export const likeNova = (nova_ID, isLiked) => dispatch => {
   const obj = {
     nova_ID: nova_ID
   };
-  console.log("is Liked " + isLiked);
+  console.log(obj);
   if (!isLiked) {
     axios
-      .post("/favorites/create", obj, {
+      .post("http://localhost:8080/favorites/create", obj, {
         headers: {
           token: axios.defaults.headers.common.Authorization
         }
@@ -56,7 +56,7 @@ export const likeNova = (nova_ID, isLiked) => dispatch => {
       });
   } else {
     axios
-      .post("/favorites/destroy", obj, {
+      .post("http://localhost:8080/favorites/destroy", obj, {
         headers: {
           token: axios.defaults.headers.common.Authorization
         }

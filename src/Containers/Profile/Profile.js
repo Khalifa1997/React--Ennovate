@@ -27,7 +27,7 @@ class profile extends Component {
     super(props);
 
     this.state = {
-      likedTweets: [],
+      likedNovas: [],
       id: "",
       loading: true,
 
@@ -85,44 +85,44 @@ class profile extends Component {
     this.props.likeNova(novaID, isLiked);
   };
   async modalShowHandler(novaID) {
-    console.log("hi man");
-    await Axios.get("/statuses/user_timeline", {
+    console.log("hi man " + novaID);
+    await Axios.get("http://localhost:8080/statuses/show/" + novaID, {
       headers: {
         token: localStorage.getItem("jwtToken")
       }
     })
       .then(res => {
+        console.log("comments ", res);
         this.setState({ comments: res.data });
       })
       .catch(err => {});
 
-    const comments = this.state.comments
-      .reverse()
-      .slice(0, 5)
-      .map(tweet => {
-        return (
-          <Tweet
-            screenName={tweet.user_screen_name}
-            isliked={this.props.auth.currentUser.favorites_novas_IDs.includes(
+    const comments = this.state.comments.slice(0, 5).map(tweet => {
+      return (
+        <Tweet
+          screenName={tweet.user_screen_name}
+          isliked={this.props.auth.currentUser.favorites_novas_IDs.includes(
+            tweet._id
+          )}
+          isRenovaed={tweet.renovaed_by_IDs.includes(this.props.profile._id)}
+          renovaUser={this.props.profile.screen_name}
+          key={tweet._id}
+          id={tweet._id}
+          userName={tweet.user_name}
+          likeClicked={() => {
+            let isLiked = this.props.auth.currentUser.favorites_novas_IDs.includes(
               tweet._id
-            )}
-            key={tweet._id}
-            isaReNova={tweet.in_reply_to_screen_name}
-            userName={tweet.user_name}
-            likeClicked={() => {
-              const isliked = this.props.auth.currentUser.favorites_novas_IDs.includes(
-                tweet._id
-              );
-              this.likeNovaHandler(tweet._id, isliked);
-            }}
-            reNovaClicked={() => this.reNovaHandler(tweet._id)}
-            text={tweet.text}
-            isAuth={
-              this.props.auth.currentUser.screen_name === tweet.user_screen_name
-            }
-          />
-        );
-      });
+            );
+            this.likeNovaHandler(tweet._id, isLiked);
+          }}
+          reNovaClicked={() => this.reNovaHandler(tweet._id)}
+          text={tweet.text}
+          isAuth={
+            this.props.auth.currentUser.screen_name === tweet.user_screen_name
+          }
+        />
+      );
+    });
     this.setState({ loading: false });
     //All coments are shown as tweets-- Add them to Modal
     this.setState({ modalShown: true, modalType: 0 });
@@ -131,9 +131,9 @@ class profile extends Component {
   reNovaHandler = novaID => {
     this.props.reNova(novaID);
   };
-  deleteNovaHandler = (novaID, mytweet) => {
+  deleteNovaHandler = novaID => {
     //Deleting a Nova
-    this.props.deleteNova(novaID, mytweet);
+    this.props.deleteNova(novaID);
     const newPosts = [...this.state.novas];
     console.log(this.state.novas);
     //Delete a new tweet
@@ -154,17 +154,19 @@ class profile extends Component {
                 tweet._id
               )}
               key={tweet._id}
+              id={tweet._id}
               userName={tweet.user_name}
-              isaReNova={tweet.in_reply_to_screen_name}
               likeClicked={() => {
-                const isliked = this.props.auth.currentUser.favorites_novas_IDs.includes(
+                let isLiked = this.props.auth.currentUser.favorites_novas_IDs.includes(
                   tweet._id
                 );
-                this.likeNovaHandler(tweet._id, isliked);
+                this.likeNovaHandler(tweet._id, isLiked);
               }}
-              deleteClicked={() =>
-                this.deleteNovaHandler(tweet._id, tweet.in_reply_to_screen_name)
-              }
+              isRenovaed={tweet.renovaed_by_IDs.includes(
+                this.props.profile._id
+              )}
+              renovaUser={this.props.profile.screen_name}
+              deleteClicked={() => this.deleteNovaHandler(tweet._id)}
               reNovaClicked={() => this.reNovaHandler(tweet._id)}
               textClicked={() => this.modalShowHandler(tweet._id)}
               text={tweet.text}
@@ -211,17 +213,19 @@ class profile extends Component {
                 tweet._id
               )}
               key={tweet._id}
-              isaReNova={tweet.in_reply_to_screen_name}
+              id={tweet._id}
               userName={tweet.user_name}
-              deleteClicked={() =>
-                this.deleteNovaHandler(tweet._id, tweet.in_reply_to_screen_name)
-              }
+              deleteClicked={() => this.deleteNovaHandler(tweet._id)}
               likeClicked={() => {
-                const isliked = this.props.auth.currentUser.favorites_novas_IDs.includes(
+                let isLiked = this.props.auth.currentUser.favorites_novas_IDs.includes(
                   tweet._id
                 );
-                this.likeNovaHandler(tweet._id, isliked);
+                this.likeNovaHandler(tweet._id, isLiked);
               }}
+              isRenovaed={tweet.renovaed_by_IDs.includes(
+                this.props.profile._id
+              )}
+              renovaUser={this.props.profile.screen_name}
               reNovaClicked={() => this.reNovaHandler(tweet._id)}
               textClicked={() => this.modalShowHandler(tweet._id)}
               text={tweet.text}
@@ -252,31 +256,56 @@ class profile extends Component {
       console.log("like clicked ");
       const novasClass = "";
       const likesClass = "active";
-      console.log(this.state.likedTweets);
-      const likedTweets = this.state.likedTweets.map(tweet => {
-        const isLiked = false;
+      Axios.get(
+        "http://localhost:8080/favorites/list/" +
+          this.props.match.params.screenName,
+        {
+          headers: {
+            token: Axios.defaults.headers.common.Authorization
+          }
+        }
+      )
+        .then(res => {
+          this.setState({ likedNovas: res.data.novasArray.reverse() });
+          //ghalat 3ashan el state bayza
+        })
+        .catch(err => {
+          console.log("failure from liked novas", { ...err });
+        });
+      console.log(this.state.likedNovas);
+      const novas = this.state.likedNovas.map(tweet => {
+        /* const isLiked = this.props.auth.currentUser.favorites_novas_IDs.includes(
+          tweet._id
+        ); */
+
         return (
           <CSSTransition key={tweet._id} timeout={500} classNames="move">
             <Tweet
               screenName={tweet.user_screen_name}
+              // isliked={isLiked}
+              key={tweet._id}
+              id={tweet._id}
+              userName={tweet.user_name}
+              text={tweet.text}
               isliked={this.props.auth.currentUser.favorites_novas_IDs.includes(
                 tweet._id
               )}
+              isRenovaed={tweet.renovaed_by_IDs.includes(
+                this.props.profile._id
+              )}
+              renovaUser={this.props.profile.screen_name}
               key={tweet._id}
-              userName={tweet.user_name}
-              text={tweet.text}
-              isaReNova={tweet.in_reply_to_screen_name}
-              deleteClicked={() =>
-                this.deleteNovaHandler(tweet._id, tweet.in_reply_to_screen_name)
-              }
+              deleteClicked={() => this.deleteNovaHandler(tweet._id)}
               likeClicked={() => {
-                const isliked = this.props.auth.currentUser.favorites_novas_IDs.includes(
+                let isLiked = this.props.auth.currentUser.favorites_novas_IDs.includes(
                   tweet._id
                 );
-                this.likeNovaHandler(tweet._id, isliked);
+                this.likeNovaHandler(tweet._id, isLiked);
               }}
-              textClicked={() => this.modalShowHandler(tweet._id)}
               reNovaClicked={() => this.reNovaHandler(tweet._id)}
+              textClicked={() => this.modalShowHandler(tweet._id)}
+              userName={tweet.user_name}
+              text={tweet.text}
               isAuth={
                 this.props.auth.currentUser.screen_name ===
                 tweet.user_screen_name
@@ -287,19 +316,22 @@ class profile extends Component {
       });
 
       const contentShown = (
-        <div role="tabpanel" id="Section2">
+        <div role="tabpanel" id="Section1">
           <menu>
             <TransitionGroup className="d-flex flex-column bd-highlight mb-3 justify-content-center align-items-center">
-              {likedTweets}
+              {novas}
             </TransitionGroup>
           </menu>
         </div>
       );
+
+      this.setState({
+        contentShown: contentShown,
+        loading: false
+      });
       this.setState({
         novasClass: novasClass,
-        likesClass: likesClass,
-        likedTweets: likedTweets,
-        contentShown: contentShown
+        likesClass: likesClass
       });
     }
   };
@@ -310,7 +342,8 @@ class profile extends Component {
     this.setState({ loading: true });
     // this.setButton();
     await Axios.get(
-      "/statuses/user_timeline/" + this.props.profile.user.screen_name,
+      "http://localhost:8080/statuses/user_timeline/" +
+        this.props.match.params.screenName,
       {
         headers: {
           token: localStorage.getItem("jwtToken")
@@ -325,7 +358,8 @@ class profile extends Component {
       });
     //ghalat 3ashan el state bayza
     await Axios.get(
-      "/friendships/list?screen_name=" + this.props.profile.user.screen_name
+      "http://localhost:8080/friendships/list?screen_name=" +
+        this.props.match.params.screenName
     )
       .then(res => {
         console.log(res.data.users);
@@ -337,7 +371,8 @@ class profile extends Component {
       });
 
     await Axios.get(
-      "/followers/list?screen_name=" + this.props.profile.user.screen_name
+      "http://localhost:8080/followers/list?screen_name=" +
+        this.props.match.params.screenName
     )
       .then(res => {
         console.log(res.data.users);
@@ -360,18 +395,20 @@ class profile extends Component {
               isliked={this.props.auth.currentUser.favorites_novas_IDs.includes(
                 tweet._id
               )}
+              id={tweet._id}
               key={tweet._id}
               userName={tweet.user_name}
-              isaReNova={tweet.in_reply_to_screen_name}
-              deleteClicked={() =>
-                this.deleteNovaHandler(tweet._id, tweet.in_reply_to_screen_name)
-              }
+              deleteClicked={() => this.deleteNovaHandler(tweet._id)}
               likeClicked={() => {
-                const isliked = this.props.auth.currentUser.favorites_novas_IDs.includes(
+                let isLiked = this.props.auth.currentUser.favorites_novas_IDs.includes(
                   tweet._id
                 );
-                this.likeNovaHandler(tweet._id, isliked);
+                this.likeNovaHandler(tweet._id, isLiked);
               }}
+              isRenovaed={tweet.renovaed_by_IDs.includes(
+                this.props.profile._id
+              )}
+              renovaUser={this.props.profile.screen_name}
               reNovaClicked={() => this.reNovaHandler(tweet._id)}
               textClicked={() => this.modalShowHandler(tweet._id)}
               text={tweet.text}
@@ -442,31 +479,8 @@ class profile extends Component {
     this.setState({ loading: false });
 
     await Axios.get(
-      "/friendships/list?screen_name=" + this.props.profile.user.screen_name
-    )
-      .then(res => {
-        console.log(res.data.users);
-        this.setState({ followings: res.data.users });
-        console.log("list of followings ", this.state.followings);
-      })
-      .catch(err => {
-        console.log("failure from followers", { ...err });
-      });
-
-    await Axios.get(
-      "/followers/list?screen_name=" + this.props.profile.user.screen_name
-    )
-      .then(res => {
-        console.log(res.data.users);
-        this.setState({ followers: res.data.users });
-        console.log("list of followers ", this.state.followers);
-      })
-      .catch(err => {
-        console.log("failure from followers", { ...err });
-      });
-
-    await Axios.get(
-      "/statuses/user_timeline/" + nextprops.profile.user.screen_name,
+      "http://localhost:8080/statuses/user_timeline/" +
+        this.props.match.params.screenName,
       {
         headers: {
           token: Axios.defaults.headers.common.Authorization
@@ -493,16 +507,16 @@ class profile extends Component {
             isliked={this.props.auth.currentUser.favorites_novas_IDs.includes(
               tweet._id
             )}
-            isaReNova={tweet.in_reply_to_screen_name}
+            isRenovaed={tweet.renovaed_by_IDs.includes(this.props.profile._id)}
+            renovaUser={this.props.profile.screen_name}
+            id={tweet._id}
             key={tweet._id}
-            deleteClicked={() =>
-              this.deleteNovaHandler(tweet._id, tweet.in_reply_to_screen_name)
-            }
+            deleteClicked={() => this.deleteNovaHandler(tweet._id)}
             likeClicked={() => {
-              const isliked = this.props.auth.currentUser.favorites_novas_IDs.includes(
+              let isLiked = this.props.auth.currentUser.favorites_novas_IDs.includes(
                 tweet._id
               );
-              this.likeNovaHandler(tweet._id, isliked);
+              this.likeNovaHandler(tweet._id, isLiked);
             }}
             reNovaClicked={() => this.reNovaHandler(tweet._id)}
             textClicked={() => this.modalShowHandler(tweet._id)}
@@ -531,40 +545,6 @@ class profile extends Component {
       loading: false
     });
   }
-  follow = () => {
-    let user = {
-      screen_name: this.props.profile.user.screen_name
-    };
-    Axios.post("/friendships/create", user, {
-      headers: {
-        token: Axios.defaults.headers.common.Authorization
-      }
-    })
-      .then(res => {
-        console.log("done");
-        this.props.setProfile(this.props.match.params.screenName);
-      })
-      .catch(err => {
-        console.log("failure from follow", { ...err });
-      });
-  };
-  unfollow = () => {
-    let user = {
-      screen_name: this.props.profile.user.screen_name
-    };
-    Axios.post("/friendships/destroy", user, {
-      headers: {
-        token: Axios.defaults.headers.common.Authorization
-      }
-    })
-      .then(res => {
-        console.log("done");
-        this.props.setProfile(this.props.match.params.screenName);
-      })
-      .catch(err => {
-        console.log("failure from unfollow", { ...err });
-      });
-  };
   render() {
     let toggledButton = "";
 
@@ -580,22 +560,15 @@ class profile extends Component {
         </button>
       );
     } else {
-      console.log("following" + this.props.profile.following);
-      if (this.props.profile.following == "false") {
+      if (this.props.profile.following) {
         toggledButton = (
-          <button
-            className="btn btn-success profilebtn profile-edit-btn"
-            onClick={this.follow}
-          >
+          <button className="btn profilebtn profile-edit-btn">
             <a className="referencecolor">Follow</a>
           </button>
         );
       } else {
         toggledButton = (
-          <button
-            className="btn btn-danger profilebtn profile-edit-btn"
-            onClick={this.unfollow}
-          >
+          <button className="btn profilebtn profile-edit-btn">
             <a className="referencecolor">Unfollow</a>
           </button>
         );

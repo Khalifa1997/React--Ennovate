@@ -65,10 +65,11 @@ class Newsfeed extends Component {
         return (
           <Tweet
             screenName={tweet.user_screen_name}
-            isliked={this.props.auth.currentUser.favorites_novas_IDs.includes(
-              tweet._id
-            )}
-            isaReNova={tweet.in_reply_to_screen_name}
+            // isliked={this.props.auth.currentUser.favorites_novas_IDs.includes(
+            //   tweet._id
+            // )}
+            // isaReNova={tweet.in_reply_to_screen_name}
+            isliked={false}
             key={tweet._id}
             userName={tweet.user_name}
             likeClicked={() => {
@@ -107,10 +108,10 @@ class Newsfeed extends Component {
               screenName={tweet.user_screen_name}
               userName={tweet.user_name}
               text={tweet.text}
-              isaReNova={tweet.in_reply_to_screen_name}
-              isliked={this.props.auth.currentUser.favorites_novas_IDs.includes(
-                tweet._id
-              )}
+              // isaReNova={tweet.in_reply_to_screen_name}
+              // isliked={this.props.auth.currentUser.favorites_novas_IDs.includes(
+              //   tweet._id
+              // )}
               textClicked={() => this.modalShowHandler(tweet._id)}
               likeClicked={() => {
                 const isliked = this.props.auth.currentUser.favorites_novas_IDs.includes(

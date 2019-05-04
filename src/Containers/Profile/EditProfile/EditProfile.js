@@ -154,7 +154,10 @@ class editProfile extends Component {
     };
     this.props.editImage(profile_image_url);
     this.props.editUser(user).then(() => {
+      console.log("edit", user.screen_name);
+      //if (this.props.auth.isedited) {
       this.props.history.push("/profile/" + user.screen_name);
+      //}
     });
   };
 
@@ -177,6 +180,9 @@ class editProfile extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
+    // if (nextProps.edit.isedited) {
+    //   this.props.history.push("/profile/" + nextProps.auth.profile.screen_name);
+    // }
     if (nextProps.error) {
       this.setState({ msg: nextProps.error }, () => {
         this.setState({ loading: false });
@@ -197,6 +203,10 @@ class editProfile extends Component {
       });
     }
   }
+  // componentWillReceiveProps(nextProps) {
+  //   console.log("el edit", nextProps.auth.profile.screen_name);
+  //
+  // }
 
   render() {
     console.log("profile", this.props.auth.profile.screen_name);

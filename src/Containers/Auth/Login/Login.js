@@ -178,6 +178,7 @@ class login extends Component {
   };
 
   componentWillReceiveProps(nextProps) {
+    console.log("jv", nextProps.auth);
     if (nextProps.auth.isAuthenticated) {
       this.props.history.push(
         "/profile/" + nextProps.auth.currentUser.screen_name
@@ -188,17 +189,17 @@ class login extends Component {
       this.setState({ errors: nextProps.error }, () => {
         console.log("from login", this.state.errors);
         let clone = JSON.parse(JSON.stringify(this.state));
+
         if (this.state.errors === "UserNotFound") {
           clone.email.valid = false;
           clone.password.valid = true;
-          clone.errorMessage = <p>User not found</p>;
+
           this.setState({ email: clone.email });
           this.setState({ password: clone.password });
-          this.setState({ errorMessage: clone.errorMessage });
         } else if (this.state.errors === "IncorrectPassword") {
           clone.password.valid = false;
           clone.email.valid = true;
-          clone.errorMessage = <p>IncorrectPassword</p>;
+
           this.setState({ password: clone.password });
           this.setState({ email: clone.email });
           this.setState({ errorMessage: clone.errorMessage });
@@ -249,7 +250,13 @@ class login extends Component {
                     autoFocus
                     onChange={event => this.onChangeHandler(event, "email")}
                   />
-
+                  {this.state.email.valid === false &&
+                    this.state.sentRequest === true && (
+                      <div id="emailBack" className="invalid-feedback">
+                        {" "}
+                        {this.state.errors}{" "}
+                      </div>
+                    )}
                   {this.state.email.valid === false &&
                     submitButtonDisabled === true &&
                     this.state.sentRequest === false && (

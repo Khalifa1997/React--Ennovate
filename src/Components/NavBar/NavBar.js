@@ -2,9 +2,9 @@ import React from "react";
 import Aux from "./../../Components/Wrapper/Auxilary";
 import img from "../../assets/images/Nova.png";
 import MyVerticallyCenteredModal from "../UI/Modal/Modal";
-
-import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
+
 import "./NavBar.css";
 
 class authNav extends React.Component {
@@ -107,9 +107,6 @@ class authNav extends React.Component {
     );
   }
 }
-
-// export default withRouter(authNav);
-
 const mapStateToProps = state => ({
   auth: state.auth,
   me: state.me,

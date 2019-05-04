@@ -10,7 +10,9 @@ import { faHeart as faHeartnotLiked } from "@fortawesome/free-regular-svg-icons"
 import { connect } from "react-redux";
 import { inherits } from "util";
 
-import ReplyModal from "../UI/replymodal/replyModal";
+import Editor from "../UI/TweetDraft/draft";
+
+import ReplyModal from "../UI/replymodal/ReplyModal";
 
 class Tweet extends React.Component {
   constructor(props) {
@@ -21,11 +23,10 @@ class Tweet extends React.Component {
     };
   }
 
-  modalClose = () => {
-    this.setState({ modalShow: false });
-  };
+  modalClose = () => this.setState({ modalShow: false });
 
   render() {
+    // console.log("nova screenName ", this.props);
     return (
       <div className="container-fluid mt-4">
         <div
@@ -39,17 +40,19 @@ class Tweet extends React.Component {
           }}
         >
           <div className="card-body">
+            {this.props.isRenovaed ? (
+              <h6 className="card-subtitle mb-2 text-muted">
+                @{this.props.renovaUser}: Renovad
+              </h6>
+            ) : null}
             <h5 className="card-title">{this.props.screenName}</h5>
             <h6 className="card-subtitle mb-2 text-muted">
-              {this.props.isaReNova ? (
-                <h5>ReNova by @{this.props.userName}</h5>
-              ) : (
-                <h5>@{this.props.userName}</h5>
-              )}
+              @{this.props.userName}
             </h6>
             <p className="card-text" onClick={this.props.textClicked}>
               {this.props.text}
             </p>
+            {/* <Editor placeholder={this.props.text} readOnly={false}/> */}
             {this.props.isliked === true ? (
               <a href="javascript:;" className="card-link">
                 <FontAwesomeIcon
@@ -94,7 +97,11 @@ class Tweet extends React.Component {
             ) : null}
           </div>
         </div>
-        <ReplyModal show={this.state.modalShow} onHide={this.modalClose} />
+        <ReplyModal
+          show={this.state.modalShow}
+          onHide={this.modalClose}
+          id={this.props.id}
+        />
       </div>
     );
   }
