@@ -16,7 +16,7 @@ import {
 import "./replyModal.css";
 import * as Regex from "../TweetDraft/lex";
 
-class ReplyModal extends React.Component {
+class replyModal extends React.Component {
   constructor(props) {
     super(props);
 
@@ -161,4 +161,4 @@ const styles = {
 export default connect(
   null,
   { newNova }
-)(ReplyModal);
+)(replyModal);
