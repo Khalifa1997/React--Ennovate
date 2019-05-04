@@ -37,7 +37,7 @@ export const registerUser = userData => dispatch => {
     .catch(err => {
       dispatch({
         type: actionTypes.GET_ERRORS,
-        payload: err.response.data
+        payload: err.response.data.msg
       });
     });
 };
