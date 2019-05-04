@@ -4,7 +4,7 @@ export const likeNova = nova_ID => dispatch => {
   const obj = {
     nova_ID: nova_ID
   };
-  console.log(obj);
+
   axios
     .post("http://localhost:8080/favorites/create", obj, {
       headers: {
@@ -16,6 +16,7 @@ export const likeNova = nova_ID => dispatch => {
       const firstUser = res.data.slice(0, 1);
       const secondUser = res.data.slice(1, 2); */
       console.log(res);
+      dispatch(setCurrentUser(res.data.actionUser, res.data.novaUser));
       /* axios
         .all([
           //Auth user Get
