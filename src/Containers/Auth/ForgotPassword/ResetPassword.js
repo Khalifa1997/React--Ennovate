@@ -93,8 +93,7 @@ class resetPassword extends Component {
     let password = { password: this.state.resetPasswordForm.password.value };
     axios
       .post(
-        "http://localhost:8080/reset_password?token=" +
-          this.props.match.params.token,
+        "/reset_password?token=" + this.props.match.params.token,
         password,
         {
           headers: {
