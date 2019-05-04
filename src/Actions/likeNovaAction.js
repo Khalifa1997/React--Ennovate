@@ -1,5 +1,6 @@
 import * as actionTypes from "./types";
 import axios from "../axios-users";
+import { toast } from "react-toastify";
 export const likeNova = (nova_ID, isLiked) => dispatch => {
   const obj = {
     nova_ID: nova_ID
@@ -18,6 +19,14 @@ export const likeNova = (nova_ID, isLiked) => dispatch => {
       const secondUser = res.data.slice(1, 2); */
         console.log(res);
         dispatch(setCurrentUser(res.data.actionUser, res.data.novaUser));
+        toast.info("Nova Liked!", {
+          position: "top-center",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true
+        });
         /* axios
         .all([
           //Auth user Get
@@ -58,6 +67,14 @@ export const likeNova = (nova_ID, isLiked) => dispatch => {
       const secondUser = res.data.slice(1, 2); */
         console.log(res);
         dispatch(setCurrentUser(res.data.actionUser, res.data.novaUser));
+        toast.error("Nova Unliked!", {
+          position: "top-center",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true
+        });
         /* axios
         .all([
           //Auth user Get

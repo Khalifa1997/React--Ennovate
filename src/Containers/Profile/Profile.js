@@ -319,7 +319,7 @@ class profile extends Component {
       }
     )
       .then(res => {
-        this.setState({ novas: res.data.novas });
+        this.setState({ novas: res.data.novas.reverse() });
       })
       .catch(err => {
         console.log("failure from novas", { ...err });
@@ -352,7 +352,7 @@ class profile extends Component {
       });
 
     if (this.state.novas) {
-      const novas = this.state.novas.reverse().map(tweet => {
+      const novas = this.state.novas.map(tweet => {
         /* const isLiked = this.props.auth.currentUser.favorites_novas_IDs.includes(
           tweet._id
         ); */
@@ -480,14 +480,14 @@ class profile extends Component {
       }
     )
       .then(res => {
-        this.setState({ novas: res.data.novas });
+        this.setState({ novas: res.data.novas.reverse() });
         //ghalat 3ashan el state bayza
       })
       .catch(err => {
         console.log("failure from novas", { ...err });
       });
     console.log(this.state.novas);
-    const novas = this.state.novas.reverse().map(tweet => {
+    const novas = this.state.novas.map(tweet => {
       /* const isLiked = this.props.auth.currentUser.favorites_novas_IDs.includes(
         tweet._id
       ); */
