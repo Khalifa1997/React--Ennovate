@@ -71,7 +71,7 @@ const Tweet = props => {
           ) : null}
         </div>
       </div>
-      <MyVerticallyCenteredModal show={props.repliesShow} onHide={modalClose} />
+      {/* <MyVerticallyCenteredModal show={props.repliesShow} onHide={modalClose} /> */}
     </div>
   );
 };
