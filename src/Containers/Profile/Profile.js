@@ -285,13 +285,17 @@ class profile extends Component {
 
     this.setState({ loading: true });
     // this.setButton();
-    await Axios.get("http://localhost:8080/statuses/user_timeline", {
-      headers: {
-        token: localStorage.getItem("jwtToken")
+    await Axios.get(
+      "http://localhost:8080/statuses/user_timeline/" +
+        this.props.profile.user.screen_name,
+      {
+        headers: {
+          token: localStorage.getItem("jwtToken")
+        }
       }
-    })
+    )
       .then(res => {
-        this.setState({ novas: res.data });
+        this.setState({ novas: res.data.novas });
       })
       .catch(err => {
         console.log("failure from novas", { ...err });
@@ -410,13 +414,17 @@ class profile extends Component {
     //console.log("Component will reciever props");
     this.setState({ loading: false });
 
-    await Axios.get("http://localhost:8080/statuses/user_timeline", {
-      headers: {
-        token: Axios.defaults.headers.common.Authorization
+    await Axios.get(
+      "http://localhost:8080/statuses/user_timeline/" +
+        nextprops.profile.user.screen_name,
+      {
+        headers: {
+          token: Axios.defaults.headers.common.Authorization
+        }
       }
-    })
+    )
       .then(res => {
-        this.setState({ novas: res.data });
+        this.setState({ novas: res.data.novas });
         //ghalat 3ashan el state bayza
       })
       .catch(err => {

@@ -208,7 +208,9 @@ class signup extends Component {
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.auth.isAuthenticated) {
-      this.props.history.push("/profile");
+      this.props.history.push(
+        "/profile/" + nextProps.auth.currentUser.screen_name
+      );
     }
 
     if (nextProps.error) {
