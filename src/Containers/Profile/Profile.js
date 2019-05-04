@@ -338,6 +338,40 @@ class profile extends Component {
       });
     }
   };
+  follow = () => {
+    let user = {
+      screen_name: this.props.profile.user.screen_name
+    };
+    Axios.post("http://localhost:8080/friendships/create", user, {
+      headers: {
+        token: Axios.defaults.headers.common.Authorization
+      }
+    })
+      .then(res => {
+        console.log("done");
+        this.props.setProfile(this.props.match.params.screenName);
+      })
+      .catch(err => {
+        console.log("failure from follow", { ...err });
+      });
+  };
+  unfollow = () => {
+    let user = {
+      screen_name: this.props.profile.user.screen_name
+    };
+    Axios.post("http://localhost:8080/friendships/destroy", user, {
+      headers: {
+        token: Axios.defaults.headers.common.Authorization
+      }
+    })
+      .then(res => {
+        console.log("done");
+        this.props.setProfile(this.props.match.params.screenName);
+      })
+      .catch(err => {
+        console.log("failure from unfollow", { ...err });
+      });
+  };
 
   async componentDidMount() {
     //Get my novas
@@ -563,15 +597,22 @@ class profile extends Component {
         </button>
       );
     } else {
-      if (this.props.profile.following) {
+      console.log("following" + this.props.profile.following);
+      if (this.props.profile.following == "false") {
         toggledButton = (
-          <button className="btn profilebtn profile-edit-btn">
+          <button
+            className="btn btn-success profilebtn profile-edit-btn"
+            onClick={this.follow}
+          >
             <a className="referencecolor">Follow</a>
           </button>
         );
       } else {
         toggledButton = (
-          <button className="btn profilebtn profile-edit-btn">
+          <button
+            className="btn btn-danger profilebtn profile-edit-btn"
+            onClick={this.unfollow}
+          >
             <a className="referencecolor">Unfollow</a>
           </button>
         );
