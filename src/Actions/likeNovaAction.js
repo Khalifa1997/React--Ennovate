@@ -8,7 +8,7 @@ export const likeNova = (nova_ID, isLiked) => dispatch => {
   console.log("is Liked " + isLiked);
   if (!isLiked) {
     axios
-      .post("http://localhost:8080/favorites/create", obj, {
+      .post("/favorites/create", obj, {
         headers: {
           token: axios.defaults.headers.common.Authorization
         }
@@ -30,13 +30,13 @@ export const likeNova = (nova_ID, isLiked) => dispatch => {
         /* axios
         .all([
           //Auth user Get
-          axios.get("http://localhost:8080/users/show", {
+          axios.get("/users/show", {
             params: {
               user_ID: firstUser.user
             }
           }),
           //Profile user Get
-          axios.get("http://localhost:8080/users/show", {
+          axios.get("/users/show", {
             params: {
               user_ID: secondUser.user
             }
@@ -56,7 +56,7 @@ export const likeNova = (nova_ID, isLiked) => dispatch => {
       });
   } else {
     axios
-      .post("http://localhost:8080/favorites/destroy", obj, {
+      .post("/favorites/destroy", obj, {
         headers: {
           token: axios.defaults.headers.common.Authorization
         }
@@ -78,13 +78,13 @@ export const likeNova = (nova_ID, isLiked) => dispatch => {
         /* axios
         .all([
           //Auth user Get
-          axios.get("http://localhost:8080/users/show", {
+          axios.get("/users/show", {
             params: {
               user_ID: firstUser.user
             }
           }),
           //Profile user Get
-          axios.get("http://localhost:8080/users/show", {
+          axios.get("/users/show", {
             params: {
               user_ID: secondUser.user
             }

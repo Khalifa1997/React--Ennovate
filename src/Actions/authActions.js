@@ -8,7 +8,7 @@ import { decode } from "querystring";
 //Register User
 export const registerUser = userData => dispatch => {
   axios
-    .post("http://localhost:8080/accounts/signup", userData)
+    .post("/accounts/signup", userData)
     .then(res => {
       console.log(res);
       // const clone = {
@@ -35,9 +35,10 @@ export const registerUser = userData => dispatch => {
       //   this.setState({ token: clone.token });
     })
     .catch(err => {
+      console.log(err);
       dispatch({
         type: actionTypes.GET_ERRORS,
-        payload: err.response.data
+        payload: err.response.data.msg
       });
     });
 };
@@ -58,7 +59,7 @@ export const registerUser = userData => dispatch => {
 export const loginUser = userData => dispatch => {
   console.log(userData);
   axios
-    .post("http://localhost:8080/accounts/signin", userData)
+    .post("/accounts/signin", userData)
     .then(res => {
       const token = res.data.token;
       localStorage.setItem("jwtToken", token);
@@ -66,7 +67,6 @@ export const loginUser = userData => dispatch => {
       dispatch(setCurrentUser(user, user));
     })
     .catch(err => {
-      console.log(err.response.data.msg);
       dispatch({
         type: actionTypes.GET_ERRORS,
         payload: err.response.data.msg

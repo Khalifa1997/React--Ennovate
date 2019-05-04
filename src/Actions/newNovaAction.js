@@ -14,7 +14,7 @@ export const newNova = (novaText, mentions) => dispatch => {
   };
   console.log(data);
   axios
-    .post("http://localhost:8080/statuses/update", novaText, {
+    .post("/statuses/update", novaText, {
       headers: {
         token: axios.defaults.headers.common.Authorization
       }
@@ -22,7 +22,7 @@ export const newNova = (novaText, mentions) => dispatch => {
     .then(res => {
       console.log("hjbjkj", { ...res });
       axios
-        .get("http://localhost:8080/users/show", {
+        .get("/users/show", {
           params: {
             user_ID: res.data.user
           }

@@ -6,7 +6,7 @@ export const reNova = id => dispatch => {
   };
   console.log(idObj);
   axios
-    .post("http://localhost:8080/statuses/reNova", idObj, {
+    .post("/statuses/reNova", idObj, {
       headers: {
         token: axios.defaults.headers.common.Authorization
       }
@@ -21,13 +21,13 @@ export const reNova = id => dispatch => {
       /* axios
         .all([
           //Auth user Get
-          axios.get("http://localhost:8080/users/show", {
+          axios.get("/users/show", {
             params: {
               user_ID: firstUser.user
             }
           }),
           //Profile user Get
-          axios.get("http://localhost:8080/users/show", {
+          axios.get("/users/show", {
             params: {
               user_ID: secondUser.user
             }
