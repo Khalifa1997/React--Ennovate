@@ -86,11 +86,15 @@ class profile extends Component {
   };
   async modalShowHandler(novaID) {
     console.log("hi man");
-    await Axios.get("http://localhost:8080/statuses/user_timeline", {
-      headers: {
-        token: localStorage.getItem("jwtToken")
+    await Axios.get(
+      "http://localhost:8080/statuses/user_timeline/" +
+        this.props.match.params.screenName,
+      {
+        headers: {
+          token: localStorage.getItem("jwtToken")
+        }
       }
-    })
+    )
       .then(res => {
         this.setState({ comments: res.data });
       })
@@ -271,13 +275,17 @@ class profile extends Component {
 
     this.setState({ loading: true });
     // this.setButton();
-    await Axios.get("http://localhost:8080/statuses/user_timeline", {
-      headers: {
-        token: localStorage.getItem("jwtToken")
+    await Axios.get(
+      "http://localhost:8080/statuses/user_timeline/" +
+        this.props.match.params.screenName,
+      {
+        headers: {
+          token: localStorage.getItem("jwtToken")
+        }
       }
-    })
+    )
       .then(res => {
-        this.setState({ novas: res.data });
+        this.setState({ novas: res.data.novas });
       })
       .catch(err => {
         console.log("failure from novas", { ...err });
@@ -285,7 +293,7 @@ class profile extends Component {
     //ghalat 3ashan el state bayza
     await Axios.get(
       "http://localhost:8080/friendships/list?screen_name=" +
-        this.props.profile.user.screen_name
+        this.props.match.params.screenName
     )
       .then(res => {
         console.log(res.data.users);
@@ -298,7 +306,7 @@ class profile extends Component {
 
     await Axios.get(
       "http://localhost:8080/followers/list?screen_name=" +
-        this.props.profile.user.screen_name
+        this.props.match.params.screenName
     )
       .then(res => {
         console.log(res.data.users);
@@ -392,13 +400,17 @@ class profile extends Component {
     //console.log("Component will reciever props");
     this.setState({ loading: false });
 
-    await Axios.get("http://localhost:8080/statuses/user_timeline", {
-      headers: {
-        token: Axios.defaults.headers.common.Authorization
+    await Axios.get(
+      "http://localhost:8080/statuses/user_timeline/" +
+        this.props.match.params.screenName,
+      {
+        headers: {
+          token: Axios.defaults.headers.common.Authorization
+        }
       }
-    })
+    )
       .then(res => {
-        this.setState({ novas: res.data });
+        this.setState({ novas: res.data.novas });
         //ghalat 3ashan el state bayza
       })
       .catch(err => {
