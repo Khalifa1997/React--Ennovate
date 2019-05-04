@@ -27,7 +27,13 @@ const Tweet = props => {
       >
         <div className="card-body">
           <h5 className="card-title">{props.screenName}</h5>
-          <h6 className="card-subtitle mb-2 text-muted">@{props.userName}</h6>
+          <h6 className="card-subtitle mb-2 text-muted">
+            {props.isaReNova ? (
+              <h5>ReNova by @{props.userName}</h5>
+            ) : (
+              <h5>@{props.userName}</h5>
+            )}
+          </h6>
           <p className="card-text" onClick={props.textClicked}>
             {props.text}
           </p>
