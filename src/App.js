@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Route, Switch } from "react-router-dom";
 import Login from "./Containers/Auth/Login/Login";
 import LandingPage from "./Components/LandingPage/landingPage";
+import axios from "./axios-users";
 import Tweet from "./Components/Tweet/Tweet";
 import ProfileCard from "./Components/profileCard/profileCard";
 import novaModal from "./Components/novaModal/novaModal";
@@ -20,10 +21,12 @@ import { decode } from "querystring";
 import { ToastContainer, Flip, Zoom, Bounce } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { flip } from "react-animations";
+
 //check for token
 
 class App extends Component {
   render() {
+    console.log("da axios", axios.defaults.baseURL);
     return (
       <div>
         <Route>

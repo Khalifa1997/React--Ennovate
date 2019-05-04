@@ -4,7 +4,7 @@ import Nav from "../../Components/NavBar/NavBar";
 import ProfileCard from "../../Components/profileCard/profileCard";
 import Tweet from "../../Components/Tweet/Tweet";
 import "./Newsfeed.css";
-import Axios from "axios";
+import Axios from "../../axios-users";
 import { setProfile } from "../../Actions/profileActions";
 import { runInThisContext } from "vm";
 import NovaModal from "../../Components/novaModal/novaModal";
@@ -49,7 +49,7 @@ class Newsfeed extends Component {
   };
   async modalShowHandler(novaID) {
     console.log("hi man");
-    await Axios.get("http://localhost:8080/statuses/home_timeline", {
+    await Axios.get("/statuses/home_timeline", {
       headers: {
         token: localStorage.getItem("jwtToken")
       }
@@ -84,7 +84,7 @@ class Newsfeed extends Component {
     this.setState({ modal: comments });
   }
   async componentDidMount() {
-    await Axios.get("http://localhost:8080/statuses/home_timeline", {
+    await Axios.get("/statuses/home_timeline", {
       headers: {
         token: localStorage.getItem("jwtToken")
       }

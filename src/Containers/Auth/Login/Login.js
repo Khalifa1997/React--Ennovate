@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Aux from "./../../../Components/Wrapper/Auxilary";
 import AuthNav from "./../../../Components/AuthNav/AuthNav";
 import Classnames from "classnames";
-import Axios from "axios";
+import Axios from "../../../axios-users";
 import Profile from "../../Profile/Profile";
 
 import propTypes from "prop-types";
@@ -140,7 +140,7 @@ class login extends Component {
     //   "https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyPassword?key=AIzaSyBUoi3TDU9jfZRE7jVC0QoA08DK8mJC6wo",
     //   user
     // )
-    // Axios.post("http://localhost:8080/accounts/signin", user)
+    // Axios.post("/accounts/signin", user)
     //   .then(res => {
     //     const clone = {
     //       ...this.state

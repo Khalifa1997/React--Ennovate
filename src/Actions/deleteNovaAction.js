@@ -7,7 +7,7 @@ export const deleteNova = (nova_ID, mytweet) => async dispatch => {
   console.log(mytweet);
   if (!mytweet) {
     await axios
-      .post("http://localhost:8080/statuses/destroy", obj, {
+      .post("/statuses/destroy", obj, {
         headers: {
           token: axios.defaults.headers.common.Authorization
         }
@@ -23,7 +23,7 @@ export const deleteNova = (nova_ID, mytweet) => async dispatch => {
       });
   } else {
     await axios
-      .post("http://localhost:8080/statuses/unrenova", obj, {
+      .post("/statuses/unrenova", obj, {
         headers: {
           token: axios.defaults.headers.common.Authorization
         }
