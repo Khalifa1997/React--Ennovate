@@ -41,8 +41,8 @@ class Newsfeed extends Component {
       modalType: 1
     });
   };
-  likeNovaHandler = novaID => {
-    this.props.likeNova(novaID);
+  likeNovaHandler = (novaID, isLiked) => {
+    this.props.likeNova(novaID, isLiked);
   };
   reNovaHandler = novaID => {
     this.props.reNova(novaID);
@@ -70,7 +70,12 @@ class Newsfeed extends Component {
             )}
             key={tweet._id}
             userName={tweet.user_name}
-            likeClicked={() => this.likeNovaHandler(tweet._id)}
+            likeClicked={() => {
+              const isliked = this.props.auth.currentUser.favorites_novas_IDs.includes(
+                tweet._id
+              );
+              this.likeNovaHandler(tweet._id, isliked);
+            }}
             reNovaClicked={() => this.reNovaHandler(tweet._id)}
             text={tweet.text}
             isAuth={
@@ -105,7 +110,12 @@ class Newsfeed extends Component {
                 tweet._id
               )}
               textClicked={() => this.modalShowHandler(tweet._id)}
-              likeClicked={() => this.likeNovaHandler(tweet._id)}
+              likeClicked={() => {
+                const isliked = this.props.auth.currentUser.favorites_novas_IDs.includes(
+                  tweet._id
+                );
+                this.likeNovaHandler(tweet._id, isliked);
+              }}
               reNovaClicked={() => this.reNovaHandler(tweet._id)}
               isAuth={tweet.user === this.props.auth.profile._id}
             />
