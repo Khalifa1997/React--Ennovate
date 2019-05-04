@@ -4,7 +4,7 @@ import Nav from "../../Components/NavBar/NavBar";
 import Tweet from "../../Components/Tweet/Tweet";
 import NovaModal from "../../Components/novaModal/novaModal";
 import "./Profile.css";
-import Axios from "axios";
+import Axios from "../../axios-users";
 import { setProfile } from "../../Actions/profileActions";
 import { deleteNova } from "../../Actions/deleteNovaAction";
 import { likeNova } from "../../Actions/likeNovaAction";
@@ -86,7 +86,7 @@ class profile extends Component {
   };
   async modalShowHandler(novaID) {
     console.log("hi man");
-    await Axios.get("http://localhost:8080/statuses/user_timeline", {
+    await Axios.get("/statuses/user_timeline", {
       headers: {
         token: localStorage.getItem("jwtToken")
       }
@@ -310,8 +310,7 @@ class profile extends Component {
     this.setState({ loading: true });
     // this.setButton();
     await Axios.get(
-      "http://localhost:8080/statuses/user_timeline/" +
-        this.props.profile.user.screen_name,
+      "/statuses/user_timeline/" + this.props.profile.user.screen_name,
       {
         headers: {
           token: localStorage.getItem("jwtToken")
@@ -319,15 +318,14 @@ class profile extends Component {
       }
     )
       .then(res => {
-        this.setState({ novas: res.data.novas });
+        this.setState({ novas: res.data.novas.reverse() });
       })
       .catch(err => {
         console.log("failure from novas", { ...err });
       });
     //ghalat 3ashan el state bayza
     await Axios.get(
-      "http://localhost:8080/friendships/list?screen_name=" +
-        this.props.profile.user.screen_name
+      "/friendships/list?screen_name=" + this.props.profile.user.screen_name
     )
       .then(res => {
         console.log(res.data.users);
@@ -339,8 +337,7 @@ class profile extends Component {
       });
 
     await Axios.get(
-      "http://localhost:8080/followers/list?screen_name=" +
-        this.props.profile.user.screen_name
+      "/followers/list?screen_name=" + this.props.profile.user.screen_name
     )
       .then(res => {
         console.log(res.data.users);
@@ -352,7 +349,7 @@ class profile extends Component {
       });
 
     if (this.state.novas) {
-      const novas = this.state.novas.reverse().map(tweet => {
+      const novas = this.state.novas.map(tweet => {
         /* const isLiked = this.props.auth.currentUser.favorites_novas_IDs.includes(
           tweet._id
         ); */
@@ -445,8 +442,7 @@ class profile extends Component {
     this.setState({ loading: false });
 
     await Axios.get(
-      "http://localhost:8080/friendships/list?screen_name=" +
-        this.props.profile.user.screen_name
+      "/friendships/list?screen_name=" + this.props.profile.user.screen_name
     )
       .then(res => {
         console.log(res.data.users);
@@ -458,8 +454,7 @@ class profile extends Component {
       });
 
     await Axios.get(
-      "http://localhost:8080/followers/list?screen_name=" +
-        this.props.profile.user.screen_name
+      "/followers/list?screen_name=" + this.props.profile.user.screen_name
     )
       .then(res => {
         console.log(res.data.users);
@@ -471,8 +466,7 @@ class profile extends Component {
       });
 
     await Axios.get(
-      "http://localhost:8080/statuses/user_timeline/" +
-        nextprops.profile.user.screen_name,
+      "/statuses/user_timeline/" + nextprops.profile.user.screen_name,
       {
         headers: {
           token: Axios.defaults.headers.common.Authorization
@@ -480,14 +474,14 @@ class profile extends Component {
       }
     )
       .then(res => {
-        this.setState({ novas: res.data.novas });
+        this.setState({ novas: res.data.novas.reverse() });
         //ghalat 3ashan el state bayza
       })
       .catch(err => {
         console.log("failure from novas", { ...err });
       });
     console.log(this.state.novas);
-    const novas = this.state.novas.reverse().map(tweet => {
+    const novas = this.state.novas.map(tweet => {
       /* const isLiked = this.props.auth.currentUser.favorites_novas_IDs.includes(
         tweet._id
       ); */
@@ -541,7 +535,7 @@ class profile extends Component {
     let user = {
       screen_name: this.props.profile.user.screen_name
     };
-    Axios.post("http://localhost:8080/friendships/create", user, {
+    Axios.post("/friendships/create", user, {
       headers: {
         token: Axios.defaults.headers.common.Authorization
       }
@@ -558,7 +552,7 @@ class profile extends Component {
     let user = {
       screen_name: this.props.profile.user.screen_name
     };
-    Axios.post("http://localhost:8080/friendships/destroy", user, {
+    Axios.post("/friendships/destroy", user, {
       headers: {
         token: Axios.defaults.headers.common.Authorization
       }

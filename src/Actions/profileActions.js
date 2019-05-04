@@ -5,9 +5,9 @@ import * as actionTypes from "./types";
 export const setProfile = screen_name => dispatch => {
   console.log("profile actions dispatch");
   axios
-    .get("http://localhost:8080/users/show?screen_name=" + screen_name, {
+    .get("/users/show?screen_name=" + screen_name, {
       headers: {
-        token: Axios.defaults.headers.common.Authorization
+        token: axios.defaults.headers.common.Authorization
       }
     })
     .then(response => {

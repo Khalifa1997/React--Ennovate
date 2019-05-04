@@ -1,5 +1,6 @@
 import * as actionTypes from "./types";
 import axios from "../axios-users";
+import { toast } from "react-toastify";
 export const likeNova = (nova_ID, isLiked) => dispatch => {
   const obj = {
     nova_ID: nova_ID
@@ -7,7 +8,7 @@ export const likeNova = (nova_ID, isLiked) => dispatch => {
   console.log("is Liked " + isLiked);
   if (!isLiked) {
     axios
-      .post("http://localhost:8080/favorites/create", obj, {
+      .post("/favorites/create", obj, {
         headers: {
           token: axios.defaults.headers.common.Authorization
         }
@@ -18,16 +19,24 @@ export const likeNova = (nova_ID, isLiked) => dispatch => {
       const secondUser = res.data.slice(1, 2); */
         console.log(res);
         dispatch(setCurrentUser(res.data.actionUser, res.data.novaUser));
+        toast.info("Nova Liked!", {
+          position: "top-center",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true
+        });
         /* axios
         .all([
           //Auth user Get
-          axios.get("http://localhost:8080/users/show", {
+          axios.get("/users/show", {
             params: {
               user_ID: firstUser.user
             }
           }),
           //Profile user Get
-          axios.get("http://localhost:8080/users/show", {
+          axios.get("/users/show", {
             params: {
               user_ID: secondUser.user
             }
@@ -47,7 +56,7 @@ export const likeNova = (nova_ID, isLiked) => dispatch => {
       });
   } else {
     axios
-      .post("http://localhost:8080/favorites/destroy", obj, {
+      .post("/favorites/destroy", obj, {
         headers: {
           token: axios.defaults.headers.common.Authorization
         }
@@ -58,16 +67,24 @@ export const likeNova = (nova_ID, isLiked) => dispatch => {
       const secondUser = res.data.slice(1, 2); */
         console.log(res);
         dispatch(setCurrentUser(res.data.actionUser, res.data.novaUser));
+        toast.error("Nova Unliked!", {
+          position: "top-center",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true
+        });
         /* axios
         .all([
           //Auth user Get
-          axios.get("http://localhost:8080/users/show", {
+          axios.get("/users/show", {
             params: {
               user_ID: firstUser.user
             }
           }),
           //Profile user Get
-          axios.get("http://localhost:8080/users/show", {
+          axios.get("/users/show", {
             params: {
               user_ID: secondUser.user
             }
