@@ -215,39 +215,32 @@ class signup extends Component {
     }
 
     if (nextProps.error) {
+      //last
       this.setState({ error: nextProps.error }, () => {
-        console.log(nextProps.error);
         this.setState({ loading: false });
+        if (this.state.error === "screen name already registered.") {
+          this.setState({ errorScreenname: false });
+        } else if (this.state.error === "email already registered.") {
+          this.setState({ errorEmail: false });
+        } else if (this.state.error === ' "email" must be a valid email') {
+          this.setState({ errorEmail: false });
+        } else if (
+          this.state.error ===
+          ' "screen_name" length must be at least 3 characters long'
+        ) {
+          this.setState({ errorLenScreenname: false });
+        } else if (
+          this.state.error ===
+          ' "screen_name" length must be less than or equal to 15 characters long'
+        ) {
+          this.setState({ errorLenScreenname: false });
+        }
       });
-
+      this.setState({ errorMessage: nextProps.error });
       if (nextProps.loader) {
         this.setState({ loading: nextProps.loader });
       }
-      this.setState({ errorMessage: <p>{nextProps.error}</p> });
-      // this.setState({ error: nextProps.error }, () => {
-      //   this.setState({ loading: false });
-      //   if (this.state.error === "screen name already registered.") {
-      //     this.setState({ errorScreenname: true });
-      //   } else if (this.state.error === "email already registered.") {
-      //     this.setState({ errorEmail: true });
-      //   } else if (this.state.error === ' "email" must be a valid email') {
-      //     this.setState({ errorEmail: true });
-      //   } else if (
-      //     this.state.error ===
-      //     ' "screen_name" length must be at least 3 characters long'
-      //   ) {
-      //     this.setState({ errorLenScreenname: true });
-      //   } else if (
-      //     this.state.error ===
-      //     ' "screen_name" length must be less than or equal to 15 characters long'
-      //   ) {
-      //     this.setState({ errorLenScreenname: true });
-      //   }
-      // });
-      // this.setState({ errorMessage: nextProps.error });
-      // if (nextProps.loader) {
-      //   this.setState({ loading: nextProps.loader });
-      // }
+      //last
 
       //   /*
       //   const clone = {
