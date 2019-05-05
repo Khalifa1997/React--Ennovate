@@ -8,7 +8,7 @@ export const editUser = userData => dispatch => {
   axios
     .post("/accounts/settings", userData, {
       headers: {
-        token: axios.defaults.headers.common.Authorization
+        token: localStorage.jwtToken
       }
     })
     .then(res => {

@@ -658,6 +658,7 @@ class profile extends Component {
                     {this.props.profile.user.friends_count}
                   </span>{" "}
                   <span
+                    id="1"
                     onClick={() => {
                       console.log("hii");
                       this.toggleFans();
