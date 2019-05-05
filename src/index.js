@@ -102,7 +102,7 @@ if (localStorage.jwtToken) {
   //store.dispatch(setCurrentUser(currentProfile, currentUser));
   console.log(id);
   axios
-    .get("http://localhost:8080/users/show", {
+    .get("users/show", {
       params: {
         user_ID: id
       }

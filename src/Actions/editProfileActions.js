@@ -6,7 +6,7 @@ import * as actionTypes from "./types";
 
 export const editUser = userData => dispatch => {
   axios
-    .post("http://localhost:8080/accounts/settings", userData, {
+    .post("accounts/settings", userData, {
       headers: {
         token: axios.defaults.headers.common.Authorization
       }
@@ -17,7 +17,7 @@ export const editUser = userData => dispatch => {
       dispatch(editProfileUser(res.data));
       console.log("hjbjkj", { ...res });
       axios
-        .get("http://localhost:8080/users/show", {
+        .get("users/show", {
           params: {
             user_ID: res.data._id
           }
@@ -42,7 +42,7 @@ export const editUser = userData => dispatch => {
 export const editImage = userData => dispatch => {
   //console.log("{image}", userData);
   axios
-    .post("http://localhost:8080/accounts/update_profile_image ", userData, {
+    .post("accounts/update_profile_image ", userData, {
       headers: {
         token: axios.defaults.headers.common.Authorization
       }
@@ -51,7 +51,7 @@ export const editImage = userData => dispatch => {
       console.log("h", { ...res });
       dispatch(editImageUser(res.data));
       axios
-        .get("http://localhost:8080/users/show", {
+        .get("users/show", {
           params: {
             user_ID: res.data._id
           }
@@ -74,7 +74,7 @@ export const editImage = userData => dispatch => {
 export const getProfile = screen_name => dispatch => {
   return dispatch => {
     axios
-      .get("http://localhost:8080/accounts/settings", {
+      .get("accounts/settings", {
         params: {
           screen_name
         }

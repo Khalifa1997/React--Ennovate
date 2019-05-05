@@ -6,7 +6,7 @@ export const deleteNova = nova_ID => dispatch => {
   };
   axios
     .post(
-      "http://localhost:8080/statuses/destroy",
+      "statuses/destroy",
       { _id: nova_ID },
       {
         headers: {

@@ -36,7 +36,7 @@ export const newNova = (novaText, mentions, replyID) => dispatch => {
 
   console.log(data);
   axios
-    .post("http://localhost:8080/statuses/update", data, {
+    .post("statuses/update", data, {
       headers: {
         token: localStorage.jwtToken
       }
@@ -44,7 +44,7 @@ export const newNova = (novaText, mentions, replyID) => dispatch => {
     .then(res => {
       console.log("hjbjkj", { ...res });
       axios
-        .get("http://localhost:8080/users/show", {
+        .get("users/show", {
           params: {
             user_ID: res.data.user
           }
