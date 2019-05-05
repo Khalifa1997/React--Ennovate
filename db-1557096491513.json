@@ -1,0 +1,112 @@
+{
+  "novas": [
+    {
+      "created_at": "2019-05-04T18:52:52.541Z",
+      "favorite_count": 0,
+      "favorited_by_IDs": [],
+      "in_reply_to_screen_name": "zeina",
+      "in_reply_to_status_id": "5cb61f6043a45611fc79bcc9",
+      "in_reply_to_user_id": "5cb6196443a45611fc79bcc4",
+      "renova_count": 0,
+      "renovaed": true,
+      "renovaed_by_IDs": [],
+      "replied_novas_IDs": [],
+      "reply_count": 0,
+      "text": "hi",
+      "user": "5cb6196443a45611fc79bcc4",
+      "user_name": "zeina",
+      "user_screen_name": "zeina",
+      "_id": "5ccdded2bb70bb20bc810806"
+    },
+    {
+      "created_at": "2019-05-04T18:52:52.541Z",
+      "favorite_count": 0,
+      "favorited_by_IDs": [],
+      "in_reply_to_screen_name": "zeina",
+      "in_reply_to_status_id": "",
+      "in_reply_to_user_id": "",
+      "renova_count": 0,
+      "renovaed": true,
+      "renovaed_by_IDs": [],
+      "replied_novas_IDs": [],
+      "reply_count": 0,
+      "text": "hi 2.0",
+      "user": "5cb6196443a45611fc79bcc4",
+      "user_name": "zeina",
+      "user_screen_name": "zeina",
+      "_id": "5ccdded2bb70bb20bc81081212"
+    },
+    {
+      "created_at": "2019-05-04T18:52:52.541Z",
+      "favorite_count": 0,
+      "favorited_by_IDs": [],
+      "in_reply_to_screen_name": "zeina",
+      "in_reply_to_status_id": "",
+      "in_reply_to_user_id": "",
+      "renova_count": 0,
+      "renovaed": true,
+      "renovaed_by_IDs": [],
+      "replied_novas_IDs": [],
+      "reply_count": 0,
+      "text": "hi 2.0",
+      "user": "5cb6196443a45611fc79bcc4",
+      "user_name": "zeina",
+      "user_screen_name": "zeina",
+      "_id": "5ccdded2bb70bb20bc810806"
+    }
+  ],
+  "users": [
+    {
+      "bio": null,
+      "created_at": "2019-05-04T23:32:23.151Z",
+      "default_profile_image": true,
+      "email": "amr@gmail.com",
+      "favorites_count": 1,
+      "favorites_novas_IDs": [
+        "5ccdded2bb70bb20bc810806"
+      ],
+      "followers_count": 0,
+      "friends_count": 1,
+      "location": null,
+      "name": "adfadf",
+      "novas_IDs": [
+        "5ccdded2bb70bb20bc810806",
+        "5ccdded2bb70bb20bc81081212"
+      ],
+      "novas_count": 2,
+      "password": "$2a$10$HPbwAHp9oHsrsVbcspHPyufYYoeUaAMUeaenxo/JrkCMpZcaT/e1C",
+      "profile_image_url": "http://localhost:8080/public/uploads/profileImages/default.jpg",
+      "screen_name": "Amr",
+      "verified": false,
+      "__v": 0,
+      "_id": "5cce21076a21ed3d1369902d"
+    },
+    {
+      "bio": null,
+      "created_at": "2019-05-04T23:32:23.151Z",
+      "default_profile_image": true,
+      "email": "omar@gmail.com",
+      "favorites_count": 1,
+      "favorites_novas_IDs": [
+        "5ccdded2bb70bb20bc810806"
+      ],
+      "followers_count": 0,
+      "friends_count": 1,
+      "location": null,
+      "name": "Omar",
+      "novas_IDs": [
+        "5ccdded2bb70bb20bc810806"
+      ],
+      "novas_count": 1,
+      "password": "$2a$10$HPbwAHp9oHsrsVbcspHPyufYYoeUaAMUeaenxo/JrkCMpZcaT/e1C",
+      "profile_image_url": "http://localhost:8080/public/uploads/profileImages/default.jpg",
+      "screen_name": "Omar",
+      "verified": false,
+      "__v": 0,
+      "_id": "5cce21076a21ed3d1369902d"
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}
