@@ -44,7 +44,7 @@ export const newNova = (novaText, mentions, replyID) => dispatch => {
     .then(res => {
       console.log("hjbjkj", { ...res });
       axios
-        .get("/users/show", {
+        .get("http://localhost:8080/users/show", {
           params: {
             user_ID: res.data.user
           }
