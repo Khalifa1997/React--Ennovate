@@ -38,7 +38,7 @@ export const newNova = (novaText, mentions, replyID) => dispatch => {
   axios
     .post("http://localhost:8080/statuses/update", data, {
       headers: {
-        token: axios.defaults.headers.common.Authorization
+        token: localStorage.jwtToken
       }
     })
     .then(res => {
