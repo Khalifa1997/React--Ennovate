@@ -38,7 +38,7 @@ class forgotPassword extends Component {
   };
   submitHandler = (event, email) => {
     axios
-      .get("http://localhost:8080/forgetPassword/" + email)
+      .get("/forgetPassword/" + email)
       .then(response => {
         console.log(response.data);
       })

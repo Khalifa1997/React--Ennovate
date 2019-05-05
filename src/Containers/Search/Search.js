@@ -60,15 +60,11 @@ class Search extends Component {
   // }
   async componentDidMount() {
     this.setState({ loading: true });
-    await Axios.get(
-      "http://localhost:8080/users/search?query=" +
-        this.props.match.params.value,
-      {
-        headers: {
-          token: localStorage.getItem("jwtToken")
-        }
+    await Axios.get("/users/search?query=" + this.props.match.params.value, {
+      headers: {
+        token: localStorage.getItem("jwtToken")
       }
-    )
+    })
       .then(async res => {
         console.log("success from search");
         console.log(res.data);
