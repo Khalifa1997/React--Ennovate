@@ -12,7 +12,7 @@ const userStrip = props => (
         <div className="p-2 middle bd-highlight">
           <a
             className="userName"
-            href={"http://localhost:3000/profile/" + props.screenName}
+            href={"http://3.19.122.178/profile/" + props.screenName}
           >
             {props.userName}
           </a>

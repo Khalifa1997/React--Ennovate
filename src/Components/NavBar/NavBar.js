@@ -28,7 +28,7 @@ class authNav extends React.Component {
     return (
       <Aux>
         <nav className="navbar navbar-expand-lg navbar-light bg-light AuthNav">
-          <a className="navbar-brand" href="http://localhost:3000/newsfeed">
+          <a className="navbar-brand" href="http://3.19.122.178/newsfeed">
             <img className="LogoNavBar" src={img} alt="" height="40" />
           </a>
           <button
@@ -45,7 +45,7 @@ class authNav extends React.Component {
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav">
               <li className="nav-item">
-                <a className="nav-link" href="http://localhost:3000/newsfeed">
+                <a className="nav-link" href="http://3.19.122.178/newsfeed">
                   <strong>Home</strong>{" "}
                   <span className="sr-only">(current)</span>
                 </a>
@@ -54,7 +54,7 @@ class authNav extends React.Component {
                 <a
                   className="nav-link"
                   href={
-                    "http://localhost:3000/profile/" +
+                    "http://3.19.122.178/profile/" +
                     this.props.auth.currentUser.screen_name
                   }
                 >
