@@ -4,7 +4,7 @@ import Nav from "../../Components/NavBar/NavBar";
 import Tweet from "../../Components/Tweet/Tweet";
 import NovaModal from "../../Components/novaModal/novaModal";
 import "./Profile.css";
-import Axios from "axios";
+import Axios from "../../axios-users";
 import { setProfile } from "../../Actions/profileActions";
 import { deleteNova } from "../../Actions/deleteNovaAction";
 import { likeNova } from "../../Actions/likeNovaAction";
@@ -86,7 +86,7 @@ class profile extends Component {
   };
   async modalShowHandler(novaID) {
     console.log("hi man " + novaID);
-    await Axios.get("http://localhost:8080/statuses/show/" + novaID, {
+    await Axios.get("/statuses/show/" + novaID, {
       headers: {
         token: localStorage.getItem("jwtToken")
       }
@@ -259,15 +259,11 @@ class profile extends Component {
       console.log("like clicked ");
       const novasClass = "";
       const likesClass = "active";
-      Axios.get(
-        "http://localhost:8080/favorites/list/" +
-          this.props.match.params.screenName,
-        {
-          headers: {
-            token: Axios.defaults.headers.common.Authorization
-          }
+      Axios.get("/favorites/list/" + this.props.match.params.screenName, {
+        headers: {
+          token: Axios.defaults.headers.common.Authorization
         }
-      )
+      })
         .then(res => {
           this.setState({ likedNovas: res.data.novasArray.reverse() });
           //ghalat 3ashan el state bayza
@@ -343,7 +339,7 @@ class profile extends Component {
     let user = {
       screen_name: this.props.profile.user.screen_name
     };
-    Axios.post("http://localhost:8080/friendships/create", user, {
+    Axios.post("/friendships/create", user, {
       headers: {
         token: Axios.defaults.headers.common.Authorization
       }
@@ -360,7 +356,7 @@ class profile extends Component {
     let user = {
       screen_name: this.props.profile.user.screen_name
     };
-    Axios.post("http://localhost:8080/friendships/destroy", user, {
+    Axios.post("/friendships/destroy", user, {
       headers: {
         token: Axios.defaults.headers.common.Authorization
       }
@@ -380,8 +376,7 @@ class profile extends Component {
     this.setState({ loading: true });
     // this.setButton();
     await Axios.get(
-      "http://localhost:8080/statuses/user_timeline/" +
-        this.props.match.params.screenName,
+      "/statuses/user_timeline/" + this.props.match.params.screenName,
       {
         headers: {
           token: localStorage.getItem("jwtToken")
@@ -396,8 +391,7 @@ class profile extends Component {
       });
     //ghalat 3ashan el state bayza
     await Axios.get(
-      "http://localhost:8080/friendships/list?screen_name=" +
-        this.props.match.params.screenName
+      "/friendships/list?screen_name=" + this.props.match.params.screenName
     )
       .then(res => {
         console.log(res.data.users);
@@ -409,8 +403,7 @@ class profile extends Component {
       });
 
     await Axios.get(
-      "http://localhost:8080/followers/list?screen_name=" +
-        this.props.match.params.screenName
+      "/followers/list?screen_name=" + this.props.match.params.screenName
     )
       .then(res => {
         console.log(res.data.users);
@@ -518,11 +511,11 @@ class profile extends Component {
     this.setState({ loading: false });
 
     await Axios.get(
-      "http://localhost:8080/statuses/user_timeline/" +
-        this.props.match.params.screenName,
+      "/statuses/user_timeline/" + this.props.match.params.screenName,
       {
         headers: {
-          token: Axios.defaults.headers.common.Authorization
+          // token: Axios.defaults.headers.common.Authorization
+          token: localStorage.getItem("jwtToken")
         }
       }
     )
@@ -671,6 +664,7 @@ class profile extends Component {
                     {this.props.profile.user.friends_count}
                   </span>{" "}
                   <span
+                    id="1"
                     onClick={() => {
                       console.log("hii");
                       this.toggleFans();

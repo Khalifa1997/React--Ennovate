@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Nav from "../../Components/NavBar/NavBar";
 import ProfileSearch from "../../Components/profileSearch/profileSearch";
-import Axios from "axios";
+import Axios from "../../axios-users";
 import { connect } from "react-redux";
 import { zoomInUp } from "react-animations";
 import Spinner from "../../Components/UI/Spinner/Spinner";
@@ -60,15 +60,11 @@ class Search extends Component {
   // }
   async componentDidMount() {
     this.setState({ loading: true });
-    await Axios.get(
-      "http://localhost:8080/users/search?query=" +
-        this.props.match.params.value,
-      {
-        headers: {
-          token: localStorage.getItem("jwtToken")
-        }
+    await Axios.get("/users/search?query=" + this.props.match.params.value, {
+      headers: {
+        token: localStorage.getItem("jwtToken")
       }
-    )
+    })
       .then(async res => {
         console.log("success from search");
         console.log(res.data);
@@ -85,7 +81,7 @@ class Search extends Component {
                 <ProfileSearch
                   key={profile._id}
                   name={profile.name}
-                  usernmae={profile.screen_name}
+                  username={profile.screen_name}
                   text={profile.bio}
                   profile_image_url={profile.profile_image_url}
                 />

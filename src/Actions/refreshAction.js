@@ -8,7 +8,7 @@ import { decode } from "querystring";
 export const refresh = authUser => dispatch => {
   console.log("{from refresh}", authUser);
   axios
-    .get("http://localhost:8080/users/show", {
+    .get("/users/show", {
       params: {
         user_ID: authUser
       }
