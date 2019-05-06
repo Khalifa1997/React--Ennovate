@@ -11,7 +11,7 @@ import { connect } from "react-redux";
 import { inherits } from "util";
 
 import Editor from "../UI/TweetDraft/draft";
-import ReplyModal from "../UI/replymodal/replyModal";
+import ReplyModal from "../UI/replyModal/replyModal";
 
 class Tweet extends React.Component {
   constructor(props) {
@@ -39,15 +39,24 @@ class Tweet extends React.Component {
           }}
         >
           <div className="card-body">
-            {this.props.isRenovaed ? (
-              <h6 className="card-subtitle mb-2 text-muted">
-                @{this.props.renovaUser}: Renovad
-              </h6>
-            ) : null}
-            <h5 className="card-title">{this.props.screenName}</h5>
-            <h6 className="card-subtitle mb-2 text-muted">
-              @{this.props.userName}
-            </h6>
+            {this.props.renovaed ? (
+              <div>
+                <h4 className="card-title">
+                  Renova by @{this.props.screenName}
+                </h4>
+                <h6 className="card-subtitle mb-2 text-muted">
+                  @{this.props.renovaScreenName}
+                </h6>
+              </div>
+            ) : (
+              <div>
+                <h4 className="card-title">{this.props.screenName}</h4>
+                <h6 className="card-subtitle mb-2 text-muted">
+                  @{this.props.userName}
+                </h6>
+              </div>
+            )}
+
             <p className="card-text" onClick={this.props.textClicked}>
               {this.props.text}
             </p>

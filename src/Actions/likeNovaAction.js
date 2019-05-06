@@ -15,6 +15,7 @@ export const likeNova = (nova_ID, isLiked) => dispatch => {
       })
       .then(res => {
         console.log(res);
+        dispatch(setCurrentUser(res.data.actionUser, res.data.novaUser));
       })
       .catch(err => {
         console.log("Failed Like nova post");
@@ -28,6 +29,7 @@ export const likeNova = (nova_ID, isLiked) => dispatch => {
         }
       })
       .then(res => {
+        dispatch(setCurrentUser(res.data.actionUser, res.data.novaUser));
         console.log(res);
       })
       .catch(err => {
