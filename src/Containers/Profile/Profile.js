@@ -372,7 +372,7 @@ class profile extends Component {
     this.setState({ loading: true });
     // this.setButton();
     await Axios.get(
-      "statuses/user_timeline/" + this.props.match.params.screenName,
+      "http://localhost:3001/novas" + this.props.match.params.screenName,
       {
         headers: {
           token: localStorage.getItem("jwtToken")
@@ -506,7 +506,7 @@ class profile extends Component {
     this.setState({ loading: false });
 
     await Axios.get(
-      "statuses/user_timeline/" + this.props.match.params.screenName,
+      "http://localhost:3001/novas" + this.props.match.params.screenName,
       {
         headers: {
           token: Axios.defaults.headers.common.Authorization

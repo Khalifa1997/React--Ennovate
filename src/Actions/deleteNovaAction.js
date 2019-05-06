@@ -5,15 +5,7 @@ export const deleteNova = nova_ID => dispatch => {
     nova_ID: nova_ID
   };
   axios
-    .post(
-      "statuses/destroy",
-      { _id: nova_ID },
-      {
-        headers: {
-          token: axios.defaults.headers.common.Authorization
-        }
-      }
-    )
+    .delete("http://localhost:3001/novas/?_id" + nova_ID)
     .then(res => {
       console.log(res);
       //dispatch(deleteCurrentNova(res.data));
