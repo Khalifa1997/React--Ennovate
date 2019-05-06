@@ -193,7 +193,7 @@ class profile extends Component {
       });
     }
   };
-  tabChangedHandler = (event, tabtIdentifier) => {
+  tabChangedHandler = async (event, tabtIdentifier) => {
     console.log("clicked");
 
     if (tabtIdentifier === "0") {
@@ -255,7 +255,7 @@ class profile extends Component {
       console.log("like clicked ");
       const novasClass = "";
       const likesClass = "active";
-      Axios.get("/favorites/list/" + this.props.match.params.screenName, {
+      await Axios.get("/favorites/list/" + this.props.match.params.screenName, {
         headers: {
           token: Axios.defaults.headers.common.Authorization
         }
