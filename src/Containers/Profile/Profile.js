@@ -113,6 +113,7 @@ class profile extends Component {
             let isLiked = this.props.auth.currentUser.favorites_novas_IDs.includes(
               tweet._id
             );
+            console.log(isLiked);
             this.likeNovaHandler(tweet._id, isLiked);
           }}
           reNovaClicked={() => this.reNovaHandler(tweet._id)}
@@ -160,6 +161,7 @@ class profile extends Component {
                 let isLiked = this.props.auth.currentUser.favorites_novas_IDs.includes(
                   tweet._id
                 );
+                console.log(isLiked);
                 this.likeNovaHandler(tweet._id, isLiked);
               }}
               isRenovaed={tweet.renovaed_by_IDs.includes(
@@ -220,6 +222,7 @@ class profile extends Component {
                 let isLiked = this.props.auth.currentUser.favorites_novas_IDs.includes(
                   tweet._id
                 );
+                console.log(isLiked);
                 this.likeNovaHandler(tweet._id, isLiked);
               }}
               isRenovaed={tweet.renovaed_by_IDs.includes(
@@ -300,6 +303,7 @@ class profile extends Component {
                 let isLiked = this.props.auth.currentUser.favorites_novas_IDs.includes(
                   tweet._id
                 );
+                console.log(isLiked);
                 this.likeNovaHandler(tweet._id, isLiked);
               }}
               reNovaClicked={() => this.reNovaHandler(tweet._id)}
@@ -437,6 +441,7 @@ class profile extends Component {
                 let isLiked = this.props.auth.currentUser.favorites_novas_IDs.includes(
                   tweet._id
                 );
+                console.log(isLiked);
                 this.likeNovaHandler(tweet._id, isLiked);
               }}
               isRenovaed={tweet.renovaed_by_IDs.includes(
@@ -550,6 +555,7 @@ class profile extends Component {
               let isLiked = this.props.auth.currentUser.favorites_novas_IDs.includes(
                 tweet._id
               );
+              console.log(isLiked);
               this.likeNovaHandler(tweet._id, isLiked);
             }}
             reNovaClicked={() => this.reNovaHandler(tweet._id)}
