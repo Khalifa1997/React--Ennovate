@@ -500,6 +500,7 @@ class profile extends Component {
   async componentWillReceiveProps(nextprops) {
     // this.setButton();
     //console.log("Component will reciever props");
+
     this.setState({ loading: false });
 
     await Axios.get(

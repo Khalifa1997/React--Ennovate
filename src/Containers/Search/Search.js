@@ -58,6 +58,44 @@ class Search extends Component {
   //       console.log("failure from search", { ...err });
   //     });
   // }
+  async componentWillReceiveProps(nextProps) {
+    this.setState({ loading: true });
+    await Axios.get("/users/search?query=" + nextProps.match.params.value, {
+      headers: {
+        token: localStorage.getItem("jwtToken")
+      }
+    })
+      .then(async res => {
+        console.log("success from search");
+        console.log(res.data);
+        await this.setState({ resultsArr: res.data });
+        const showResults = this.state.resultsArr.map(profile => {
+          console.log("auth:");
+          console.log(this.props.auth);
+          return (
+            <CSSTransition key={profile._id} timeout={500} classNames="scroll">
+              <button
+                type="button"
+                className="list-group-item list-group-item-action"
+              >
+                <ProfileSearch
+                  key={profile._id}
+                  name={profile.name}
+                  username={profile.screen_name}
+                  text={profile.bio}
+                  profile_image_url={profile.profile_image_url}
+                />
+              </button>
+            </CSSTransition>
+          );
+        });
+        this.setState({ results: showResults });
+      })
+      .catch(err => {
+        console.log("failure from search", { ...err });
+      });
+    this.setState({ loading: false });
+  }
   async componentDidMount() {
     this.setState({ loading: true });
     await Axios.get("/users/search?query=" + this.props.match.params.value, {
