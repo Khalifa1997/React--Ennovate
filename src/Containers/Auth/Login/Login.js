@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Aux from "./../../../Components/Wrapper/Auxilary";
 import AuthNav from "./../../../Components/AuthNav/AuthNav";
 import Classnames from "classnames";
-import Axios from "axios";
+import Axios from "../../../axios-users";
 import Profile from "../../Profile/Profile";
 
 import propTypes from "prop-types";

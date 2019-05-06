@@ -7,9 +7,10 @@ export const likeNova = (nova_ID, isLiked) => dispatch => {
   console.log(obj);
   if (!isLiked) {
     axios
-      .post("http://localhost:8080/favorites/create", obj, {
+      .post("/favorites/create", obj, {
         headers: {
-          token: axios.defaults.headers.common.Authorization
+          // token: axios.defaults.headers.common.Authorization
+          token: localStorage.getItem("jwtToken")
         }
       })
       .then(res => {
@@ -20,9 +21,10 @@ export const likeNova = (nova_ID, isLiked) => dispatch => {
       });
   } else {
     axios
-      .post("http://localhost:8080/favorites/destroy", obj, {
+      .post("/favorites/destroy", obj, {
         headers: {
-          token: axios.defaults.headers.common.Authorization
+          // token: axios.defaults.headers.common.Authorization
+          token: localStorage.getItem("jwtToken")
         }
       })
       .then(res => {
