@@ -28,12 +28,12 @@ describe("<editProfile>", () => {
     expect(wrapper).toMatchSnapshot();
   });
 
-  //   it("check the type of value", () => {
-  //      const wrapper = shallow(<Nav />);
-  //     const props = {
-  //         notifcationsCount: "2"
-  //       },
-  //     //   wrapper = mount(<Nav {...props} />);
-  //     expect(wrapper.prop(" notifcationsCount")).toequal("2");
-  //   });
+  it("check the type of value", () => {
+    //const wrapper = shallow(<Nav />);
+    const props = {
+      notifcationsCount: "2"
+    };
+    const wrapper = shallow(<Nav {...props} />);
+    expect(wrapper).toMatchSnapshot();
+  });
 });

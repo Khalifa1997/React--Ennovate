@@ -47,6 +47,15 @@ describe("<editProfile>", () => {
     expect(wrapper).toMatchSnapshot();
   });
 
+  it("check the image", () => {
+    //const wrapper = shallow(<Nav />);
+    const props = {
+      src: "hhtp:/13234",
+      className: "img-rounded "
+    };
+    const wrapper = shallow(<img {...props} />);
+    expect(wrapper).toMatchSnapshot();
+  });
 
   //   it("Should update the email value state when an email is given", () => {
   //     const wrapper = shallow(<editProfile />);

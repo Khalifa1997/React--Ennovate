@@ -1,5 +1,734 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`<editProfile> check that props are send correctly to profile search 1`] = `
+ShallowWrapper {
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <ProfileSearch
+    name="mirna"
+    profile_image_url="hhttp:///123354"
+    text="ana mirna"
+    username="mirna"
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "checkPropTypes": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateError": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "children": <div
+        className="row justify-content-start"
+      >
+        <div
+          className="col-md-auto "
+        >
+          <img
+            className="img-fluid"
+            src="hhttp:///123354"
+            style={
+              Object {
+                "width": "75px",
+              }
+            }
+          />
+        </div>
+        <div
+          className="col-md-auto"
+        >
+          <div
+            className="row"
+          >
+             
+            mirna
+             
+          </div>
+          <div
+            className="row"
+          >
+             @
+             
+          </div>
+          <div
+            className="row"
+          >
+            <p>
+              ana mirna
+            </p>
+          </div>
+        </div>
+        <div
+          className="col-1 ml-auto"
+          style={
+            Object {
+              "marginTop": "0.5%",
+            }
+          }
+        >
+          <button
+            className="btn btn-primary btn-sm"
+            type="button"
+          >
+            Unfollow
+          </button>
+        </div>
+      </div>,
+      "className": "container",
+    },
+    "ref": null,
+    "rendered": Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": Array [
+          <div
+            className="col-md-auto "
+          >
+            <img
+              className="img-fluid"
+              src="hhttp:///123354"
+              style={
+                Object {
+                  "width": "75px",
+                }
+              }
+            />
+          </div>,
+          <div
+            className="col-md-auto"
+          >
+            <div
+              className="row"
+            >
+               
+              mirna
+               
+            </div>
+            <div
+              className="row"
+            >
+               @
+               
+            </div>
+            <div
+              className="row"
+            >
+              <p>
+                ana mirna
+              </p>
+            </div>
+          </div>,
+          <div
+            className="col-1 ml-auto"
+            style={
+              Object {
+                "marginTop": "0.5%",
+              }
+            }
+          >
+            <button
+              className="btn btn-primary btn-sm"
+              type="button"
+            >
+              Unfollow
+            </button>
+          </div>,
+        ],
+        "className": "row justify-content-start",
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": <img
+              className="img-fluid"
+              src="hhttp:///123354"
+              style={
+                Object {
+                  "width": "75px",
+                }
+              }
+            />,
+            "className": "col-md-auto ",
+          },
+          "ref": null,
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "className": "img-fluid",
+              "src": "hhttp:///123354",
+              "style": Object {
+                "width": "75px",
+              },
+            },
+            "ref": null,
+            "rendered": null,
+            "type": "img",
+          },
+          "type": "div",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              <div
+                className="row"
+              >
+                 
+                mirna
+                 
+              </div>,
+              <div
+                className="row"
+              >
+                 @
+                 
+              </div>,
+              <div
+                className="row"
+              >
+                <p>
+                  ana mirna
+                </p>
+              </div>,
+            ],
+            "className": "col-md-auto",
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": Array [
+                  " ",
+                  "mirna",
+                  " ",
+                ],
+                "className": "row",
+              },
+              "ref": null,
+              "rendered": Array [
+                " ",
+                "mirna",
+                " ",
+              ],
+              "type": "div",
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": Array [
+                  " @",
+                  undefined,
+                  " ",
+                ],
+                "className": "row",
+              },
+              "ref": null,
+              "rendered": Array [
+                " @",
+                undefined,
+                " ",
+              ],
+              "type": "div",
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": <p>
+                  ana mirna
+                </p>,
+                "className": "row",
+              },
+              "ref": null,
+              "rendered": Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": "ana mirna",
+                },
+                "ref": null,
+                "rendered": "ana mirna",
+                "type": "p",
+              },
+              "type": "div",
+            },
+          ],
+          "type": "div",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": <button
+              className="btn btn-primary btn-sm"
+              type="button"
+            >
+              Unfollow
+            </button>,
+            "className": "col-1 ml-auto",
+            "style": Object {
+              "marginTop": "0.5%",
+            },
+          },
+          "ref": null,
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": "Unfollow",
+              "className": "btn btn-primary btn-sm",
+              "type": "button",
+            },
+            "ref": null,
+            "rendered": "Unfollow",
+            "type": "button",
+          },
+          "type": "div",
+        },
+      ],
+      "type": "div",
+    },
+    "type": "div",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": <div
+          className="row justify-content-start"
+        >
+          <div
+            className="col-md-auto "
+          >
+            <img
+              className="img-fluid"
+              src="hhttp:///123354"
+              style={
+                Object {
+                  "width": "75px",
+                }
+              }
+            />
+          </div>
+          <div
+            className="col-md-auto"
+          >
+            <div
+              className="row"
+            >
+               
+              mirna
+               
+            </div>
+            <div
+              className="row"
+            >
+               @
+               
+            </div>
+            <div
+              className="row"
+            >
+              <p>
+                ana mirna
+              </p>
+            </div>
+          </div>
+          <div
+            className="col-1 ml-auto"
+            style={
+              Object {
+                "marginTop": "0.5%",
+              }
+            }
+          >
+            <button
+              className="btn btn-primary btn-sm"
+              type="button"
+            >
+              Unfollow
+            </button>
+          </div>
+        </div>,
+        "className": "container",
+      },
+      "ref": null,
+      "rendered": Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": Array [
+            <div
+              className="col-md-auto "
+            >
+              <img
+                className="img-fluid"
+                src="hhttp:///123354"
+                style={
+                  Object {
+                    "width": "75px",
+                  }
+                }
+              />
+            </div>,
+            <div
+              className="col-md-auto"
+            >
+              <div
+                className="row"
+              >
+                 
+                mirna
+                 
+              </div>
+              <div
+                className="row"
+              >
+                 @
+                 
+              </div>
+              <div
+                className="row"
+              >
+                <p>
+                  ana mirna
+                </p>
+              </div>
+            </div>,
+            <div
+              className="col-1 ml-auto"
+              style={
+                Object {
+                  "marginTop": "0.5%",
+                }
+              }
+            >
+              <button
+                className="btn btn-primary btn-sm"
+                type="button"
+              >
+                Unfollow
+              </button>
+            </div>,
+          ],
+          "className": "row justify-content-start",
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": <img
+                className="img-fluid"
+                src="hhttp:///123354"
+                style={
+                  Object {
+                    "width": "75px",
+                  }
+                }
+              />,
+              "className": "col-md-auto ",
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "className": "img-fluid",
+                "src": "hhttp:///123354",
+                "style": Object {
+                  "width": "75px",
+                },
+              },
+              "ref": null,
+              "rendered": null,
+              "type": "img",
+            },
+            "type": "div",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": Array [
+                <div
+                  className="row"
+                >
+                   
+                  mirna
+                   
+                </div>,
+                <div
+                  className="row"
+                >
+                   @
+                   
+                </div>,
+                <div
+                  className="row"
+                >
+                  <p>
+                    ana mirna
+                  </p>
+                </div>,
+              ],
+              "className": "col-md-auto",
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": Array [
+                    " ",
+                    "mirna",
+                    " ",
+                  ],
+                  "className": "row",
+                },
+                "ref": null,
+                "rendered": Array [
+                  " ",
+                  "mirna",
+                  " ",
+                ],
+                "type": "div",
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": Array [
+                    " @",
+                    undefined,
+                    " ",
+                  ],
+                  "className": "row",
+                },
+                "ref": null,
+                "rendered": Array [
+                  " @",
+                  undefined,
+                  " ",
+                ],
+                "type": "div",
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": <p>
+                    ana mirna
+                  </p>,
+                  "className": "row",
+                },
+                "ref": null,
+                "rendered": Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": "ana mirna",
+                  },
+                  "ref": null,
+                  "rendered": "ana mirna",
+                  "type": "p",
+                },
+                "type": "div",
+              },
+            ],
+            "type": "div",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": <button
+                className="btn btn-primary btn-sm"
+                type="button"
+              >
+                Unfollow
+              </button>,
+              "className": "col-1 ml-auto",
+              "style": Object {
+                "marginTop": "0.5%",
+              },
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": "Unfollow",
+                "className": "btn btn-primary btn-sm",
+                "type": "button",
+              },
+              "ref": null,
+              "rendered": "Unfollow",
+              "type": "button",
+            },
+            "type": "div",
+          },
+        ],
+        "type": "div",
+      },
+      "type": "div",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+        "legacyContextMode": "parent",
+        "lifecycles": Object {
+          "componentDidUpdate": Object {
+            "onSetState": true,
+          },
+          "getChildContext": Object {
+            "calledByRenderer": false,
+          },
+          "getDerivedStateFromProps": Object {
+            "hasShouldComponentUpdateBug": false,
+          },
+          "getSnapshotBeforeUpdate": true,
+          "setState": Object {
+            "skipsComponentDidUpdateOnNullish": true,
+          },
+        },
+      },
+    },
+  },
+}
+`;
+
+exports[`<editProfile> check the type of value 1`] = `
+ShallowWrapper {
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <CSSTransition
+    classNames="scroll"
+    timeout="500"
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "checkPropTypes": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateError": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "class",
+    "props": Object {
+      "appear": false,
+      "enter": true,
+      "exit": true,
+      "in": false,
+      "mountOnEnter": false,
+      "onEnter": [Function],
+      "onEntered": [Function],
+      "onEntering": [Function],
+      "onExit": [Function],
+      "onExited": [Function],
+      "onExiting": [Function],
+      "timeout": "500",
+      "unmountOnExit": false,
+    },
+    "ref": null,
+    "rendered": null,
+    "type": [Function],
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "class",
+      "props": Object {
+        "appear": false,
+        "enter": true,
+        "exit": true,
+        "in": false,
+        "mountOnEnter": false,
+        "onEnter": [Function],
+        "onEntered": [Function],
+        "onEntering": [Function],
+        "onExit": [Function],
+        "onExited": [Function],
+        "onExiting": [Function],
+        "timeout": "500",
+        "unmountOnExit": false,
+      },
+      "ref": null,
+      "rendered": null,
+      "type": [Function],
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+        "legacyContextMode": "parent",
+        "lifecycles": Object {
+          "componentDidUpdate": Object {
+            "onSetState": true,
+          },
+          "getChildContext": Object {
+            "calledByRenderer": false,
+          },
+          "getDerivedStateFromProps": Object {
+            "hasShouldComponentUpdateBug": false,
+          },
+          "getSnapshotBeforeUpdate": true,
+          "setState": Object {
+            "skipsComponentDidUpdateOnNullish": true,
+          },
+        },
+      },
+    },
+  },
+  Symbol(enzyme.__childContext__): null,
+}
+`;
+
 exports[`<editProfile> should render 1`] = `
 <ContextConsumer>
   <Component />
