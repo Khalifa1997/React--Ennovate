@@ -85,7 +85,7 @@ class Search extends Component {
                 <ProfileSearch
                   key={profile._id}
                   name={profile.name}
-                  usernmae={profile.screen_name}
+                  username={profile.screen_name}
                   text={profile.bio}
                   profile_image_url={profile.profile_image_url}
                 />
