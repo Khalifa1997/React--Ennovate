@@ -3,6 +3,7 @@ import { shallow, configure } from "enzyme";
 import editProfile from "./EditProfile";
 import { shallowToJson } from "enzyme-to-json";
 import Adapter from "enzyme-adapter-react-16";
+import Button from "../../../Components/UI/button//button";
 import InputProfile from "../../../Components/UI/InputProfile/InputProfile";
 
 configure({ adapter: new Adapter() });
@@ -16,6 +17,10 @@ describe("<editProfile>", () => {
   });
   it("should render", () => {
     const wrapper = shallow(<editProfile />);
+    expect(wrapper).toMatchSnapshot();
+  });
+  it("should render", () => {
+    const wrapper = shallow(<Button />);
     expect(wrapper).toMatchSnapshot();
   });
 
@@ -32,6 +37,16 @@ describe("<editProfile>", () => {
 
     expect(_handleChange).toBeCalledWith(value);
   });
+
+  test("render a small label", () => {
+    const wrapper = shallow(
+      <label className="custom-file-label" for="inputGroupFile01">
+        Choose file
+      </label>
+    );
+    expect(wrapper).toMatchSnapshot();
+  });
+
 
   //   it("Should update the email value state when an email is given", () => {
   //     const wrapper = shallow(<editProfile />);

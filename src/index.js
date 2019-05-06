@@ -92,7 +92,7 @@ const customMiddleWare = store => next => action => {
 const store = createStore(
   reducer,
   compose(
-    applyMiddleware(...middleWare, customMiddleWare),
+    applyMiddleware(...middleWare),
     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
   )
 );
