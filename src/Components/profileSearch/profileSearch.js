@@ -15,7 +15,7 @@ const ProfileSearch = props => {
             {" "}
             <a
               className="userName"
-              href={"http://localhost:3000/profile/" + props.username}
+              href={"http://3.19.122.178/profile/" + props.username}
             >
               {props.name}{" "}
             </a>
