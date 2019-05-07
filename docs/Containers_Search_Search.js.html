@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: Containers/Search/Search.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: Containers/Search/Search.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React, { Component } from "react";
+import Nav from "../../Components/NavBar/NavBar";
+import ProfileSearch from "../../Components/profileSearch/profileSearch";
+import Axios from "../../axios-users";
+import { connect } from "react-redux";
+import { zoomInUp } from "react-animations";
+import Spinner from "../../Components/UI/Spinner/Spinner";
+import "./Search.css";
+import {
+  CSSTransition,
+  Transition,
+  TransitionGroup
+} from "react-transition-group";
+import { fabomb, faBomb } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+/**
+ * This is a description of the Search Component.
+ * @class
+ * */
+class Search extends Component {
+  constructor(props) {
+    super(props);
+    /**
+    * @property {json[]} resultsArr -Array of the search results.
+   
+    * @property {bool} loading                -Indicates whether the component is still loading or ready.
+   
+    
+  */
+    this.state = {
+      resultsArr: [],
+      loading: true,
+      results: null
+    };
+  }
+  // componentDidMount() {
+  //   Axios.get(
+  //     "http://localhost:8080/users/search?query=" +
+  //       this.props.match.params.value,
+  //     {
+  //       headers: {
+  //         token: localStorage.getItem("jwtToken")
+  //       }
+  //     }
+  //   )
+  //     .then(res => {
+  //       console.log("success from search");
+  //       console.log(res.data);
+  //     })
+  //     .catch(err => {
+  //       console.log("failure from search", { ...err });
+  //     });
+  // }
+  // componentWillUpdate() {
+  //   Axios.get(
+  //     "http://localhost:8080/users/search?query=" +
+  //       this.props.match.params.value,
+  //     {
+  //       headers: {
+  //         token: localStorage.getItem("jwtToken")
+  //       }
+  //     }
+  //   )
+  //     .then(res => {
+  //       console.log("success from search");
+  //       console.log(res.data);
+  //     })
+  //     .catch(err => {
+  //       console.log("failure from search", { ...err });
+  //     });
+  // }
+  async componentWillReceiveProps(nextProps) {
+    this.setState({ loading: true });
+    await Axios.get("/users/search?query=" + nextProps.match.params.value, {
+      headers: {
+        token: localStorage.getItem("jwtToken")
+      }
+    })
+      .then(async res => {
+        console.log("success from search");
+        console.log(res.data);
+        await this.setState({ resultsArr: res.data });
+        const showResults = this.state.resultsArr.map(profile => {
+          console.log("auth:");
+          console.log(this.props.auth);
+          return (
+            &lt;CSSTransition key={profile._id} timeout={500} classNames="scroll">
+              &lt;button
+                type="button"
+                className="list-group-item list-group-item-action"
+              >
+                &lt;ProfileSearch
+                  key={profile._id}
+                  name={profile.name}
+                  username={profile.screen_name}
+                  text={profile.bio}
+                  profile_image_url={profile.profile_image_url}
+                />
+              &lt;/button>
+            &lt;/CSSTransition>
+          );
+        });
+        this.setState({ results: showResults });
+      })
+      .catch(err => {
+        console.log("failure from search", { ...err });
+      });
+    this.setState({ loading: false });
+  }
+  async componentDidMount() {
+    this.setState({ loading: true });
+    await Axios.get("/users/search?query=" + this.props.match.params.value, {
+      headers: {
+        token: localStorage.getItem("jwtToken")
+      }
+    })
+      .then(async res => {
+        console.log("success from search");
+        console.log(res.data);
+        await this.setState({ resultsArr: res.data });
+        const showResults = this.state.resultsArr.map(profile => {
+          console.log("auth:");
+          console.log(this.props.auth);
+          return (
+            &lt;CSSTransition key={profile._id} timeout={500} classNames="scroll">
+              &lt;button
+                type="button"
+                className="list-group-item list-group-item-action"
+              >
+                &lt;ProfileSearch
+                  key={profile._id}
+                  name={profile.name}
+                  username={profile.screen_name}
+                  text={profile.bio}
+                  profile_image_url={profile.profile_image_url}
+                />
+              &lt;/button>
+            &lt;/CSSTransition>
+          );
+        });
+        this.setState({ results: showResults });
+      })
+      .catch(err => {
+        console.log("failure from search", { ...err });
+      });
+    this.setState({ loading: false });
+  }
+  render() {
+    // this.getSearchResults();z
+    return (
+      &lt;div className="container-fluid">
+        &lt;div style={{ marginBottom: "1%" }}>
+          &lt;Nav
+            notifcationsCount={this.props.notifications.notifications.length}
+          />
+        &lt;/div>
+        &lt;div className="container" style={{ width: "80%" }}>
+          {this.state.loading ? (
+            &lt;div
+              class="d-flex justify-content-center"
+              style={{ marginTop: "2%" }}
+            >
+              &lt;Spinner />
+            &lt;/div>
+          ) : (
+            &lt;div>
+              {this.state.resultsArr.length > 0 ? (
+                &lt;div className="list-group">
+                  &lt;button className="list-group-item list-group-item-action active">
+                    Search Results
+                  &lt;/button>
+                  &lt;TransitionGroup>{this.state.results}&lt;/TransitionGroup>
+                &lt;/div>
+              ) : (
+                &lt;div style={{ textAlign: "center", marginTop: "10%" }}>
+                  &lt;FontAwesomeIcon
+                    icon={faBomb}
+                    size={"10x"}
+                    style={{ color: "black", textAlign: "center" }}
+                  />
+
+                  &lt;h1 style={{ textAlign: "center", marginTop: "2%" }}>
+                    No results
+                  &lt;/h1>
+                &lt;/div>
+              )}
+            &lt;/div>
+          )}
+        &lt;/div>
+      &lt;/div>
+    );
+  }
+}
+const mapStateToProps = state => ({
+  auth: state.auth,
+  notifications: state.notifications
+});
+
+export default connect(mapStateToProps)(Search);
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="editProfile.html">editProfile</a></li><li><a href="forgotPassword.html">forgotPassword</a></li><li><a href="login.html">login</a></li><li><a href="Newsfeed.html">Newsfeed</a></li><li><a href="profile.html">profile</a></li><li><a href="Search.html">Search</a></li><li><a href="signup.html">signup</a></li></ul><h3>Global</h3><ul><li><a href="global.html#button">button</a></li><li><a href="global.html#input">input</a></li><li><a href="global.html#LandingPage">LandingPage</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Tue May 07 2019 23:51:49 GMT+0200 (Egypt Standard Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
