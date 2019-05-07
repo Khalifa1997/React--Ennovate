@@ -16,4 +16,5 @@ describe("<Tweet>", () => {
     const wrapper = shallow(<Tweet />);
     expect(wrapper).toMatchSnapshot();
   });
+  afterAll(() => setTimeout(() => process.exit(), 1000));
 });

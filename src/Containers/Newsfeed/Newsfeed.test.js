@@ -6,6 +6,11 @@ import Adapter from "enzyme-adapter-react-16";
 import ProfileCard from "../../Components/profileCard/profileCard";
 import NovaModal from "../../Components/novaModal/novaModal";
 import Nav from "../../Components/NavBar/NavBar";
+import {
+  CSSTransition,
+  Transition,
+  TransitionGroup
+} from "react-transition-group";
 configure({ adapter: new Adapter() });
 describe("<editProfile>", () => {
   it("should be defined", () => {
@@ -36,4 +41,26 @@ describe("<editProfile>", () => {
     const wrapper = shallow(<Nav {...props} />);
     expect(wrapper).toMatchSnapshot();
   });
+  test("render css transition", () => {
+    const toggleFans = jest.fn();
+    const props = {
+      key: 123,
+      timeout: 500,
+      classNames: "move"
+    };
+    const wrapper = shallow(<CSSTransition {...props} />);
+    expect(wrapper).toMatchSnapshot();
+  });
+  it("check Nova modal", () => {
+    //const wrapper = shallow(<Nav />);
+    const toggle = jest.fn();
+    const props = {
+      isOpen: true,
+      toggle: toggle(),
+      modalType: true
+    };
+    const wrapper = shallow(<NovaModal {...props} />);
+    expect(wrapper).toMatchSnapshot();
+  });
+  afterAll(() => setTimeout(() => process.exit(), 1000));
 });
