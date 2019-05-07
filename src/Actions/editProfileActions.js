@@ -58,7 +58,8 @@ export const editImage = userData => dispatch => {
         })
         .then(res => {
           console.log("MEN EL image ", res);
-          dispatch(setCurrentUser(res.data, res.data));
+          const user = res.data.user;
+          dispatch(setCurrentUser(user, user));
         });
     })
     .catch(err => {
@@ -71,20 +72,20 @@ export const editImage = userData => dispatch => {
   return Promise.resolve();
 };
 
-export const getProfile = screen_name => dispatch => {
-  return dispatch => {
-    axios
-      .get("/accounts/settings", {
-        params: {
-          screen_name
-        }
-      })
-      .then(response => {
-        dispatch(setProfileUser(response.data));
-      })
-      .catch(error => {});
-  };
-};
+// export const getProfile = screen_name => dispatch => {
+//   return dispatch => {
+//     axios
+//       .get("/accounts/settings", {
+//         params: {
+//           screen_name
+//         }
+//       })
+//       .then(response => {
+//         dispatch(setProfileUser(response.data));
+//       })
+//       .catch(error => {});
+//   };
+// };
 
 export const editProfileUser = currentUser => {
   return {
@@ -104,14 +105,14 @@ export const editImageUser = currentImage => {
   };
 };
 
-export const setProfileUser = currentUser => {
-  return {
-    type: actionTypes.SET_PROFILE,
-    payload: {
-      profile: currentUser
-    }
-  };
-};
+// export const setProfileUser = currentUser => {
+//   return {
+//     type: actionTypes.SET_PROFILE,
+//     payload: {
+//       profile: currentUser
+//     }
+//   };
+//};
 
 export const setCurrentUser = (profile, authUser) => {
   return {

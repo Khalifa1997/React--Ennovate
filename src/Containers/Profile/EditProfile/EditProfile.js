@@ -24,7 +24,7 @@ class editProfile extends Component {
             type: "text",
             placeholder: "Enter your updated screen name"
           },
-          value: this.props.auth.profile.screen_name,
+          value: "",
           validation: {
             required: true,
             nospace: true,
@@ -44,7 +44,7 @@ class editProfile extends Component {
             type: "text",
             placeholder: "Enter your updated name"
           },
-          value: this.props.auth.profile.name,
+          value: "",
           validation: {
             maxLength: 15
           },
@@ -59,7 +59,7 @@ class editProfile extends Component {
             type: "input",
             placeholder: "Enter your bio "
           },
-          value: this.props.auth.profile.bio,
+          value: "",
           validation: {
             maxLength: 100
           },
@@ -68,7 +68,7 @@ class editProfile extends Component {
           touched: false
         }
       },
-      loc: this.props.auth.profile.location,
+      loc: "",
       formIsValid: false,
       loading: false,
       error: {},
@@ -79,6 +79,7 @@ class editProfile extends Component {
       msg: ""
       //token: "",
     };
+    console.log("usss", this.props);
   }
 
   inputChangeHandler = (event, inputIdentifier) => {
@@ -207,8 +208,17 @@ class editProfile extends Component {
   //   console.log("el edit", nextProps.auth.profile.screen_name);
   //
   // }
+  componentDidMount() {
+    // this.state.editProfileForm.screen_name.value = this.props.auth.profile.screen_name;
+    // this.state.editProfileForm.name.value = this.props.auth.profile.name;
+    // this.state.loc = this.props.auth.profile.location;
+    // this.state.editProfileForm.bio.value = this.props.auth.profile.bio;
+    console.log("mount", this.props);
+  }
 
   render() {
+    console.log("hhhhhh", this.props);
+    console.log("yoooo", this.props.auth.profile.screen_name);
     console.log("yaraab", this.state.editProfileForm.screen_name.value);
     const formElementArray = [];
     for (let key in this.state.editProfileForm) {
@@ -286,11 +296,10 @@ class editProfile extends Component {
             <option value="France">France</option>
             <option value="Germany">Germany</option>
             <option value="Greece">Greece</option>
-            <option value="France">France</option>
-            <option>United States</option>
-            <option>England</option>
-            <option>Italy</option>
-            <option>Lebanon</option>
+            <option value="united states">United States</option>
+            <option value="england">England</option>
+            <option value="italy">Italy</option>
+            <option value="lebanon">Lebanon</option>
           </select>
           <h4> </h4>
           <h4> </h4>
@@ -325,6 +334,6 @@ const mapStateToProps = state => ({
 export default withRouter(
   connect(
     mapStateToProps,
-    { editUser, editImage, getProfile }
+    { editUser, editImage }
   )(editProfile)
 );

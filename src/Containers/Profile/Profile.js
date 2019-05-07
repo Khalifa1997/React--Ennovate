@@ -46,7 +46,8 @@ class profile extends Component {
       followers: [],
       followings: [],
       modalType: null,
-      comments: []
+      comments: [],
+      userExists: true
     };
   }
   notifcationsClickHandler = () => {
@@ -499,7 +500,13 @@ class profile extends Component {
   }
   async componentWillReceiveProps(nextprops) {
     // this.setButton();
-    //console.log("Component will reciever props");
+    console.log(nextprops.profile.user);
+
+    if (Object.entries(nextprops.profile.user).length === 0) {
+      this.setState({ userExists: false });
+      console.log("false");
+    } else this.setState({ userExists: true });
+
     this.setState({ loading: false });
 
     await Axios.get(
@@ -612,149 +619,176 @@ class profile extends Component {
           onClickHandler={() => this.notifcationsClickHandler()}
           notifcationsCount={this.props.notifications.notifications.length}
         />
+        {this.state.userExists ? (
+          <div className="container widthadjust">
+            <div className="profilecontainer ">
+              <div className="profile">
+                <div className="profile-image">
+                  <img
+                    className="imgwidth"
+                    src={this.props.profile.user.profile_image_url}
+                  />
+                </div>
 
-        <div className="container widthadjust">
-          <div className="profilecontainer ">
-            <div className="profile">
-              <div className="profile-image">
-                <img
-                  className="imgwidth"
-                  src={this.props.profile.user.profile_image_url}
-                />
+                <div className="profile-user-settings">
+                  <h1 className="profile-user-name">
+                    {this.props.profile.user.screen_name}
+                  </h1>
+
+                  {toggledButton}
+                </div>
+
+                <div className="profile-stats">
+                  <li>
+                    <span className="profile-stat-count">
+                      {this.props.profile.user.novas_count}
+                    </span>{" "}
+                    Novas
+                  </li>
+                  <li>
+                    <span className="profile-stat-count">
+                      {this.props.profile.user.followers_count}
+                    </span>{" "}
+                    <span
+                      onClick={() => {
+                        console.log("hii");
+                        this.toggleFollowers();
+                      }}
+                    >
+                      followers
+                    </span>
+                  </li>
+                  <li>
+                    <span className="profile-stat-count">
+                      {this.props.profile.user.friends_count}
+                    </span>{" "}
+                    <span
+                      id="1"
+                      onClick={() => {
+                        console.log("hii");
+                        this.toggleFans();
+                      }}
+                    >
+                      following
+                    </span>
+                  </li>
+                </div>
+
+                <div className="profile-bio">
+                  <p>
+                    <span className="profile-real-name">
+                      {this.props.profile.user.name}
+                    </span>{" "}
+                    {this.props.profile.user.bio}
+                  </p>
+                </div>
               </div>
+            </div>
 
-              <div className="profile-user-settings">
-                <h1 className="profile-user-name">
-                  {this.props.profile.user.screen_name}
-                </h1>
+            <div className="container ">
+              <div className="centerdiv">
+                <div className="row ">
+                  <div className="col-md-6 ">
+                    <div className="tab" role="tabpanel">
+                      <ul className="nav nav-tabs" role="tablist">
+                        <li
+                          role="presentation"
+                          className={this.state.novasClass}
+                        >
+                          <a
+                            aria-controls="novas"
+                            role="tab"
+                            data-toggle="tab"
+                            href="javascript:;"
+                            onClick={event =>
+                              this.tabChangedHandler(event, "0")
+                            }
+                          >
+                            Novas
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div className="col-md-6 ">
+                    <div className="tab" role="tabpanel">
+                      <ul className="nav nav-tabs" role="tablist">
+                        <li
+                          role="presentation"
+                          className={this.state.likesClass}
+                        >
+                          <a
+                            href="javascript:;"
+                            aria-controls="likes"
+                            role="tab"
+                            data-toggle="tab"
+                            onClick={event =>
+                              this.tabChangedHandler(event, "1")
+                            }
+                          >
+                            Likes
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div className="col-md-12 ">
+                    <div className="tab-content tabs">
+                      {this.state.loading ? (
+                        <div
+                          className="d-flex justify-content-center"
+                          style={{ marginTop: "2%" }}
+                        >
+                          <Spinner />
+                        </div>
+                      ) : (
+                        <div>
+                          {this.state.contentShown}
+                          <NovaModal
+                            isOpen={this.state.modalShown}
+                            toggle={() => this.toggle()}
+                            modalType={this.state.modalType}
+                          >
+                            {this.state.modal}
+                          </NovaModal>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                  <FanModal
+                    boxName="Followings"
+                    list={this.state.followings}
+                    isOpen={this.state.modalShownFans}
+                    onClose={() => this.toggleFans()}
+                  />
 
-                {toggledButton}
-              </div>
-
-              <div className="profile-stats">
-                <li>
-                  <span className="profile-stat-count">
-                    {this.props.profile.user.novas_count}
-                  </span>{" "}
-                  Novas
-                </li>
-                <li>
-                  <span className="profile-stat-count">
-                    {this.props.profile.user.followers_count}
-                  </span>{" "}
-                  <span
-                    onClick={() => {
-                      console.log("hii");
-                      this.toggleFollowers();
-                    }}
-                  >
-                    followers
-                  </span>
-                </li>
-                <li>
-                  <span className="profile-stat-count">
-                    {this.props.profile.user.friends_count}
-                  </span>{" "}
-                  <span
-                    id="1"
-                    onClick={() => {
-                      console.log("hii");
-                      this.toggleFans();
-                    }}
-                  >
-                    following
-                  </span>
-                </li>
-              </div>
-
-              <div className="profile-bio">
-                <p>
-                  <span className="profile-real-name">
-                    {this.props.profile.user.name}
-                  </span>{" "}
-                  {this.props.profile.user.bio}
-                </p>
+                  <FanModal
+                    boxName="Followers"
+                    list={this.state.followers}
+                    isOpen={this.state.modalShownFollowers}
+                    onClose={() => this.toggleFollowers()}
+                  />
+                </div>
               </div>
             </div>
           </div>
+        ) : (
+          <div
+            style={{
+              textAlign: "left",
 
-          <div className="container ">
-            <div className="centerdiv">
-              <div className="row ">
-                <div className="col-md-6 ">
-                  <div className="tab" role="tabpanel">
-                    <ul className="nav nav-tabs" role="tablist">
-                      <li role="presentation" className={this.state.novasClass}>
-                        <a
-                          aria-controls="novas"
-                          role="tab"
-                          data-toggle="tab"
-                          href="javascript:;"
-                          onClick={event => this.tabChangedHandler(event, "0")}
-                        >
-                          Novas
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-                <div className="col-md-6 ">
-                  <div className="tab" role="tabpanel">
-                    <ul className="nav nav-tabs" role="tablist">
-                      <li role="presentation" className={this.state.likesClass}>
-                        <a
-                          href="javascript:;"
-                          aria-controls="likes"
-                          role="tab"
-                          data-toggle="tab"
-                          onClick={event => this.tabChangedHandler(event, "1")}
-                        >
-                          Likes
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-                <div className="col-md-12 ">
-                  <div className="tab-content tabs">
-                    {this.state.loading ? (
-                      <div
-                        className="d-flex justify-content-center"
-                        style={{ marginTop: "2%" }}
-                      >
-                        <Spinner />
-                      </div>
-                    ) : (
-                      <div>
-                        {this.state.contentShown}
-                        <NovaModal
-                          isOpen={this.state.modalShown}
-                          toggle={() => this.toggle()}
-                          modalType={this.state.modalType}
-                        >
-                          {this.state.modal}
-                        </NovaModal>
-                      </div>
-                    )}
-                  </div>
-                </div>
-                <FanModal
-                  boxName="Followings"
-                  list={this.state.followings}
-                  isOpen={this.state.modalShownFans}
-                  onClose={() => this.toggleFans()}
-                />
-
-                <FanModal
-                  boxName="Followers"
-                  list={this.state.followers}
-                  isOpen={this.state.modalShownFollowers}
-                  onClose={() => this.toggleFollowers()}
-                />
-              </div>
-            </div>
+              margin: "70px",
+              maxHeight: "72rem",
+              minHeight: "5rem",
+              alignContent: "center",
+              alignSelf: "center",
+              fontSize: 70
+            }}
+          >
+            {" "}
+            user does not exist
           </div>
-        </div>
+        )}
       </div>
     );
   }
