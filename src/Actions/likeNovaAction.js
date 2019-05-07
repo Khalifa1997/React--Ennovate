@@ -1,4 +1,6 @@
 import * as actionTypes from "./types";
+import { toast } from "react-toastify";
+
 import axios from "../axios-users";
 export const likeNova = (nova_ID, isLiked) => dispatch => {
   const obj = {
@@ -17,6 +19,14 @@ export const likeNova = (nova_ID, isLiked) => dispatch => {
       .then(res => {
         console.log(res);
         dispatch(setCurrentUser(res.data.actionUser, res.data.novaUser));
+        toast.success("Nova Liked!👍", {
+          position: "top-center",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true
+        });
       })
       .catch(err => {
         console.log("Failed Like nova post");
@@ -31,7 +41,14 @@ export const likeNova = (nova_ID, isLiked) => dispatch => {
       })
       .then(res => {
         dispatch(setCurrentUser(res.data.actionUser, res.data.novaUser));
-        console.log(res);
+        toast.warn("Nova Unliked!😥", {
+          position: "top-center",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true
+        });
       })
       .catch(err => {
         console.log("Failed Like nova post");

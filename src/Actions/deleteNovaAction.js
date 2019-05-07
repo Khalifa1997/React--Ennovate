@@ -1,3 +1,4 @@
+import { toast } from "react-toastify";
 import * as actionTypes from "./types";
 import axios from "../axios-users";
 export const deleteNova = (nova_ID, isaRenova) => dispatch => {
@@ -15,6 +16,15 @@ export const deleteNova = (nova_ID, isaRenova) => dispatch => {
       .then(res => {
         console.log(res);
         dispatch(deleteCurrentNova(res.data));
+        toast.error("Nova Deleted", {
+          position: "top-center",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true
+        });
+        // con
       })
       .catch(err => {
         console.log("Failed delete tweet");
@@ -33,6 +43,14 @@ export const deleteNova = (nova_ID, isaRenova) => dispatch => {
       .then(res => {
         console.log(res);
         dispatch(deleteCurrentNova(res.data));
+        toast.error("Nova Deleted", {
+          position: "top-center",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true
+        });
       })
       .catch(err => {
         console.log("Failed delete tweet");
