@@ -50,23 +50,22 @@ describe("<Profile>", () => {
   //     const wrapper = shallow(
   //    <Profile/>
   //     );
-  
+
   //     wrapper.find('[id="1"]').simulate("click");
   //     expect(wrapper.state("modalShownFans")).toEqual(true);
   //   });
 
-
-
   // test("render a document title", () => {
-  //   const wrapper = shallow(<FanModal boxName="Followings" />);
-  //   expect(wrapper.prop("boxName")).toEqual("Followings");
+  //   const props = {
+  //     boxName: "Followings"
+  //   };
+  //   const wrapper = shallow(<FanModal {...props} />);
+  //   expect(wrapper).toMatchSnapshot();
   // });
 
-  // it("should render", () => {
-  //   const wrapper = shallow(<Profile />);
-  //   expect(
-  //     wrapper.find("button").hasClass("btn profilebtn profile-edit-btn")
-  //   ).to.equal(true);
+  // it("check on image", () => {
+  //   const wrapper = shallow(<div className="container widthadjust">);
+  //   expect(wrapper.find("img").hasClass("imgwidth")).to.equal(true);
   // });
   // it("should call the onClick function when 'Subtract' button is clicked when the operator is '-'", () => {
   //   const wrapper = shallow(<Profile />);
@@ -76,7 +75,7 @@ describe("<Profile>", () => {
   //   wrapper.find("deleteClicked").onClick();
   //   expect(deleteClicked).toHaveBeenCalledTimes(1);
   // });
-  // 
+  //
   // it("should render 1 <menu>s", () => {
   //   const wrapper = shallow(<menu>
   //     <TransitionGroup className="d-flex flex-column bd-highlight mb-3 justify-content-center align-items-center">
@@ -102,7 +101,4 @@ describe("<Profile>", () => {
 
   //   expect(toggleFollowers).toBeCalledWith(true);
   // });
-
-
-
 });
