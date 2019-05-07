@@ -11,7 +11,9 @@ class forgotPassword extends Component {
     email: "",
     inputClasses: "form-control InputElement",
     validationError: <p />,
-    inputValid: false
+    inputValid: false,
+    successResponse: false,
+    responseMessage: null
   };
 
   inputChangedHandler = event => {
@@ -40,10 +42,20 @@ class forgotPassword extends Component {
     axios
       .get("/forgetPassword/" + email)
       .then(response => {
-        console.log(response.data);
+        this.setState({
+          responseMessage: (
+            <p>
+              Alink to reset your password has been succcessfully sent to your
+              email
+            </p>
+          ),
+          successResponse: true
+        });
       })
       .catch(error => {
-        console.log(error.response.data);
+        this.setState({
+          responseMessage: <p className="ValidationError"> User not found</p>
+        });
       });
   };
   render() {
@@ -53,20 +65,27 @@ class forgotPassword extends Component {
         <div className="PasswordPageCanvas">
           <div className="container">
             <div className="PageHeader Edge">Reset Password</div>
-            <p>Enter the email associated with your Ennovate account</p>
+            {this.state.responseMessage}
+            {this.state.successResponse == false ? (
+              <div>
+                <p>Enter the email associated with your Ennovate account</p>
 
-            <input
-              className={this.state.inputClasses}
-              autoFocus={true}
-              onChange={event => this.inputChangedHandler(event)}
-            />
-            {this.state.validationError}
-            <Button
-              clicked={event => this.submitHandler(event, this.state.email)}
-              disabled={!this.state.inputValid}
-            >
-              Reset
-            </Button>
+                <input
+                  className={this.state.inputClasses}
+                  autoFocus={true}
+                  onChange={event => this.inputChangedHandler(event)}
+                />
+                <p className="ValidationError"> {this.state.validationError}</p>
+                <Button
+                  clicked={event => this.submitHandler(event, this.state.email)}
+                  disabled={!this.state.inputValid}
+                >
+                  Reset
+                </Button>
+              </div>
+            ) : (
+              <div> </div>
+            )}
           </div>
         </div>
       </div>

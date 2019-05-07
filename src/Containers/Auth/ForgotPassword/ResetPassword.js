@@ -44,7 +44,9 @@ class resetPassword extends Component {
     },
     inputClasses: "form-control InputElement",
     validationError: <p />,
-    formIsValid: false
+    formIsValid: false,
+    successResponse: false,
+    responseMessage: null
   };
   inputChangedHandler = (event, inputIdentifier) => {
     const updatedResetPasswordForm = {
@@ -103,9 +105,18 @@ class resetPassword extends Component {
       )
       .then(response => {
         console.log(response.data);
+        this.setState({
+          responseMessage: <p>Your password has been successfully changed</p>,
+          successResponse: true
+        });
       })
       .catch(error => {
         console.log(error.response.data);
+        this.setState({
+          responseMessage: (
+            <p className="ValidationError">An error occured please try again</p>
+          )
+        });
       });
   };
   render() {
@@ -116,30 +127,32 @@ class resetPassword extends Component {
         config: this.state.resetPasswordForm[key]
       });
     }
+    let formElements = formElementsArray.map(formElement => (
+      <Input
+        key={formElement.id}
+        elementType={formElement.config.elementType}
+        elementConfig={formElement.config.elementConfig}
+        value={formElement.config.value}
+        invalid={!formElement.config.valid}
+        errorMessage={formElement.config.errorMessage}
+        shouldValidate={formElement.config.validation}
+        touched={formElement.config.touched}
+        autoFocus={formElement.config.autoFocus}
+        changed={event => this.inputChangedHandler(event, formElement.id)}
+      />
+    ));
     let form = (
       <form onSubmit={this.submitHandler} className="signupBox">
         <h3 className="signupHeader">Reset your password</h3>
-        {formElementsArray.map(formElement => (
-          <Input
-            key={formElement.id}
-            elementType={formElement.config.elementType}
-            elementConfig={formElement.config.elementConfig}
-            value={formElement.config.value}
-            invalid={!formElement.config.valid}
-            errorMessage={formElement.config.errorMessage}
-            shouldValidate={formElement.config.validation}
-            touched={formElement.config.touched}
-            autoFocus={formElement.config.autoFocus}
-            changed={event => this.inputChangedHandler(event, formElement.id)}
-          />
-        ))}
-        <Button
-          //className="btn btn-primary signupButton"
-          //onClick={this.passwordHandler}
-          disabled={!this.state.formIsValid}
-        >
-          Signup
-        </Button>
+        {this.state.responseMessage}
+        {this.state.successResponse == false ? (
+          <div>
+            {formElements}
+            <Button disabled={!this.state.formIsValid}>Signup</Button>
+          </div>
+        ) : (
+          <div />
+        )}
       </form>
     );
     return (
