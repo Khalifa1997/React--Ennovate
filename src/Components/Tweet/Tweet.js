@@ -42,17 +42,45 @@ class Tweet extends React.Component {
             {this.props.renovaed ? (
               <div>
                 <h4 className="card-title">
-                  Renova by @{this.props.screenName}
+                  Renova by
+                  <a
+                    className="userName"
+                    href={
+                      "http://localhost:3000/profile/" + this.props.screenName
+                    }
+                  >
+                    {" "}
+                    @{this.props.screenName}
+                  </a>
                 </h4>
                 <h6 className="card-subtitle mb-2 text-muted">
-                  @{this.props.renovaScreenName}
+                  <a
+                    className="userName"
+                    href={
+                      "http://localhost:3000/profile/" +
+                      this.props.renovaScreenName
+                    }
+                  >
+                    {" "}
+                    @{this.props.renovaScreenName}
+                  </a>
                 </h6>
               </div>
             ) : (
               <div>
-                <h4 className="card-title">{this.props.screenName}</h4>
+                <h4 className="card-title">
+                  {" "}
+                  <a
+                    className="userName"
+                    href={
+                      "http://localhost:3000/profile/" + this.props.screenName
+                    }
+                  >
+                    {this.props.userName}
+                  </a>
+                </h4>
                 <h6 className="card-subtitle mb-2 text-muted">
-                  @{this.props.userName}
+                  @{this.props.screenName}
                 </h6>
               </div>
             )}
