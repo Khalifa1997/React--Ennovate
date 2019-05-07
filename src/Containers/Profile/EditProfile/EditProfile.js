@@ -24,7 +24,7 @@ class editProfile extends Component {
             type: "text",
             placeholder: "Enter your updated screen name"
           },
-          value: "",
+          value: this.props.auth.currentUser.screen_name,
           validation: {
             required: true,
             nospace: true,
@@ -44,7 +44,7 @@ class editProfile extends Component {
             type: "text",
             placeholder: "Enter your updated name"
           },
-          value: "",
+          value: this.props.auth.currentUser.name,
           validation: {
             maxLength: 15
           },
@@ -59,7 +59,7 @@ class editProfile extends Component {
             type: "input",
             placeholder: "Enter your bio "
           },
-          value: "",
+          value: this.props.auth.currentUser.bio,
           validation: {
             maxLength: 100
           },
@@ -68,7 +68,7 @@ class editProfile extends Component {
           touched: false
         }
       },
-      loc: "",
+      loc: this.props.auth.currentUser.location,
       formIsValid: false,
       loading: false,
       error: {},
@@ -76,7 +76,9 @@ class editProfile extends Component {
       imagePreview: "http://ssl.gstatic.com/accounts/ui/avatar_2x.png",
       currentProfile: {},
       errorScreenname: false,
-      msg: ""
+      msg: "",
+      err: true,
+      invalidScreenname: false
       //token: "",
     };
     console.log("usss", this.props);
@@ -156,9 +158,7 @@ class editProfile extends Component {
     this.props.editImage(profile_image_url);
     this.props.editUser(user).then(() => {
       console.log("edit", user.screen_name);
-      //if (this.props.auth.isedited) {
       this.props.history.push("/profile/" + user.screen_name);
-      //}
     });
   };
 
@@ -202,6 +202,13 @@ class editProfile extends Component {
           this.setState({ errorLenScreenname: true });
         }
       });
+    } else {
+      this.setState({ err: false });
+      this.setState({ invalidScreenname: false });
+      console.log("yyyy", this.state.editProfileForm.screen_name.value);
+      this.props.history.push(
+        "/profile/" + this.state.editProfileForm.screen_name.value
+      );
     }
   }
   // componentWillReceiveProps(nextProps) {
@@ -217,9 +224,6 @@ class editProfile extends Component {
   }
 
   render() {
-    console.log("hhhhhh", this.props);
-    console.log("yoooo", this.props.auth.profile.screen_name);
-    console.log("yaraab", this.state.editProfileForm.screen_name.value);
     const formElementArray = [];
     for (let key in this.state.editProfileForm) {
       formElementArray.push({
@@ -233,6 +237,11 @@ class editProfile extends Component {
         <div className="center">
           <img src={this.state.imagePreview} className="img-rounded " />
         </div>
+        {this.state.invalidScreenname === true ? (
+          <h1>screen name is invalid</h1>
+        ) : (
+          <div> </div>
+        )}
         <div className="form-group limitwidth center">
           <div className="custom-file ">
             <input
