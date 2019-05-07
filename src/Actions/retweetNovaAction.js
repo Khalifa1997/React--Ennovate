@@ -8,7 +8,7 @@ export const reNova = id => dispatch => {
   axios
     .post("/statuses/reNova", idObj, {
       headers: {
-        token: axios.defaults.headers.common.Authorization
+        token: localStorage.getItem("jwtToken")
       }
       //Params Nova ida
     })
