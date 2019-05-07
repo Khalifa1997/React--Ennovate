@@ -13,7 +13,11 @@ import { likeNova } from "../../Actions/likeNovaAction";
 import { reNova } from "../../Actions/retweetNovaAction";
 import { zoomInUp } from "react-animations";
 import Radium, { StyleRoot } from "radium";
-
+import {
+  CSSTransition,
+  Transition,
+  TransitionGroup
+} from "react-transition-group";
 class Newsfeed extends Component {
   state = {
     contentShown: null,
@@ -31,6 +35,67 @@ class Newsfeed extends Component {
       modalShown: !this.state.modalShown
     });
   };
+  deleteNovaHandler = novaID => {
+    //Deleting a Nova
+    this.props.deleteNova(novaID);
+    const newPosts = [...this.state.novas];
+    console.log(this.state.novas);
+    //Delete a new tweet
+    const index = newPosts.findIndex(a => a._id === novaID);
+    console.log(index);
+    if (index != -1) {
+      newPosts.splice(index, 1);
+      this.setState({ novas: newPosts });
+      const novas = newPosts.map(tweet => {
+        /*  const isLiked = this.props.auth.currentUser.favorites_novas_IDs.includes(
+          tweet._id
+        ); */
+        return (
+          <CSSTransition key={tweet._id} timeout={500} classNames="move">
+            <Tweet
+              screenName={tweet.user_screen_name}
+              isliked={this.props.auth.currentUser.favorites_novas_IDs.includes(
+                tweet._id
+              )}
+              key={tweet._id}
+              id={tweet._id}
+              userName={tweet.user_name}
+              likeClicked={() => {
+                let isLiked = this.props.auth.currentUser.favorites_novas_IDs.includes(
+                  tweet._id
+                );
+                console.log(isLiked);
+                this.likeNovaHandler(tweet._id, isLiked);
+              }}
+              renovaed={tweet.renovaed}
+              renovaScreenName={tweet.in_reply_to_screen_name}
+              deleteClicked={() => this.deleteNovaHandler(tweet._id)}
+              reNovaClicked={() => this.reNovaHandler(tweet._id)}
+              textClicked={() => this.modalShowHandler(tweet._id)}
+              text={tweet.text}
+              isAuth={
+                this.props.auth.currentUser.screen_name ===
+                tweet.user_screen_name
+              }
+            />
+          </CSSTransition>
+        );
+      });
+
+      const contentShown = (
+        <div role="tabpanel" id="Section1">
+          <menu>
+            <TransitionGroup className="d-flex flex-column bd-highlight mb-3 justify-content-center align-items-center">
+              {novas}
+            </TransitionGroup>
+          </menu>
+        </div>
+      );
+      this.setState({
+        contentShown: contentShown
+      });
+    }
+  };
   notifcationsClickHandler = () => {
     //Add notifcation message passing here
     //Append it to this.state.modal and set the two states
@@ -41,8 +106,9 @@ class Newsfeed extends Component {
       modalType: 1
     });
   };
-  likeNovaHandler = novaID => {
-    this.props.likeNova(novaID);
+
+  likeNovaHandler = (novaID, isLiked) => {
+    this.props.likeNova(novaID, isLiked);
   };
   reNovaHandler = novaID => {
     this.props.reNova(novaID);
@@ -65,11 +131,24 @@ class Newsfeed extends Component {
         return (
           <Tweet
             screenName={tweet.user_screen_name}
-            isliked={false}
+            isliked={this.props.auth.currentUser.favorites_novas_IDs.includes(
+              tweet._id
+            )}
+            id={tweet._id}
             key={tweet._id}
             userName={tweet.user_name}
-            likeClicked={() => this.likeNovaHandler(tweet._id)}
+            deleteClicked={() => this.deleteNovaHandler(tweet._id)}
+            likeClicked={() => {
+              let isLiked = this.props.auth.currentUser.favorites_novas_IDs.includes(
+                tweet._id
+              );
+              console.log(isLiked);
+              this.likeNovaHandler(tweet._id, isLiked);
+            }}
+            renovaed={tweet.renovaed}
+            renovaScreenName={tweet.in_reply_to_screen_name}
             reNovaClicked={() => this.reNovaHandler(tweet._id)}
+            textClicked={() => this.modalShowHandler(tweet._id)}
             text={tweet.text}
             isAuth={
               this.props.auth.currentUser.screen_name === tweet.user_screen_name
@@ -80,6 +159,85 @@ class Newsfeed extends Component {
     //All coments are shown as tweets-- Add them to Modal
     this.setState({ modalShown: true, modalType: 0 });
     this.setState({ modal: comments });
+  }
+  /*  shouldComponentUpdate(nextProps, nextState) {
+    //return nextProps.status.status != ;
+    console.log("Here");
+    return !(
+      this.props.auth.currentUser.favorites_count !=
+      nextProps.auth.currentUser.favorites_count
+    );
+  } */
+  async componentWillReceiveProps(nextprops) {
+    await Axios.get("/statuses/home_timeline", {
+      headers: {
+        token: localStorage.getItem("jwtToken")
+      }
+    })
+      .then(res => {
+        console.log("success from tweets newsfeed");
+        console.log(res.data);
+        let tweets = res.data;
+        //ghalat 3ashan el state bayza
+        const posts = tweets.map(tweet => {
+          return (
+            <Tweet
+              screenName={tweet.user_screen_name}
+              isliked={this.props.auth.currentUser.favorites_novas_IDs.includes(
+                tweet._id
+              )}
+              id={tweet._id}
+              key={tweet._id}
+              userName={tweet.user_name}
+              deleteClicked={() => this.deleteNovaHandler(tweet._id)}
+              likeClicked={() => {
+                let isLiked = this.props.auth.currentUser.favorites_novas_IDs.includes(
+                  tweet._id
+                );
+                console.log(isLiked);
+                this.likeNovaHandler(tweet._id, isLiked);
+              }}
+              renovaed={tweet.renovaed}
+              renovaScreenName={tweet.in_reply_to_screen_name}
+              reNovaClicked={() => this.reNovaHandler(tweet._id)}
+              textClicked={() => this.modalShowHandler(tweet._id)}
+              text={tweet.text}
+              isAuth={
+                this.props.auth.currentUser.screen_name ===
+                tweet.user_screen_name
+              }
+            />
+          );
+        });
+        const styles = {
+          zoomInUp: {
+            animation: "x 1s",
+            animationName: Radium.keyframes(zoomInUp, "zoomInUp")
+          }
+        };
+        console.log("posts" + posts);
+        const contentShown = (
+          <div role="tabpanel" id="Section1">
+            <menu>
+              <StyleRoot>
+                <div
+                  className="d-flex flex-column bd-highlight mb-3 justify-content-center align-items-center"
+                  style={styles.zoomInUp}
+                >
+                  {posts}
+                </div>
+              </StyleRoot>
+            </menu>
+          </div>
+        );
+        console.log(contentShown);
+        this.setState({
+          contentShown: contentShown
+        });
+      })
+      .catch(err => {
+        console.log("failure from tweets", { ...err });
+      });
   }
   async componentDidMount() {
     await Axios.get("/statuses/home_timeline", {
@@ -95,14 +253,30 @@ class Newsfeed extends Component {
         const posts = tweets.map(tweet => {
           return (
             <Tweet
-              key={tweet._id}
               screenName={tweet.user_screen_name}
+              isliked={this.props.auth.currentUser.favorites_novas_IDs.includes(
+                tweet._id
+              )}
+              id={tweet._id}
+              key={tweet._id}
               userName={tweet.user_name}
-              text={tweet.text}
-              textClicked={() => this.modalShowHandler(tweet._id)}
-              likeClicked={() => this.likeNovaHandler(tweet._id)}
+              deleteClicked={() => this.deleteNovaHandler(tweet._id)}
+              likeClicked={() => {
+                let isLiked = this.props.auth.currentUser.favorites_novas_IDs.includes(
+                  tweet._id
+                );
+                console.log(isLiked);
+                this.likeNovaHandler(tweet._id, isLiked);
+              }}
+              renovaed={tweet.renovaed}
+              renovaScreenName={tweet.in_reply_to_screen_name}
               reNovaClicked={() => this.reNovaHandler(tweet._id)}
-              isAuth={tweet.user === this.props.auth.profile._id}
+              textClicked={() => this.modalShowHandler(tweet._id)}
+              text={tweet.text}
+              isAuth={
+                this.props.auth.currentUser.screen_name ===
+                tweet.user_screen_name
+              }
             />
           );
         });
