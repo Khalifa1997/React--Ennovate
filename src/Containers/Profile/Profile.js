@@ -573,7 +573,6 @@ class profile extends Component {
     );
 
     this.setState({
-      contentShown: contentShown,
       loading: false
     });
   }
