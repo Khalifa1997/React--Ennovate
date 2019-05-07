@@ -46,7 +46,7 @@ class Tweet extends React.Component {
                   <a
                     className="userName"
                     href={
-                      "http://localhost:3000/profile/" + this.props.screenName
+                      "http://3.19.122.178/profile/" + this.props.screenName
                     }
                   >
                     {" "}
@@ -57,7 +57,7 @@ class Tweet extends React.Component {
                   <a
                     className="userName"
                     href={
-                      "http://localhost:3000/profile/" +
+                      "http://3.19.122.178/profile/" +
                       this.props.renovaScreenName
                     }
                   >
@@ -73,7 +73,7 @@ class Tweet extends React.Component {
                   <a
                     className="userName"
                     href={
-                      "http://localhost:3000/profile/" + this.props.screenName
+                      "http://3.19.122.178/profile/" + this.props.screenName
                     }
                   >
                     {this.props.userName}
