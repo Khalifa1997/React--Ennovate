@@ -44,6 +44,37 @@ describe("<Profile>", () => {
     const wrapper = shallow(<a className="referencecolor">Follow</a>);
     expect(wrapper).toMatchSnapshot();
   });
+  it("check the image", () => {
+    //const wrapper = shallow(<Nav />);
+    const props = {
+      className: "imgwidth",
+      src: "hhtp:/13234"
+    };
+    const wrapper = shallow(<img {...props} />);
+    expect(wrapper).toMatchSnapshot();
+  });
+  it("check Nova modal", () => {
+    //const wrapper = shallow(<Nav />);
+    const toggle = jest.fn();
+    const props = {
+      isOpen: true,
+      toggle: toggle(),
+      modalType: true
+    };
+    const wrapper = shallow(<NovaModal {...props} />);
+    expect(wrapper).toMatchSnapshot();
+  });
+  test("render css transition", () => {
+    const toggleFans = jest.fn();
+    const props = {
+      key: 123,
+      timeout: 500,
+      classNames: "move"
+    };
+    const wrapper = shallow(<CSSTransition {...props} />);
+    expect(wrapper).toMatchSnapshot();
+  });
+
 
   // test("sets loading state to true on save press", () => {
   //     // const toggleFans = jest.fn();
@@ -55,18 +86,6 @@ describe("<Profile>", () => {
   //     expect(wrapper.state("modalShownFans")).toEqual(true);
   //   });
 
-  // test("render a document title", () => {
-  //   const props = {
-  //     boxName: "Followings"
-  //   };
-  //   const wrapper = shallow(<FanModal {...props} />);
-  //   expect(wrapper).toMatchSnapshot();
-  // });
-
-  // it("check on image", () => {
-  //   const wrapper = shallow(<div className="container widthadjust">);
-  //   expect(wrapper.find("img").hasClass("imgwidth")).to.equal(true);
-  // });
   // it("should call the onClick function when 'Subtract' button is clicked when the operator is '-'", () => {
   //   const wrapper = shallow(<Profile />);
   //   wrapper.setProps("1");
@@ -75,30 +94,5 @@ describe("<Profile>", () => {
   //   wrapper.find("deleteClicked").onClick();
   //   expect(deleteClicked).toHaveBeenCalledTimes(1);
   // });
-  //
-  // it("should render 1 <menu>s", () => {
-  //   const wrapper = shallow(<menu>
-  //     <TransitionGroup className="d-flex flex-column bd-highlight mb-3 justify-content-center align-items-center">
-  //       {novas}
-  //     </TransitionGroup>
-  //   </menu> );
-  //   expect(wrapper.find("menu")).toHaveLength(1);
-  // });
-
-  // test("toggle followers", () => {
-  //   const value = 12;
-  //   const reNovaHandler = jest.fn();
-  //   const wrapper = shallow(
-  //     <button
-  //     className="btn btn-success profilebtn profile-edit-btn"
-  //     onClick={this.follow}
-  //   />
-  //   );
-
-  //   expect(wrapper).toMatchSnapshot();
-
-  //   wrapper.find("span").simulate("change", false);
-
-  //   expect(toggleFollowers).toBeCalledWith(true);
-  // });
+  
 });

@@ -9,11 +9,14 @@ import { setProfile } from "../../Actions/profileActions";
 import { runInThisContext } from "vm";
 import NovaModal from "../../Components/novaModal/novaModal";
 import { getNotifications } from "../../Actions/notificationsAction";
+import { deleteNova } from "../../Actions/deleteNovaAction";
 import { likeNova } from "../../Actions/likeNovaAction";
 import { reNova } from "../../Actions/retweetNovaAction";
-import { zoomInUp } from "react-animations";
-import Radium, { StyleRoot } from "radium";
-
+import {
+  CSSTransition,
+  Transition,
+  TransitionGroup
+} from "react-transition-group";
 class Newsfeed extends Component {
   state = {
     contentShown: null,
@@ -30,6 +33,10 @@ class Newsfeed extends Component {
     this.setState({
       modalShown: !this.state.modalShown
     });
+  };
+  deleteNovaHandler = (novaID, isaRenova) => {
+    //Deleting a Nova
+    this.props.deleteNova(novaID, isaRenova);
   };
   notifcationsClickHandler = () => {
     //Add notifcation message passing here
@@ -65,20 +72,24 @@ class Newsfeed extends Component {
         return (
           <Tweet
             screenName={tweet.user_screen_name}
-            // isliked={this.props.auth.currentUser.favorites_novas_IDs.includes(
-            //   tweet._id
-            // )}
-            // isaReNova={tweet.in_reply_to_screen_name}
-            isliked={false}
+            isliked={this.props.auth.currentUser.favorites_novas_IDs.includes(
+              tweet._id
+            )}
+            id={tweet._id}
             key={tweet._id}
             userName={tweet.user_name}
+            deleteClicked={() => this.deleteNovaHandler(tweet._id)}
             likeClicked={() => {
-              const isliked = this.props.auth.currentUser.favorites_novas_IDs.includes(
+              let isLiked = this.props.auth.currentUser.favorites_novas_IDs.includes(
                 tweet._id
               );
-              this.likeNovaHandler(tweet._id, isliked);
+              console.log(isLiked);
+              this.likeNovaHandler(tweet._id, isLiked);
             }}
+            renovaed={tweet.renovaed}
+            renovaScreenName={tweet.in_reply_to_screen_name}
             reNovaClicked={() => this.reNovaHandler(tweet._id)}
+            textClicked={() => this.modalShowHandler(tweet._id)}
             text={tweet.text}
             isAuth={
               this.props.auth.currentUser.screen_name === tweet.user_screen_name
@@ -89,6 +100,77 @@ class Newsfeed extends Component {
     //All coments are shown as tweets-- Add them to Modal
     this.setState({ modalShown: true, modalType: 0 });
     this.setState({ modal: comments });
+  }
+  /*  shouldComponentUpdate(nextProps, nextState) {
+    //return nextProps.status.status != ;
+    console.log("Here");
+    return !(
+      this.props.auth.currentUser.favorites_count !=
+      nextProps.auth.currentUser.favorites_count
+    );
+  } */
+  async componentWillReceiveProps(nextprops) {
+    await Axios.get("/statuses/home_timeline", {
+      headers: {
+        token: localStorage.getItem("jwtToken")
+      }
+    })
+      .then(res => {
+        console.log("success from tweets newsfeed");
+        console.log(res.data);
+        let tweets = res.data;
+        //ghalat 3ashan el state bayza
+        const posts = tweets.map(tweet => {
+          return (
+            <CSSTransition key={tweet._id} timeout={500} classNames="move">
+              <Tweet
+                screenName={tweet.user_screen_name}
+                isliked={this.props.auth.currentUser.favorites_novas_IDs.includes(
+                  tweet._id
+                )}
+                id={tweet._id}
+                key={tweet._id}
+                userName={tweet.user_name}
+                deleteClicked={() => this.deleteNovaHandler(tweet._id)}
+                likeClicked={() => {
+                  let isLiked = this.props.auth.currentUser.favorites_novas_IDs.includes(
+                    tweet._id
+                  );
+                  console.log(isLiked);
+                  this.likeNovaHandler(tweet._id, isLiked);
+                }}
+                renovaed={tweet.renovaed}
+                renovaScreenName={tweet.in_reply_to_screen_name}
+                reNovaClicked={() => this.reNovaHandler(tweet._id)}
+                textClicked={() => this.modalShowHandler(tweet._id)}
+                text={tweet.text}
+                isAuth={
+                  this.props.auth.currentUser.screen_name ===
+                  tweet.user_screen_name
+                }
+              />
+            </CSSTransition>
+          );
+        });
+
+        console.log("posts" + posts);
+        const contentShown = (
+          <div role="tabpanel" id="Section1">
+            <menu>
+              <TransitionGroup className="d-flex flex-column bd-highlight mb-3 justify-content-center align-items-center">
+                {posts}
+              </TransitionGroup>
+            </menu>
+          </div>
+        );
+        console.log(contentShown);
+        this.setState({
+          contentShown: contentShown
+        });
+      })
+      .catch(err => {
+        console.log("failure from tweets", { ...err });
+      });
   }
   async componentDidMount() {
     await Axios.get("/statuses/home_timeline", {
@@ -103,45 +185,44 @@ class Newsfeed extends Component {
         //ghalat 3ashan el state bayza
         const posts = tweets.reverse().map(tweet => {
           return (
-            <Tweet
-              key={tweet._id}
-              screenName={tweet.user_screen_name}
-              userName={tweet.user_name}
-              text={tweet.text}
-              // isaReNova={tweet.in_reply_to_screen_name}
-              // isliked={this.props.auth.currentUser.favorites_novas_IDs.includes(
-              //   tweet._id
-              // )}
-              textClicked={() => this.modalShowHandler(tweet._id)}
-              likeClicked={() => {
-                const isliked = this.props.auth.currentUser.favorites_novas_IDs.includes(
+            <CSSTransition key={tweet._id} timeout={500} classNames="move">
+              <Tweet
+                screenName={tweet.user_screen_name}
+                isliked={this.props.auth.currentUser.favorites_novas_IDs.includes(
                   tweet._id
-                );
-                this.likeNovaHandler(tweet._id, isliked);
-              }}
-              reNovaClicked={() => this.reNovaHandler(tweet._id)}
-              isAuth={tweet.user === this.props.auth.profile._id}
-            />
+                )}
+                id={tweet._id}
+                key={tweet._id}
+                userName={tweet.user_name}
+                deleteClicked={() => this.deleteNovaHandler(tweet._id)}
+                likeClicked={() => {
+                  let isLiked = this.props.auth.currentUser.favorites_novas_IDs.includes(
+                    tweet._id
+                  );
+                  console.log(isLiked);
+                  this.likeNovaHandler(tweet._id, isLiked);
+                }}
+                renovaed={tweet.renovaed}
+                renovaScreenName={tweet.in_reply_to_screen_name}
+                reNovaClicked={() => this.reNovaHandler(tweet._id)}
+                textClicked={() => this.modalShowHandler(tweet._id)}
+                text={tweet.text}
+                isAuth={
+                  this.props.auth.currentUser.screen_name ===
+                  tweet.user_screen_name
+                }
+              />
+            </CSSTransition>
           );
         });
-        const styles = {
-          zoomInUp: {
-            animation: "x 1s",
-            animationName: Radium.keyframes(zoomInUp, "zoomInUp")
-          }
-        };
+
         console.log("posts" + posts);
         const contentShown = (
           <div role="tabpanel" id="Section1">
             <menu>
-              <StyleRoot>
-                <div
-                  className="d-flex flex-column bd-highlight mb-3 justify-content-center align-items-center"
-                  style={styles.zoomInUp}
-                >
-                  {posts}
-                </div>
-              </StyleRoot>
+              <TransitionGroup className="d-flex flex-column bd-highlight mb-3 justify-content-center align-items-center">
+                {posts}
+              </TransitionGroup>
             </menu>
           </div>
         );
@@ -187,5 +268,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { likeNova, reNova, getNotifications }
+  { likeNova, reNova, getNotifications, deleteNova }
 )(Newsfeed);
