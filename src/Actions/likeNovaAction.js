@@ -1,6 +1,7 @@
 import * as actionTypes from "./types";
-import axios from "../axios-users";
 import { toast } from "react-toastify";
+
+import axios from "../axios-users";
 export const likeNova = (nova_ID, isLiked) => dispatch => {
   const obj = {
     nova_ID: nova_ID
@@ -21,6 +22,14 @@ export const likeNova = (nova_ID, isLiked) => dispatch => {
       const secondUser = res.data.slice(1, 2); */
         console.log(res);
         dispatch(setCurrentUser(res.data.actionUser, res.data.novaUser));
+        toast.success("Nova Liked!👍", {
+          position: "top-center",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true
+        });
       })
       .catch(err => {
         console.log("Failed Like nova post");
@@ -35,9 +44,7 @@ export const likeNova = (nova_ID, isLiked) => dispatch => {
       })
       .then(res => {
         dispatch(setCurrentUser(res.data.actionUser, res.data.novaUser));
-        console.log(res);
-        dispatch(setCurrentUser(res.data.actionUser, res.data.novaUser));
-        toast.error("Nova Unliked!", {
+        toast.warn("Nova Unliked!😥", {
           position: "top-center",
           autoClose: 3000,
           hideProgressBar: false,
@@ -45,29 +52,6 @@ export const likeNova = (nova_ID, isLiked) => dispatch => {
           pauseOnHover: true,
           draggable: true
         });
-        /* axios
-        .all([
-          //Auth user Get
-          axios.get("/users/show", {
-            params: {
-              user_ID: firstUser.user
-            }
-          }),
-          //Profile user Get
-          axios.get("/users/show", {
-            params: {
-              user_ID: secondUser.user
-            }
-          })
-        ])
-        .then(
-          axios.spread((AuthRes, ProfileRes) => {
-            dispatch(setCurrentUser(AuthRes.data, ProfileRes.data));
-          })
-        )
-        .catch(err => {
-          console.log("Failed Like nova get");
-        }); */
       })
       .catch(err => {
         console.log("Failed Like nova post");

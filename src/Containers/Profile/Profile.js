@@ -25,7 +25,7 @@ import FanModal from "../../Components/FansBox/modal/fansModal";
 class profile extends Component {
   constructor(props) {
     super(props);
-
+    this.props.setProfile(this.props.match.params.screenName);
     this.state = {
       likedNovas: [],
       id: "",
@@ -373,7 +373,7 @@ class profile extends Component {
 
   async componentDidMount() {
     //Get my novas
-
+    //this.props.setProfile(this.props.match.params.screenName);
     this.setState({ loading: true });
     // this.setButton();
     await Axios.get(
@@ -508,6 +508,7 @@ class profile extends Component {
   }
   async componentWillReceiveProps(nextprops) {
     // this.setButton();
+    this.props.setProfile(this.props.match.params.screenName);
     console.log(nextprops.profile.user);
 
     if (Object.entries(nextprops.profile.user).length === 0) {
@@ -636,13 +637,13 @@ class profile extends Component {
                 <div className="profile-image">
                   <img
                     className="imgwidth"
-                    src={this.props.profile.user.profile_image_url}
+                    src={this.props.auth.profile.profile_image_url}
                   />
                 </div>
 
                 <div className="profile-user-settings">
                   <h1 className="profile-user-name">
-                    {this.props.profile.user.screen_name}
+                    {this.props.auth.profile.screen_name}
                   </h1>
 
                   {toggledButton}
@@ -651,13 +652,16 @@ class profile extends Component {
                 <div className="profile-stats">
                   <li>
                     <span className="profile-stat-count">
-                      {this.props.profile.user.novas_count}
+                      {this.props.auth.profile._id ===
+                      this.props.auth.currentUser._id
+                        ? this.props.auth.currentUser.novas_count
+                        : this.props.auth.profile.novas_count}
                     </span>{" "}
                     Novas
                   </li>
                   <li>
                     <span className="profile-stat-count">
-                      {this.props.profile.user.followers_count}
+                      {this.props.auth.profile.followers_count}
                     </span>{" "}
                     <span
                       onClick={() => {
@@ -670,7 +674,7 @@ class profile extends Component {
                   </li>
                   <li>
                     <span className="profile-stat-count">
-                      {this.props.profile.user.friends_count}
+                      {this.props.auth.profile.friends_count}
                     </span>{" "}
                     <span
                       id="1"
@@ -687,9 +691,9 @@ class profile extends Component {
                 <div className="profile-bio">
                   <p>
                     <span className="profile-real-name">
-                      {this.props.profile.user.name}
+                      {this.props.auth.profile.name}
                     </span>{" "}
-                    {this.props.profile.user.bio}
+                    {this.props.auth.profile.bio}
                   </p>
                 </div>
               </div>

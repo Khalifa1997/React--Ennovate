@@ -1,6 +1,8 @@
 import React from "react";
 import axios from "../axios-users";
 import setAuthToken from "../utils/setAuthToken";
+import { toast } from "react-toastify";
+
 import jwt_decode from "jwt-decode";
 
 import * as actionTypes from "./types";
@@ -53,6 +55,14 @@ export const newNova = (novaText, mentions, replyID) => dispatch => {
           console.log("MEN EL new tweet response RESPONSE ", res);
           dispatch(setCurrentUser(res.data.user, res.data.user));
         });
+      toast.success("New Nova!👍", {
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true
+      });
       // const user = res.data.user;
       // dispatch(setCurrentUser(user, user));
       //   dispatch({
