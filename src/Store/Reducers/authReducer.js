@@ -1,4 +1,4 @@
-import { SET_CURRENT_USER } from "../../Actions/types";
+import { SET_CURRENT_USER, DELETE_NOVA } from "../../Actions/types";
 import { isEmpty } from "../../utils/isEmpty";
 
 const initialState = {
@@ -18,6 +18,11 @@ const authReducer = (state = initialState, action) => {
         currentUser: action.payload.authUser,
         profile: action.payload.profile,
         isedited: true
+      };
+    case DELETE_NOVA:
+      return {
+        ...state,
+        currentUser: action.payload.auth
       };
     default:
       return state;

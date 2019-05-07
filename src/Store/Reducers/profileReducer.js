@@ -13,13 +13,7 @@ const profileReducer = (state = initialState, action) => {
         user: action.payload.user,
         following: action.payload.following
       };
-    case DELETE_NOVA:
-      console.log("X");
 
-      return {
-        ...state,
-        currentUser: action.payload.profile
-      };
     default:
       return state;
   }

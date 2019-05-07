@@ -11,14 +11,22 @@ const ProfileSearch = props => {
           />
         </div>
         <div className="col-md-auto">
-          <div className="row"> {props.name} </div>
-          <div className="row"> @{props.usernmae} </div>
+          <div className="row">
+            {" "}
+            <a
+              className="userName"
+              href={"http://localhost:3000/profile/" + props.username}
+            >
+              {props.name}{" "}
+            </a>
+          </div>
+          <div className="row"> @{props.username} </div>
           <div className="row">
             <p>{props.text}</p>
           </div>
         </div>
 
-        <div className="col-1 ml-auto" style={{ marginTop: "0.5%" }}>
+        {/* <div className="col-1 ml-auto" style={{ marginTop: "0.5%" }}>
           {props.isFollowed ? (
             <button type="button" className="btn btn-outline-primary btn-sm">
               Follow
@@ -28,7 +36,7 @@ const ProfileSearch = props => {
               Unfollow
             </button>
           )}
-        </div>
+        </div> */}
       </div>
     </div>
   );
