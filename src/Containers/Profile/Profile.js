@@ -133,9 +133,9 @@ class profile extends Component {
   reNovaHandler = novaID => {
     this.props.reNova(novaID);
   };
-  deleteNovaHandler = novaID => {
+  deleteNovaHandler = (novaID, isaRenova) => {
     //Deleting a Nova
-    this.props.deleteNova(novaID);
+    this.props.deleteNova(novaID, isaRenova);
     const newPosts = [...this.state.novas];
     console.log(this.state.novas);
     //Delete a new tweet
@@ -167,7 +167,9 @@ class profile extends Component {
               }}
               renovaed={tweet.renovaed}
               renovaScreenName={tweet.in_reply_to_screen_name}
-              deleteClicked={() => this.deleteNovaHandler(tweet._id)}
+              deleteClicked={() =>
+                this.deleteNovaHandler(tweet._id, tweet.renovaed)
+              }
               reNovaClicked={() => this.reNovaHandler(tweet._id)}
               textClicked={() => this.modalShowHandler(tweet._id)}
               text={tweet.text}
@@ -216,7 +218,9 @@ class profile extends Component {
               key={tweet._id}
               id={tweet._id}
               userName={tweet.user_name}
-              deleteClicked={() => this.deleteNovaHandler(tweet._id)}
+              deleteClicked={() =>
+                this.deleteNovaHandler(tweet._id, tweet.renovaed)
+              }
               likeClicked={() => {
                 let isLiked = this.props.auth.currentUser.favorites_novas_IDs.includes(
                   tweet._id
@@ -289,7 +293,9 @@ class profile extends Component {
               renovaed={tweet.renovaed}
               renovaScreenName={tweet.in_reply_to_screen_name}
               key={tweet._id}
-              deleteClicked={() => this.deleteNovaHandler(tweet._id)}
+              deleteClicked={() =>
+                this.deleteNovaHandler(tweet._id, tweet.renovaed)
+              }
               likeClicked={() => {
                 let isLiked = this.props.auth.currentUser.favorites_novas_IDs.includes(
                   tweet._id
@@ -424,7 +430,9 @@ class profile extends Component {
               id={tweet._id}
               key={tweet._id}
               userName={tweet.user_name}
-              deleteClicked={() => this.deleteNovaHandler(tweet._id)}
+              deleteClicked={() =>
+                this.deleteNovaHandler(tweet._id, tweet.renovaed)
+              }
               likeClicked={() => {
                 let isLiked = this.props.auth.currentUser.favorites_novas_IDs.includes(
                   tweet._id
@@ -542,7 +550,9 @@ class profile extends Component {
             renovaScreenName={tweet.in_reply_to_screen_name}
             id={tweet._id}
             key={tweet._id}
-            deleteClicked={() => this.deleteNovaHandler(tweet._id)}
+            deleteClicked={() =>
+              this.deleteNovaHandler(tweet._id, tweet.renovaed)
+            }
             likeClicked={() => {
               let isLiked = this.props.auth.currentUser.favorites_novas_IDs.includes(
                 tweet._id

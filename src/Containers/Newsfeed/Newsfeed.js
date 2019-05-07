@@ -9,6 +9,7 @@ import { setProfile } from "../../Actions/profileActions";
 import { runInThisContext } from "vm";
 import NovaModal from "../../Components/novaModal/novaModal";
 import { getNotifications } from "../../Actions/notificationsAction";
+import { deleteNova } from "../../Actions/deleteNovaAction";
 import { likeNova } from "../../Actions/likeNovaAction";
 import { reNova } from "../../Actions/retweetNovaAction";
 import { zoomInUp } from "react-animations";
@@ -35,66 +36,9 @@ class Newsfeed extends Component {
       modalShown: !this.state.modalShown
     });
   };
-  deleteNovaHandler = novaID => {
+  deleteNovaHandler = (novaID, isaRenova) => {
     //Deleting a Nova
-    this.props.deleteNova(novaID);
-    const newPosts = [...this.state.novas];
-    console.log(this.state.novas);
-    //Delete a new tweet
-    const index = newPosts.findIndex(a => a._id === novaID);
-    console.log(index);
-    if (index != -1) {
-      newPosts.splice(index, 1);
-      this.setState({ novas: newPosts });
-      const novas = newPosts.map(tweet => {
-        /*  const isLiked = this.props.auth.currentUser.favorites_novas_IDs.includes(
-          tweet._id
-        ); */
-        return (
-          <CSSTransition key={tweet._id} timeout={500} classNames="move">
-            <Tweet
-              screenName={tweet.user_screen_name}
-              isliked={this.props.auth.currentUser.favorites_novas_IDs.includes(
-                tweet._id
-              )}
-              key={tweet._id}
-              id={tweet._id}
-              userName={tweet.user_name}
-              likeClicked={() => {
-                let isLiked = this.props.auth.currentUser.favorites_novas_IDs.includes(
-                  tweet._id
-                );
-                console.log(isLiked);
-                this.likeNovaHandler(tweet._id, isLiked);
-              }}
-              renovaed={tweet.renovaed}
-              renovaScreenName={tweet.in_reply_to_screen_name}
-              deleteClicked={() => this.deleteNovaHandler(tweet._id)}
-              reNovaClicked={() => this.reNovaHandler(tweet._id)}
-              textClicked={() => this.modalShowHandler(tweet._id)}
-              text={tweet.text}
-              isAuth={
-                this.props.auth.currentUser.screen_name ===
-                tweet.user_screen_name
-              }
-            />
-          </CSSTransition>
-        );
-      });
-
-      const contentShown = (
-        <div role="tabpanel" id="Section1">
-          <menu>
-            <TransitionGroup className="d-flex flex-column bd-highlight mb-3 justify-content-center align-items-center">
-              {novas}
-            </TransitionGroup>
-          </menu>
-        </div>
-      );
-      this.setState({
-        contentShown: contentShown
-      });
-    }
+    this.props.deleteNova(novaID, isaRenova);
   };
   notifcationsClickHandler = () => {
     //Add notifcation message passing here
@@ -343,5 +287,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { likeNova, reNova, getNotifications }
+  { likeNova, reNova, getNotifications, deleteNova }
 )(Newsfeed);
