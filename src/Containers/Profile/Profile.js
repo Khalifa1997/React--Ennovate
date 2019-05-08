@@ -47,7 +47,8 @@ class profile extends Component {
       followings: [],
       modalType: null,
       comments: [],
-      userExists: true
+      userExists: true,
+      tabClicked:0
     };
   }
   notifcationsClickHandler = () => {
@@ -200,6 +201,7 @@ class profile extends Component {
     console.log("clicked");
 
     if (tabtIdentifier === "0") {
+      this.setState({tabClicked:0});
       console.log("nova clicked");
       const novasClass = "active";
       const likesClass = "";
@@ -257,6 +259,7 @@ class profile extends Component {
         contentShown: contentShown
       });
     } else if (tabtIdentifier === "1") {
+      this.setState({tabClicked:1});
       console.log("like clicked ");
       const novasClass = "";
       const likesClass = "active";
@@ -586,6 +589,11 @@ class profile extends Component {
     this.setState({
       loading: false
     });
+    if(this.state.tabClicked==0){
+      this.setState({
+        contentShown: contentShown
+      });
+    }
   }
   render() {
     let toggledButton = "";
