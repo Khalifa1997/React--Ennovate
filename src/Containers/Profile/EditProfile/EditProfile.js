@@ -73,7 +73,7 @@ class editProfile extends Component {
       loading: false,
       error: {},
       file: "",
-      imagePreview: "http://ssl.gstatic.com/accounts/ui/avatar_2x.png",
+      imagePreview: this.props.auth.currentUser.profile_image_url,
       currentProfile: {},
       errorScreenname: false,
       msg: "",
