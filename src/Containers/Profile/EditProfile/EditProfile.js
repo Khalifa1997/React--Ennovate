@@ -73,12 +73,13 @@ class editProfile extends Component {
       loading: false,
       error: {},
       file: "",
-      imagePreview: "http://ssl.gstatic.com/accounts/ui/avatar_2x.png",
+      imagePreview: this.props.auth.currentUser.profile_image_url,
       currentProfile: {},
       errorScreenname: false,
       msg: "",
       err: true,
-      invalidScreenname: false
+      invalidScreenname: false,
+      change: false
       //token: "",
     };
     console.log("usss", this.props);
@@ -152,10 +153,13 @@ class editProfile extends Component {
       location: this.state.loc,
       bio: this.state.editProfileForm.bio.value
     };
-    const profile_image_url = {
-      profile_image_url: this.state.imagePreview
-    };
-    this.props.editImage(profile_image_url);
+    if (this.state.change === true) {
+      const profile_image_url = {
+        profile_image_url: this.state.imagePreview
+      };
+
+      this.props.editImage(profile_image_url);
+    }
     this.props.editUser(user).then(() => {
       console.log("edit", user.screen_name);
       this.props.history.push("/profile/" + user.screen_name);
@@ -171,7 +175,8 @@ class editProfile extends Component {
     reader.onload = e => {
       this.setState({
         file,
-        imagePreview: reader.result
+        imagePreview: reader.result,
+        change: true
       });
     };
     if (file) {
