@@ -508,7 +508,7 @@ class profile extends Component {
   }
   async componentWillReceiveProps(nextprops) {
     // this.setButton();
-    this.props.setProfile(this.props.match.params.screenName);
+    //this.props.setProfile(this.props.match.params.screenName);
     console.log(nextprops.profile.user);
 
     if (Object.entries(nextprops.profile.user).length === 0) {

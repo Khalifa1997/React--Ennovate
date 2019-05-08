@@ -4,19 +4,19 @@ import * as actionTypes from "./types";
 
 //Register User
 
-export const editUser = userData => dispatch => {
-  axios
+export const editUser = userData => async dispatch => {
+  await axios
     .post("/accounts/settings", userData, {
       headers: {
         token: localStorage.jwtToken
       }
     })
-    .then(res => {
+    .then(async res => {
       console.log("token:" + axios.defaults.headers.common.Authorization);
       console.log("[from edit profile LAZZZZ]", { ...res });
       dispatch(editProfileUser(res.data));
       console.log("hjbjkj", { ...res });
-      axios
+      await axios
         .get("/users/show", {
           params: {
             user_ID: res.data._id
@@ -39,18 +39,18 @@ export const editUser = userData => dispatch => {
   return Promise.resolve();
 };
 
-export const editImage = userData => dispatch => {
+export const editImage = userData => async dispatch => {
   //console.log("{image}", userData);
-  axios
+  await axios
     .post("/accounts/update_profile_image ", userData, {
       headers: {
-        token: axios.defaults.headers.common.Authorization
+        token: localStorage.jwtToken
       }
     })
-    .then(res => {
+    .then(async res => {
       console.log("h", { ...res });
       dispatch(editImageUser(res.data));
-      axios
+      await axios
         .get("/users/show", {
           params: {
             user_ID: res.data._id
