@@ -56,7 +56,7 @@ class Newsfeed extends Component {
   };
   async modalShowHandler(novaID) {
     console.log("hi man");
-    await Axios.get("/statuses/home_timeline", {
+    await Axios.get("/statuses/show/" + novaID, {
       headers: {
         token: localStorage.getItem("jwtToken")
       }

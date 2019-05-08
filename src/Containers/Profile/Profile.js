@@ -47,7 +47,7 @@ class profile extends Component {
       followings: [],
       modalType: null,
       comments: [],
-      userExists: true, 
+      userExists: true,
       tabClicked: 0
     };
   }
@@ -201,7 +201,7 @@ class profile extends Component {
     console.log("clicked");
 
     if (tabtIdentifier === "0") {
-      this.setState({tabClicked:0});
+      this.setState({ tabClicked: 0 });
       console.log("nova clicked");
       const novasClass = "active";
       const likesClass = "";
@@ -259,7 +259,7 @@ class profile extends Component {
         contentShown: contentShown
       });
     } else if (tabtIdentifier === "1") {
-      this.setState({tabClicked:1});
+      this.setState({ tabClicked: 1 });
       console.log("like clicked ");
       const novasClass = "";
       const likesClass = "active";
@@ -589,7 +589,7 @@ class profile extends Component {
     this.setState({
       loading: false
     });
-    if(this.state.tabClicked==0){
+    if (this.state.tabClicked == 0) {
       this.setState({
         contentShown: contentShown
       });
@@ -644,13 +644,13 @@ class profile extends Component {
                 <div className="profile-image">
                   <img
                     className="imgwidth"
-                    src={this.props.auth.profile.profile_image_url}
+                    src={this.props.profile.user.profile_image_url}
                   />
                 </div>
 
                 <div className="profile-user-settings">
                   <h1 className="profile-user-name">
-                    {this.props.auth.profile.screen_name}
+                    {this.props.profile.user.screen_name}
                   </h1>
 
                   {toggledButton}
@@ -659,16 +659,16 @@ class profile extends Component {
                 <div className="profile-stats">
                   <li>
                     <span className="profile-stat-count">
-                      {this.props.auth.profile._id ===
+                      {this.props.profile.user._id ===
                       this.props.auth.currentUser._id
                         ? this.props.auth.currentUser.novas_count
-                        : this.props.auth.profile.novas_count}
+                        : this.props.profile.user.novas_count}
                     </span>{" "}
                     Novas
                   </li>
                   <li>
                     <span className="profile-stat-count">
-                      {this.props.auth.profile.followers_count}
+                      {this.props.profile.user.followers_count}
                     </span>{" "}
                     <span
                       onClick={() => {
@@ -681,7 +681,7 @@ class profile extends Component {
                   </li>
                   <li>
                     <span className="profile-stat-count">
-                      {this.props.auth.profile.friends_count}
+                      {this.props.profile.user.friends_count}
                     </span>{" "}
                     <span
                       id="1"
@@ -698,9 +698,9 @@ class profile extends Component {
                 <div className="profile-bio">
                   <p>
                     <span className="profile-real-name">
-                      {this.props.auth.profile.name}
+                      {this.props.profile.user.name}
                     </span>{" "}
-                    {this.props.auth.profile.bio}
+                    {this.props.profile.user.bio}
                   </p>
                 </div>
               </div>
