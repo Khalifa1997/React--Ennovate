@@ -1,0 +1,78 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 1,
+    "pending": 0,
+    "failures": 0,
+    "start": "2019-05-08T01:47:34.667Z",
+    "end": "2019-05-08T01:47:50.684Z",
+    "duration": 16017,
+    "testsRegistered": 1,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false,
+    "passPercentClass": "success",
+    "pendingPercentClass": "danger"
+  },
+  "suites": {
+    "uuid": "9cd465bc-af8b-435e-9f1e-d1cbd41d965a",
+    "title": "",
+    "fullFile": "",
+    "file": "",
+    "beforeHooks": [],
+    "afterHooks": [],
+    "tests": [],
+    "suites": [
+      {
+        "uuid": "c0c720dc-6fbd-45e6-ac41-19a76a5f6cbf",
+        "title": "The Search Test",
+        "fullFile": "",
+        "file": "",
+        "beforeHooks": [],
+        "afterHooks": [],
+        "tests": [
+          {
+            "title": "Should Login/search correctly ",
+            "fullTitle": "The Search Test Should Login/search correctly ",
+            "duration": 14462,
+            "state": "passed",
+            "speed": "slow",
+            "pass": true,
+            "fail": false,
+            "pending": false,
+            "code": "cy.visit('http://3.19.122.178/'); //Login\ncy.get(':nth-child(3) > .nav-link').click();\ncy.wait(500);\ncy.get('#exampleInputEmail1').type('testing@gmail.com');\ncy.wait(500);\ncy.get('#exampleInputPassword1').type('123456789');\ncy.wait(500);\ncy.get('.btn').click();\ncy.wait(4000);\ncy.url().should('equal', \"http://3.19.122.178/profile/testingteam\"); //it should type on search and check on it\ncy.get('.form-control').type('maram').dblclick();\ncy.url().should('equal', \"http://3.19.122.178/search/maram\");\ncy.get('.list-group > :nth-child(2) > :nth-child(1)').contains('maram');",
+            "err": {},
+            "isRoot": false,
+            "uuid": "0a5c39d2-da00-4c98-811b-85665182e5b1",
+            "isHook": false,
+            "skipped": false
+          }
+        ],
+        "suites": [],
+        "passes": [
+          "0a5c39d2-da00-4c98-811b-85665182e5b1"
+        ],
+        "failures": [],
+        "pending": [],
+        "skipped": [],
+        "duration": 14462,
+        "root": false,
+        "rootEmpty": false,
+        "_timeout": 2000
+      }
+    ],
+    "passes": [],
+    "failures": [],
+    "pending": [],
+    "skipped": [],
+    "duration": 0,
+    "root": true,
+    "rootEmpty": true,
+    "_timeout": 2000
+  },
+  "copyrightYear": 2019
+}

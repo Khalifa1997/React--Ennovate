@@ -43,7 +43,9 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "createdoc": "jsdoc src -r -d docs",
-    "test:coverage": "jest --verbose --coverage"
+    "test:coverage": "jest --verbose --coverage",
+    "test:e2e": "cypress open",
+    "tests:run": "cypress run --browser chrome --reporter mochawesome cypress/integration/app/ForgotPassword"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -57,6 +59,10 @@
   "devDependencies": {
     "enzyme": "^3.9.0",
     "enzyme-adapter-react-16": "^1.11.2",
-    "enzyme-to-json": "^3.3.5"
+    "enzyme-to-json": "^3.3.5",
+    "cypress": "3.2.0",
+    "moment": "^2.21.0",
+    "mocha": "^5.2.0",
+    "mochawesome": "^3.0.3"
   }
 }

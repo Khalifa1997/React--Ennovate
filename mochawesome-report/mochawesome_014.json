@@ -1,0 +1,78 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 1,
+    "pending": 0,
+    "failures": 0,
+    "start": "2019-05-08T01:48:17.304Z",
+    "end": "2019-05-08T01:48:29.173Z",
+    "duration": 11869,
+    "testsRegistered": 1,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false,
+    "passPercentClass": "success",
+    "pendingPercentClass": "danger"
+  },
+  "suites": {
+    "uuid": "9ae58961-568e-4cb9-a544-6f755516e384",
+    "title": "",
+    "fullFile": "",
+    "file": "",
+    "beforeHooks": [],
+    "afterHooks": [],
+    "tests": [],
+    "suites": [
+      {
+        "uuid": "4e7280a8-edb2-408b-a239-3d991eac38a1",
+        "title": "The Failure Signup Test",
+        "fullFile": "",
+        "file": "",
+        "beforeHooks": [],
+        "afterHooks": [],
+        "tests": [
+          {
+            "title": "Should have some error msgs ",
+            "fullTitle": "The Failure Signup Test Should have some error msgs ",
+            "duration": 10304,
+            "state": "passed",
+            "speed": "slow",
+            "pass": true,
+            "fail": false,
+            "pending": false,
+            "code": "cy.visit('http://3.19.122.178/');\ncy.get('.aclass > .btn').click();\ncy.get(':nth-child(2) > .form-control').type('1Mohamed');\ncy.get(':nth-child(2) > .ValidationError').should('have.text', ' The screen name should start with a letter and with no spaces');\ncy.wait(500);\ncy.get(':nth-child(3) > .form-control').type('MyUserName111111111111');\ncy.get(':nth-child(3) > .ValidationError').should('have.text', ' Maximum length is 15');\ncy.wait(500);\ncy.get(':nth-child(4) > .form-control').type('m');\ncy.get(':nth-child(4) > .ValidationError').should('have.text', ' Please enter a valid email');\ncy.wait(500);\ncy.get(':nth-child(5) > .form-control').type('pass');\ncy.get(':nth-child(5) > .ValidationError').should('have.text', ' Password should be between 8 and 25 characters long');\ncy.wait(500);\ncy.get(':nth-child(6) > .form-control').type('password');\ncy.get(':nth-child(6) > .ValidationError').should('have.text', ' Passwords mismatch');",
+            "err": {},
+            "isRoot": false,
+            "uuid": "ea55b0b1-631b-4adc-bc98-9e693aa05c72",
+            "isHook": false,
+            "skipped": false
+          }
+        ],
+        "suites": [],
+        "passes": [
+          "ea55b0b1-631b-4adc-bc98-9e693aa05c72"
+        ],
+        "failures": [],
+        "pending": [],
+        "skipped": [],
+        "duration": 10304,
+        "root": false,
+        "rootEmpty": false,
+        "_timeout": 2000
+      }
+    ],
+    "passes": [],
+    "failures": [],
+    "pending": [],
+    "skipped": [],
+    "duration": 0,
+    "root": true,
+    "rootEmpty": true,
+    "_timeout": 2000
+  },
+  "copyrightYear": 2019
+}

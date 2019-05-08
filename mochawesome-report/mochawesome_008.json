@@ -1,0 +1,78 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 1,
+    "pending": 0,
+    "failures": 0,
+    "start": "2019-05-08T01:45:33.663Z",
+    "end": "2019-05-08T01:46:03.642Z",
+    "duration": 29979,
+    "testsRegistered": 1,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false,
+    "passPercentClass": "success",
+    "pendingPercentClass": "danger"
+  },
+  "suites": {
+    "uuid": "1a4963c3-4d26-40de-88f0-f5fcbea22224",
+    "title": "",
+    "fullFile": "",
+    "file": "",
+    "beforeHooks": [],
+    "afterHooks": [],
+    "tests": [],
+    "suites": [
+      {
+        "uuid": "2037dd48-ac14-496e-a503-24747da48774",
+        "title": "The Like/Delete Test",
+        "fullFile": "",
+        "file": "",
+        "beforeHooks": [],
+        "afterHooks": [],
+        "tests": [
+          {
+            "title": "Should Like and delete correctly ",
+            "fullTitle": "The Like/Delete Test Should Like and delete correctly ",
+            "duration": 28341,
+            "state": "passed",
+            "speed": "slow",
+            "pass": true,
+            "fail": false,
+            "pending": false,
+            "code": "cy.visit('http://3.19.122.178/');\ncy.get(':nth-child(3) > .nav-link').click();\ncy.wait(2000);\ncy.get('#exampleInputEmail1').type('testingtweet2@gmail.com');\ncy.wait(2000);\ncy.get('#exampleInputPassword1').type('123456789');\ncy.wait(2000);\ncy.get('.btn').click();\ncy.wait(2000);\ncy.url().should('equal', \"http://3.19.122.178/profile/testingtweet2\"); // it should got to time line and retweet his tweet from the timeline\ncy.visit('http://3.19.122.178/newsfeed');\ncy.wait(5000);\ncy.get(':nth-child(3) > .svg-inline--fa').click();\ncy.get('.Toastify__toast').contains('Nova Liked'); // go to profile and deletes it\ncy.get(':nth-child(2) > .nav-link > strong').click();\ncy.wait(2000);\ncy.get(':nth-child(2) > .tab > .nav > li').click();\ncy.get('.card-body').contains('Retweet or Like');\ncy.wait(2000); // it then unlike the tweet\ncy.get(':nth-child(3) > .svg-inline--fa').click();\ncy.get('.Toastify__toast').contains('Nova Unliked');",
+            "err": {},
+            "isRoot": false,
+            "uuid": "13763ede-e2a1-457b-9205-69a60c52ebe6",
+            "isHook": false,
+            "skipped": false
+          }
+        ],
+        "suites": [],
+        "passes": [
+          "13763ede-e2a1-457b-9205-69a60c52ebe6"
+        ],
+        "failures": [],
+        "pending": [],
+        "skipped": [],
+        "duration": 28341,
+        "root": false,
+        "rootEmpty": false,
+        "_timeout": 2000
+      }
+    ],
+    "passes": [],
+    "failures": [],
+    "pending": [],
+    "skipped": [],
+    "duration": 0,
+    "root": true,
+    "rootEmpty": true,
+    "_timeout": 2000
+  },
+  "copyrightYear": 2019
+}

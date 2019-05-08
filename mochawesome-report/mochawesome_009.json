@@ -1,0 +1,78 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 1,
+    "pending": 0,
+    "failures": 0,
+    "start": "2019-05-08T01:46:05.011Z",
+    "end": "2019-05-08T01:46:23.929Z",
+    "duration": 18918,
+    "testsRegistered": 1,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false,
+    "passPercentClass": "success",
+    "pendingPercentClass": "danger"
+  },
+  "suites": {
+    "uuid": "4c9b42b1-0d7e-45d9-adb3-3d59204fd0b3",
+    "title": "",
+    "fullFile": "",
+    "file": "",
+    "beforeHooks": [],
+    "afterHooks": [],
+    "tests": [],
+    "suites": [
+      {
+        "uuid": "7afa037d-0ba0-48d9-94ec-868e9eab0d87",
+        "title": "The Login Test",
+        "fullFile": "",
+        "file": "",
+        "beforeHooks": [],
+        "afterHooks": [],
+        "tests": [
+          {
+            "title": "Should Login correctly ",
+            "fullTitle": "The Login Test Should Login correctly ",
+            "duration": 17328,
+            "state": "passed",
+            "speed": "slow",
+            "pass": true,
+            "fail": false,
+            "pending": false,
+            "code": "cy.visit('http://3.19.122.178/');\ncy.wait(2000);\ncy.get(':nth-child(3) > .nav-link').click();\ncy.wait(2000);\ncy.get('#exampleInputEmail1').type('testing@gmail.com');\ncy.wait(2000);\ncy.get('#exampleInputPassword1').type('123456789');\ncy.wait(2000);\ncy.get('.btn').click();\ncy.wait(2000);\ncy.url().should('equal', \"http://3.19.122.178/profile/testingteam\");\n/*it('Should edit correctly', () => {\n      cy.get('.referencecolor').click();\n    cy.url().should('equal', \"http://localhost:3001/editprofile\");\n    cy.get(':nth-child(1) > .form-control').type('Mohamed');\n    cy.get(':nth-child(2) > .form-control').type('Ahmed');\n    cy.get(':nth-child(3) > .form-control').type('Welcome to my profile');\n    cy.get('.col-sm-20 > .form-control').select('China');\n    cy.get('.btn').click();\n    cy.visit(\"http://localhost:3001/profile\");\n  });\nit('Should Logout Correctly', () => {\n    cy.get('.btn-outline-dark').click();\n    cy.url().should('equal', \"http://localhost:3001/\");\n});*/",
+            "err": {},
+            "isRoot": false,
+            "uuid": "5f802485-3d69-461e-9704-1c18c884f5e8",
+            "isHook": false,
+            "skipped": false
+          }
+        ],
+        "suites": [],
+        "passes": [
+          "5f802485-3d69-461e-9704-1c18c884f5e8"
+        ],
+        "failures": [],
+        "pending": [],
+        "skipped": [],
+        "duration": 17328,
+        "root": false,
+        "rootEmpty": false,
+        "_timeout": 2000
+      }
+    ],
+    "passes": [],
+    "failures": [],
+    "pending": [],
+    "skipped": [],
+    "duration": 0,
+    "root": true,
+    "rootEmpty": true,
+    "_timeout": 2000
+  },
+  "copyrightYear": 2019
+}

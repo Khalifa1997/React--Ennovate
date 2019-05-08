@@ -1,0 +1,7 @@
+{
+
+    "reporter":"mochawesome",
+    "chromeWebSecurity":false,
+    "reporterOptions": {
+        "overwrite": false}
+}

@@ -1,0 +1,78 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 1,
+    "pending": 0,
+    "failures": 0,
+    "start": "2019-05-08T01:47:52.153Z",
+    "end": "2019-05-08T01:48:15.965Z",
+    "duration": 23812,
+    "testsRegistered": 1,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false,
+    "passPercentClass": "success",
+    "pendingPercentClass": "danger"
+  },
+  "suites": {
+    "uuid": "14ac5add-ee62-4287-ab20-77e2de748c8b",
+    "title": "",
+    "fullFile": "",
+    "file": "",
+    "beforeHooks": [],
+    "afterHooks": [],
+    "tests": [],
+    "suites": [
+      {
+        "uuid": "5b2b27e6-2758-4ed5-a597-f1bff92945ed",
+        "title": "The Signup Test",
+        "fullFile": "",
+        "file": "",
+        "beforeHooks": [],
+        "afterHooks": [],
+        "tests": [
+          {
+            "title": "Should sign up correctly ",
+            "fullTitle": "The Signup Test Should sign up correctly ",
+            "duration": 22191,
+            "state": "passed",
+            "speed": "slow",
+            "pass": true,
+            "fail": false,
+            "pending": false,
+            "code": "cy.visit('http://3.19.122.178/');\ncy.get('.aclass > .btn').click();\ncy.wait(500);\ncy.get(':nth-child(2) > .form-control').type('testing1923');\ncy.wait(500);\ncy.get(':nth-child(3) > .form-control').type('testing1923');\ncy.wait(500);\ncy.get(':nth-child(4) > .form-control').type('testing1923@gmail.com');\ncy.wait(500);\ncy.get(':nth-child(5) > .form-control').type('123456789');\ncy.wait(500);\ncy.get(':nth-child(6) > .form-control').type('123456789');\ncy.wait(500);\ncy.get('.btn').click();\ncy.wait(4000); // it then logs in to check for the user\ncy.visit('http://3.19.122.178/');\ncy.wait(2000);\ncy.get(':nth-child(3) > .nav-link').click();\ncy.get('#exampleInputEmail1').type('testing1923@gmail.com');\ncy.wait(200);\ncy.get('#exampleInputPassword1').type('123456789');\ncy.get('.btn').click();\ncy.wait(2000);\ncy.url().should('equal', \"http://3.19.122.178/profile/testing1923\");",
+            "err": {},
+            "isRoot": false,
+            "uuid": "79e7c00c-f14e-4716-af92-814bd15fb7ad",
+            "isHook": false,
+            "skipped": false
+          }
+        ],
+        "suites": [],
+        "passes": [
+          "79e7c00c-f14e-4716-af92-814bd15fb7ad"
+        ],
+        "failures": [],
+        "pending": [],
+        "skipped": [],
+        "duration": 22191,
+        "root": false,
+        "rootEmpty": false,
+        "_timeout": 2000
+      }
+    ],
+    "passes": [],
+    "failures": [],
+    "pending": [],
+    "skipped": [],
+    "duration": 0,
+    "root": true,
+    "rootEmpty": true,
+    "_timeout": 2000
+  },
+  "copyrightYear": 2019
+}

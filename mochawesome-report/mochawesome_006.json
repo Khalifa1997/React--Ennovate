@@ -1,0 +1,78 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 1,
+    "pending": 0,
+    "failures": 0,
+    "start": "2019-05-08T01:44:23.259Z",
+    "end": "2019-05-08T01:45:10.346Z",
+    "duration": 47087,
+    "testsRegistered": 1,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false,
+    "passPercentClass": "success",
+    "pendingPercentClass": "danger"
+  },
+  "suites": {
+    "uuid": "9e35c75b-6f8d-4ae7-be58-9931fdf3860e",
+    "title": "",
+    "fullFile": "",
+    "file": "",
+    "beforeHooks": [],
+    "afterHooks": [],
+    "tests": [],
+    "suites": [
+      {
+        "uuid": "129f6f4e-dc94-4f61-86f3-98e1a22f4f16",
+        "title": "The Friendship Test",
+        "fullFile": "",
+        "file": "",
+        "beforeHooks": [],
+        "afterHooks": [],
+        "tests": [
+          {
+            "title": "Should Follow and Unfollow correctly ",
+            "fullTitle": "The Friendship Test Should Follow and Unfollow correctly ",
+            "duration": 45438,
+            "state": "passed",
+            "speed": "slow",
+            "pass": true,
+            "fail": false,
+            "pending": false,
+            "code": "cy.visit('http://3.19.122.178/');\ncy.get(':nth-child(3) > .nav-link').click();\ncy.wait(2000);\ncy.get('#exampleInputEmail1').type('testing@gmail.com');\ncy.wait(2000);\ncy.get('#exampleInputPassword1').type('123456789');\ncy.wait(2000);\ncy.get('.btn').click();\ncy.wait(2000);\ncy.url().should('equal', \"http://3.19.122.178/profile/testingteam\"); //it should search on testing and follow heim\n// now i will got directly WILL BE EDITTED LATER\ncy.visit('http://3.19.122.178/profile/testing1');\ncy.wait(5000);\ncy.get('.profile-user-settings > .btn').click();\ncy.wait(4000);\ncy.visit('http://3.19.122.178/profile/testingteam');\ncy.wait(5000);\ncy.get('.profile-stats > :nth-child(3)').click();\ncy.get('.middle').should('have.text', 'testing1@testing1'); // it should unfollow testing1 and check on it\n// now i will got directly WILL BE EDITTED LATER\ncy.visit('http://3.19.122.178/profile/testing1');\ncy.wait(5000);\ncy.get('.profile-user-settings > .btn').click();\ncy.wait(4000); // cy.visit('http://3.19.122.178/profile/testingteam');\n//cy.wait(5000);\n// cy.get('.profile-stats > :nth-child(3)').click();\n//cy.get('.scrolling').not().contains('testing1@testing1');\ncy.visit('http://3.19.122.178/profile/testing1');\ncy.wait(4000);\ncy.get('.profile-stats > :nth-child(3)').should('have.text', '0 following');",
+            "err": {},
+            "isRoot": false,
+            "uuid": "2d3dacea-9b85-4a69-811e-f9ebe04108d5",
+            "isHook": false,
+            "skipped": false
+          }
+        ],
+        "suites": [],
+        "passes": [
+          "2d3dacea-9b85-4a69-811e-f9ebe04108d5"
+        ],
+        "failures": [],
+        "pending": [],
+        "skipped": [],
+        "duration": 45438,
+        "root": false,
+        "rootEmpty": false,
+        "_timeout": 2000
+      }
+    ],
+    "passes": [],
+    "failures": [],
+    "pending": [],
+    "skipped": [],
+    "duration": 0,
+    "root": true,
+    "rootEmpty": true,
+    "_timeout": 2000
+  },
+  "copyrightYear": 2019
+}

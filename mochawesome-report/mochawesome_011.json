@@ -1,0 +1,78 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 1,
+    "pending": 0,
+    "failures": 0,
+    "start": "2019-05-08T01:47:05.990Z",
+    "end": "2019-05-08T01:47:33.331Z",
+    "duration": 27341,
+    "testsRegistered": 1,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false,
+    "passPercentClass": "success",
+    "pendingPercentClass": "danger"
+  },
+  "suites": {
+    "uuid": "a7e26fcf-fa30-4ab7-953b-2bca69e1bcff",
+    "title": "",
+    "fullFile": "",
+    "file": "",
+    "beforeHooks": [],
+    "afterHooks": [],
+    "tests": [],
+    "suites": [
+      {
+        "uuid": "eb780419-d301-4afe-840a-353016f85b0d",
+        "title": "The Retweet/Delete Test",
+        "fullFile": "",
+        "file": "",
+        "beforeHooks": [],
+        "afterHooks": [],
+        "tests": [
+          {
+            "title": "Should Retweet and delete correctly ",
+            "fullTitle": "The Retweet/Delete Test Should Retweet and delete correctly ",
+            "duration": 25694,
+            "state": "passed",
+            "speed": "slow",
+            "pass": true,
+            "fail": false,
+            "pending": false,
+            "code": "cy.visit('http://3.19.122.178/'); // it logins in to an account\ncy.get(':nth-child(3) > .nav-link').click();\ncy.wait(2000);\ncy.get('#exampleInputEmail1').type('testingtweet2@gmail.com');\ncy.wait(2000);\ncy.get('#exampleInputPassword1').type('123456789');\ncy.wait(2000);\ncy.get('.btn').click();\ncy.wait(2000);\ncy.url().should('equal', \"http://3.19.122.178/profile/testingtweet2\"); // it should got to time line and retweet his tweet from the timeline\ncy.visit('http://3.19.122.178/newsfeed');\ncy.wait(5000);\ncy.get('.d-flex > :nth-child(1) > .card > .card-body > :nth-child(4) > .svg-inline--fa').click();\ncy.get('.Toastify__toast').contains('New Nova'); // go to profile and deletes it\ncy.get(':nth-child(2) > .nav-link > strong').click();\ncy.wait(2000);\ncy.get('[style=\"float: right;\"] > .svg-inline--fa').click();\ncy.get('.Toastify__toast').contains('Nova Deleted');\ncy.get('.profile-stats > :nth-child(1)').should('have.text', '0 Novas');",
+            "err": {},
+            "isRoot": false,
+            "uuid": "3d330afa-84cc-435b-a4c2-eb729879c417",
+            "isHook": false,
+            "skipped": false
+          }
+        ],
+        "suites": [],
+        "passes": [
+          "3d330afa-84cc-435b-a4c2-eb729879c417"
+        ],
+        "failures": [],
+        "pending": [],
+        "skipped": [],
+        "duration": 25694,
+        "root": false,
+        "rootEmpty": false,
+        "_timeout": 2000
+      }
+    ],
+    "passes": [],
+    "failures": [],
+    "pending": [],
+    "skipped": [],
+    "duration": 0,
+    "root": true,
+    "rootEmpty": true,
+    "_timeout": 2000
+  },
+  "copyrightYear": 2019
+}

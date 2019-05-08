@@ -1,0 +1,78 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 1,
+    "pending": 0,
+    "failures": 0,
+    "start": "2019-05-08T01:43:50.573Z",
+    "end": "2019-05-08T01:44:21.286Z",
+    "duration": 30713,
+    "testsRegistered": 1,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false,
+    "passPercentClass": "success",
+    "pendingPercentClass": "danger"
+  },
+  "suites": {
+    "uuid": "323b9873-ad34-461b-b67f-35af3a167fc2",
+    "title": "",
+    "fullFile": "",
+    "file": "",
+    "beforeHooks": [],
+    "afterHooks": [],
+    "tests": [],
+    "suites": [
+      {
+        "uuid": "9c49af73-9b96-41a0-9556-9b22110ce1ab",
+        "title": "The ForgetPassword Test",
+        "fullFile": "",
+        "file": "",
+        "beforeHooks": [],
+        "afterHooks": [],
+        "tests": [
+          {
+            "title": "Should do forget password ",
+            "fullTitle": "The ForgetPassword Test Should do forget password ",
+            "duration": 28973,
+            "state": "passed",
+            "speed": "slow",
+            "pass": true,
+            "fail": false,
+            "pending": false,
+            "code": "cy.visit('http://3.19.122.178/');\ncy.wait(2000);\ncy.get(':nth-child(3) > .nav-link').click();\ncy.wait(2000);\ncy.get('.loginBox > .Links').click();\ncy.wait(4000);\ncy.get('.form-control').type('jefibjw@gmail.com'); // testing a non-exising user (NOT FOUND\ncy.get('.btn').click();\ncy.wait(4000);\ncy.get('.container > :nth-child(2)').should('have.text', ' User not found');\ncy.wait(4000); // now it should forget password for an existing user\ncy.visit('http://3.19.122.178/forgotpassword');\ncy.get('.form-control').type('testing@gmail.com');\ncy.get('.btn').click();\ncy.wait(4000);\ncy.get('p').should('have.text', 'Alink to reset your password has been succcessfully sent to your email');",
+            "err": {},
+            "isRoot": false,
+            "uuid": "c554baa3-5c6f-41d5-be82-1bb50114321e",
+            "isHook": false,
+            "skipped": false
+          }
+        ],
+        "suites": [],
+        "passes": [
+          "c554baa3-5c6f-41d5-be82-1bb50114321e"
+        ],
+        "failures": [],
+        "pending": [],
+        "skipped": [],
+        "duration": 28973,
+        "root": false,
+        "rootEmpty": false,
+        "_timeout": 2000
+      }
+    ],
+    "passes": [],
+    "failures": [],
+    "pending": [],
+    "skipped": [],
+    "duration": 0,
+    "root": true,
+    "rootEmpty": true,
+    "_timeout": 2000
+  },
+  "copyrightYear": 2019
+}
