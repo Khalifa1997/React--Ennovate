@@ -15,7 +15,7 @@ describe("<login>", () => {
     const wrapper = shallow(<Login />);
     expect(shallowToJson(wrapper)).toMatchSnapshot();
   });
-
+  afterAll(() => setTimeout(() => process.exit(), 1000));
   // test("sets loading state to true on save press", () => {
   //   const onChangeHandler = jest.fn();
   //   const wrapper = shallow(

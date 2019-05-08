@@ -75,7 +75,6 @@ describe("<Profile>", () => {
     expect(wrapper).toMatchSnapshot();
   });
 
-
   // test("sets loading state to true on save press", () => {
   //     // const toggleFans = jest.fn();
   //     const wrapper = shallow(
@@ -94,5 +93,5 @@ describe("<Profile>", () => {
   //   wrapper.find("deleteClicked").onClick();
   //   expect(deleteClicked).toHaveBeenCalledTimes(1);
   // });
-  
+  afterAll(() => setTimeout(() => process.exit(), 1000));
 });

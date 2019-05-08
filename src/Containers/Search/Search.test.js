@@ -46,4 +46,5 @@ describe("<editProfile>", () => {
     const wrapper = shallow(<CSSTransition {...props} />);
     expect(wrapper).toMatchSnapshot();
   });
+  afterAll(() => setTimeout(() => process.exit(), 1000));
 });

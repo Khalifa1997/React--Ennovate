@@ -56,7 +56,7 @@ describe("<editProfile>", () => {
     const wrapper = shallow(<img {...props} />);
     expect(wrapper).toMatchSnapshot();
   });
-
+  afterAll(() => setTimeout(() => process.exit(), 1000));
   //   it("Should update the email value state when an email is given", () => {
   //     const wrapper = shallow(<editProfile />);
   //     const name = "mirna";
